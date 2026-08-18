@@ -35,6 +35,12 @@ Inclua uma atividade curta de classificação de entradas. Não há entrega nem 
 
 Para criar aula e laboratório juntos, diga explicitamente que deseja um par e inclua a função prática do laboratório. O agente usará a skill local `criar-par-aula-laboratorio`.
 
+### Slides são uma solicitação separada
+
+Criar uma aula não implica criar slides. O site é o material completo e permanente de estudo; o deck só deve ser produzido quando houver pedido ou decisão pedagógica explícita do professor.
+
+Ao solicitar slides, informe isso claramente junto da aula ou em um pedido posterior. O agente deve seguir `specs/padrao-slides.md`: construir uma narrativa própria para a condução presencial, com frames de função pedagógica definida, sem converter mecanicamente as seções da página da aula em slides. O deck precisa fornecer o apoio previsível à compreensão sem depender do site, de uma IDE ou de desenho obrigatório no quadro.
+
 ### 3. O que o agente deve fazer
 
 Ao receber o pedido, o agente deve:
@@ -74,6 +80,8 @@ uv run quarto render
 ```
 
 Se o Quarto estiver instalado fora do ambiente `uv`, use `quarto render`. Nunca edite `_site/` manualmente. Commits, push e publicação exigem solicitação explícita.
+
+A apostila PDF é gerada durante a renderização. Ela só estará disponível para download público depois que a versão que a contém for publicada no site.
 
 ## Fontes de orientação
 
