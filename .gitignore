@@ -43,3 +43,7 @@ Thumbs.db
 
 /content/**/*.html
 /content/apostila_files/*
+
+.agents/
+specs/
+AGENTS.md
