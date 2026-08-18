@@ -1,0 +1,20 @@
+---
+title: "Sobre a Disciplina"
+---
+
+## Verificação, Validação e Testes de Software
+
+A disciplina de **Verificação, Validação e Testes de Software (VVTS)** aborda os conceitos, técnicas e ferramentas fundamentais para garantir a qualidade de produtos de software ao longo do ciclo de desenvolvimento.
+
+### Tópicos Abordados
+- Conceitos Básicos de V&V e Tipos de Defeito
+- Testes Unitários e Frameworks de Automação (Pytest)
+- Testes de Integração e Sistema
+- Cobertura de Código e Análise Estática
+- Desenvolvimento Orientado a Testes (TDD)
+
+### Ferramentas Utilizadas
+- **Linguagem**: Python 3.10+
+- **Gerenciador de Dependências**: `uv`
+- **Framework de Testes**: `pytest`
+- **Documentação**: Quarto

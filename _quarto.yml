@@ -1,0 +1,50 @@
+project:
+  type: website
+  output-dir: _site
+  preview:
+    port: 4200
+    browser: true
+    watch-inputs: true
+    navigate: true
+  render:
+    - "*.qmd"
+    - "docs/**/*.qmd"
+    - "!docs/apostila.qmd"
+    - "!samples/**"
+  resources:
+    - .nojekyll
+    - docs/references.bib
+    - docs/**/mapa.md
+    - assets/js/*.js
+    - assets/css/*.css
+  post-render:
+    - scripts/render_apostila.sh
+
+bibliography: docs/references.bib
+
+website:
+  title: "Verificação, Validação e Testes de Software"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Início
+      - href: docs/index.qmd
+        text: Aulas & Materiais
+      - href: about.qmd
+        text: Sobre
+    right:
+      - href: docs/apostila.pdf
+        text: "📄 Baixar PDF Completo"
+
+format:
+  html:
+    theme: darkly
+    highlight-style: dracula
+    css: assets/css/styles.css
+    toc: true
+    toc-title: "Nesta página"
+    code-fold: true
+    code-tools: true
+    lang: pt-BR
+    filters:
+      - pyodide

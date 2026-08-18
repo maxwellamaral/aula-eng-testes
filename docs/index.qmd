@@ -1,0 +1,46 @@
+---
+page-layout: article
+header-includes:
+  - <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+---
+<!-- Navegação -->
+::: {.flex .items-center .gap-2 .mt-4 .mb-4 .text-sm .text-slate-400}
+[🏠 Home](../../){.hover:text-cyan-text .transition-colors}
+<span>/</span>
+[📚 Aulas & Materiais](#){.hover:text-cyan-text .transition-colors}
+:::
+
+<!-- Título -->
+::: {.mb-10 .mt-8}
+# Aulas & Materiais {.glow-text .text-4xl .md:text-4xl .font-extrabold .text-white .mb-6 .tracking-tight .leading-tight}
+:::
+
+<!-- Módulos de Aprendizagem -->
+::: {.overflow-hidden .mb-8}
+
+::: {.p-4 }
+## 🎓 Módulos de Aprendizagem {.text-2xl .font-semibold .text-white}
+:::
+
+
+::: {.p-6 .pt-4 .pl-6}
+
+<!-- Apresentação da disciplina -->
+::: {.glass-card .mb-6 .p-4}
+### Apresentação da disciplina {.text-xl .font-bold .text-white .mb-3}
+
+- 📄 [Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina](00-apresentacao/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 🖥️ [Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+:::
+
+<!-- Introdução a Engenharia de Software -->
+::: {.glass-card .p-4}
+### Módulo 1: Introdução à Engenharia de Software (Revisão) {.text-xl .font-bold .text-white .mb-3}
+
+- 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 🖥️ [Visualizar Apresentação de Slides](01-introducao-engsoft/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+:::
+
+:::
+
+:::

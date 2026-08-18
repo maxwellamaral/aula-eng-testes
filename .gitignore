@@ -1,0 +1,45 @@
+# Quarto build & cache outputs
+_site/
+.quarto/
+**/*.quarto_ipynb
+docs/apostila.pdf
+
+# Python & virtual environment
+.venv/
+__pycache__/
+*.py[oc]
+*.pyo
+*.pyd
+build/
+dist/
+wheels/
+*.egg-info/
+.egg
+
+# Test & coverage caches
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# Jupyter & Quarto notebook artifacts
+.ipynb_checkpoints/
+
+# Environment & local secrets
+.env
+*.local
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+/.quarto/
+/samples/
+
+/.luarc.json
+
+/content/**/*.html
+/content/apostila_files/*

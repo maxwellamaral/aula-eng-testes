@@ -1,0 +1,45 @@
+---
+page-layout: full
+header-includes:
+  - <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+---
+
+::: {.max-w-5xl .mx-auto .pt-4}
+
+::: {.mb-16 .mt-8}
+# Verificação, Validação e <br/> Testes de Software (VVTS) {.title-glow .text-4xl .md:text-5xl .font-extrabold .text-white .mb-6 .tracking-tight .leading-tight}
+:::
+
+::: {.my-10 .text-xl .text-slate-400 .max-w-2xl .leading-relaxed}
+
+Bem-vindo ao portal da disciplina de Verificação, Validação e Testes de Software, focado na excelência em engenharia de software.
+
+:::
+
+::: {.grid .grid-cols-1 .md:grid-cols-3 .gap-6 .mb-16 }
+
+::: {.feature-card .position-relative .p-8 .rounded-xl}
+### [📘 Notas de Aula e Materiais](docs/index.qmd){.stretched-link} {.text-xl .font-semibold .text-white .mb-3}
+
+[Acesse slides e PDFs do curso.]{.text-base}
+:::
+
+::: {.feature-card .position-relative .p-8 .rounded-xl}
+### [💻 Exemplos de Código e Testes](docs/index.qmd){.stretched-link} {.text-xl .font-semibold .text-white .mb-3}
+
+[Repositórios e tutoriais práticos.]{.text-base}
+:::
+
+::: {.feature-card .position-relative .p-8 .rounded-xl}
+### [ℹ️ Informações Gerais](about.qmd){.stretched-link} {.text-xl .font-semibold .text-white .mb-3}
+
+[Ementa, cronograma e ferramentas.]{.text-base}
+:::
+
+:::
+
+::: {.flex .flex-col .items-center .mb-12}
+[📄 Baixar Apostila (PDF)](docs/apostila.pdf){.cta-btn .text-white .font-medium .py-3 .px-8 .rounded-md .shadow-lg}
+:::
+
+:::
