@@ -35,6 +35,33 @@ Inclua uma atividade curta de classificação de entradas. Não há entrega nem 
 
 Para criar aula e laboratório juntos, diga explicitamente que deseja um par e inclua a função prática do laboratório. O agente usará a skill local `criar-par-aula-laboratorio`.
 
+### Exemplo com memória persistente
+
+Para manter a continuidade entre as aulas e registrar decisões duráveis, inclua a consulta e a consolidação da memória no pedido:
+
+```text
+Antes de criar a nova aula, consulte minha memória persistente, especialmente
+knowledge/projects/aula-vvts.md, e as instruções do repositório.
+
+Quero criar a Aula 02 — Fundamentos de Engenharia de Testes.
+
+Ela corresponde à semana 2. O foco é diferenciar erro, defeito e falha, além de
+apresentar verificação estática, validação e testes dinâmicos. A aula deve
+conectar requisitos às evidências de qualidade, sem antecipar técnicas de
+caixa-preta ou caixa-branca.
+
+Não haverá entrega nem avaliação. Crie a página no padrão atual do projeto,
+atualize o índice das aulas se necessário e execute `quarto render`.
+
+Ao concluir, registre a sessão pelo fluxo de memória: crie a proveniência em
+raw/daily via Hermes e consolide somente as decisões estáveis e pendências em
+knowledge/projects/aula-vvts.md. Não registre credenciais ou arquivos
+temporários.
+```
+
+O Hermes é responsável por registrar a proveniência em `raw/daily/` e atualizar
+a nota canônica do projeto. Não edite `raw/daily/` manualmente neste WSL.
+
 ### Slides são uma solicitação separada
 
 Criar uma aula não implica criar slides. O site é o material completo e permanente de estudo; o deck só deve ser produzido quando houver pedido ou decisão pedagógica explícita do professor.
