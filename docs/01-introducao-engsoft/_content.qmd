@@ -12,6 +12,7 @@ Ao final da aula, você deverá ser capaz de:
 2. distinguir usuário, cliente, especificação e artefato;
 3. reconhecer áreas e papéis da Engenharia de Software que produzem evidências relevantes para VVT;
 4. relacionar requisitos, projeto, implementação, configuração e testes em um produto de software.
+5. identificar como atividades, papéis, artefatos e fluxos estruturam um processo de desenvolvimento.
 
 ::: {.callout-note}
 ### Conceito-chave — VVT depende de contexto
@@ -129,6 +130,102 @@ Garantia da Qualidade de Software (*Software Quality Assurance* — SQA) observa
 Nas próximas aulas, vamos diferenciar com precisão verificações estáticas e testes dinâmicos, níveis e tipos de teste, técnicas de caixa-preta e caixa-branca, métricas e automação. Esta aula estabelece os artefatos e responsabilidades que dão sentido a essas técnicas.
 :::
 
+## Processos de desenvolvimento de software
+
+![Gato estudando Engenharia de Software (gerado por IA, 2023).](/assets/images/01-introducao-engsoft/processos-intro.jpg){#fig-processos-intro fig-align="center" width="75%"}
+
+Um **processo de desenvolvimento de software** é uma sequência organizada de atividades para produzir ou evoluir um produto de software. Ele torna explícito como o trabalho se articula: o que precisa ser feito, por quem, quais informações são utilizadas ou produzidas e em que ordem [@kruchten2003].
+
+Para VVT, essa visão é importante porque uma evidência de qualidade não aparece isoladamente. Um requisito precisa ser analisado, uma versão precisa ser identificada e uma execução de teste precisa produzir resultados que possam apoiar uma decisão.
+
+### Atividades
+
+Uma **atividade** é uma unidade de trabalho atribuída a uma pessoa ou grupo no contexto de um papel. As atividades definem o *como fazer* e, quando ordenadas e conectadas, formam fluxos de trabalho [@kruchten2003].
+
+![Exemplo de atividade em um processo de software. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-01-atividade.png){#fig-processo-atividade fig-align="center" width="65%"}
+
+Exemplos de atividades incluem:
+
+- analisar uma solicitação;
+- levantar, especificar e validar requisitos;
+- planejar o projeto e projetar a arquitetura;
+- implementar uma funcionalidade;
+- revisar artefatos e executar testes.
+
+### Papéis e artefatos
+
+Um **papel** define responsabilidades ou atribuições desempenhadas por uma pessoa ou por um grupo durante o projeto. Não é sinônimo de cargo: a mesma pessoa pode exercer mais de um papel em uma equipe pequena, e organizações diferentes podem atribuir responsabilidades distintas ao mesmo nome de papel.
+
+Exemplos são analista de requisitos, arquiteto de software, gerente de projetos, analista de configuração, desenvolvedor, analista de testes, SQA e DBA.
+
+Um **artefato**, ou produto de trabalho, é uma informação produzida, modificada ou usada no processo [@kruchten2003]. Pode ser uma solicitação de interessado, documento de visão, especificação, modelo, protótipo, código-fonte, executável, plano de projeto, cronograma ou relatório de teste.
+
+::: {.callout-note}
+### Conexão com VVT
+
+Requisitos, casos de teste, resultados de execução e relatórios de defeito são artefatos. Para serem úteis como evidência, precisam estar ligados ao contexto em que foram produzidos: versão avaliada, ambiente, responsável e decisão que sustentam.
+:::
+
+### Fluxos e diagramas
+
+Um **fluxo** é uma sequência de atividades que produz um resultado de valor observável. Diagramas não substituem o processo: eles o tornam mais fácil de discutir, revisar e melhorar.
+
+#### Diagrama de atividades UML
+
+O diagrama de atividades representa ações, decisões e caminhos de execução. Em geral, retângulos representam atividades, losangos representam decisões, setas indicam o fluxo, barras indicam paralelismo e círculos marcam início e fim.
+
+![Exemplo de diagrama de atividades UML. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-02-uml.png){#fig-processo-uml fig-align="center" width="65%"}
+
+#### Diagramas PEPP e BPMN
+
+O PEPP (*Processo para Empresas de Pequeno Porte*) adapta elementos de BPMN e fluxogramas para representar processos de software em organizações menores [@aguiar2005]. BPMN (*Business Process Model and Notation*) é um padrão de modelagem de processos de negócio.
+
+![Exemplo de diagrama PEPP. Adaptado por Aguiar e Rouiller (2005) de Sommerville (2007).](/assets/images/01-introducao-engsoft/processos-03-pepp.png){#fig-processo-pepp fig-align="center" width="65%"}
+
+![Estrutura de um processo no PEPP. Adaptado por Aguiar e Rouiller (2005) de Sommerville (2007).](/assets/images/01-introducao-engsoft/processos-04-pepp-estrutura.png){#fig-processo-pepp-estrutura fig-align="center" width="85%"}
+
+![Exemplo de diagrama BPMN. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-05-bpmn.png){#fig-processo-bpmn fig-align="center" width="80%"}
+
+### Modelos de processo
+
+Um **modelo de processo** é uma representação abstrata de como o desenvolvimento pode ser organizado [@sommerville2007]. Modelos ajudam a discutir o fluxo de trabalho, mas devem ser adaptados ao produto, aos riscos, à equipe e às necessidades de rastreabilidade.
+
+#### Modelo cascata
+
+O modelo cascata organiza atividades em uma sequência predominante: uma etapa produz informações usadas pela seguinte. Ele torna as fases fáceis de visualizar, mas mudanças descobertas tardiamente podem exigir retorno a etapas anteriores.
+
+![Exemplo de modelo cascata. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-06-cascata.png){#fig-processo-cascata fig-align="center" width="90%"}
+
+#### Desenvolvimento evolucionário
+
+No desenvolvimento evolucionário, o produto é construído e avaliado em ciclos. A equipe pode usar protótipos para aprender sobre uma necessidade ou entregar incrementos utilizáveis de forma progressiva. O modelo não elimina planejamento e documentação: ele exige que a equipe atualize suas evidências conforme o produto evolui.
+
+![Exemplo de desenvolvimento evolucionário. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-07-evolucionario.png){#fig-processo-evolucionario fig-align="center" width="80%"}
+
+![Outro exemplo de desenvolvimento evolucionário. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-08-evolucionario.png){#fig-processo-evolucionario-2 fig-align="center" width="75%"}
+
+O Rational Unified Process (RUP) é um processo iterativo que organiza disciplinas ao longo de fases do ciclo de vida [@kruchten2003]. Scrum, por sua vez, é um *framework* ágil que estrutura o trabalho em ciclos curtos e incrementais.
+
+![Exemplo de representação do RUP. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-09-rup.png){#fig-processo-rup fig-align="center" width="80%"}
+
+![Exemplo de representação do Scrum. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-10-scrum.png){#fig-processo-scrum fig-align="center" width="70%"}
+
+### Ferramentas CASE
+
+Ferramentas CASE (*Computer-Aided Software Engineering*) apoiam atividades de processo, como modelagem, construção, análise e verificação. Elas podem ser classificadas em:
+
+- **ferramentas**, que apoiam uma tarefa específica, como compilação, comparação de resultados de teste ou verificação de consistência;
+- **workbenches**, que integram ferramentas para apoiar uma fase, como especificação ou projeto;
+- **ambientes**, que apoiam uma parte substancial ou todo o processo de desenvolvimento.
+
+![Exemplo de ferramentas CASE. Criado pelo autor (2009).](/assets/images/01-introducao-engsoft/processos-11-case.png){#fig-processo-case fig-align="center" width="80%"}
+
+::: {.callout-tip}
+### Para refletir
+
+Escolha uma funcionalidade simples. Quais atividades, papéis e artefatos seriam necessários para transformar a necessidade do usuário em uma evidência de que ela funciona? Compare a resposta com a de outra dupla e identifique o que mudaria se a funcionalidade envolvesse dados pessoais ou risco elevado.
+:::
+
 ## Discussão: quanto processo é necessário?
 
 Não existe uma receita única para todos os projetos. Uma equipe pequena pode acumular papéis e manter documentação enxuta; um sistema crítico ou sujeito a auditoria pode exigir especificações, revisões e rastreabilidade mais formais.
@@ -159,10 +256,13 @@ O trabalho em Engenharia de Software exige atenção à confidencialidade, compe
 2. Quais artefatos produzidos antes da implementação podem ajudar a planejar testes?
 3. Em que situações uma equipe precisaria aumentar a formalidade de documentação e rastreabilidade?
 4. Como a gerência de configuração ajuda a interpretar um resultado de teste?
+5. Como atividades, papéis, artefatos e fluxos ajudam a tornar um resultado de teste interpretável?
+6. Que diferença prática existe entre um fluxo predominantemente sequencial e um desenvolvimento evolucionário?
 
 ## Referências e materiais relacionados
 
 - [Aula 00 — Apresentação do Plano de Ensino](../00-apresentacao/index.qmd)
+- [Material de origem — Processos](https://maxwellamaral.github.io/lessons/softeng/zero/processes/)
 
 ::: {#refs}
 :::

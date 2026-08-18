@@ -91,6 +91,97 @@ Visão de sistema
 
 Nenhum desses papéis é automaticamente obrigatório em toda equipe. A composição depende do produto, do contexto e dos riscos envolvidos.
 
+## Processos tornam o trabalho visível {.section}
+
+Uma sequência de atividades organiza como uma necessidade se transforma em produto, documentação e evidências de qualidade.
+
+## O que compõe um processo? {.concept .definition}
+
+::: {.chapter}
+Processos de desenvolvimento
+:::
+
+Um processo de desenvolvimento reúne:
+
+- atividades;
+- papéis;
+- artefatos de entrada e saída;
+- fluxos que ligam o trabalho e seus resultados.
+
+![Exemplo de atividade em um processo de software](/assets/images/01-introducao-engsoft/processos-01-atividade.png){fig-align="center" width="48%"}
+
+## Atividade, papel e artefato {.example}
+
+::: {.chapter}
+Processos de desenvolvimento
+:::
+
+| Elemento | Pergunta que ajuda a responder |
+| --- | --- |
+| Atividade | O que precisa ser feito? |
+| Papel | Quem assume essa responsabilidade? |
+| Artefato | Que informação entra ou sai do trabalho? |
+| Fluxo | Em que ordem e com quais dependências? |
+
+Exemplo: uma pessoa no papel de analista de requisitos realiza uma revisão e atualiza uma especificação.
+
+## Como representamos um fluxo? {.concept}
+
+::: {.chapter}
+Processos de desenvolvimento
+:::
+
+Diagramas ajudam a equipe a discutir, revisar e melhorar o processo. Eles não substituem o trabalho real nem a evidência produzida por ele.
+
+![Exemplo de diagrama de atividades UML](/assets/images/01-introducao-engsoft/processos-02-uml.png){fig-align="center" width="42%"}
+
+## Um modelo sequencial resolve tudo? {.question}
+
+::: {.chapter}
+Modelos de processo
+:::
+
+No modelo cascata, uma etapa produz informações para a próxima. O que acontece quando uma necessidade muda depois de já termos implementado ou testado uma funcionalidade?
+
+![Exemplo de modelo cascata](/assets/images/01-introducao-engsoft/processos-06-cascata.png){fig-align="center" width="82%"}
+
+## Evoluir também exige evidências {.concept}
+
+::: {.chapter}
+Modelos de processo
+:::
+
+Em um desenvolvimento evolucionário, o produto avança em ciclos. A cada ciclo, requisitos, versões, testes e decisões precisam continuar rastreáveis.
+
+![Exemplo de desenvolvimento evolucionário](/assets/images/01-introducao-engsoft/processos-07-evolucionario.png){fig-align="center" width="60%"}
+
+## Ferramentas CASE apoiam o processo {.example}
+
+::: {.chapter}
+Ferramentas de apoio
+:::
+
+- **Ferramentas:** apoiam tarefas específicas.
+- **Workbenches:** integram ferramentas de uma fase.
+- **Ambientes:** apoiam uma parte substancial do processo.
+
+![Exemplo de ferramentas CASE](/assets/images/01-introducao-engsoft/processos-11-case.png){fig-align="center" width="57%"}
+
+## Que processo produz esta evidência? {.activity}
+
+::: {.chapter}
+Processos e VVT
+:::
+
+Em duplas, escolham uma funcionalidade e descrevam:
+
+1. uma atividade necessária;
+2. o papel responsável;
+3. o artefato de saída;
+4. a evidência que permitiria verificar a funcionalidade.
+
+Expliquem como uma mudança de requisito afetaria esse fluxo.
+
 ## Quem produz a evidência que VVT usa? {.question}
 
 ::: {.chapter}
