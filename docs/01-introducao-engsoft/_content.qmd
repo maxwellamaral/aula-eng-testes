@@ -1,0 +1,168 @@
+![Adaptado de Robotatertotcomics](/assets/images/01-introducao-engsoft/intro01.jpeg){#fig-rob fig-align="center" width="70%"}
+
+## Conceitos
+
+Em Verificação, Validação e Testes (VVT), não avaliamos apenas código: analisamos evidências de que um produto atende ao que foi combinado e continua útil para quem o utiliza. Por isso, esta revisão retoma o que é software, quais artefatos o compõem e como as diferentes áreas da Engenharia de Software colaboram.
+
+### Objetivos da aula
+
+Ao final da aula, você deverá ser capaz de:
+
+1. explicar por que software inclui programa, dados e documentação;
+2. distinguir usuário, cliente, especificação e artefato;
+3. reconhecer áreas e papéis da Engenharia de Software que produzem evidências relevantes para VVT;
+4. relacionar requisitos, projeto, implementação, configuração e testes em um produto de software.
+
+::: {.callout-note}
+### Conceito-chave — VVT depende de contexto
+
+Um resultado de teste só é interpretável quando sabemos o que o produto deveria fazer, para quem e sob quais restrições. Requisitos, modelos, código, versões e documentação são fontes dessa evidência.
+:::
+
+### O que é software?
+
+Quando pensamos em software, é comum lembrar de um aplicativo ou programa executado em um computador. Esse é apenas um dos seus componentes. Um produto de software reúne programas, instruções e dados executados em dispositivos como computadores pessoais, servidores, celulares e tablets. Também inclui a documentação necessária para operar, manter e evoluir esse produto [@pressman2016].
+
+![Programa de computador + documentação](/assets/images/01-introducao-engsoft/intro02.png){#fig-engenharias fig-align="center" width="55%"}
+
+::: {.callout-tip}
+### Para memorizar
+
+- **Usuário**: quem utiliza o software; pode ser uma pessoa, outro sistema ou uma máquina.
+- **Cliente**: quem contrata ou paga pelo software; pode ser uma pessoa, empresa ou órgão público.
+- **Especificação**: documento ou conjunto de artefatos que descreve o que o software deve fazer.
+- **Artefato**: qualquer produto de trabalho criado no desenvolvimento, como documento, código, manual, modelo ou relatório de teste.
+:::
+
+O que é entregue ao cliente depende do acordo estabelecido. Em alguns contextos, entrega-se o produto executável e o manual de uso; em outros, também são entregues especificações, código-fonte, modelos, evidências de qualidade e demais artefatos previstos.
+
+### Categorias de produtos de software
+
+- **Produtos genéricos ou de prateleira**: desenvolvidos para um mercado amplo e adquiridos por diferentes clientes, como sistemas operacionais, suítes de escritório e editores de imagem.
+- **Produtos sob encomenda**: desenvolvidos ou configurados para atender necessidades específicas de uma organização, como sistemas acadêmicos, hospitalares ou de gestão.
+
+## O que é Engenharia de Software?
+
+![Engenharia de Software como parte da Engenharia de Sistemas](/assets/images/01-introducao-engsoft/intro03.png){#fig-engsoft fig-align="center" width="70%"}
+
+Engenharia é a aplicação de conhecimentos científicos e empíricos para resolver problemas. A Engenharia de Sistemas trata sistemas formados por diferentes subsistemas — mecânicos, elétricos, eletrônicos, humanos e de software. A Engenharia de Software concentra-se nos sistemas de software e em como desenvolvê-los, mantê-los e evoluí-los de forma responsável [@sommerville2007].
+
+Assim, Engenharia de Software não se resume à programação. Ela abrange decisões sobre necessidades, requisitos, arquitetura, implementação, versões, qualidade, segurança, operação e evolução do produto.
+
+![Relação entre Engenharia de Sistemas e suas especialidades](/assets/images/01-introducao-engsoft/intro04.png){#fig-engsoft2 fig-align="center" width="85%"}
+
+### O que se pode fazer em Engenharia de Software?
+
+Uma equipe pode combinar papéis como:
+
+- engenharia ou análise de requisitos;
+- análise de sistemas, arquitetura e UX;
+- desenvolvimento;
+- gerência de projetos;
+- engenharia de testes e análise de qualidade;
+- gerência de configuração;
+- segurança, dados, infraestrutura, suporte e operação.
+
+::: {.callout-note}
+### Papel e cargo não são sinônimos
+
+**Papel** é a função desempenhada por alguém em um projeto. Uma pessoa contratada como analista pode, em uma equipe pequena, exercer também o papel de desenvolvedora ou testadora. A distribuição varia conforme produto, equipe, riscos e contexto organizacional.
+:::
+
+## Principais áreas da Engenharia de Software
+
+![Áreas que compõem a Engenharia de Software](/assets/images/01-introducao-engsoft/intro05.png){#fig-engsoft3 fig-align="center" width="85%"}
+
+### Engenharia de requisitos
+
+Um **requisito** é uma característica, capacidade, restrição ou qualidade que o sistema deve possuir para atender uma necessidade. Exemplos:
+
+- “O sistema deve permitir login com e-mail e senha.”
+- “O sistema não deve expor dados pessoais de outros usuários.”
+- “Como cliente, quero acompanhar o status de uma solicitação.”
+
+A Engenharia de Requisitos envolve compreender o problema e os interessados, levantar e analisar necessidades, especificá-las, validá-las e gerenciar suas mudanças. Entre seus artefatos estão documentos de visão, especificações, histórias de usuário, casos de uso, protótipos e critérios de aceitação.
+
+Para VVT, requisitos claros e rastreáveis são indispensáveis: eles orientam inspeções, condições de teste, casos de teste e a avaliação dos resultados.
+
+### Análise e projeto
+
+Análise e projeto detalham como uma solução será organizada e implementada. Nessa área são discutidos arquitetura, componentes, interfaces, dados, fluxos e modelos que permitem à equipe compreender e construir o produto.
+
+![Exemplo de representação de projeto de uma estrutura](/assets/images/01-introducao-engsoft/intro06.png){#fig-engsoft4 fig-align="center" width="85%"}
+
+Um projeto de software pode empregar diagramas, protótipos, contratos de API, modelos de dados e especificações textuais. Esses artefatos facilitam a comunicação entre pessoas com diferentes responsabilidades e oferecem material para revisão estática.
+
+![Exemplo de modelo de caso de uso](/assets/images/01-introducao-engsoft/intro07.png){#fig-engsoft5 fig-align="center" width="85%"}
+
+### Gerência de projetos
+
+Gerência de projetos organiza o trabalho temporário necessário para produzir um resultado específico. Ela lida com escopo, cronograma, custos, riscos, comunicação, recursos e qualidade. Mudanças em uma dessas restrições normalmente afetam as outras.
+
+Em VVT, essa área ajuda a tornar a qualidade planejável: define quando evidências serão produzidas, quais riscos merecem mais atenção e como resultados de teste influenciam decisões do projeto.
+
+### Gerência de configuração
+
+Gerência de configuração controla a identificação, o armazenamento e a evolução de artefatos. Ela torna possível saber qual versão do requisito, do código, da suíte de testes e da documentação foi usada para produzir determinado resultado.
+
+Git, plataformas de hospedagem de repositórios, *issues*, automação e integração contínua são ferramentas importantes para essa rastreabilidade.
+
+### Desenvolvimento
+
+Desenvolvimento transforma decisões de projeto em código executável e inclui, entre outras atividades, implementação, revisão, depuração e documentação técnica. Desenvolvedores também podem produzir testes de unidade, testes de integração e automações que fornecem feedback rápido à equipe.
+
+::: {.callout-tip}
+### Python e ferramentas em foco — ambiente da disciplina
+
+Nos exemplos e práticas de VVTS, usaremos Python 3.11+, `pytest`, Django, Selenium, Playwright, `requests`, Coverage.py, GitHub Actions e Docker conforme cada técnica exigir. Ferramenta não substitui entendimento: resultados precisam ser interpretados à luz dos requisitos e riscos do produto.
+:::
+
+### Engenharia de testes e garantia da qualidade
+
+A Engenharia de Testes planeja, projeta, executa e avalia testes e outras evidências de qualidade. Entre seus artefatos estão planos de teste, casos de teste, relatórios de execução e relatórios de defeitos [@delamaro2007].
+
+Garantia da Qualidade de Software (*Software Quality Assurance* — SQA) observa se processos e produtos de trabalho seguem critérios, padrões e práticas definidos. VVT se relaciona com ambas as áreas, mas não se reduz a uma única métrica, ferramenta ou etapa do desenvolvimento.
+
+::: {.callout-important}
+### Relação com esta disciplina
+
+Nas próximas aulas, vamos diferenciar com precisão verificações estáticas e testes dinâmicos, níveis e tipos de teste, técnicas de caixa-preta e caixa-branca, métricas e automação. Esta aula estabelece os artefatos e responsabilidades que dão sentido a essas técnicas.
+:::
+
+## Discussão: quanto processo é necessário?
+
+Não existe uma receita única para todos os projetos. Uma equipe pequena pode acumular papéis e manter documentação enxuta; um sistema crítico ou sujeito a auditoria pode exigir especificações, revisões e rastreabilidade mais formais.
+
+As escolhas dependem de fatores observáveis, como:
+
+- tamanho e complexidade do produto;
+- riscos para usuários e organização;
+- prazo, orçamento e composição da equipe;
+- necessidades do cliente e exigências regulatórias;
+- necessidade de manutenção, evolução ou transferência de conhecimento.
+
+Documentação não é burocracia automática: é um meio de comunicar decisões, preservar conhecimento e oferecer evidências quando ela atende uma necessidade real.
+
+### Aprofundamento — melhoria de processos
+
+Para aprofundar a discussão sobre documentação, rastreabilidade e melhoria contínua, consulte o livro [*Implantação de melhoria de processos de software com CMMI-DEV nível 2*](https://editora.ifpb.edu.br/ifpb/catalog/book/7), do professor da disciplina.
+
+![Capa de *Implantação de melhoria de processos de software com CMMI-DEV nível 2*](/assets/images/01-introducao-engsoft/intro09.png){#fig-livro fig-align="center" width="45%"}
+
+### Responsabilidade profissional
+
+O trabalho em Engenharia de Software exige atenção à confidencialidade, competência técnica, propriedade intelectual, proteção de dados e uso ético de sistemas computacionais. A qualidade de um produto também envolve suas consequências para pessoas, organizações e sociedade.
+
+### Para revisar
+
+1. Por que um programa executável, sozinho, pode não ser uma entrega de software suficiente?
+2. Quais artefatos produzidos antes da implementação podem ajudar a planejar testes?
+3. Em que situações uma equipe precisaria aumentar a formalidade de documentação e rastreabilidade?
+4. Como a gerência de configuração ajuda a interpretar um resultado de teste?
+
+## Referências e materiais relacionados
+
+- [Aula 00 — Apresentação do Plano de Ensino](../00-apresentacao/index.qmd)
+
+::: {#refs}
+:::

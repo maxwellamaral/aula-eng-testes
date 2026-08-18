@@ -1,0 +1,260 @@
+---
+title: "Aula 00 — Apresentação do Plano de Ensino e Introdução à Disciplina"
+subtitle: "Verificação, Validação e Teste de Software (VVT)"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+institute: "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) — Campus João Pessoa"
+date: "2026-08-01"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## 📽️ Material da Aula
+
+- 📄 [Baixar Apostila Completa em PDF](../apostila.pdf)
+- 🖥️ [Visualizar Apresentação de Slides (RevealJS)](slides.qmd)
+:::
+
+![Gato Engenheiro de Testes](/assets/images/00-apresentacao/intro.png)
+
+# Boas-Vindas e Abertura
+
+Bem-vindas e bem-vindos à disciplina de **Verificação, Validação e Teste de Software (VVT)**!
+
+Esta aula marca o início de uma jornada fundamental na formação de vocês como Bacharéis em Engenharia de Software. O objetivo desta primeira hora é alinhar expectativas, apresentar as regras do jogo, compreender a importância da garantia da qualidade e conhecer as tecnologias que utilizaremos ao longo do semestre.
+
+::: {.callout-note icon=true}
+## Mensagem do Docente
+
+> "Construir software que funciona é apenas o primeiro passo. Construir software em que os usuários e a sociedade possam confiar — sob quaisquer condições — é a verdadeira essência da Engenharia de Software."
+:::
+
+---
+
+# Quem é o professor?
+
+## Prof. Maxwell Anderson
+
+[maxwell.amaral@ifpb.edu.br](mailto:maxwell.amaral@ifpb.edu.br)
+
+- **2000**: Cursos técnicos em TI.
+- **2003**: Ingresso na Graduação em Ciência da Computação.
+- **2006**: Analista de Sistemas e Gerente de Qualidade na Simplestec Informática + Conclusão da Graduação.
+- **2008**: Especialização em Gerenciamento de Projetos (PMBOK).
+- **2008**: Professor do Ensino Superior na ASPER, FATECPB e UNIESP.
+- **2009**: Analista de Sistemas na Unimed NNE.
+- **2010**: Ingresso como TAE no IFPB.
+- **2011**: Coordenei processo de implantação de COBIT e ITIL no IFPB.
+- **2012**: Analista de Sistemas na Dataprev.
+- **2013**: Professor EBTT no IFPB.
+- **2014**: Avaliador de Cursos Técnicos junto ao MEC.
+- **2015**: Mestrado em Engenharia de Software.
+- **2016**: Diretor de Inovação Tecnológica no IFPB.
+- **2017**: Livro sobre Implantação de melhoria de processos de software com CMMI-DEV nível 2. [Link aqui](https://editora.ifpb.edu.br/ifpb/catalog/book/7).
+- **2023**: Avaliador de Cursos Superiores junto ao INEP.
+- **2024**: Ingresso no Doutorado em Informática na UFPB.
+
+**Atuação com ênfase em:**
+
+- Inovação.
+- Engenharia de Software.
+- Internet das Coisas (IoT): Casas Inteligentes e Carros Inteligentes.
+- Inteligência Artificial (IA).
+- Áreas afins...
+
+**Contatos:**
+
+- [Currículo Lattes](http://lattes.cnpq.br/7725418498659982)
+- [LinkedIn](https://www.linkedin.com/in/maxwellielpo/)
+- [GitHub](https://github.com/maxwellamaral/)
+
+---
+
+# Ficha Técnica e Identificação da Disciplina
+
+| Item | Especificação |
+| :--- | :--- |
+| **Curso** | Bacharelado em Engenharia de Software |
+| **Unidade Curricular** | Verificação, Validação e Teste de Software (VVT) |
+| **Caráter** | Obrigatória [X] &nbsp;&nbsp; Optativa [ ] &nbsp;&nbsp; Eletiva [ ] |
+| **Pré-requisito** | Engenharia de Requisitos de Software |
+| **Semestre / Ano** | 2026.2 |
+| **Carga Horária Total** | 67h (Teórica: 40h \| Prática: 27h) |
+| **Regime Semanal** | 4 horas-aula (Bloco presencial unificado) |
+| **Docente Responsável** | Prof. Me. Maxwell Anderson Ielpo do Amaral |
+
+---
+
+# Contextualização na Matriz Curricular
+
+O fluxo da Engenharia de Software no IFPB é estruturado de forma encadeada e incremental:
+
+![Fluxo da Engenharia de Software no IFPB (gerado por IA).](/assets/images/00-apresentacao/fluxo-curricular.png){#fig-fluxo-curricular fig-align="center" width=80%}
+
+::: {.callout-important icon=true}
+## A Ponte entre Requisitos e Produção
+
+Enquanto a **Engenharia de Requisitos** ensina a elicitá-los, especificá-los e gerenciá-los, a disciplina de **VVT** fornece o instrumental científico e prático para provar que a implementação está em conformidade com o que foi especificado e atende ao usuário final sem falhas catastróficas.
+:::
+
+---
+
+# Ementa e Objetivos Pedagógicos
+
+## Ementa Oficial
+
+Introdução à Engenharia de Testes. Processos da Engenharia de Testes. Inspeções e testes de software. Normas e modelos de qualidade de produto. Métricas de qualidade de produto. Validação de sistemas críticos. Práticas e estratégias para implementação de testes.
+
+## Objetivos da Disciplina
+
+### Objetivo Geral
+
+Produzir software de alta qualidade que esteja em conformidade com seus requisitos e satisfaça plenamente as necessidades do usuário final.
+
+### Objetivos Específicos
+
+1. **Compreender** os atributos e características de qualidade do produto de software (ISO/IEC 25010) e sua utilidade no ciclo de vida.
+2. **Aplicar** mecanismos de medição e coleta de métricas de qualidade de código e produto.
+3. **Executar** técnicas e procedimentos de validação e verificação estáticos (inspeções, *walkthroughs*) e dinâmicos (testes caixa-preta e caixa-branca).
+4. **Dominar** normas e padrões internacionais de processos de teste (IEEE 829 e ISO/IEC/IEEE 29119).
+5. **Prevenir e detectar** falhas de software em sistemas críticos e tolerantes a falhas.
+
+---
+
+# Conteúdo Programático e Cronograma Semestral
+
+O semestre letivo é composto por 17 semanas de atividades intensas, combinando teoria e prática em laboratório:
+
+| Conteúdo Programático |
+| :--- |
+| **1**. Apresentação do plano de ensino. Definição do projeto prático (*cases*) e equipes. Introdução à disciplina e à Gestão da Qualidade de Produto. |
+| **2**. Introdução à Engenharia de Testes: conceitos de erro, defeito, falha, V&V estático e dinâmico, e a relação entre engenharia de requisitos e testes. |
+| **3**. Atributos e características de qualidade do produto de software com base nas normas internacionais (ISO/IEC 25010 - SQuaRE). |
+| **4**. Métricas e medição de qualidade de produto de software. Processos e padrões de Engenharia de Testes (IEEE 829 e ISO/IEC/IEEE 29119). |
+| **5**. Verificação Estática (Inspeções e Testes de Mesa): Técnicas de revisão formal, *walkthroughs* e inspeções de código e requisitos. Prática de inspeção guiada. |
+| **6**. Introdução ao Teste Dinâmico de Software. Níveis de teste (Unidade, Integração, Sistema, Aceitação) e tipos de teste (Funcional, Desempenho, Segurança, Usabilidade). |
+| **7**. Teste Funcional (Caixa-Preta) - Parte I: Particionamento de Equivalência e Análise de Valor Limite. Exercícios de fixação em laboratório. |
+| **8**. Teste Funcional (Caixa-Preta) - Parte II: Tabela de Transição de Estados, Tabela de Decisão e Caso de Uso. Aplicação prática no projeto do grupo. |
+| **9**. **Acompanhamento de Projetos em Laboratório e Entrega N1:** Apresentação parcial sobre a inspeção e planejamento inicial de testes de caixa-preta. |
+| **10**. Teste Estrutural (Caixa-Branca): Cobertura de comandos, desvios/decisões, condições e caminhos básicos. Análise de complexidade ciclomática. Teste de Classe e Estados no contexto Orientado a Objeto. |
+| **11**. Critérios alternativos de teste estrutural: Teste de Mutação. Conceito, ferramentas e análise de *score* de mutação. |
+| **12**. Introdução ao TDD e o Ciclo *Red-Green-Refactor*. A filosofia da *"Testing Goat"*. Distinção entre Testes Funcionais (FT) e Testes de Unidade (UT). Configuração do ambiente e exercício *Outside-In* com Django e Selenium. |
+| **13**. TDD com Persistência e Refatoração. Testes de Banco de Dados (ORM, Migrações) e processamento de requisições POST. Técnicas de refatoração segura. Padrões de isolamento. |
+| **14**. Validação de Sistemas Críticos: Estratégias preventivas em sistemas tolerantes a falhas e de alta confiabilidade. |
+| **15**. Integração Contínua (CI) e Testes de Layout. Pipelines com verificação de qualidade de código. Testes estáticos, interface e introdução a Docker. |
+| **16**. **Acompanhamento de Projetos em Laboratório:** Execução e refinamento final das baterias de testes. Preparação para Produção (*Production-Ready*): Gunicorn, Whitenoise e `.env`. |
+| **17**. **Apresentação Final dos Projetos (N2 e N3):** Defesa das suítes de testes automatizados, pipeline de CI estruturado e o relatório de qualidade do produto. Fechamento. |
+
+---
+
+# Metodologia de Ensino e Dinâmica Didática
+
+A disciplina é desenhada sob o paradigma de **Aprendizagem Baseada em Projetos (PBL)** e **Hands-On**:
+
+::: {.callout-tip icon=true}
+## Como funcionam nossas 4 horas semanais?
+
+- **Bloco Teórico-Expositivo (Aprox. 1h30m):** Apresentação dialogada de conceitos, fundamentação teórica em literaturas de referência (Pressman, Delamaro, Percival) e discussão de estudos de caso reais.
+- **Intervalo Didático (15 a 20m):** Descanso para assimilação.
+- **Bloco Prático em Laboratório (Aprox. 2h00m):** Codificação de suítes de teste, execução de ferramentas de análise de código, reuniões de alinhamento das equipes e mentorias com o professor.
+:::
+
+![Pirâmide de Aprendizagem de William Glasser (gerado por IA).](/assets/images/00-apresentacao/piramide.png){#fig-piramide fig-align="center" width=100%}
+
+> Penso que se você gosta do que faz, tudo fica mais leve, e a jornada fica mais prazerosa. A pirâmide de aprendizado de William Glasser sugere que aprendemos mais quando estamos ativamente envolvidos no processo de aprendizagem. E é isso que vamos fazer nesta disciplina.
+
+- O que estão fazendo em Projeto Integrador? 🤩
+
+---
+
+# Sistemática Detalhada de Avaliação
+
+A avaliação será **processual, prática e em equipe**, acompanhando o ciclo de vida do projeto prático escolhido.
+
+![Fluxo do Projeto Prático VVT (gerado por IA).](/assets/images/00-apresentacao/fluxo-avaliacao-vvt.png){#fig-avaliacao-vvts fig-align="center" width=80%}
+
+## Etapas Avaliativas
+
+1. **Nota 1 (N1 - 100 pontos):**
+   - *Entregável:* Relatório Técnico de Inspeção Estática e Revisão Formal.
+   - *Foco:* Verificação de Requisitos e Código Legado do *case*.
+2. **Nota 2 (N2 - 100 pontos):**
+   - *Entregável:* Especificação e Modelagem de Testes Funcionais (Caixa-Preta).
+   - *Foco:* Particionamento de Equivalência, Análise de Valor Limite, Tabelas de Decisão e Estados.
+3. **Nota 3 (N3 - 100 pontos):**
+   - *Entregável:* Projeto de Automação de Testes (Unidade, Integração e E2E) e Pipeline de CI/CD.
+   - *Foco:* Execução via PyTest/Selenium, análise SonarQube, cobertura de código e containerização Docker.
+
+## Fórmulas de Cálculo e Regras de Aprovação
+
+### Média Semestral ($Ms$)
+
+A média semestral é obtida pela média aritmética simples das três etapas:
+
+$$
+Ms = \frac{N1 + N2 + N3}{3}
+$$
+
+::: {.callout-success icon=true}
+## Critério de Aprovação Direta
+
+O estudante estará **aprovado por média** se mantiver frequência regular e obtiver:
+
+$$
+Ms \ge 70
+$$
+:::
+
+### Prova Final (PF)
+
+Caso o estudante obtenha $Ms < 70$, terá direito de realizar a Prova Final (valendo de 0 a 100 pontos). A Média Final ($Mf$) será calculada por:
+
+$$
+Mf = \frac{Ms + PF}{2}
+$$
+
+O estudante estará **aprovado na Prova Final** se obtiver:
+
+$$
+Mf \ge 70
+$$
+
+---
+
+# Ecossistema Tecnológico e Ferramental
+
+Para vivenciar a Engenharia de Testes em nível profissional, utilizaremos as seguintes ferramentas no Laboratório de Informática:
+
+```text
+Stack principal da disciplina
+├── Linguagem & Runtime: Python 3.11+
+├── Ambiente Virtual / SO: WSL2 (Windows Subsystem for Linux) ou Linux Ubuntu
+├── Framework Web Base: Django 4.2+ / Django REST Framework
+├── Frameworks de Teste de Unidade & TDD: PyTest, unittest
+├── Automação E2E & Web UI: Selenium WebDriver, Playwright
+├── Testes de API: Postman, Insomnia, Biblioteca 'requests'
+├── Análise de Qualidade & Cobertura: SonarQube, Coverage.py
+├── CI/CD & Versionamento: Git, GitHub Actions
+└── Containerização: Docker & Docker Compose
+```
+
+---
+
+# Bibliografia do Componente Curricular
+
+## Bibliografia Básica
+
+1. **DELAMARO, Márcio Eduardo; MALDONADO, José Carlos.** *Introdução ao teste de software*. Rio de Janeiro: Elsevier, 2007. ISBN 9788535226348.
+2. **PRESSMAN, Roger S.; MAXIM, Bruce R.** *Engenharia de software: uma abordagem profissional*. 8. ed. Porto Alegre: AMGH, 2016.
+3. **SOMMERVILLE, Ian; MELNIKOFF, Selma Shin Shimizu.** *Engenharia de software*. 8. ed. São Paulo: Pearson, 2007. ISBN 9788588639287.
+
+## Bibliografia Complementar
+
+1. **PERCIVAL, Harry.** *Test-Driven Development with Python: Obey the Testing Goat Using Django, Selenium, and JavaScript*. 2. ed. Sebastopol: O'Reilly Media, 2017.
+2. **VALENTE, Marco Tulio.** *Engenharia de software moderna: princípios e práticas para desenvolvimento de software com produtividade*. Belo Horizonte: Editora UFMG, 2020. ISBN 978-65-00-01950-6.
+3. **RAMALHO, Luciano.** *Python fluente: claro, conciso e eficaz*. Sebastopol: O'Reilly Media, 2015. ISBN 978-1-491-946008.
+4. **BEAZLEY, David; JONES, Brian K.** *Python Cookbook*. 3. ed. Sebastopol: O'Reilly Media, 2013. ISBN 978-1-449-34037-7.
+5. **GAMMA, Erich et al.** *Padrões de projeto: soluções reutilizáveis de software orientados a objetos*. Porto Alegre: Bookman, 2000. ISBN 9788573076240.
+6. **LARMAN, Craig.** *Utilizando UML e padrões: uma introdução à análise e ao projeto orientados a objetos e ao desenvolvimento iterativo*. 3. ed. Porto Alegre: Bookman, 2007. ISBN 978-85-60031528.

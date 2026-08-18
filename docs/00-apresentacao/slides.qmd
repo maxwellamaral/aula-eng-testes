@@ -1,0 +1,234 @@
+---
+title: "Aula 00 — Apresentação do Plano de Ensino"
+subtitle: "Verificação, Validação e Teste de Software (VVT)"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+institute: "Instituto Federal da Paraíba (IFPB) — Campus João Pessoa"
+date: "2026-08-01"
+lang: pt-BR
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    css: ../../assets/css/slides.css
+---
+
+## Boas-Vindas & Abertura
+
+![](/assets/images/00-apresentacao/intro.png){width=90% fig-align="center"}
+
+### Mensagem do Docente
+
+> *"Construir software que funciona é apenas o primeiro passo. Construir software em que os usuários e a sociedade possam confiar — sob quaisquer condições — é a verdadeira essência da Engenharia de Software."*
+
+— Prof. Maxwell Amaral
+
+---
+
+## Quem é o Professor?
+
+### Prof. Maxwell Anderson
+[maxwell.amaral@ifpb.edu.br](mailto:maxwell.amaral@ifpb.edu.br)
+
+::: {.columns}
+
+::: {.column width="50%"}
+#### 📜 Trajetória Profissional & Acadêmica
+- **2003-2006:** Graduação em Ciência da Computação.
+- **2006-2012:** Analista de Sistemas & Gerente de Qualidade.
+- **2008:** Especialização em Gerenciamento de Projetos (PMBOK).
+- **2010/2013:** Ingresso no IFPB / Professor EBTT.
+- **2015:** Mestrado em Engenharia de Software.
+- **2016-2017:** Diretor de Inovação IFPB / Livro CMMI-DEV v2.
+- **2023:** Avaliador de Cursos Superiores (INEP/MEC).
+- **2024:** Doutorado em Informática (UFPB).
+:::
+
+::: {.column width="50%"}
+#### 🎯 Atuação & Ênfase
+- Inovação & Engenharia de Software.
+- Internet das Coisas (IoT): Casas & Carros Inteligentes.
+- Inteligência Artificial (IA).
+
+#### 🔗 Contatos & Links
+- [Currículo Lattes](http://lattes.cnpq.br/7725418498659982)
+- [LinkedIn](https://www.linkedin.com/in/maxwellielpo/)
+- [GitHub](https://github.com/maxwellamaral/)
+:::
+
+:::
+
+---
+
+## Ficha Técnica da Disciplina
+
+| Item | Especificação |
+| :--- | :--- |
+| **Curso** | Bacharelado em Engenharia de Software |
+| **Unidade Curricular** | Verificação, Validação e Teste de Software (VVT) |
+| **Caráter** | Obrigatória [X] |
+| **Pré-requisito** | Engenharia de Requisitos de Software |
+| **Carga Horária** | **67h** (Teórica: 40h \| Prática: 27h) |
+| **Regime Semanal** | 4 horas-aula (Bloco presencial unificado) |
+| **Docente** | Prof. Me. Maxwell Anderson Ielpo do Amaral |
+
+---
+
+## Contextualização na Matriz Curricular
+
+![Fluxo da Engenharia de Software no IFPB (gerado por IA).](/assets/images/00-apresentacao/fluxo-curricular.png){fig-align="center" width=80%}
+
+::: {.callout-important}
+## A Ponte entre Requisitos e Produção
+Enquanto a **Engenharia de Requisitos** ensina a elicitá-los, especificá-los e gerenciá-los, a disciplina de **VVT** fornece o instrumental científico e prático para provar que a implementação está em conformidade com o especificado e atende ao usuário sem falhas catastróficas.
+:::
+
+---
+
+## Ementa & Objetivos Pedagógicos
+
+::: {.columns}
+
+::: {.column width="50%"}
+### 📖 Ementa Oficial
+Introdução à Engenharia de Testes. Processos da Engenharia de Testes. Inspeções e testes de software. Normas e modelos de qualidade de produto (ISO/IEC 25010). Métricas de qualidade. Validação de sistemas críticos.
+
+### 🎯 Objetivo Geral
+Produzir software de alta qualidade em conformidade com requisitos e satisfação do usuário.
+:::
+
+::: {.column width="50%"}
+### 🔍 Objetivos Específicos
+1. **Compreender** a norma ISO/IEC 25010 (SQuaRE).
+2. **Aplicar** métricas de qualidade de código.
+3. **Executar** V&V estático (inspeções) e dinâmico (caixa-preta e caixa-branca).
+4. **Dominar** normas IEEE 829 e ISO 29119.
+5. **Prevenir** falhas em sistemas críticos.
+:::
+
+:::
+
+---
+
+## Conteúdo Programático (17 Semanas)
+
+- **Semanas 1–5: Gestão da Qualidade & V&V Estático**
+  - Plano de ensino, ISO/IEC 25010, Métricas e Inspeções de Código (Revisão Formal).
+- **Semanas 6–9: Teste Dinâmico & Caixa-Preta (Entrega N1)**
+  - Particionamento de Equivalência, Valor Limite, Tabela de Transição de Estados e Decisão.
+- **Semanas 10–11: Teste Estrutural (Caixa-Branca & Mutação)**
+  - Cobertura de comandos, caminhos básicos, complexidade ciclomática e Teste de Mutação.
+- **Semanas 12–13: TDD & A Filosofia da *"Testing Goat"***
+  - Ciclo *Red-Green-Refactor*, Django + Selenium, testes de persistência.
+- **Semanas 14–17: Sistemas Críticos, CI/CD & Defesa Final (N2 e N3)**
+  - Pipelines GitHub Actions, Docker e defesa dos projetos em laboratório.
+
+---
+
+## Metodologia & Dinâmica Didática
+
+
+::: {.callout-tip}
+## Como funcionam nossas 4 horas semanais?
+- **Bloco Teórico (~1h30m):** Conceitos, literaturas de referência (Pressman, Delamaro, Percival) e discussão de cases.
+- **Intervalo Didático (15–20m):** Descanso.
+- **Laboratório Prático (~2h00m):** Codificação de suítes de teste, ferramentas e mentorias.
+:::
+
+🤩 **O que vocês estão fazendo em Projeto Integrador?**
+
+---
+
+## O que diferencia VVT?
+
+![Pirâmide de Aprendizagem de William Glasser](/assets/images/00-apresentacao/piramide.png){fig-align="center" width=90%}
+
+---
+
+## Avaliação & Projeto Prático
+
+![](/assets/images/00-apresentacao/fluxo-avaliacao-vvt.png){fig-align="center" width=75%}
+
+::: {.columns}
+
+::: {.column width="33%"}
+### 📋 N1 (100 pts)
+Relatório Técnico de Inspeção Estática e Revisão Formal do código legado.
+:::
+
+::: {.column width="33%"}
+### 🎯 N2 (100 pts)
+Especificação e Modelagem de Testes Funcionais (Caixa-Preta).
+:::
+
+::: {.column width="33%"}
+### ⚙️ N3 (100 pts)
+Automação de Testes (PyTest/Selenium), SonarQube, Docker e CI/CD.
+:::
+
+:::
+
+---
+
+## Fórmulas & Regras de Aprovação
+
+- **Média Semestral ($Ms$):**
+  $$Ms = \frac{N1 + N2 + N3}{3}$$
+
+- **Critério de Aprovação Direta:**
+  $$Ms \ge 70 \quad \text{(com frequência regular)}$$
+
+- **Prova Final (PF - caso $Ms < 70$):**
+  $$Mf = \frac{Ms + PF}{2} \ge 70$$
+
+---
+
+## Ecossistema Tecnológico e Ferramental
+
+```text
+Stack principal da disciplina
+├── Linguagem & Runtime: Python 3.11+ (WSL2 / Linux Ubuntu)
+├── Framework Web Base: Django 4.2+ / Django REST Framework
+├── Frameworks de Teste de Unidade & TDD: PyTest, unittest
+├── Automação E2E & Web UI: Selenium WebDriver, Playwright
+├── Testes de API: Postman, Insomnia, Biblioteca 'requests'
+├── Análise de Qualidade & Cobertura: SonarQube, Coverage.py
+├── CI/CD & Versionamento: Git, GitHub Actions
+└── Containerização: Docker & Docker Compose
+```
+
+---
+
+## Bibliografia do Componente Curricular
+
+::: {.columns}
+
+::: {.column width="50%"}
+### 📚 Bibliografia Básica
+1. **DELAMARO, M. E.; MALDONADO, J. C.** *Introdução ao teste de software*. Elsevier, 2007.
+2. **PRESSMAN, R. S.; MAXIM, B. R.** *Engenharia de software*. 8. ed. AMGH, 2016.
+3. **SOMMERVILLE, I.** *Engenharia de software*. 8. ed. Pearson, 2007.
+:::
+
+::: {.column width="50%"}
+### 📖 Bibliografia Complementar
+1. **PERCIVAL, H.** *Test-Driven Development with Python*. O'Reilly, 2017.
+2. **VALENTE, M. T.** *Engenharia de software moderna*. 2020.
+3. **RAMALHO, L.** *Python fluente*. O'Reilly, 2015.
+4. **GAMMA, E. et al.** *Padrões de projeto*. Bookman, 2000.
+:::
+
+:::
+
+---
+
+## Dúvidas & Próximos Passos
+
+::: {.callout-note}
+## Próxima Aula
+- Introdução à **Gestão da Qualidade de Produto de Software**.
+- Fatores de McCall, Dimensões de Garvin e a norma **ISO/IEC 25010**.
+:::
+
+### 💬 Dúvidas ou Perguntas?

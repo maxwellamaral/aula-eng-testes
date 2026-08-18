@@ -108,3 +108,109 @@
 .reveal code {
   font-family: 'Fira Code', monospace;
 }
+
+/* Gramática visual dos frames didáticos (specs/padrao-slides.md) */
+.reveal .slides section.question,
+.reveal .slides section.concept,
+.reveal .slides section.example,
+.reveal .slides section.activity,
+.reveal .slides section.takeaway,
+.reveal .slides section.section {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 1.1rem 1.4rem;
+  text-align: left;
+}
+
+.reveal .slides section.question,
+.reveal .slides section.concept,
+.reveal .slides section.example,
+.reveal .slides section.activity {
+  border-left: 12px solid currentColor;
+}
+
+.reveal .slides section.question {
+  background: #fff8e1;
+  color: #3c2f00;
+}
+
+.reveal .slides section.concept {
+  background: #e8f0fe;
+  color: #17335f;
+}
+
+.reveal .slides section.example {
+  background: #f8fafc;
+  color: #182230;
+}
+
+.reveal .slides section.activity {
+  background: #e6f4ea;
+  color: #123b25;
+}
+
+.reveal .slides section.takeaway {
+  background: #17335f;
+  color: #ffffff;
+}
+
+.reveal .slides section.section {
+  background: #4285f4;
+  color: #ffffff;
+}
+
+.reveal .slides section.question h2,
+.reveal .slides section.concept h2,
+.reveal .slides section.example h2,
+.reveal .slides section.activity h2,
+.reveal .slides section.takeaway h2,
+.reveal .slides section.section h2 {
+  color: inherit;
+  border-bottom: 4px solid currentColor;
+  margin: 0 0 0.65em;
+  padding-bottom: 0.2em;
+}
+
+.reveal .chapter {
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5em;
+  text-transform: uppercase;
+}
+
+.reveal .slides section.question h2::before,
+.reveal .slides section.activity h2::before,
+.reveal .slides section.concept.definition h2::before {
+  display: block;
+  font-size: 0.45em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35em;
+  text-transform: uppercase;
+}
+
+.reveal .slides section.question h2::before {
+  content: "Pense antes de avançar";
+}
+
+.reveal .slides section.activity h2::before {
+  content: "Atividade";
+}
+
+.reveal .slides section.concept.definition {
+  border-left-color: #ea4335;
+}
+
+.reveal .slides section.concept.definition h2::before {
+  color: #b3261e;
+  content: "Conceito-chave";
+}
+
+.reveal .slides section.example pre {
+  font-size: 0.8em;
+}
+
+.reveal .slides section.section.lead {
+  padding: 1.8rem;
+}

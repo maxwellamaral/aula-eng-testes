@@ -1,0 +1,16 @@
+---
+title: "Aula 01 — Introdução à Engenharia de Software (Revisão)"
+subtitle: "Software, documentação, papéis e conexão com Verificação, Validação e Testes"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## Material da aula
+
+- 🖥️ [Visualizar apresentação de slides](slides.qmd)
+:::
+
+{{< include ../01-introducao-engsoft/_content.qmd >}}

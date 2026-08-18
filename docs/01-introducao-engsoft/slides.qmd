@@ -1,0 +1,175 @@
+---
+title: "Aula 01 — Introdução à Engenharia de Software"
+subtitle: "Revisão: software, artefatos e evidências para VVT"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+institute: "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) — Campus João Pessoa"
+lang: pt-BR
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    preview-links: auto
+    css: ../../assets/css/slides.css
+---
+
+## Engenharia de Software: a revisão que sustenta VVT {.section .lead}
+
+Verificação, Validação e Testes de Software
+
+::: {.r-stretch}
+![Gato engenheiro de testes](/assets/images/00-apresentacao/intro.png){fig-align="center" width="78%"}
+:::
+
+## O que você entrega quando entrega software? {.question}
+
+::: {.chapter}
+Software como produto
+:::
+
+Pense em um sistema que você já utilizou ou construiu.
+
+Além de “estar funcionando”, o que precisa acompanhar esse sistema para que outra pessoa consiga usá-lo, mantê-lo ou modificá-lo com segurança?
+
+## Software não é apenas o programa {.concept}
+
+::: {.chapter}
+Software como produto
+:::
+
+Um produto de software combina:
+
+- programas e instruções executáveis;
+- dados necessários ao funcionamento;
+- documentação e outros artefatos que permitem usar, compreender, manter e evoluir o produto.
+
+![Programa de computador + documentação](/assets/images/01-introducao-engsoft/intro02.png){fig-align="center" width="55%"}
+
+## Evidências que acompanham uma entrega {.example}
+
+::: {.chapter}
+Software como produto
+:::
+
+| Pergunta | Artefato que pode ajudar a responder |
+| --- | --- |
+| O que o sistema deve fazer? | Requisito, história de usuário, caso de uso |
+| Como foi organizado? | Modelo, protótipo, contrato de API |
+| O que mudou? | Histórico de versões, *issue*, *pull request* |
+| O comportamento foi verificado? | Caso de teste, resultado e relatório |
+
+## O que muda entre produto de prateleira e sob encomenda? {.question}
+
+::: {.chapter}
+Software como produto
+:::
+
+Um aplicativo vendido para muitas pessoas e um sistema feito para uma universidade precisam da mesma documentação, dos mesmos testes e da mesma evidência de qualidade?
+
+Antes de responder, considere: quem é o cliente, quais são os riscos e quem manterá o produto depois da entrega.
+
+## Engenharia de Software é trabalho em sistema {.section}
+
+Engenharia de Software aplica conhecimentos técnicos para construir e evoluir sistemas de software que resolvem problemas e atendem necessidades.
+
+## Onde a Engenharia de Software se encaixa? {.concept}
+
+::: {.chapter}
+Visão de sistema
+:::
+
+Um sistema real pode combinar elementos mecânicos, elétricos, eletrônicos, humanos e de software. A Engenharia de Software concentra-se no produto digital e nas decisões necessárias para desenvolvê-lo com responsabilidade.
+
+![Engenharia de Software como parte da Engenharia de Sistemas](/assets/images/01-introducao-engsoft/intro03.png){fig-align="center" width="68%"}
+
+## Uma necessidade, muitos papéis {.example}
+
+::: {.chapter}
+Visão de sistema
+:::
+
+![Áreas que compõem a Engenharia de Software](/assets/images/01-introducao-engsoft/intro05.png){fig-align="center" width="73%"}
+
+Nenhum desses papéis é automaticamente obrigatório em toda equipe. A composição depende do produto, do contexto e dos riscos envolvidos.
+
+## Quem produz a evidência que VVT usa? {.question}
+
+::: {.chapter}
+Artefatos e responsabilidades
+:::
+
+Requisito, protótipo, código, versão, execução de teste e relatório de defeito podem ser produzidos por pessoas diferentes.
+
+Como a ausência de um deles pode limitar a confiança em um teste que passou?
+
+## Requisitos orientam o que deve ser verificado {.concept .definition}
+
+::: {.chapter}
+Artefatos e responsabilidades
+:::
+
+**Requisito** é uma característica, capacidade, restrição ou qualidade que o sistema deve possuir para atender uma necessidade.
+
+Um requisito útil para VVT é compreensível, verificável e rastreável até sua origem e seus testes.
+
+## Do requisito à evidência {.example}
+
+::: {.chapter}
+Artefatos e responsabilidades
+:::
+
+**Necessidade:** somente usuários autorizados acessam seus próprios dados.
+
+**Requisito:** “O sistema deve impedir que uma pessoa visualize dados de outra conta.”
+
+**Evidência possível:** casos de teste para acesso autorizado e não autorizado, resultado da execução e registro da versão avaliada.
+
+## Versão também é contexto de um resultado {.concept}
+
+::: {.chapter}
+Artefatos e responsabilidades
+:::
+
+Gerência de configuração permite identificar qual requisito, código, ambiente e suíte de testes foram usados em uma execução.
+
+Sem essa informação, “o teste passou” não responde suficientemente: **qual teste, contra qual versão e em quais condições?**
+
+## Um teste verde encerra a discussão? {.question}
+
+::: {.chapter}
+Qualidade como decisão
+:::
+
+Imagine que todos os testes automatizados disponíveis passaram.
+
+O resultado prova que o software atende às necessidades do usuário e está pronto para uso? Que perguntas ainda precisam ser feitas?
+
+## VVT depende de contexto {.concept .definition}
+
+::: {.chapter}
+Qualidade como decisão
+:::
+
+Resultados de teste são evidências, não conclusões isoladas.
+
+Para interpretá-los, relacionamos requisitos, riscos, artefatos de teste, versões, resultados observados e a decisão de qualidade que eles sustentam.
+
+## Atividade — mapeie os artefatos {.activity}
+
+::: {.chapter}
+Qualidade como decisão
+:::
+
+Em duplas, escolham uma funcionalidade conhecida e registrem:
+
+1. uma necessidade do usuário;
+2. um requisito verificável;
+3. um artefato de projeto ou documentação útil;
+4. uma evidência de teste que ajudaria a decidir se a funcionalidade está adequada.
+
+Preparem-se para explicar a ligação entre os quatro itens.
+
+## O que fica desta revisão {.takeaway}
+
+Software é mais do que código. Requisitos, documentação, decisões de projeto, versões e resultados de teste formam a rede de evidências que permite desenvolver e avaliar um produto com responsabilidade.
+
+Na próxima etapa, vamos tornar explícitas as diferenças entre erro, defeito, falha, verificação estática e teste dinâmico.
