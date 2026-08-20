@@ -613,3 +613,102 @@ main.content hr,
   background: linear-gradient(90deg, transparent, rgba(0, 206, 209, 0.5), transparent) !important;
   margin: 2.5rem 0 !important;
 }
+
+/* ==========================================================================
+   Pyodide Interactive Code Cells (Dark Abyss Styling)
+   ========================================================================== */
+.qpyodide-console-area {
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  margin: 1.5rem 0 !important;
+  background: #0b1324 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.qpyodide-editor-toolbar {
+  background: #0f1c38 !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2) !important;
+  padding: 0.4rem 0.75rem !important;
+}
+
+.qpyodide-button-run {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(52, 211, 153, 0.4) !important;
+  border-radius: 6px !important;
+  padding: 0.35rem 0.85rem !important;
+  font-size: 0.85rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.qpyodide-button-run:hover:not(:disabled) {
+  background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+.qpyodide-button-reset,
+.qpyodide-button-copy {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #94a3b8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+  margin-left: 0.3rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.qpyodide-button-reset:hover,
+.qpyodide-button-copy:hover {
+  background: rgba(56, 189, 248, 0.2) !important;
+  color: #38bdf8 !important;
+}
+
+.qpyodide-output-code-area {
+  background: #030712 !important;
+  border-top: 1px solid #1e293b !important;
+  padding: 0.75rem 1rem !important;
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.9rem !important;
+}
+
+.qpyodide-output-code-stdout {
+  color: #34d399 !important; /* Terminal Green output */
+  white-space: pre-wrap !important;
+}
+
+.qpyodide-output-code-stderr {
+  color: #f87171 !important; /* Terminal Red error */
+  white-space: pre-wrap !important;
+}
+
+/* ==========================================================================
+   Pyodide Fullscreen Mode (with ESC key to exit)
+   ========================================================================== */
+.qpyodide-console-area.qpyodide-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #030712 !important;
+  box-shadow: none !important;
+}
+
+.qpyodide-console-area.qpyodide-fullscreen .qpyodide-editor {
+  flex: 1 1 65vh !important;
+  height: 65vh !important;
+}
+
+.qpyodide-console-area.qpyodide-fullscreen .qpyodide-output-code-area {
+  flex: 1 1 35vh !important;
+  max-height: 35vh !important;
+  overflow-y: auto !important;
+  border-top: 2px solid #38bdf8 !important;
+}

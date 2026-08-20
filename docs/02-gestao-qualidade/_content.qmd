@@ -229,8 +229,8 @@ Na stack de VVTS, utilizamos o **Python 3.11+** e o framework **`pytest`** para 
 Observe como as técnicas de **Particionamento em Classes de Equivalência** e **Análise de Valor-Limite** orientam diretamente a estruturação dos testes automatizados:
 :::
 
-```python
-# calculo_credito.py
+```{pyodide-python}
+# Bloco 1: Declaração da regra de negócio (calculo_credito.py)
 def calcular_desconto(valor_compra: float, fidelidade: bool) -> float:
     """
     Regra de negócio:
@@ -256,19 +256,32 @@ def calcular_desconto(valor_compra: float, fidelidade: bool) -> float:
     return round(valor_compra * (1 - taxa), 2)
 ```
 
-```python
-# test_calculo_credito.py
-import pytest
-from calculo_credito import calcular_desconto
+Observe que, uma vez executada a célula acima (clicando no botão `Run Code`), a função `calcular_desconto` fica registrada na sessão do navegador. A célula seguinte tem **acesso direto ao contexto anterior**:
 
-# Testando classes inválidas e limites inferiores (Valor-Limite e Equivalência)
+```{pyodide-python}
+# Bloco 2: Executando cenários de fronteira usando a função declarada no Bloco 1
+print("--- Cenários de Partição e Valor-Limite ---")
+print(f"R$  99.99 (sem fidelidade) -> R$ {calcular_desconto(99.99, False):.2f}")
+print(f"R$ 100.00 (sem fidelidade) -> R$ {calcular_desconto(100.00, False):.2f}")
+print(f"R$ 500.00 (com fidelidade) -> R$ {calcular_desconto(500.00, True):.2f}")
+print(f"R$ 600.00 (com fidelidade) -> R$ {calcular_desconto(600.00, True):.2f}")
+```
+
+```{pyodide-python}
+# Bloco 3: Instalando e executando testes com pytest no Pyodide
+# (No Pyodide, 'micropip' é o equivalente ao '!pip install' do Jupyter Notebook)
+import micropip
+await micropip.install("pytest")
+import pytest
+
+# 1. Testando classes inválidas e limites inferiores (Valor-Limite e Equivalência)
 def test_valor_compra_invalido_deve_lancar_excecao():
     with pytest.raises(ValueError):
         calcular_desconto(0.0, fidelidade=False)
     with pytest.raises(ValueError):
         calcular_desconto(-15.50, fidelidade=False)
 
-# Testando partições válidas e fronteiras exatas (R$ 99.99, R$ 100.00, R$ 500.00, R$ 500.01)
+# 2. Testando partições válidas e fronteiras exatas (R$ 99.99, R$ 100.00, R$ 500.00, R$ 500.01)
 @pytest.mark.parametrize("valor, fidelidade, esperado", [
     (99.99, False, 99.99),     # Limite superior da partição 0%
     (100.00, False, 95.00),    # Limite inferior da partição 5%
@@ -278,6 +291,21 @@ def test_valor_compra_invalido_deve_lancar_excecao():
 ])
 def test_calculo_desconto_fronteiras(valor, fidelidade, esperado):
     assert calcular_desconto(valor, fidelidade) == esperado
+
+# Executando a suíte de testes e exibindo o feedback:
+print("--- Executando Verificações com Pytest no Navegador ---")
+test_valor_compra_invalido_deve_lancar_excecao()
+print("✅ Teste de entradas inválidas com pytest.raises: APROVADO")
+
+for v, f, esp in [
+    (99.99, False, 99.99),
+    (100.00, False, 95.00),
+    (500.00, False, 475.00),
+    (500.01, False, 450.01),
+    (100.00, True, 93.00),
+]:
+    test_calculo_desconto_fronteiras(v, f, esp)
+    print(f"✅ Partição R$ {v:6.2f} (fidelidade={str(f):5}) -> R$ {esp:6.2f} [PASSOU]")
 ```
 
 Essa disciplina fornecerá o ferramental metodológico para projetar e automatizar baterias de testes com alto poder de detecção de defeitos.

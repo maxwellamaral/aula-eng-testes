@@ -172,9 +172,18 @@ class InteractiveCell extends BaseCell {
         copyButton.title = 'Copy code';
         copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
 
+        // Create Fullscreen button
+        var fullscreenButton = document.createElement('button');
+        fullscreenButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-fullscreen';
+        fullscreenButton.type = 'button';
+        fullscreenButton.id = `qpyodide-button-fullscreen-${this.id}`;
+        fullscreenButton.title = 'Tela cheia (ESC para sair)';
+        fullscreenButton.innerHTML = '<i class="fa-solid fa-expand"></i>';
+
         // Append buttons to the rightButtonsDiv
         rightButtonsDiv.appendChild(resetButton);
         rightButtonsDiv.appendChild(copyButton);
+        rightButtonsDiv.appendChild(fullscreenButton);
 
         // Create console area div
         var consoleAreaDiv = document.createElement('div');
@@ -239,18 +248,49 @@ class InteractiveCell extends BaseCell {
                 thiz.editorDiv, {
                     value: thiz.code,
                     language: 'python',
-                    theme: 'vs-light',
+                    theme: 'vs-dark',
                     automaticLayout: true,           // Works wonderfully with RevealJS
                     scrollBeyondLastLine: false,
                     minimap: {
                         enabled: false
                     },
-                    fontSize: '17.5pt',              // Bootstrap is 1 rem
+                    fontSize: '14px',
+                    fontFamily: "'Fira Code', Consolas, Monaco, monospace",
                     renderLineHighlight: "none",     // Disable current line highlighting
                     hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
                     readOnly: thiz.options['read-only'] ?? false
                 }
             );
+
+            // Handler do botão Tela Cheia
+            thiz.fullscreenButton = document.getElementById(`qpyodide-button-fullscreen-${thiz.id}`);
+            if (thiz.fullscreenButton) {
+                thiz.fullscreenButton.onclick = function () {
+                    var consoleArea = document.getElementById(`qpyodide-console-area-${thiz.id}`);
+                    if (consoleArea) {
+                        consoleArea.classList.toggle('qpyodide-fullscreen');
+                        var isFull = consoleArea.classList.contains('qpyodide-fullscreen');
+                        thiz.fullscreenButton.innerHTML = isFull ? '<i class="fa-solid fa-compress"></i>' : '<i class="fa-solid fa-expand"></i>';
+                        setTimeout(() => { thiz.editor.layout(); }, 100);
+                    }
+                };
+            }
+
+            // Global ESC key listener to exit fullscreen
+            if (!window.__qpyodideEscListenerAdded) {
+                window.__qpyodideEscListenerAdded = true;
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' || e.keyCode === 27) {
+                        document.querySelectorAll('.qpyodide-console-area.qpyodide-fullscreen').forEach(function (el) {
+                            el.classList.remove('qpyodide-fullscreen');
+                            var id = el.id.replace('qpyodide-console-area-', '');
+                            var btn = document.getElementById(`qpyodide-button-fullscreen-${id}`);
+                            if (btn) btn.innerHTML = '<i class="fa-solid fa-expand"></i>';
+                        });
+                        window.dispatchEvent(new Event('resize'));
+                    }
+                });
+            }
         
             // Store the official counter ID to be used in keyboard shortcuts
             thiz.editor.__qpyodideCounter = thiz.id;
