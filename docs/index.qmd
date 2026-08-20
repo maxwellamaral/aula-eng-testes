@@ -4,43 +4,42 @@ header-includes:
   - <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 ---
 <!-- Navegação -->
-::: {.flex .items-center .gap-2 .mt-4 .mb-4 .text-sm .text-slate-400}
-[🏠 Home](../../){.hover:text-cyan-text .transition-colors}
+::: {.flex .items-center .gap-2 .mt-4 .mb-4 .text-sm .breadcrumb-nav}
+[🏠 Home](../../){.transition-colors}
 <span>/</span>
-[📚 Aulas & Materiais](#){.hover:text-cyan-text .transition-colors}
+[📚 Aulas & Materiais](#){.transition-colors}
 :::
 
 <!-- Título -->
 ::: {.mb-10 .mt-8}
-# Aulas & Materiais {.glow-text .text-4xl .md:text-4xl .font-extrabold .text-white .mb-6 .tracking-tight .leading-tight}
+# Aulas & Materiais {.title-glow .text-4xl .md:text-4xl .font-extrabold .mb-6 .tracking-tight .leading-tight}
 :::
 
 <!-- Módulos de Aprendizagem -->
 ::: {.overflow-hidden .mb-8}
 
-::: {.p-4 }
-## 🎓 Módulos de Aprendizagem {.text-2xl .font-semibold .text-white}
+::: {.p-4}
+## 🎓 Módulos de Aprendizagem {.text-2xl .font-semibold}
 :::
-
 
 ::: {.p-6 .pt-4 .pl-6}
 
 <!-- Apresentação da disciplina -->
 ::: {.glass-card .mb-6 .p-4}
-### Apresentação da disciplina {.text-xl .font-bold .text-white .mb-3}
+### Apresentação da disciplina {.text-xl .font-bold .mb-3}
 
-- 📄 [Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina](00-apresentacao/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
-- 🖥️ [Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 📄 [Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina](00-apresentacao/index.qmd){.text-base .module-link}
+- 🖥️ [Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.text-base .module-link}
 :::
 
 <!-- Introdução a Engenharia de Software -->
 ::: {.glass-card .p-4}
-### Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade {.text-xl .font-bold .text-white .mb-3}
+### Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade {.text-xl .font-bold .mb-3}
 
-- 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
-- 🖥️ [Visualizar Apresentação de Slides (Aula 01)](01-introducao-engsoft/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
-- 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
-- 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.text-base .module-link}
+- 🖥️ [Visualizar Apresentação de Slides (Aula 01)](01-introducao-engsoft/slides.qmd){.text-base .module-link}
+- 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.text-base .module-link}
+- 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.text-base .module-link}
 :::
 
 :::

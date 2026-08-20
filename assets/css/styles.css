@@ -1,4 +1,4 @@
-/* Custom styles for Quarto website - VVTS (Dark Abyss Theme) */
+/* Custom styles for Quarto website - VVTS (Dual Theme: Dark Abyss & Clean Light) */
 
 :root {
   --abyss-bg: #060b14;
@@ -10,6 +10,9 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body.quarto-dark {
   background-color: #050c1a !important;
   background-image:
     radial-gradient(circle at 80% 50%, rgba(30, 58, 138, 0.2) 0%, transparent 70%),
@@ -19,22 +22,53 @@ body {
   color: var(--abyss-text);
 }
 
-/* Glow effect for main title */
-.title-glow {
+body.quarto-light {
+  background-color: #f8fafc !important;
+  background-image:
+    radial-gradient(circle at 80% 50%, rgba(224, 242, 254, 0.5) 0%, transparent 70%),
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 60px 60px, 60px 60px !important;
+  color: #0f172a !important;
+}
+
+/* Glow effect for main title (Dark Mode) */
+body.quarto-dark .title-glow {
   text-shadow: 0 0 20px rgba(79, 209, 197, 0.8), 0 0 40px rgba(79, 209, 197, 0.5), 0 0 60px rgba(79, 209, 197, 0.3);
 }
 
+body.quarto-light .title-glow {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
 /* Card Glow and border effects */
-.feature-card {
+body.quarto-dark .feature-card {
   background: linear-gradient(145deg, rgba(26, 43, 72, 0.4), rgba(5, 12, 26, 0.6)) !important;
   border: 1px solid rgba(79, 209, 197, 0.3) !important;
   transition: all 0.3s ease !important;
   text-decoration: none !important;
 }
 
-.feature-card:hover {
+body.quarto-dark .feature-card:hover {
   box-shadow: 0 0 25px rgba(79, 209, 197, 0.25) !important;
   border-color: rgba(79, 209, 197, 0.6) !important;
+  transform: translateY(-2px);
+  text-decoration: none !important;
+}
+
+body.quarto-light .feature-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  color: #1e293b !important;
+}
+
+body.quarto-light .feature-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15) !important;
   transform: translateY(-2px);
   text-decoration: none !important;
 }
@@ -181,8 +215,8 @@ div.qpyodide-console-area {
   border-radius: 6px;
 }
 
-/* Glassmorphism & Neon Cyan styles for Aulas & Materiais */
-.glass-card {
+/* Glassmorphism & Neon Cyan styles for Aulas & Materiais (Dark Mode) */
+body.quarto-dark .glass-card {
   background: rgba(8, 45, 61, 0.4) !important;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 206, 209, 0.2) !important;
@@ -190,14 +224,94 @@ div.qpyodide-console-area {
   transition: all 0.3s ease !important;
 }
 
-.glass-card:hover {
+body.quarto-dark .glass-card:hover {
   border-color: rgba(0, 206, 209, 0.4) !important;
   box-shadow: 0 0 20px rgba(0, 206, 209, 0.25) !important;
 }
 
-.neon-border {
+body.quarto-dark .glass-card h3 {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(0, 255, 213, 0.4);
+}
+
+body.quarto-dark .module-link {
+  color: #cbd5e1 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+body.quarto-dark .module-link:hover {
+  color: #00ced1 !important;
+  text-decoration: none !important;
+}
+
+body.quarto-dark .breadcrumb-nav {
+  color: #94a3b8 !important;
+}
+
+body.quarto-dark .breadcrumb-nav a {
+  color: #94a3b8 !important;
+}
+
+body.quarto-dark .breadcrumb-nav a:hover {
+  color: #00ced1 !important;
+}
+
+/* Glassmorphism / Clean Cards for Aulas & Materiais (Light Mode) */
+body.quarto-light .glass-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+body.quarto-light .glass-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12) !important;
+  transform: translateY(-2px);
+}
+
+body.quarto-light .glass-card h3 {
+  color: #0f172a !important;
+  text-shadow: none !important;
+  border-left: 3px solid #0284c7 !important;
+  padding-left: 0.6rem !important;
+}
+
+body.quarto-light .module-link {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+body.quarto-light .module-link:hover {
+  color: #0284c7 !important;
+  text-decoration: underline !important;
+}
+
+body.quarto-light .breadcrumb-nav {
+  color: #64748b !important;
+}
+
+body.quarto-light .breadcrumb-nav a {
+  color: #0369a1 !important;
+}
+
+body.quarto-light .breadcrumb-nav a:hover {
+  color: #0284c7 !important;
+}
+
+body.quarto-dark .neon-border {
   border: 1px solid #00ced1 !important;
   box-shadow: 0 0 25px rgba(0, 206, 209, 0.6), inset 0 0 10px rgba(0, 206, 209, 0.3) !important;
+}
+
+body.quarto-light .neon-border {
+  border: 1px solid #0284c7 !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15) !important;
+  background-color: #ffffff !important;
 }
 
 .text-brand-teal {
@@ -218,15 +332,20 @@ div.qpyodide-console-area {
 }
 
 /* Custom styles for Detailed Lesson Page (teste.html) */
-.glow-text {
+body.quarto-dark .glow-text {
   text-shadow: 0 0 20px rgba(0, 255, 213, 0.8), 0 0 10px rgba(0, 255, 213, 0.5) !important;
   color: #ffffff !important;
 }
 
-/* Estilização automática para títulos (h1, h2, h3) do conteúdo Markdown */
-main.content h1:not(.title),
-#quarto-document-content h1:not(.title),
-.content h1:not(.title) {
+body.quarto-light .glow-text {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+
+/* Estilização automática para títulos (h1, h2, h3) do conteúdo Markdown (Dark Mode) */
+body.quarto-dark main.content h1:not(.title),
+body.quarto-dark #quarto-document-content h1:not(.title),
+body.quarto-dark .content h1:not(.title) {
   text-shadow: 0 0 20px rgba(0, 255, 213, 0.8), 0 0 10px rgba(0, 255, 213, 0.5) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -235,9 +354,9 @@ main.content h1:not(.title),
   margin-bottom: 0.75rem !important;
 }
 
-main.content h2,
-#quarto-document-content h2,
-.content h2 {
+body.quarto-dark main.content h2,
+body.quarto-dark #quarto-document-content h2,
+body.quarto-dark .content h2 {
   text-shadow: 0 0 15px rgba(0, 255, 213, 0.6), 0 0 8px rgba(0, 255, 213, 0.4) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -246,9 +365,9 @@ main.content h2,
   margin-bottom: 0.75rem !important;
 }
 
-main.content h3,
-#quarto-document-content h3,
-.content h3 {
+body.quarto-dark main.content h3,
+body.quarto-dark #quarto-document-content h3,
+body.quarto-dark .content h3 {
   color: #a0f0ed !important;
   text-shadow: 0 0 10px rgba(0, 206, 209, 0.35) !important;
   border-left: 3px solid #00ced1 !important;
@@ -259,9 +378,46 @@ main.content h3,
   margin-bottom: 0.5rem !important;
 }
 
-main.content h4,
-#quarto-document-content h4,
-.content h4 {
+/* Estilização para títulos no Modo Claro (Light Mode) */
+body.quarto-light main.content h1:not(.title),
+body.quarto-light #quarto-document-content h1:not(.title),
+body.quarto-light .content h1:not(.title) {
+  color: #0f172a !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+  font-size: 1.875rem !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+body.quarto-light main.content h2,
+body.quarto-light #quarto-document-content h2,
+body.quarto-light .content h2 {
+  color: #0369a1 !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+body.quarto-light main.content h3,
+body.quarto-light #quarto-document-content h3,
+body.quarto-light .content h3 {
+  color: #0f766e !important;
+  text-shadow: none !important;
+  border-left: 3px solid #0d9488 !important;
+  padding-left: 0.6rem !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Títulos h4, h5, h6 no Modo Escuro */
+body.quarto-dark main.content h4,
+body.quarto-dark #quarto-document-content h4,
+body.quarto-dark .content h4 {
   color: #a0f0ed !important;
   text-shadow: 0 0 8px rgba(0, 206, 209, 0.25) !important;
   border-left: 2px solid rgba(0, 206, 209, 0.6) !important;
@@ -272,15 +428,67 @@ main.content h4,
   margin-bottom: 0.5rem !important;
 }
 
-/* Estilização para parágrafos do conteúdo Markdown (leitura agradável) */
-main.content p,
-#quarto-document-content p,
-.content p {
+/* Títulos h4, h5, h6 no Modo Claro */
+body.quarto-light main.content h4,
+body.quarto-light #quarto-document-content h4,
+body.quarto-light .content h4 {
+  color: #0369a1 !important;
+  text-shadow: none !important;
+  border-left: 3px solid #0284c7 !important;
+  padding-left: 0.5rem !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.quarto-light main.content h5,
+body.quarto-light #quarto-document-content h5,
+body.quarto-light .content h5 {
+  color: #0f766e !important;
+  text-shadow: none !important;
+  font-weight: 600 !important;
+}
+
+/* Estilização para parágrafos do conteúdo Markdown */
+body.quarto-dark main.content p,
+body.quarto-dark #quarto-document-content p,
+body.quarto-dark .content p {
   line-height: 1.75 !important;
   margin-top: 0 !important;
   margin-bottom: 1.25rem !important;
   color: #e2e8f0 !important;
   font-size: 1.025rem !important;
+}
+
+body.quarto-light main.content p,
+body.quarto-light #quarto-document-content p,
+body.quarto-light .content p {
+  line-height: 1.75 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+  color: #1e293b !important;
+  font-size: 1.025rem !important;
+}
+
+body.quarto-dark p.subtitle {
+  color: #94a3b8 !important;
+}
+
+body.quarto-light p.subtitle {
+  color: #475569 !important;
+}
+
+body.quarto-dark main.content li,
+body.quarto-dark #quarto-document-content li,
+body.quarto-dark .content li {
+  color: #e2e8f0 !important;
+}
+
+body.quarto-light main.content li,
+body.quarto-light #quarto-document-content li,
+body.quarto-light .content li {
+  color: #1e293b !important;
 }
 
 .neon-border {
@@ -386,8 +594,8 @@ nav ul,
   padding-left: 0 !important;
 }
 
-/* Quarto Callouts - Dark Abyss Glassmorphism & Neon Styling */
-.callout {
+/* Quarto Callouts - Dark Abyss Glassmorphism & Neon Styling (Dark Mode) */
+body.quarto-dark .callout {
   border-radius: 10px !important;
   margin: 1.5rem 0 !important;
   overflow: hidden !important;
@@ -396,7 +604,7 @@ nav ul,
   transition: all 0.3s ease !important;
 }
 
-.callout .callout-header {
+body.quarto-dark .callout .callout-header {
   padding: 0.75rem 1rem !important;
   font-weight: 600 !important;
   font-size: 1rem !important;
@@ -405,110 +613,114 @@ nav ul,
   gap: 0.5rem !important;
 }
 
-.callout .callout-title {
+body.quarto-dark .callout .callout-title {
   margin: 0 !important;
   font-weight: 700 !important;
   font-size: 1.05rem !important;
 }
 
-.callout .callout-body {
+body.quarto-dark .callout .callout-body {
   padding: 1rem 1.25rem !important;
   font-size: 0.95rem !important;
   line-height: 1.6 !important;
   color: #e2e8f0 !important;
 }
 
-.callout .callout-body p:last-child {
+body.quarto-dark .callout .callout-body p:last-child {
   margin-bottom: 0 !important;
 }
 
-/* Callout Note (Definição / Informação) - Neon Cyan */
-.callout-note {
+body.quarto-dark .callout a {
+  color: #38bdf8 !important;
+}
+
+/* Callout Note (Dark) */
+body.quarto-dark .callout-note {
   background: rgba(8, 45, 61, 0.4) !important;
   border: 1px solid rgba(0, 206, 209, 0.3) !important;
   border-left: 4px solid #00ced1 !important;
   box-shadow: 0 0 15px rgba(0, 206, 209, 0.1) !important;
 }
 
-.callout-note .callout-header {
+body.quarto-dark .callout-note .callout-header {
   background: rgba(0, 206, 209, 0.1) !important;
   border-bottom: 1px solid rgba(0, 206, 209, 0.15) !important;
   color: #a0f0ed !important;
 }
 
-.callout-note .callout-icon::before {
+body.quarto-dark .callout-note .callout-icon::before {
   color: #00ced1 !important;
 }
 
-/* Callout Tip (Dica / Prática) - Neon Emerald */
-.callout-tip {
+/* Callout Tip (Dark) */
+body.quarto-dark .callout-tip {
   background: rgba(6, 40, 28, 0.4) !important;
   border: 1px solid rgba(16, 185, 129, 0.3) !important;
   border-left: 4px solid #10b981 !important;
   box-shadow: 0 0 15px rgba(16, 185, 129, 0.1) !important;
 }
 
-.callout-tip .callout-header {
+body.quarto-dark .callout-tip .callout-header {
   background: rgba(16, 185, 129, 0.1) !important;
   border-bottom: 1px solid rgba(16, 185, 129, 0.15) !important;
   color: #a7f3d0 !important;
 }
 
-.callout-tip .callout-icon::before {
+body.quarto-dark .callout-tip .callout-icon::before {
   color: #10b981 !important;
 }
 
-/* Callout Important (Destaque / Relevante) - Sapphire Blue */
-.callout-important {
+/* Callout Important (Dark) */
+body.quarto-dark .callout-important {
   background: rgba(15, 30, 60, 0.4) !important;
   border: 1px solid rgba(59, 130, 246, 0.3) !important;
   border-left: 4px solid #3b82f6 !important;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.1) !important;
 }
 
-.callout-important .callout-header {
+body.quarto-dark .callout-important .callout-header {
   background: rgba(59, 130, 246, 0.1) !important;
   border-bottom: 1px solid rgba(59, 130, 246, 0.15) !important;
   color: #bfdbfe !important;
 }
 
-.callout-important .callout-icon::before {
+body.quarto-dark .callout-important .callout-icon::before {
   color: #3b82f6 !important;
 }
 
-/* Callout Warning (Aviso / Atenção) - Amber Gold */
-.callout-warning {
+/* Callout Warning (Dark) */
+body.quarto-dark .callout-warning {
   background: rgba(45, 30, 5, 0.4) !important;
   border: 1px solid rgba(245, 158, 11, 0.3) !important;
   border-left: 4px solid #f59e0b !important;
   box-shadow: 0 0 15px rgba(245, 158, 11, 0.1) !important;
 }
 
-.callout-warning .callout-header {
+body.quarto-dark .callout-warning .callout-header {
   background: rgba(245, 158, 11, 0.1) !important;
   border-bottom: 1px solid rgba(245, 158, 11, 0.15) !important;
   color: #fde68a !important;
 }
 
-.callout-warning .callout-icon::before {
+body.quarto-dark .callout-warning .callout-icon::before {
   color: #f59e0b !important;
 }
 
-/* Callout Caution (Cuidado / Alerta) - Crimson / Rose */
-.callout-caution {
+/* Callout Caution (Dark) */
+body.quarto-dark .callout-caution {
   background: rgba(45, 10, 20, 0.4) !important;
   border: 1px solid rgba(244, 63, 94, 0.3) !important;
   border-left: 4px solid #f43f5e !important;
   box-shadow: 0 0 15px rgba(244, 63, 94, 0.1) !important;
 }
 
-.callout-caution .callout-header {
+body.quarto-dark .callout-caution .callout-header {
   background: rgba(244, 63, 94, 0.1) !important;
   border-bottom: 1px solid rgba(244, 63, 94, 0.15) !important;
   color: #fecdd3 !important;
 }
 
-.callout-caution .callout-icon::before {
+body.quarto-dark .callout-caution .callout-icon::before {
   color: #f43f5e !important;
 }
 
@@ -643,9 +855,11 @@ main.content hr,
 }
 
 /* ==========================================================================
-   Pyodide Interactive Code Cells (Dark Abyss Styling)
+   Pyodide Interactive Code Cells (Dual Theme Support)
    ========================================================================== */
-.qpyodide-console-area {
+
+/* Dark Mode Pyodide */
+body.quarto-dark .qpyodide-console-area {
   border: 1px solid rgba(56, 189, 248, 0.3) !important;
   border-radius: 8px !important;
   overflow: hidden !important;
@@ -654,25 +868,25 @@ main.content hr,
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
 }
 
-.qpyodide-editor,
-.monaco-editor,
-.monaco-editor-background,
-.monaco-editor .inputarea.ime-input,
-.monaco-editor .margin {
+body.quarto-dark .qpyodide-editor,
+body.quarto-dark .monaco-editor,
+body.quarto-dark .monaco-editor-background,
+body.quarto-dark .monaco-editor .inputarea.ime-input,
+body.quarto-dark .monaco-editor .margin {
   background-color: #1e1e1e !important;
 }
 
-.monaco-editor .view-lines {
+body.quarto-dark .monaco-editor .view-lines {
   color: #d4d4d4 !important;
 }
 
-.qpyodide-editor-toolbar {
+body.quarto-dark .qpyodide-editor-toolbar {
   background: #0f1c38 !important;
   border-bottom: 1px solid rgba(56, 189, 248, 0.2) !important;
   padding: 0.4rem 0.75rem !important;
 }
 
-.qpyodide-button-run {
+body.quarto-dark .qpyodide-button-run {
   background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
   color: #ffffff !important;
   font-weight: 600 !important;
@@ -683,14 +897,15 @@ main.content hr,
   transition: all 0.2s ease !important;
 }
 
-.qpyodide-button-run:hover:not(:disabled) {
+body.quarto-dark .qpyodide-button-run:hover:not(:disabled) {
   background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.5) !important;
   transform: translateY(-1px) !important;
 }
 
-.qpyodide-button-reset,
-.qpyodide-button-copy {
+body.quarto-dark .qpyodide-button-reset,
+body.quarto-dark .qpyodide-button-copy,
+body.quarto-dark .qpyodide-button-fullscreen {
   background: rgba(255, 255, 255, 0.08) !important;
   color: #94a3b8 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -699,13 +914,14 @@ main.content hr,
   transition: all 0.2s ease !important;
 }
 
-.qpyodide-button-reset:hover,
-.qpyodide-button-copy:hover {
+body.quarto-dark .qpyodide-button-reset:hover,
+body.quarto-dark .qpyodide-button-copy:hover,
+body.quarto-dark .qpyodide-button-fullscreen:hover {
   background: rgba(56, 189, 248, 0.2) !important;
   color: #38bdf8 !important;
 }
 
-.qpyodide-output-code-area {
+body.quarto-dark .qpyodide-output-code-area {
   background: #030712 !important;
   border-top: 1px solid #1e293b !important;
   padding: 0.75rem 1rem !important;
@@ -713,13 +929,96 @@ main.content hr,
   font-size: 0.9rem !important;
 }
 
-.qpyodide-output-code-stdout {
+body.quarto-dark .qpyodide-output-code-stdout {
   color: #34d399 !important; /* Terminal Green output */
   white-space: pre-wrap !important;
 }
 
-.qpyodide-output-code-stderr {
+body.quarto-dark .qpyodide-output-code-stderr {
   color: #f87171 !important; /* Terminal Red error */
+  white-space: pre-wrap !important;
+}
+
+/* Light Mode Pyodide */
+body.quarto-light .qpyodide-console-area {
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  margin: 1.5rem 0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.quarto-light .qpyodide-editor,
+body.quarto-light .monaco-editor,
+body.quarto-light .monaco-editor-background,
+body.quarto-light .monaco-editor .inputarea.ime-input,
+body.quarto-light .monaco-editor .margin {
+  background-color: #ffffff !important;
+}
+
+body.quarto-light .monaco-editor .view-lines {
+  color: #0f172a !important;
+}
+
+body.quarto-light .qpyodide-editor-toolbar {
+  background: #f1f5f9 !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+  padding: 0.4rem 0.75rem !important;
+}
+
+body.quarto-light .qpyodide-button-run {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(5, 150, 105, 0.5) !important;
+  border-radius: 6px !important;
+  padding: 0.35rem 0.85rem !important;
+  font-size: 0.85rem !important;
+  transition: all 0.2s ease !important;
+}
+
+body.quarto-light .qpyodide-button-run:hover:not(:disabled) {
+  background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.35) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.quarto-light .qpyodide-button-reset,
+body.quarto-light .qpyodide-button-copy,
+body.quarto-light .qpyodide-button-fullscreen {
+  background: #ffffff !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 4px !important;
+  margin-left: 0.3rem !important;
+  transition: all 0.2s ease !important;
+}
+
+body.quarto-light .qpyodide-button-reset:hover,
+body.quarto-light .qpyodide-button-copy:hover,
+body.quarto-light .qpyodide-button-fullscreen:hover {
+  background: #f8fafc !important;
+  color: #0284c7 !important;
+  border-color: #0284c7 !important;
+}
+
+body.quarto-light .qpyodide-output-code-area {
+  background: #f8fafc !important;
+  border-top: 1px solid #e2e8f0 !important;
+  padding: 0.75rem 1rem !important;
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.9rem !important;
+}
+
+body.quarto-light .qpyodide-output-code-stdout {
+  color: #0f172a !important; /* Clean black/dark terminal text in light mode */
+  white-space: pre-wrap !important;
+  font-weight: 500 !important;
+}
+
+body.quarto-light .qpyodide-output-code-stderr {
+  color: #dc2626 !important;
   white-space: pre-wrap !important;
 }
 
@@ -737,8 +1036,15 @@ main.content hr,
   border-radius: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  background: #030712 !important;
   box-shadow: none !important;
+}
+
+body.quarto-dark .qpyodide-console-area.qpyodide-fullscreen {
+  background: #030712 !important;
+}
+
+body.quarto-light .qpyodide-console-area.qpyodide-fullscreen {
+  background: #ffffff !important;
 }
 
 .qpyodide-console-area.qpyodide-fullscreen .qpyodide-editor {
@@ -746,9 +1052,173 @@ main.content hr,
   height: 65vh !important;
 }
 
-.qpyodide-console-area.qpyodide-fullscreen .qpyodide-output-code-area {
+body.quarto-dark .qpyodide-console-area.qpyodide-fullscreen .qpyodide-output-code-area {
   flex: 1 1 35vh !important;
   max-height: 35vh !important;
   overflow-y: auto !important;
   border-top: 2px solid #38bdf8 !important;
+}
+
+body.quarto-light .qpyodide-console-area.qpyodide-fullscreen .qpyodide-output-code-area {
+  flex: 1 1 35vh !important;
+  max-height: 35vh !important;
+  overflow-y: auto !important;
+  border-top: 2px solid #0284c7 !important;
+}
+
+/* ==========================================================================
+   Light Mode Callout and Lead Refinements
+   ========================================================================== */
+/* ==========================================================================
+   Light Mode Callout and Lead Refinements
+   ========================================================================== */
+body.quarto-light .lead,
+body.quarto-light p.lead {
+  color: #475569 !important;
+}
+
+body.quarto-light .callout {
+  border-radius: 8px !important;
+  margin: 1.5rem 0 !important;
+  overflow: hidden !important;
+  border-left-width: 5px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.quarto-light .callout .callout-header {
+  padding: 0.75rem 1rem !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+body.quarto-light .callout .callout-title {
+  margin: 0 !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+}
+
+body.quarto-light .callout .callout-body {
+  background-color: #ffffff !important;
+  padding: 1rem 1.25rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  color: #1e293b !important;
+}
+
+body.quarto-light .callout .callout-body li,
+body.quarto-light .callout .callout-body p {
+  color: #1e293b !important;
+}
+
+body.quarto-light .callout a {
+  color: #0369a1 !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+}
+
+body.quarto-light .callout a:hover {
+  color: #0284c7 !important;
+}
+
+/* Callout Tip (Light) */
+body.quarto-light .callout-tip {
+  border: 1px solid #86efac !important;
+  border-left: 5px solid #16a34a !important;
+}
+
+body.quarto-light .callout-tip .callout-header {
+  background-color: #dcfce7 !important;
+  border-bottom: 1px solid #bbf7d0 !important;
+  color: #14532d !important;
+}
+
+body.quarto-light .callout-tip .callout-title {
+  color: #14532d !important;
+}
+
+body.quarto-light .callout-tip .callout-icon::before {
+  color: #16a34a !important;
+}
+
+/* Callout Note (Light) */
+body.quarto-light .callout-note {
+  border: 1px solid #7dd3fc !important;
+  border-left: 5px solid #0284c7 !important;
+}
+
+body.quarto-light .callout-note .callout-header {
+  background-color: #e0f2fe !important;
+  border-bottom: 1px solid #bae6fd !important;
+  color: #075985 !important;
+}
+
+body.quarto-light .callout-note .callout-title {
+  color: #075985 !important;
+}
+
+body.quarto-light .callout-note .callout-icon::before {
+  color: #0284c7 !important;
+}
+
+/* Callout Important (Light) */
+body.quarto-light .callout-important {
+  border: 1px solid #93c5fd !important;
+  border-left: 5px solid #2563eb !important;
+}
+
+body.quarto-light .callout-important .callout-header {
+  background-color: #dbeafe !important;
+  border-bottom: 1px solid #bfdbfe !important;
+  color: #1e40af !important;
+}
+
+body.quarto-light .callout-important .callout-title {
+  color: #1e40af !important;
+}
+
+body.quarto-light .callout-important .callout-icon::before {
+  color: #2563eb !important;
+}
+
+/* Callout Warning (Light) */
+body.quarto-light .callout-warning {
+  border: 1px solid #fde047 !important;
+  border-left: 5px solid #ca8a04 !important;
+}
+
+body.quarto-light .callout-warning .callout-header {
+  background-color: #fef9c3 !important;
+  border-bottom: 1px solid #fef08a !important;
+  color: #854d0e !important;
+}
+
+body.quarto-light .callout-warning .callout-title {
+  color: #854d0e !important;
+}
+
+body.quarto-light .callout-warning .callout-icon::before {
+  color: #ca8a04 !important;
+}
+
+/* Callout Caution (Light) */
+body.quarto-light .callout-caution {
+  border: 1px solid #fda4af !important;
+  border-left: 5px solid #e11d48 !important;
+}
+
+body.quarto-light .callout-caution .callout-header {
+  background-color: #ffe4e6 !important;
+  border-bottom: 1px solid #fecdd3 !important;
+  color: #9f1239 !important;
+}
+
+body.quarto-light .callout-caution .callout-title {
+  color: #9f1239 !important;
+}
+
+body.quarto-light .callout-caution .callout-icon::before {
+  color: #e11d48 !important;
 }

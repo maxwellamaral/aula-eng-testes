@@ -244,12 +244,15 @@ class InteractiveCell extends BaseCell {
 
         // Load the Monaco Editor and create an instance
         require(['vs/editor/editor.main'], function () {
-            monaco.editor.setTheme('vs-dark');
+            var isLight = document.body.classList.contains('quarto-light');
+            var currentTheme = isLight ? 'vs' : 'vs-dark';
+            monaco.editor.setTheme(currentTheme);
+
             thiz.editor = monaco.editor.create(
                 thiz.editorDiv, {
                     value: thiz.code,
                     language: 'python',
-                    theme: 'vs-dark',
+                    theme: currentTheme,
                     automaticLayout: true,           // Works wonderfully with RevealJS
                     scrollBeyondLastLine: false,
                     minimap: {
@@ -262,6 +265,18 @@ class InteractiveCell extends BaseCell {
                     readOnly: thiz.options['read-only'] ?? false
                 }
             );
+
+            // Listen for theme changes on body
+            if (!window.__monacoThemeObserverAdded) {
+                window.__monacoThemeObserverAdded = true;
+                var observer = new MutationObserver(function() {
+                    var lightMode = document.body.classList.contains('quarto-light');
+                    if (window.monaco && window.monaco.editor) {
+                        window.monaco.editor.setTheme(lightMode ? 'vs' : 'vs-dark');
+                    }
+                });
+                observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+            }
 
             // Handler do botão Tela Cheia
             thiz.fullscreenButton = document.getElementById(`qpyodide-button-fullscreen-${thiz.id}`);

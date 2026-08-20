@@ -40,8 +40,12 @@ website:
 
 format:
   html:
-    theme: darkly
-    highlight-style: dracula
+    theme:
+      dark: darkly
+      light: cosmo
+    highlight-style:
+      dark: dracula
+      light: github
     css: assets/css/styles.css
     lightbox: true
     toc: true
