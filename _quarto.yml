@@ -43,6 +43,7 @@ format:
     theme: darkly
     highlight-style: dracula
     css: assets/css/styles.css
+    lightbox: true
     toc: true
     toc-title: "Nesta página"
     code-fold: true

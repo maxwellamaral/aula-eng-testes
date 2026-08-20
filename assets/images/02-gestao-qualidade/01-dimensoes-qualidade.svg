@@ -62,22 +62,22 @@
       <rect x="0" y="0" width="352" height="30" rx="6" fill="#064e3b" fill-opacity="0.4" stroke="#10b981" stroke-width="1"/>
       <text x="176" y="20" text-anchor="middle" fill="#a7f3d0" font-weight="700">8 CARACTERÍSTICAS DE QUALIDADE DE PRODUTO</text>
 
-      <g transform="translate(10, 45)" font-size="12" fill="#e2e8f0">
+      <g transform="translate(6, 45)" font-size="11.5" fill="#e2e8f0">
         <text x="0" y="16" font-weight="600" fill="#34d399">1. Adequação Funcional</text>
-        <text x="170" y="16" font-weight="600" fill="#34d399">5. Confiabilidade</text>
+        <text x="175" y="16" font-weight="600" fill="#34d399">5. Confiabilidade</text>
 
-        <text x="0" y="42" font-weight="600" fill="#34d399">2. Eficiência de Desempenho</text>
-        <text x="170" y="42" font-weight="600" fill="#34d399">6. Segurança da Informação</text>
+        <text x="0" y="42" font-weight="600" fill="#34d399">2. Efic. de Desempenho</text>
+        <text x="175" y="42" font-weight="600" fill="#34d399">6. Seg. da Informação</text>
 
         <text x="0" y="68" font-weight="600" fill="#34d399">3. Compatibilidade</text>
-        <text x="170" y="68" font-weight="600" fill="#34d399">7. Manutenibilidade</text>
+        <text x="175" y="68" font-weight="600" fill="#34d399">7. Manutenibilidade</text>
 
-        <text x="0" y="94" font-weight="600" fill="#34d399">4. Usabilidade &amp; Acessib.</text>
-        <text x="170" y="94" font-weight="600" fill="#34d399">8. Portabilidade</text>
+        <text x="0" y="94" font-weight="600" fill="#34d399">4. Usabilidade &amp; Acess.</text>
+        <text x="175" y="94" font-weight="600" fill="#34d399">8. Portabilidade</text>
 
-        <rect x="-5" y="115" width="342" height="52" rx="6" fill="#022c22" fill-opacity="0.6" stroke="#059669" stroke-width="1"/>
-        <text x="166" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">Padrão internacional vigente para especificação e</text>
-        <text x="166" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">avaliação rigorosa da qualidade de software (Semana 3).</text>
+        <rect x="-2" y="115" width="344" height="52" rx="6" fill="#022c22" fill-opacity="0.6" stroke="#059669" stroke-width="1"/>
+        <text x="170" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">Padrão internacional vigente para especificação e</text>
+        <text x="170" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">avaliação rigorosa da qualidade de software (Semana 3).</text>
       </g>
     </g>
   </g>
