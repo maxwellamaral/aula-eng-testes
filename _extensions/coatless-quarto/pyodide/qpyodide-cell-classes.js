@@ -244,6 +244,7 @@ class InteractiveCell extends BaseCell {
 
         // Load the Monaco Editor and create an instance
         require(['vs/editor/editor.main'], function () {
+            monaco.editor.setTheme('vs-dark');
             thiz.editor = monaco.editor.create(
                 thiz.editorDiv, {
                     value: thiz.code,

@@ -87,6 +87,34 @@ body {
 
 code {
   font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  background-color: rgba(15, 23, 42, 0.8) !important;
+  color: #38bdf8 !important;
+  padding: 0.15rem 0.4rem !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  font-size: 0.9em !important;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+.title code {
+  background-color: rgba(6, 11, 20, 0.9) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  padding: 0.15rem 0.45rem !important;
+  border-radius: 6px !important;
+  text-shadow: none !important;
+  font-weight: 600 !important;
+}
+
+.callout code {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: #6ee7b7 !important;
+  border: 1px solid rgba(110, 231, 183, 0.3) !important;
 }
 
 /* Navbar & Header Dark Abyss styling */
@@ -622,8 +650,20 @@ main.content hr,
   border-radius: 8px !important;
   overflow: hidden !important;
   margin: 1.5rem 0 !important;
-  background: #0b1324 !important;
+  background: #1e1e1e !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.qpyodide-editor,
+.monaco-editor,
+.monaco-editor-background,
+.monaco-editor .inputarea.ime-input,
+.monaco-editor .margin {
+  background-color: #1e1e1e !important;
+}
+
+.monaco-editor .view-lines {
+  color: #d4d4d4 !important;
 }
 
 .qpyodide-editor-toolbar {
