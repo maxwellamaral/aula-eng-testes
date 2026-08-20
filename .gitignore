@@ -3,6 +3,8 @@ _site/
 .quarto/
 **/*.quarto_ipynb
 docs/apostila.pdf
+docs/apostila_files/
+scratch/
 
 # Python & virtual environment
 .venv/
@@ -46,4 +48,5 @@ Thumbs.db
 
 .agents/
 specs/
+resources/
 AGENTS.md

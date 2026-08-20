@@ -35,10 +35,12 @@ header-includes:
 
 <!-- Introdução a Engenharia de Software -->
 ::: {.glass-card .p-4}
-### Módulo 1: Introdução à Engenharia de Software (Revisão) {.text-xl .font-bold .text-white .mb-3}
+### Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade {.text-xl .font-bold .text-white .mb-3}
 
 - 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
-- 🖥️ [Visualizar Apresentação de Slides](01-introducao-engsoft/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 🖥️ [Visualizar Apresentação de Slides (Aula 01)](01-introducao-engsoft/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
+- 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.text-base .text-slate-300 .hover:text-brand-teal}
 :::
 
 :::

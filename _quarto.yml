@@ -17,6 +17,8 @@ project:
     - docs/**/mapa.md
     - assets/js/*.js
     - assets/css/*.css
+    - docs/**/_*.qmd
+    - assets/images/**/*
   post-render:
     - scripts/render_apostila.sh
 

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="sqmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="sqaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="qcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="480" rx="16" fill="url(#bgGrad2)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Título Principal -->
+  <text x="480" y="45" text-anchor="middle" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="22" font-weight="700">Tríade da Qualidade: SQM, SQA e QC</text>
+  <text x="480" y="70" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13">Relação e responsabilidades entre Gestão Organizacional, Garantia de Processo e Controle de Produto</text>
+
+  <!-- SQM (Nível Superior) -->
+  <g transform="translate(180, 100)" filter="url(#shadow2)">
+    <rect width="600" height="95" rx="12" fill="url(#sqmGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="300" y="32" text-anchor="middle" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="17" font-weight="700">Gestão da Qualidade de Software (SQM — Software Quality Management)</text>
+    <text x="300" y="58" text-anchor="middle" fill="#fde68a" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Nível Estratégico &amp; Organizacional</text>
+    <text x="300" y="78" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12">Define políticas de qualidade, alocação de recursos, cultura organizacional e governança corporativa</text>
+  </g>
+
+  <!-- Setas de Conexão -->
+  <path d="M 360 195 L 300 240" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4 4" fill="none"/>
+  <path d="M 600 195 L 660 240" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4 4" fill="none"/>
+
+  <!-- SQA (Esquerda - Foco no PROCESSO) -->
+  <g transform="translate(60, 240)" filter="url(#shadow2)">
+    <rect width="400" height="200" rx="12" fill="url(#sqaGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="400" height="38" rx="12" fill="#0284c7" fill-opacity="0.4"/>
+    <text x="200" y="25" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Garantia da Qualidade (SQA)</text>
+    
+    <g transform="translate(20, 58)" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">
+      <rect x="0" y="0" width="360" height="26" rx="4" fill="#0369a1" fill-opacity="0.4"/>
+      <text x="180" y="18" text-anchor="middle" fill="#7dd3fc" font-weight="700">FOCO NO PROCESSO &amp; PREVENÇÃO</text>
+      
+      <text x="10" y="48" font-size="12">• Auditorias independentes de conformidade</text>
+      <text x="10" y="68" font-size="12">• Aplicação de normas (ISO 29119, IEEE 829)</text>
+      <text x="10" y="88" font-size="12">• Revisões formais e inspeções de requisitos</text>
+      <text x="10" y="108" font-size="12">• Análise estatística de causas-raiz de defeitos</text>
+      <text x="10" y="128" font-size="12">• Gestão de mudanças e rastreabilidade</text>
+    </g>
+  </g>
+
+  <!-- QC (Direita - Foco no PRODUTO) -->
+  <g transform="translate(500, 240)" filter="url(#shadow2)">
+    <rect width="400" height="200" rx="12" fill="url(#qcGrad)" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="400" height="38" rx="12" fill="#059669" fill-opacity="0.4"/>
+    <text x="200" y="25" text-anchor="middle" fill="#34d399" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Controle de Qualidade (QC)</text>
+    
+    <g transform="translate(20, 58)" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">
+      <rect x="0" y="0" width="360" height="26" rx="4" fill="#065f46" fill-opacity="0.4"/>
+      <text x="180" y="18" text-anchor="middle" fill="#6ee7b7" font-weight="700">FOCO NO PRODUTO &amp; DETECÇÃO</text>
+      
+      <text x="10" y="48" font-size="12">• Execução de testes de unidade e integração</text>
+      <text x="10" y="68" font-size="12">• Testes de validação funcional e sistema</text>
+      <text x="10" y="88" font-size="12">• Revisões técnicas de código (*Code Reviews*)</text>
+      <text x="10" y="108" font-size="12">• Medição e verificação de critérios de cobertura</text>
+      <text x="10" y="128" font-size="12">• Testes de desempenho, estresse e segurança</text>
+    </g>
+  </g>
+</svg>

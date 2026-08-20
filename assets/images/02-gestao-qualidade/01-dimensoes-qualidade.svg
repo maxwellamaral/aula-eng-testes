@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="480" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Título Principal -->
+  <text x="480" y="45" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" letter-spacing="0.5">Modelos e Dimensões da Qualidade de Software</text>
+  <text x="480" y="70" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13">Da perspectiva multidimensional de Garvin às normas internacionais de qualidade de produto</text>
+
+  <!-- Card 1: Dimensões de Garvin -->
+  <g transform="translate(60, 100)" filter="url(#shadow)">
+    <rect width="400" height="340" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="400" height="42" rx="12" fill="#0284c7" fill-opacity="0.4"/>
+    <text x="200" y="27" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="16" font-weight="700">Dimensões de Qualidade de Garvin</text>
+    
+    <g transform="translate(24, 60)" font-family="system-ui, sans-serif" font-size="12.5" fill="#e2e8f0">
+      <circle cx="6" cy="12" r="4" fill="#38bdf8"/>
+      <text x="18" y="16" font-weight="600">Desempenho (*Performance*)</text>
+      <text x="18" y="32" fill="#94a3b8" font-size="11">Velocidade, capacidade de processamento e tempo de resposta</text>
+
+      <circle cx="6" cy="52" r="4" fill="#38bdf8"/>
+      <text x="18" y="56" font-weight="600">Recursos e Características (*Features*)</text>
+      <text x="18" y="72" fill="#94a3b8" font-size="11">Recursos secundários que encantam o usuário</text>
+
+      <circle cx="6" cy="92" r="4" fill="#38bdf8"/>
+      <text x="18" y="96" font-weight="600">Confiabilidade &amp; Conformidade</text>
+      <text x="18" y="112" fill="#94a3b8" font-size="11">Operação sem falhas e adesão a especificações técnicas</text>
+
+      <circle cx="6" cy="132" r="4" fill="#38bdf8"/>
+      <text x="18" y="136" font-weight="600">Durabilidade &amp; Facilidade de Manutenção</text>
+      <text x="18" y="152" fill="#94a3b8" font-size="11">Vida útil sem obsolescência e rapidez de correção/evolução</text>
+
+      <circle cx="6" cy="172" r="4" fill="#38bdf8"/>
+      <text x="18" y="176" font-weight="600">Estética &amp; Percepção</text>
+      <text x="18" y="192" fill="#94a3b8" font-size="11">Design visual, elegância da interface e reputação do produto</text>
+    </g>
+  </g>
+
+  <!-- Card 2: Normas Internacionais (ISO 25010) -->
+  <g transform="translate(500, 100)" filter="url(#shadow)">
+    <rect width="400" height="340" rx="12" fill="url(#cardGrad3)" stroke="#34d399" stroke-width="1.5"/>
+    <rect width="400" height="42" rx="12" fill="#059669" fill-opacity="0.4"/>
+    <text x="200" y="27" text-anchor="middle" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="16" font-weight="700">Norma ISO/IEC 25010 (SQuaRE)</text>
+    
+    <g transform="translate(24, 60)" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">
+      <rect x="0" y="0" width="352" height="30" rx="6" fill="#064e3b" fill-opacity="0.4" stroke="#10b981" stroke-width="1"/>
+      <text x="176" y="20" text-anchor="middle" fill="#a7f3d0" font-weight="700">8 CARACTERÍSTICAS DE QUALIDADE DE PRODUTO</text>
+
+      <g transform="translate(10, 45)" font-size="12" fill="#e2e8f0">
+        <text x="0" y="16" font-weight="600" fill="#34d399">1. Adequação Funcional</text>
+        <text x="170" y="16" font-weight="600" fill="#34d399">5. Confiabilidade</text>
+
+        <text x="0" y="42" font-weight="600" fill="#34d399">2. Eficiência de Desempenho</text>
+        <text x="170" y="42" font-weight="600" fill="#34d399">6. Segurança da Informação</text>
+
+        <text x="0" y="68" font-weight="600" fill="#34d399">3. Compatibilidade</text>
+        <text x="170" y="68" font-weight="600" fill="#34d399">7. Manutenibilidade</text>
+
+        <text x="0" y="94" font-weight="600" fill="#34d399">4. Usabilidade &amp; Acessib.</text>
+        <text x="170" y="94" font-weight="600" fill="#34d399">8. Portabilidade</text>
+
+        <rect x="-5" y="115" width="342" height="52" rx="6" fill="#022c22" fill-opacity="0.6" stroke="#059669" stroke-width="1"/>
+        <text x="166" y="135" text-anchor="middle" fill="#94a3b8" font-size="11">Padrão internacional vigente para especificação e</text>
+        <text x="166" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">avaliação rigorosa da qualidade de software (Semana 3).</text>
+      </g>
+    </g>
+  </g>
+</svg>

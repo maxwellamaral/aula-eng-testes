@@ -10,12 +10,15 @@ if ps -o args= -p "$PPID" | grep -Eq '(^|[[:space:]])preview([[:space:]]|$)'; th
   exit 0
 fi
 
-[[ -f docs/apostila.qmd ]] || exit 0
+if [[ ! -f docs/apostila.qmd ]]; then
+  printf 'Apostila não gerada: docs/apostila.qmd não encontrado.\n' >&2
+  exit 1
+fi
 
 while IFS= read -r include_path; do
   if [[ ! -f "docs/${include_path}" ]]; then
     printf 'Apostila não gerada: include ausente em docs/%s\n' "${include_path}" >&2
-    exit 0
+    exit 1
   fi
 done < <(sed -nE 's/.*include[[:space:]]+([^[:space:]}]+).*/\1/p' docs/apostila.qmd)
 

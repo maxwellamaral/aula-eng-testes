@@ -1,0 +1,16 @@
+---
+title: "Aula 02 — Introdução à Gestão da Qualidade de Produto"
+subtitle: "Dimensões de qualidade, SQA, estratégias e métodos de projeto de testes"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## Material da aula
+
+- 🖥️ [Visualizar apresentação de slides](slides.qmd)
+:::
+
+{{< include _content.qmd >}}

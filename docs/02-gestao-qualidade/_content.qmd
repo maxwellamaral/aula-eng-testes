@@ -1,0 +1,316 @@
+## Contextualização
+
+Na Engenharia de Software, desenvolver um sistema não se resume a escrever linhas de código que executam sem interrupções imediatas. Um produto só possui real valor quando atende aos requisitos declarados, satisfaz as necessidades explícitas e implícitas dos seus usuários, comporta-se de maneira confiável sob condições adversas e pode ser mantido e evoluído sem custos proibitivos [@pressman2016].
+
+Compreender a **Gestão da Qualidade de Software** é o alicerce de Verificação, Validação e Testes (VVTS). Os testes não são uma atividade isolada realizada ao final do ciclo de vida, mas uma engrenagem crítica dentro de uma estratégia ampla de garantia da qualidade que abrange pessoas, processos, métodos e ferramentas.
+
+### Objetivos da aula
+
+Ao final desta aula, você será capaz de responder e fundamentar:
+
+1. **Quais são as características genéricas de um software de alta qualidade?**
+2. **O que é garantia da qualidade de software (SQA)?**
+3. **Quais são as estratégias aplicáveis aos testes de software?**
+4. **Quais métodos são usados para projetar casos de teste eficazes?**
+5. **Existem métodos práticos para garantir que um software está correto?**
+
+::: {.callout-note}
+### Conceito-chave — A natureza da qualidade em software
+A qualidade de software é multidimensional: ela envolve a conformidade com especificações explícitas, o atendimento a expectativas implícitas (como usabilidade e desempenho), a qualidade do processo de desenvolvimento e o valor agregado ao negócio e aos usuários [@pressman2016; @sommerville2007].
+:::
+
+---
+
+## 1. Características genéricas de um software de alta qualidade
+
+O que torna um software "bom"? Na literatura de Engenharia de Software, qualidade é definida como um **processo eficaz de software aplicado de maneira a criar um produto útil que fornece valor mensurável para quem o produz e para quem o utiliza** [@pressman2016].
+
+Para analisar e mensurar essa qualidade, engenheiros e pesquisadores desenvolveram modelos e taxonomias de características de qualidade.
+
+![Modelos e Dimensões da Qualidade de Software](/assets/images/02-gestao-qualidade/01-dimensoes-qualidade.svg){#fig-dimensoes-qualidade fig-align="center" width="85%"}
+
+### As dimensões de qualidade de Garvin
+
+David Garvin [@pressman2016] propôs oito dimensões fundamentais para pensar a qualidade em produtos, adaptáveis diretamente ao software:
+
+* **Qualidade do desempenho (*Performance*)**: o software executa todas as funções e recursos especificados de acordo com a velocidade, capacidade de processamento e tempo de resposta esperados?
+* **Características e recursos (*Features*)**: o produto oferece recursos secundários e comodidades que complementam a função básica e encantam o usuário?
+* **Confiabilidade (*Reliability*)**: o software executa suas funções sem falhas durante um período especificado sob condições determinadas?
+* **Conformidade (*Conformance*)**: o software está em conformidade com padrões de código, especificações técnicas, padrões de projeto e regulamentações do setor?
+* **Durabilidade (*Durability*)**: no contexto de software, refere-se à capacidade do sistema de continuar funcionando e gerando valor sem se tornar obsoleto ou exigir reengenharia completa diante de mudanças no ambiente operacional.
+* **Facilidade de manutenção (*Serviceability*)**: quão fácil e rápido é diagnosticar falhas, corrigir defeitos e implementar melhorias sem introduzir novos erros?
+* **Estética (*Aesthetics*)**: a interface, a disposição dos elementos e o fluxo visual transmitem elegância, clareza e profissionalismo?
+* **Percepção (*Perception*)**: qual é a reputação e a percepção de excelência que o usuário e o mercado associam ao produto?
+
+Essas dimensões e a necessidade de critérios objetivos de qualidade fundamentaram o desenvolvimento de normas internacionais como a **ISO/IEC 9126** e a atual **ISO/IEC 25010 (SQuaRE)**, que estrutura as características de qualidade de produto de software e será aprofundada na próxima semana.
+
+### O dilema da qualidade e o custo da qualidade
+
+Buscar a qualidade perfeita a qualquer custo é inviável, mas ignorar a qualidade gera prejuízos catastróficos. Esse equilíbrio é estudado pela teoria do **Custo da Qualidade (CoQ — *Cost of Quality*)**, que divide os investimentos e despesas em quatro categorias [@pressman2016]:
+
+1. **Custos de prevenção**: investimentos para evitar que defeitos sejam introduzidos (ex.: treinamento da equipe, adoção de padrões de arquitetura, ferramentas de análise estática e planejamento de qualidade).
+2. **Custos de avaliação**: gastos para inspecionar, auditar e testar artefatos produzidos (ex.: revisões de código, execução de testes unitários, testes de integração e testes de carga).
+3. **Custos de falhas internas**: custos incorridos para corrigir defeitos detectados **antes** da entrega do software ao cliente (ex.: retrabalho, refatoração de emergência, nova execução de testes e tempo de depuração).
+4. **Custos de falhas externas**: custos que ocorrem quando os defeitos são descobertos **após** a liberação do software em produção (ex.: chamados de suporte, indenizações contratuais, perda de clientes, danos à reputação e *patches* emergenciais).
+
+::: {.callout-important}
+### A regra de aumento progressivo do custo
+Detectar e corrigir um defeito na fase de requisitos ou projeto custa uma fração minúscula do valor necessário para corrigi-lo após o lançamento em produção. Quanto mais tarde uma falha for descoberta, exponencialmente maior será o custo de sua correção.
+:::
+
+#### A falácia do "software bom o suficiente"
+Algumas organizações caem na armadilha de lançar software deliberadamente repleto de falhas conhecidas, justificando que ele é *"bom o suficiente"* para entrar rápido no mercado. Embora prazos e escopos exijam concessões conscientes de engenharia, entregar código descuidado acumula **dívida técnica**, destrói a confiança do cliente e gera custos de suporte que inviabilizam o projeto a médio e longo prazo.
+
+---
+
+## 2. Garantia da qualidade de software (SQA)
+
+A **Garantia da Qualidade de Software (*Software Quality Assurance* — SQA)** é um padrão planejado e sistemático de ações necessárias para fornecer a confiança adequada de que um item ou produto de software está em conformidade com requisitos técnicos estabelecidos [@pressman2016].
+
+Para evitar confusões terminológicas comuns no mercado, a Engenharia de Software distingue três níveis de atuação:
+
+![Tríade da Qualidade: SQM, SQA e QC](/assets/images/02-gestao-qualidade/02-sqm-sqa-qc.svg){#fig-sqm-sqa-qc fig-align="center" width="85%"}
+
+* **Gestão da Qualidade (*Software Quality Management* — SQM)**: define as políticas, os objetivos estratégicos e os recursos dedicados à qualidade em toda a organização.
+* **Garantia da Qualidade (*Software Quality Assurance* — SQA)**: tem como foco o **processo**. Avalia se os processos de desenvolvimento, padrões de codificação, revisões e fluxos de trabalho estão sendo seguidos e aprimorados continuamente.
+* **Controle de Qualidade (*Quality Control* — QC)**: tem como foco o **produto e seus artefatos**. Envolve a aplicação de técnicas diretas (como execução de testes e revisões de código) para comparar o artefato construído com sua especificação e detectar discrepâncias.
+
+### Elementos e tarefas de SQA
+
+Um programa robusto de SQA abrange atividades essenciais ao longo de todo o ciclo de vida [@pressman2016]:
+
+1. **Aplicação de padrões e normas**: garantir que normas organizacionais e internacionais (como ISO/IEC/IEEE 29119 e IEEE 829) sejam adotadas de forma consistente.
+2. **Revisões técnicas formais e inspeções**: verificação estática de especificações de requisitos, arquiteturas e código-fonte antes da execução.
+3. **Estratégia e execução de testes**: planejamento e auditoria dos testes de software para verificar a cobertura e o rigor das suítes de teste.
+4. **Coleta e análise de erros/defeitos**: aplicação de controle estatístico de qualidade para identificar módulos problemáticos e causas-raiz recorrentes de falhas.
+5. **Gestão de configuração e mudanças**: assegurar que alterações no código e nos requisitos sejam rastreáveis e controladas.
+6. **Auditorias de conformidade**: avaliação independente para verificar se os processos acordados estão sendo cumpridos pela equipe de desenvolvimento.
+
+---
+
+## 3. Estratégias aplicáveis aos testes de software
+
+Uma **estratégia de teste de software** fornece um roteiro que descreve as etapas a serem executadas, quando essas etapas devem ser planejadas e executadas, e quanto tempo, esforço e recursos serão necessários [@pressman2016].
+
+A estratégia clássica de teste segue uma abordagem em **espiral**: inicia-se no nível mais baixo de abstração (o código de uma função ou classe isolada) e progride em direção ao exterior, culminando na validação do sistema integrado contra os requisitos de negócio do cliente.
+
+![Estratégia e Níveis de Teste de Software](/assets/images/02-gestao-qualidade/03-niveis-estrategia-testes.svg){#fig-niveis-testes fig-align="center" width="85%"}
+
+### Níveis de teste
+
+#### 1. Teste de Unidade (*Unit Testing*)
+Concentra-se na menor unidade de projeto de software: o componente, módulo ou classe individual. Verifica a lógica interna, fluxos de dados locais, condições de contorno e tratamento de exceções em isolamento [@delamaro2007].
+
+#### 2. Teste de Integração (*Integration Testing*)
+Tem como foco as interfaces e a comunicação entre módulos. O objetivo é detectar falhas de integração (ex.: parâmetros incompatíveis, efeitos colaterais de dados globais ou falhas na temporização de chamadas). As principais abordagens incluem:
+
+* **Integração Não Incremental (*Big Bang*)**: todos os módulos são combinados de uma só vez; dificulta enormemente a localização da causa-raiz de falhas.
+* **Integração Incremental *Top-Down* (Descendente)**: começa pelo módulo principal de controle e desce na hierarquia estrutural. Requer o uso de *stubs* (módulos substitutos para simular componentes inferiores ainda não construídos).
+* **Integração Incremental *Bottom-Up* (Ascendente)**: começa pelos módulos atômicos da base e sobe na hierarquia. Requer o uso de *drivers* (programas de controle que fornecem entradas e acionam os módulos sob teste).
+* **Teste de Fumaça (*Smoke Testing*)**: subconjunto de testes executado diariamente ou a cada build para assegurar que as funções mais críticas do sistema operam adequadamente antes de testes mais profundos.
+* **Teste de Regressão**: reexecução de um subconjunto de testes para garantir que alterações recentes de código não introduziram novos defeitos em funcionalidades previamente estáveis.
+
+#### 3. Teste de Validação (*Validation Testing*)
+Assegura que o software atende a todas as expectativas funcionais, comportamentais e de desempenho descritas nos requisitos do usuário. É neste nível que se aplicam os **Critérios de Aceitação**, além de modalidades como:
+
+* **Teste Alfa**: conduzido no ambiente do desenvolvedor por um grupo selecionado de usuários finais representativos.
+* **Teste Beta**: conduzido no ambiente real de operação pelo próprio usuário final, sem a presença direta dos desenvolvedores, gerando relatórios de problemas do mundo real.
+
+#### 4. Teste de Sistema (*System Testing*)
+Verifica se o software se integra perfeitamente a outros elementos do sistema maior (hardware, redes, bancos de dados legados e operadores humanos). Abrange tipos especializados de teste:
+
+* **Teste de Recuperação (*Recovery Testing*)**: força o sistema a falhar para verificar se a recuperação de dados e o restabelecimento do serviço ocorrem de forma automática e íntegra.
+* **Teste de Segurança (*Security Testing*)**: busca vulnerabilidades, falhas de autenticação e brechas de invasão no sistema.
+* **Teste de Estresse (*Stress Testing*)**: submete o sistema a demandas anormais de volume, memória ou concorrência para avaliar como ele se comporta sob sobrecarga extrema.
+* **Teste de Desempenho (*Performance Testing*)**: avalia o tempo de resposta, latência e vazão (*throughput*) sob condições operacionais regulares.
+
+::: {.callout-note}
+### Verificação versus Validação (Critério de Boehm)
+* **Verificação**: *"Estamos construindo o produto corretamente?"* — Confere se o software está em conformidade estrita com suas especificações e modelos técnicos.
+* **Validação**: *"Estamos construindo o produto certo?"* — Confere se o software atende às reais necessidades de negócio e expectativas do usuário final.
+:::
+
+#### Teste versus Depuração (*Debugging*)
+É fundamental não confundir as duas atividades:
+* **Teste**: processo planejado e sistemático cujo objetivo é **revelar a presença de falhas**.
+* **Depuração (*Debugging*)**: consequência de um teste bem-sucedido. É a atividade investigativa de engenharia para **localizar a causa-raiz no código, corrigir o defeito e validar a correção** sem introduzir novas falhas [@pressman2016].
+
+---
+
+## 4. Métodos para projetar casos de teste eficazes
+
+Testar não consiste em inventar entradas aleatórias esperando que algo dê errado. Como o teste exaustivo é computacionalmente impossível (o número de combinações de entradas, estados e dados é virtualmente infinito), o objetivo da Engenharia de Testes é **projetar um conjunto mínimo de casos de teste com a máxima probabilidade de revelar a maior quantidade possível de defeitos** [@delamaro2007; @pressman2016].
+
+Para isso, empregam-se duas grandes famílias complementares de técnicas:
+
+![Métodos para Projeto de Casos de Teste](/assets/images/02-gestao-qualidade/04-metodos-projeto-testes.svg){#fig-metodos-testes fig-align="center" width="85%"}
+
+### Técnicas de Caixa-Preta (*Black-Box / Funcional*)
+
+As técnicas de caixa-preta tratam o sistema como um bloco opaco. Os casos de teste são derivados exclusivamente da especificação de requisitos e do comportamento externo esperado, sem examinar o código-fonte interno.
+
+1. **Particionamento em Classes de Equivalência (*Equivalence Partitioning*)**:
+   Divide o domínio de entrada em classes de dados válidos e inválidos. Parte-se da premissa de que todos os valores pertencentes a uma mesma classe receberão tratamento análogo pelo programa. Testa-se apenas um ou poucos representantes de cada classe, reduzindo drasticamente a quantidade de testes necessários.
+2. **Análise de Valor-Limite (*Boundary Value Analysis*)**:
+   A experiência em Engenharia de Software demonstra que a maioria esmagadora dos defeitos ocorre nas **fronteiras** das classes de equivalência (erros de `>`, `>=`, `<`, `<=`, índices nulos ou limites superiores). Essa técnica projeta casos de teste que incidem exatamente nos valores limite, imediatamente abaixo e imediatamente acima das fronteiras.
+3. **Tabela de Decisão (*Decision Table*)**:
+   Modela regras de negócio complexas que combinam múltiplas condições lógicas booleanas para disparar ações específicas.
+4. **Teste de Transição de Estados (*State Transition Testing*)**:
+   Mapeia como o sistema reage a eventos e estímulos externos dependendo do seu estado interno atual (ex.: ciclo de vida de um pedido de compras).
+
+### Técnicas de Caixa-Branca (*White-Box / Estrutural*)
+
+As técnicas de caixa-branca utilizam o conhecimento da estrutura lógica interna, dos fluxos de controle e das instruções do código-fonte para derivar casos de teste [@pressman2016; @delamaro2007].
+
+1. **Teste de Caminhos Básicos (*Basis Path Testing*)**:
+   Representa o fluxo do código por meio de um **Grafo de Fluxo de Controle** ($G$). A partir da topologia do grafo, calcula-se a **Complexidade Ciclomática de McCabe** $V(G)$:
+
+   $$V(G) = A - N + 2$$
+
+   Onde $A$ é o número de arestas e $N$ é o número de nós do grafo (ou equivalentemente, $V(G) = P + 1$, onde $P$ é o número de nós de predicado/decisão). $V(G)$ define o número de caminhos linearmente independentes que precisam ser executados para garantir cobertura estrutural completa da lógica básica.
+2. **Critérios de Cobertura Lógica**:
+   * *Cobertura de Instruções (*Statement Coverage*)*: assegura que cada linha executável de código foi executada pelo menos uma vez.
+   * *Cobertura de Decisões/Ramos (*Branch Coverage*)*: assegura que cada ramificação condicional (verdadeiro e falso) foi percorrida.
+   * *Cobertura de Condições (*Condition Coverage*)*: avalia cada subexpressão booleana individual dentro de decisões compostas.
+
+::: {.callout-tip}
+### Complementaridade essencial
+Nenhuma técnica substitui a outra. O teste de caixa-preta pode detectar a ausência de uma funcionalidade inteira exigida pelo usuário (o que o teste estrutural não enxerga se o código correspondente nunca foi escrito). Já o teste de caixa-branca detecta ramos ocultos, caminhos de erro não documentados e vulnerabilidades internas que o teste funcional não alcança.
+:::
+
+---
+
+## 5. Existem métodos práticos para garantir que um software está correto?
+
+Uma das perguntas mais instigantes da Ciência da Computação e da Engenharia de Software é: **podemos provar matematicamente que um software está 100% correto?**
+
+### Métodos Formais e Verificação de Corretude
+
+A resposta teórica é sim: por meio de **Métodos Formais de Software** [@pressman2016, Cap. 28]. Métodos formais utilizam rigor matemático para:
+
+* Especificar o comportamento esperado do sistema usando lógica de predicados, teoria dos conjuntos e linguagens formais (como Z, VDM, B-Method e Alloy).
+* Anotar programas com **Pré-condições** ($P$), **Pós-condições** ($Q$) e **Invariantes** ($I$).
+* Realizar **Provas Formais de Teoremas** (*Theorem Proving*) ou **Verificação de Modelos (*Model Checking*)** para provar formalmente que a transição de estados satisfaz a especificação axiomática:
+
+$$\{P\} \; \text{Código} \; \{Q\}$$
+
+A metodologia **Cleanroom (Engenharia de Software Sala Limpa)** foi um marco histórico que combinou métodos formais de verificação de corretude estática com controle estatístico de qualidade, eliminando o teste unitário convencional em favor da verificação matemática rigorosa antes da integração.
+
+### Limitações práticas na indústria contemporânea
+
+Se a prova formal existe, por que ela não é adotada em todos os sistemas de software?
+
+1. **Custo e complexidade proibitivos**: a prova matemática de sistemas com milhões de linhas de código exige esforço humano e computacional exponencial.
+2. **Ambientes dinâmicos e dependências externas**: sistemas modernos operam sobre frameworks complexos, bancos de dados distribuídos, APIs de terceiros e sistemas operacionais cujo comportamento exato não é formalizável na prática.
+3. **O problema da especificação correta**: a prova formal garante apenas que o *código é matematicamente equivalente à sua especificação formal*. Se a especificação formal contiver uma premissa errada sobre o que o usuário humano realmente necessitava, o software estará "provadamente correto", mas continuará sendo inútil na prática.
+
+::: {.callout-important}
+### A máxima fundamental de Edsger W. Dijkstra
+> *"O teste de programas pode ser uma maneira muito eficaz de mostrar a presença de defeitos, mas é irremediavelmente inadequado para mostrar a sua ausência."*
+:::
+
+### A resposta pragmática da Engenharia de Software
+
+Diante da impossibilidade prática da prova formal absoluta para sistemas genéricos, a Engenharia de Software responde com uma **estratégia de garantia empírica em múltiplas camadas**:
+
+* **Prevenção estática**: revisões formais de requisitos e arquitetura, linters, tipagem estática e analisadores de segurança (SAST).
+* **Automação contínua (CI/CD)**: pirâmide de testes automatizados executando suítes de unidade, integração e aceitação a cada commit.
+* **Tolerância a falhas e arquiteturas resilientes**: padrões como *circuit breaker*, *fallbacks*, isolamento de microsserviços e redundância.
+* **Observabilidade e monitoramento em produção**: métricas de saúde, logs estruturados e *canary deployments* para detectar e mitigar qualquer anomalia em tempo real.
+
+---
+
+## Python e ferramentas em foco — Formalizando expectativas com `pytest`
+
+::: {.callout-tip}
+### Python e ferramentas em foco — Expressando critérios de qualidade no código
+Na stack de VVTS, utilizamos o **Python 3.11+** e o framework **`pytest`** para transformar requisitos e regras de negócio em verificações automáticas e repetíveis.
+
+Observe como as técnicas de **Particionamento em Classes de Equivalência** e **Análise de Valor-Limite** orientam diretamente a estruturação dos testes automatizados:
+:::
+
+```python
+# calculo_credito.py
+def calcular_desconto(valor_compra: float, fidelidade: bool) -> float:
+    """
+    Regra de negócio:
+    - Compras abaixo de R$ 100,00: sem desconto (0%).
+    - Compras de R$ 100,00 a R$ 500,00: 5% de desconto.
+    - Compras acima de R$ 500,00: 10% de desconto.
+    - Clientes fidelidade recebem +2% de desconto adicional.
+    - Valores negativos ou zero disparam ValueError.
+    """
+    if valor_compra <= 0:
+        raise ValueError("O valor da compra deve ser estritamente positivo.")
+
+    if valor_compra < 100.0:
+        taxa = 0.0
+    elif valor_compra <= 500.0:
+        taxa = 0.05
+    else:
+        taxa = 0.10
+
+    if fidelidade:
+        taxa += 0.02
+
+    return round(valor_compra * (1 - taxa), 2)
+```
+
+```python
+# test_calculo_credito.py
+import pytest
+from calculo_credito import calcular_desconto
+
+# Testando classes inválidas e limites inferiores (Valor-Limite e Equivalência)
+def test_valor_compra_invalido_deve_lancar_excecao():
+    with pytest.raises(ValueError):
+        calcular_desconto(0.0, fidelidade=False)
+    with pytest.raises(ValueError):
+        calcular_desconto(-15.50, fidelidade=False)
+
+# Testando partições válidas e fronteiras exatas (R$ 99.99, R$ 100.00, R$ 500.00, R$ 500.01)
+@pytest.mark.parametrize("valor, fidelidade, esperado", [
+    (99.99, False, 99.99),     # Limite superior da partição 0%
+    (100.00, False, 95.00),    # Limite inferior da partição 5%
+    (500.00, False, 475.00),   # Limite superior da partição 5%
+    (500.01, False, 450.01),   # Limite inferior da partição 10%
+    (100.00, True, 93.00),     # Partição 5% + 2% fidelidade
+])
+def test_calculo_desconto_fronteiras(valor, fidelidade, esperado):
+    assert calcular_desconto(valor, fidelidade) == esperado
+```
+
+Essa disciplina fornecerá o ferramental metodológico para projetar e automatizar baterias de testes com alto poder de detecção de defeitos.
+
+---
+
+## Para revisar
+
+Utilize as questões abaixo para autoavaliação da sua compreensão dos tópicos essenciais desta aula:
+
+1. **Quais são as características genéricas de um software de alta qualidade?**
+   * *Síntese:* Qualidade não se resume a ausência de travamentos. Abrange dimensões de processo e produto, incluindo as dimensões de Garvin (desempenho, confiabilidade, conformidade, facilidade de manutenção etc.) e padrões internacionais consolidados como a ISO/IEC 25010.
+
+2. **O que é garantia da qualidade de software (SQA)?**
+   * *Síntese:* SQA é a abordagem planejada e sistemática focada na auditoria e garantia de que os **processos** de desenvolvimento, padrões técnicos e metodologias estão sendo seguidos para produzir software confiável. Distingue-se do Controle de Qualidade (QC), que foca na inspeção do produto final.
+
+3. **Quais são as estratégias aplicáveis aos testes de software?**
+   * *Síntese:* A estratégia organiza o teste em uma espiral evolutiva de níveis: Teste de Unidade, Teste de Integração (*top-down*, *bottom-up*, *smoke* e regressão), Teste de Validação (critérios de aceitação, testes Alfa e Beta) e Teste de Sistema (segurança, recuperação, desempenho e estresse).
+
+4. **Quais métodos são usados para projetar casos de teste eficazes?**
+   * *Síntese:* Métodos de Caixa-Preta/Funcionais (particionamento de equivalência, análise de valor-limite, tabelas de decisão e matrizes de estado) combinados com métodos de Caixa-Branca/Estruturais (caminhos básicos, complexidade ciclomática de McCabe e cobertura de instruções e condições).
+
+5. **Existem métodos práticos para garantir que um software está correto?**
+   * *Síntese:* Métodos formais matemáticos e abordagens de Sala Limpa (*Cleanroom*) oferecem provas formais de corretude teórica, mas enfrentam barreiras severas de custo e aplicabilidade para sistemas complexos. Na prática da engenharia, a confiabilidade é obtida pela combinação rigorosa de verificações estáticas, pirâmide de testes automatizados, integração contínua (CI/CD) e arquitetura tolerante a falhas.
+
+---
+
+## Referências e materiais relacionados
+
+* @pressman2016 — Capítulos 19 (Conceitos de Qualidade), 21 (Garantia da Qualidade de Software), 22 (Estratégias de Teste de Software), 23 (Teste de Aplicativos Convencionais) e 28 (Modelagem Formal e Verificação).
+* @delamaro2007 — Capítulos 1 (Conceitos Básicos) e 2 (Critérios de Teste de Software).
+* @sommerville2007 — Capítulos 22 (Gestão da Qualidade) e 23 (Teste de Software).
+* [Aula 01 — Introdução à Engenharia de Software (Revisão)](../01-introducao-engsoft/index.qmd)
+
+::: {#refs}
+:::

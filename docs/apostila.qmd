@@ -15,6 +15,12 @@ format:
 
 \newpage
 
-# Módulo 1: Introdução a Engenharia de Software (Revisão)
+# Módulo 1: Introdução a Engenharia de Software e Gestão da Qualidade
 
 {{< include 01-introducao-engsoft/_content.qmd >}}
+
+\newpage
+
+# Aula 02: Introdução à Gestão da Qualidade de Produto
+
+{{< include 02-gestao-qualidade/_content.qmd >}}

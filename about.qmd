@@ -14,7 +14,7 @@ A disciplina de **Verificação, Validação e Testes de Software (VVTS)** abord
 - Desenvolvimento Orientado a Testes (TDD)
 
 ### Ferramentas Utilizadas
-- **Linguagem**: Python 3.10+
+- **Linguagem**: Python 3.11+
 - **Gerenciador de Dependências**: `uv`
 - **Framework de Testes**: `pytest`
 - **Documentação**: Quarto
