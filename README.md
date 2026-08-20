@@ -68,6 +68,23 @@ Criar uma aula não implica criar slides. O site é o material completo e perman
 
 Ao solicitar slides, informe isso claramente junto da aula ou em um pedido posterior. O agente deve seguir `specs/padrao-slides.md`: construir uma narrativa própria para a condução presencial, com frames de função pedagógica definida, sem converter mecanicamente as seções da página da aula em slides. O deck precisa fornecer o apoio previsível à compreensão sem depender do site, de uma IDE ou de desenho obrigatório no quadro.
 
+Exemplo de solicitação de slides:
+
+```text
+Antes de criar a apresentação, consulte minha memória persistente, especialmente
+knowledge/projects/aula-vvts.md, e leia specs/padrao-slides.md.
+
+Crie a apresentação de slides para a Aula 02 — Introdução à Gestão da Qualidade de Produto
+em docs/02-gestao-qualidade/slides.qmd.
+
+Construa uma narrativa própria para condução presencial (com frames de abertura, contextualização,
+problema/evidência, conceitos-chave, contraste de abordagens e síntese), sem converter
+mecanicamente o texto da aula em slides. Utilize o formato Reveal.js nativo do Quarto,
+mantenha o tema escuro consistente com o site e priorize imagens vetoriais (SVG).
+
+Ao concluir, atualize o link no material da aula, renderize com `quarto render` e verifique o resultado.
+```
+
 ### 3. O que o agente deve fazer
 
 Ao receber o pedido, o agente deve:

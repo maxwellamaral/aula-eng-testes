@@ -214,3 +214,58 @@
 .reveal .slides section.section.lead {
   padding: 1.8rem;
 }
+
+/* Imagens em slides - ajuste de enquadramento, proporção e visibilidade */
+.reveal .slides section img {
+  display: block;
+  margin: 0.6em auto;
+  max-width: 92%;
+  max-height: 480px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.reveal .slides section p.caption {
+  font-size: 0.6em;
+  color: var(--slide-muted);
+  margin-top: 0.3em;
+  text-align: center;
+}
+
+/* Links de acesso ao material escrito da aula nos slides */
+.reveal a.slide-link,
+.reveal .slide-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 0.35em 0.85em;
+  border-radius: 6px;
+  font-size: 0.65em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 0.6em;
+}
+
+.reveal a.slide-link:hover,
+.reveal .slide-link a:hover {
+  background: rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.reveal .slides section.takeaway a.slide-link {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.reveal .slides section.takeaway a.slide-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #ffffff;
+}

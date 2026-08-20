@@ -1,0 +1,287 @@
+---
+title: "Aula 02 — Introdução à Gestão da Qualidade de Produto"
+subtitle: "Dimensões de qualidade, SQA, estratégias e métodos de teste"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+institute: "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) — Campus João Pessoa"
+lang: pt-BR
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    css: ../../assets/css/slides.css
+---
+
+## Gestão da Qualidade de Software {.section .lead}
+
+Fundamentos para Verificação, Validação e Testes
+
+![](/assets/images/00-apresentacao/intro.png){.nostretch fig-align="center" width="70%"}
+
+[📖 Acessar conteúdo escrito da aula](index.qmd){.slide-link}
+
+## O que define um software de alta qualidade? {.question}
+
+::: {.chapter}
+Dimensões da Qualidade
+:::
+
+Pense em um sistema que você considera excelente.
+
+O que o torna superior? É apenas a ausência de travamentos ou envolve facilidade de uso, velocidade, manutenibilidade e segurança?
+
+## Qualidade é multidimensional {.concept}
+
+::: {.chapter}
+Dimensões da Qualidade
+:::
+
+Qualidade de software é o resultado de um **processo eficaz de engenharia aplicado para gerar um produto útil com valor mensurável para desenvolvedores e usuários** [@pressman2016].
+
+Não existe um único indicador de qualidade: ela deve ser avaliada sob múltiplos pontos de vista.
+
+## Modelos e Dimensões da Qualidade {.example}
+
+::: {.chapter}
+Dimensões da Qualidade
+:::
+
+![](/assets/images/02-gestao-qualidade/01-dimensoes-qualidade.png){.nostretch fig-align="center" width="85%"}
+
+## As 8 Dimensões de Garvin {.concept}
+
+::: {.chapter}
+Dimensões da Qualidade
+:::
+
+David Garvin propôs 8 dimensões aplicáveis a produtos de software:
+
+- **Desempenho**: velocidade, capacidade e tempo de resposta.
+- **Recursos**: funcionalidades complementares que encantam.
+- **Confiabilidade**: operação sem falhas durante o uso.
+- **Conformidade**: adesão estrita a normas e especificações.
+- **Durabilidade**: resistência à obsolescência técnica.
+- **Facilidade de Manutenção**: rapidez e facilidade de correção.
+- **Estética**: elegância, clareza e padrão visual.
+- **Percepção**: reputação e confiança transmitida pelo produto.
+
+## Quanto custa a qualidade? {.question}
+
+::: {.chapter}
+Custo da Qualidade
+:::
+
+Descobrir um erro na especificação de requisitos custa o mesmo que corrigi-lo após o sistema estar em produção?
+
+O que acontece quando tentamos economizar eliminando testes e revisões?
+
+## A Teoria do Custo da Qualidade (CoQ) {.concept}
+
+::: {.chapter}
+Custo da Qualidade
+:::
+
+O Custo da Qualidade divide-se em 4 categorias essenciais:
+
+1. **Prevenção**: treinamento, padrões de projeto e análise estática.
+2. **Avaliação**: revisões técnicas, inspeções e testes automatizados.
+3. **Falhas Internas**: retrabalho e correções **antes** da entrega ao cliente.
+4. **Falhas Externas**: suporte emergencial, indenizações e danos à reputação **após** o lançamento.
+
+## A falácia do "software bom o suficiente" {.concept .definition}
+
+::: {.chapter}
+Custo da Qualidade
+:::
+
+Lançar código deliberadamente defeituoso para cumprir prazos gera **dívida técnica**.
+
+O custo de corrigir falhas em produção cresce **exponencialmente** em relação à detecção precoce nas fases iniciais do ciclo de vida.
+
+## Garantir a qualidade é apenas testar? {.question}
+
+::: {.chapter}
+Garantia da Qualidade
+:::
+
+Se a equipe de testes encontrar e reportar 100 defeitos, isso significa que a qualidade do processo é alta ou que o processo de desenvolvimento está falhando?
+
+Qual é a diferença entre **controlar o produto** e **garantir o processo**?
+
+## A Tríade da Qualidade: SQM, SQA e QC {.section}
+
+Estrutura organizacional, garantia de processo e controle de artefatos.
+
+## Relação entre SQM, SQA e QC {.example}
+
+::: {.chapter}
+Garantia da Qualidade
+:::
+
+![](/assets/images/02-gestao-qualidade/02-sqm-sqa-qc.png){.nostretch fig-align="center" width="85%"}
+
+## Foco no Processo versus Foco no Produto {.concept .definition}
+
+::: {.chapter}
+Garantia da Qualidade
+:::
+
+- **SQA (*Software Quality Assurance*)**: foco no **PROCESSO**. Auditorias, conformidade a normas, revisões formais e prevenção de causas-raiz.
+- **QC (*Quality Control*)**: foco no **PRODUTO**. Execução de testes de unidade, integração, validação e inspeções de código.
+- **SQM (*Software Quality Management*)**: governança, políticas corporativas e alocação de recursos.
+
+## Por onde começar a testar? {.question}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+Em um sistema com banco de dados, APIs, regras de negócio e interfaces web:
+
+Devemos testar tudo de uma vez no final (*Big Bang*) ou construir a confiança progressivamente em camadas?
+
+## A Espiral de Níveis de Teste {.example}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+![](/assets/images/02-gestao-qualidade/03-niveis-estrategia-testes.png){.nostretch fig-align="center" width="85%"}
+
+## Os Quatro Níveis de Teste {.concept}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+1. **Unidade**: testa a menor parte atômica (funções, métodos e classes).
+2. **Integração**: verifica a comunicação e interfaces entre módulos (*top-down*, *bottom-up*, *smoke* e regressão).
+3. **Validação**: assegura atendimento aos requisitos de negócio (*critérios de aceitação*, testes Alfa e Beta).
+4. **Sistema**: avalia o comportamento global em ambiente real (recuperação, segurança, carga e estresse).
+
+## Verificação versus Validação (Boehm) {.concept .definition}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+- **Verificação**: *"Estamos construindo o produto corretamente?"*
+  - Avalia se o software atende com exatidão às especificações técnicas e modelos.
+- **Validação**: *"Estamos construindo o produto certo?"*
+  - Avalia se o software atende às necessidades reais do usuário e aos objetivos do negócio.
+
+## Teste não é depuração (*debugging*) {.example}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+- **Teste**: atividade planejada e sistemática cujo objetivo é **revelar falhas**.
+- **Depuração**: atividade investigativa e técnica para **localizar a causa-raiz no código, corrigir o defeito e validar a correção** sem introduzir novas falhas [@pressman2016].
+
+## Podemos testar todas as possibilidades? {.question}
+
+::: {.chapter}
+Métodos de Teste
+:::
+
+Imagine um campo de texto que aceita uma senha de 8 a 16 caracteres.
+
+Quantas combinações possíveis de caracteres existem? O teste exaustivo é viável?
+
+Se não podemos testar tudo, **como escolher os testes mais eficazes?**
+
+## Métodos para Projeto de Casos de Teste {.example}
+
+::: {.chapter}
+Métodos de Teste
+:::
+
+![](/assets/images/02-gestao-qualidade/04-metodos-projeto-testes.png){.nostretch fig-align="center" width="85%"}
+
+## Técnicas de Caixa-Preta (Funcionais) {.concept}
+
+::: {.chapter}
+Métodos de Teste
+:::
+
+Tratam o sistema como um bloco opaco, baseando-se apenas nos requisitos:
+
+- **Particionamento em Classes de Equivalência**: divide entradas em conjuntos válidos e inválidos homogêneos.
+- **Análise de Valor-Limite**: testa exatamente as fronteiras das partições (onde ocorre a maioria dos erros).
+- **Tabelas de Decisão**: modela regras de negócio com combinações de condições booleanas.
+- **Transição de Estados**: mapeia o comportamento do sistema diante de eventos e mudanças de estado.
+
+## Técnicas de Caixa-Branca (Estruturais) {.concept .definition}
+
+::: {.chapter}
+Métodos de Teste
+:::
+
+Utilizam a estrutura lógica interna e o código-fonte:
+
+- **Teste de Caminhos Básicos**: garante a execução de caminhos linearmente independentes no grafo de fluxo.
+- **Complexidade Ciclomática de McCabe $V(G)$**:
+
+$$V(G) = A - N + 2 = P + 1$$
+
+Define o número mínimo de casos de teste necessários para cobrir todas as decisões lógicas fundamentais.
+
+## É possível provar que um software está 100% correto? {.question}
+
+::: {.chapter}
+Verificação e Limites
+:::
+
+Podemos usar matemática e lógica formal para provar que um programa nunca irá falhar?
+
+O que acontece quando levamos a teoria para os sistemas comerciais do mundo real?
+
+## Limites da Prova Formal e a Máxima de Dijkstra {.concept .definition}
+
+::: {.chapter}
+Verificação e Limites
+:::
+
+> *"O teste de programas pode ser uma maneira muito eficaz de mostrar a presença de defeitos, mas é irremediavelmente inadequado para mostrar a sua ausência."*
+> — Edsger W. Dijkstra
+
+Métodos formais garantem apenas que o código atende à sua especificação formal. Se a especificação humana estiver incorreta, o software será provadamente inútil.
+
+## A Resposta da Engenharia de Software {.example}
+
+::: {.chapter}
+Verificação e Limites
+:::
+
+Como não há prova matemática viável para sistemas complexos genéricos, a indústria adota **qualidade em múltiplas camadas**:
+
+- **Prevenção Estática**: revisões por pares, linters e análise estática de segurança.
+- **Automação Contínua**: pirâmide de testes no pipeline de CI/CD.
+- **Arquitetura Resiliente**: tolerância a falhas, isolamento e *fallbacks*.
+- **Observabilidade**: logs estruturados, monitoramento e métricas em produção.
+
+## Atividade em duplas — Classificando a Qualidade {.activity}
+
+::: {.chapter}
+Síntese
+:::
+
+Considere um sistema de transferência bancária instantânea (ex.: Pix):
+
+1. Identifique **duas dimensões de Garvin** críticas para esse sistema.
+2. Formule **um caso de teste funcional (caixa-preta)** aplicando análise de valor-limite em um valor de transferência.
+3. Destaque um risco que exigiria um **teste de sistema (estresse ou segurança)**.
+
+Discutam em 5 minutos e compartilhem suas conclusões.
+
+## O que levar desta aula {.takeaway}
+
+Qualidade de software não é um evento final: é uma disciplina contínua.
+
+Testes eficazes não buscam combinações infinitas, mas utilizam técnicas estruturadas de caixa-preta e caixa-branca para encontrar o maior número de falhas com custo controlado.
+
+Na próxima semana, aprofundaremos as características de qualidade com a **ISO/IEC 25010**.
+
+[📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}

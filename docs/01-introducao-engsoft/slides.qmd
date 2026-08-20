@@ -8,6 +8,7 @@ format:
   revealjs:
     theme: dark
     slide-number: true
+    chalkboard: true
     preview-links: auto
     css: ../../assets/css/slides.css
 ---
@@ -16,9 +17,9 @@ format:
 
 Verificação, Validação e Testes de Software
 
-::: {.r-stretch}
-![Gato engenheiro de testes](/assets/images/00-apresentacao/intro.png){fig-align="center" width="78%"}
-:::
+![](/assets/images/00-apresentacao/intro.png){.nostretch fig-align="center" width="75%"}
+
+[📖 Acessar conteúdo escrito da aula](index.qmd){.slide-link}
 
 ## O que você entrega quando entrega software? {.question}
 
@@ -42,7 +43,7 @@ Um produto de software combina:
 - dados necessários ao funcionamento;
 - documentação e outros artefatos que permitem usar, compreender, manter e evoluir o produto.
 
-![Programa de computador + documentação](/assets/images/01-introducao-engsoft/intro02.png){fig-align="center" width="55%"}
+![Programa de computador + documentação](/assets/images/01-introducao-engsoft/intro02.png){.nostretch fig-align="center" width="55%"}
 
 ## Evidências que acompanham uma entrega {.example}
 
@@ -79,7 +80,7 @@ Visão de sistema
 
 Um sistema real pode combinar elementos mecânicos, elétricos, eletrônicos, humanos e de software. A Engenharia de Software concentra-se no produto digital e nas decisões necessárias para desenvolvê-lo com responsabilidade.
 
-![Engenharia de Software como parte da Engenharia de Sistemas](/assets/images/01-introducao-engsoft/intro03.png){fig-align="center" width="68%"}
+![Engenharia de Software como parte da Engenharia de Sistemas](/assets/images/01-introducao-engsoft/intro03.png){.nostretch fig-align="center" width="68%"}
 
 ## Uma necessidade, muitos papéis {.example}
 
@@ -87,7 +88,7 @@ Um sistema real pode combinar elementos mecânicos, elétricos, eletrônicos, hu
 Visão de sistema
 :::
 
-![Áreas que compõem a Engenharia de Software](/assets/images/01-introducao-engsoft/intro05.png){fig-align="center" width="73%"}
+![Áreas que compõem a Engenharia de Software](/assets/images/01-introducao-engsoft/intro05.png){.nostretch fig-align="center" width="73%"}
 
 Nenhum desses papéis é automaticamente obrigatório em toda equipe. A composição depende do produto, do contexto e dos riscos envolvidos.
 
@@ -108,7 +109,7 @@ Um processo de desenvolvimento reúne:
 - artefatos de entrada e saída;
 - fluxos que ligam o trabalho e seus resultados.
 
-![Exemplo de atividade em um processo de software](/assets/images/01-introducao-engsoft/processos-01-atividade.png){fig-align="center" width="48%"}
+![Exemplo de atividade em um processo de software](/assets/images/01-introducao-engsoft/processos-01-atividade.png){.nostretch fig-align="center" width="48%"}
 
 ## Atividade, papel e artefato {.example}
 
@@ -133,7 +134,7 @@ Processos de desenvolvimento
 
 Diagramas ajudam a equipe a discutir, revisar e melhorar o processo. Eles não substituem o trabalho real nem a evidência produzida por ele.
 
-![Exemplo de diagrama de atividades UML](/assets/images/01-introducao-engsoft/processos-02-uml.png){fig-align="center" width="42%"}
+![Exemplo de diagrama de atividades UML](/assets/images/01-introducao-engsoft/processos-02-uml.png){.nostretch fig-align="center" width="42%"}
 
 ## Um modelo sequencial resolve tudo? {.question}
 
@@ -143,7 +144,7 @@ Modelos de processo
 
 No modelo cascata, uma etapa produz informações para a próxima. O que acontece quando uma necessidade muda depois de já termos implementado ou testado uma funcionalidade?
 
-![Exemplo de modelo cascata](/assets/images/01-introducao-engsoft/processos-06-cascata.png){fig-align="center" width="82%"}
+![Exemplo de modelo cascata](/assets/images/01-introducao-engsoft/processos-06-cascata.png){.nostretch fig-align="center" width="82%"}
 
 ## Evoluir também exige evidências {.concept}
 
@@ -153,7 +154,7 @@ Modelos de processo
 
 Em um desenvolvimento evolucionário, o produto avança em ciclos. A cada ciclo, requisitos, versões, testes e decisões precisam continuar rastreáveis.
 
-![Exemplo de desenvolvimento evolucionário](/assets/images/01-introducao-engsoft/processos-07-evolucionario.png){fig-align="center" width="60%"}
+![Exemplo de desenvolvimento evolucionário](/assets/images/01-introducao-engsoft/processos-07-evolucionario.png){.nostretch fig-align="center" width="60%"}
 
 ## Ferramentas CASE apoiam o processo {.example}
 
@@ -165,7 +166,7 @@ Ferramentas de apoio
 - **Workbenches:** integram ferramentas de uma fase.
 - **Ambientes:** apoiam uma parte substancial do processo.
 
-![Exemplo de ferramentas CASE](/assets/images/01-introducao-engsoft/processos-11-case.png){fig-align="center" width="57%"}
+![Exemplo de ferramentas CASE](/assets/images/01-introducao-engsoft/processos-11-case.png){.nostretch fig-align="center" width="57%"}
 
 ## Que processo produz esta evidência? {.activity}
 
@@ -264,3 +265,5 @@ Preparem-se para explicar a ligação entre os quatro itens.
 Software é mais do que código. Requisitos, documentação, decisões de projeto, versões e resultados de teste formam a rede de evidências que permite desenvolver e avaliar um produto com responsabilidade.
 
 Na próxima etapa, vamos tornar explícitas as diferenças entre erro, defeito, falha, verificação estática e teste dinâmico.
+
+[📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}

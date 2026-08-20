@@ -18,6 +18,8 @@ format:
 
 ![](/assets/images/00-apresentacao/intro.png){width=90% fig-align="center"}
 
+[📖 Acessar conteúdo e plano de ensino completo](index.qmd){.slide-link}
+
 ### Mensagem do Docente
 
 > *"Construir software que funciona é apenas o primeiro passo. Construir software em que os usuários e a sociedade possam confiar — sob quaisquer condições — é a verdadeira essência da Engenharia de Software."*
