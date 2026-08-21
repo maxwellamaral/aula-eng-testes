@@ -55,3 +55,4 @@ format:
     lang: pt-BR
     filters:
       - pyodide
+      - diagram

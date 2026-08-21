@@ -99,6 +99,80 @@ Abaixo apresentamos um exemplo de referência completo para a abordagem **2.2 �
 
 #### 1. Diagrama de Classes UML
 
+Seguem exemplos de diagramas que ilustram a aplicação deste conceito no cenário proposto.
+
+### Visualização PlantUML
+```plantuml
+@startuml
+skinparam classAttributeIconSize 0
+
+class Pedido {
+  - id: String
+  - clienteId: String
+  - valorTotal: Double
+  - itens: List<Item>
+  + calcularTotal(): Double
+}
+
+class Item {
+  - produtoId: String
+  - quantidade: Integer
+  - precoUnitario: Double
+}
+
+class ProcessadorCheckout {
+  - pagamentoService: IPagamentoService
+  - estoqueService: IEstoqueService
+  - antiFraudeService: IAntiFraudeService
+  + ProcessadorCheckout(pagamentoService: IPagamentoService, estoqueService: IEstoqueService, antiFraudeService: IAntiFraudeService)
+  + processar(pedido: Pedido): Boolean
+}
+
+interface IPagamentoService {
+  + autorizar(valor: Double): Boolean
+  + capturar(transacaoId: String): String
+}
+
+interface IEstoqueService {
+  + reservar(itens: List<Item>): Boolean
+  + consultarDisponibilidade(produtoId: String): Integer
+}
+
+interface IAntiFraudeService {
+  + analisarRisco(clienteId: String, valor: Double): String
+}
+
+class PagamentoStub <<Stub (Simulador)>> {
+  - respostaPadrao: Boolean
+  + autorizar(valor: Double): Boolean
+  + capturar(transacaoId: String): String
+  + configurarResposta(status: Boolean): void
+}
+
+class EstoqueStub <<Stub (Simulador)>> {
+  - estoqueSimulado: Map<String, Integer>
+  + reservar(itens: List<Item>): Boolean
+  + consultarDisponibilidade(produtoId: String): Integer
+}
+
+class AntiFraudeStub <<Stub (Simulador)>> {
+  - scoreSimulado: String
+  + analisarRisco(clienteId: String, valor: Double): String
+}
+
+Pedido *-- "1..*" Item : contém
+ProcessadorCheckout ..> Pedido : recebe
+ProcessadorCheckout --> IPagamentoService : utiliza
+ProcessadorCheckout --> IEstoqueService : utiliza
+ProcessadorCheckout --> IAntiFraudeService : utiliza
+
+PagamentoStub ..|> IPagamentoService : implementa
+EstoqueStub ..|> IEstoqueService : implementa
+AntiFraudeStub ..|> IAntiFraudeService : implementa
+@enduml
+```
+
+### Visualização Mermaid
 ```{mermaid}
 classDiagram
     class Pedido {
@@ -119,7 +193,6 @@ classDiagram
         -IPagamentoService pagamentoService
         -IEstoqueService estoqueService
         -IAntiFraudeService antiFraudeService
-        +ProcessadorCheckout(IPagamentoService, IEstoqueService, IAntiFraudeService)
         +processar(Pedido pedido) Boolean
     }
 
@@ -141,7 +214,7 @@ classDiagram
     }
 
     class PagamentoStub {
-        <<Stub (Simulador)>>
+        <<service>>
         -Boolean respostaPadrao
         +autorizar(Double valor) Boolean
         +capturar(String transacaoId) String
@@ -149,19 +222,19 @@ classDiagram
     }
 
     class EstoqueStub {
-        <<Stub (Simulador)>>
+        <<service>>
         -Map~String, Integer~ estoqueSimulado
         +reservar(List~Item~ itens) Boolean
         +consultarDisponibilidade(String produtoId) Integer
     }
 
     class AntiFraudeStub {
-        <<Stub (Simulador)>>
+        <<service>>
         -String scoreSimulado
         +analisarRisco(String clienteId, Double valor) String
     }
 
-    Pedido *-- Item : contém
+    Pedido *-- Item : contem
     ProcessadorCheckout ..> Pedido : recebe
     ProcessadorCheckout --> IPagamentoService : utiliza
     ProcessadorCheckout --> IEstoqueService : utiliza
@@ -171,6 +244,7 @@ classDiagram
     EstoqueStub ..|> IEstoqueService : implementa
     AntiFraudeStub ..|> IAntiFraudeService : implementa
 ```
+
 
 #### 2. Código-fonte do Diagrama (Mermaid e PlantUML)
 
@@ -198,7 +272,6 @@ classDiagram
         -IPagamentoService pagamentoService
         -IEstoqueService estoqueService
         -IAntiFraudeService antiFraudeService
-        +ProcessadorCheckout(IPagamentoService, IEstoqueService, IAntiFraudeService)
         +processar(Pedido pedido) Boolean
     }
 
@@ -220,7 +293,7 @@ classDiagram
     }
 
     class PagamentoStub {
-        <<Stub (Simulador)>>
+        <<service>>
         -Boolean respostaPadrao
         +autorizar(Double valor) Boolean
         +capturar(String transacaoId) String
@@ -228,19 +301,19 @@ classDiagram
     }
 
     class EstoqueStub {
-        <<Stub (Simulador)>>
+        <<service>>
         -Map~String, Integer~ estoqueSimulado
         +reservar(List~Item~ itens) Boolean
         +consultarDisponibilidade(String produtoId) Integer
     }
 
     class AntiFraudeStub {
-        <<Stub (Simulador)>>
+        <<service>>
         -String scoreSimulado
         +analisarRisco(String clienteId, Double valor) String
     }
 
-    Pedido *-- Item : contém
+    Pedido *-- Item : contem
     ProcessadorCheckout ..> Pedido : recebe
     ProcessadorCheckout --> IPagamentoService : utiliza
     ProcessadorCheckout --> IEstoqueService : utiliza
