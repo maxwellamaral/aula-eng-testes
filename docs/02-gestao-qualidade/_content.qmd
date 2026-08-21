@@ -250,13 +250,12 @@ Utilize as questões abaixo para autoavaliação da sua compreensão dos tópico
 
 ---
 
-## Referências e materiais relacionados
+## Materiais relacionados
 
-* @pressman2016 — Capítulos 19 (Conceitos de Qualidade), 21 (Garantia da Qualidade de Software) e 22 (Estratégias de Teste de Software).
-* @delamaro2007 — Capítulo 1 (Conceitos Básicos).
-* @sommerville2007 — Capítulos 22 (Gestão da Qualidade) e 23 (Teste de Software).
 * [Laboratório 02 — Estratégias e Níveis de Teste na Prática](laboratorio.html)
 * [Aula 01 — Introdução à Engenharia de Software (Revisão)](../01-introducao-engsoft/index.qmd)
+
+## Referências
 
 ::: {#refs}
 :::
