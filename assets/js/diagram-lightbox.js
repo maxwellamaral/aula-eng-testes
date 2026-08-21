@@ -1,5 +1,5 @@
 /**
- * Diagram Lightbox for Quarto (Mermaid, PlantUML and SVGs)
+ * Diagram & Image Lightbox for Quarto (HTML pages and RevealJS Slides)
  * Provides Fullscreen modal with Zoom In/Out, Pan (drag) and ESC to exit.
  */
 
@@ -80,7 +80,7 @@
     if (target.tagName.toLowerCase() === 'img') {
       const img = document.createElement('img');
       img.src = target.src;
-      img.alt = target.alt || 'Diagrama';
+      img.alt = target.alt || 'Imagem / Diagrama';
       img.draggable = false;
       content.appendChild(img);
     } else if (target.tagName.toLowerCase() === 'svg') {
@@ -153,21 +153,30 @@
       resetTransform();
     });
 
-    // Keyboard navigation (ESC to close, + / - to zoom, 0 to reset)
+    // Keyboard navigation (ESC to close, + / - to zoom, 0 to reset) - capture phase
     window.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('active')) return;
       if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
         closeLightbox();
       } else if (e.key === '+' || e.key === '=') {
+        e.preventDefault();
+        e.stopPropagation();
         currentScale = Math.min(currentScale * 1.25, 10);
         updateTransform();
       } else if (e.key === '-' || e.key === '_') {
+        e.preventDefault();
+        e.stopPropagation();
         currentScale = Math.max(currentScale / 1.25, 0.2);
         updateTransform();
       } else if (e.key === '0') {
+        e.preventDefault();
+        e.stopPropagation();
         resetTransform();
       }
-    });
+    }, true);
 
     // Mouse wheel zoom
     viewport?.addEventListener('wheel', (e) => {
@@ -228,7 +237,7 @@
     });
   }
 
-  // Scan and attach click triggers to diagrams
+  // Scan and attach click triggers to diagrams and slide images
   function attachDiagramTriggers() {
     // 1. Mermaid diagrams
     const mermaidContainers = document.querySelectorAll('.mermaid, pre.mermaid, div.cell-output-display figure, .cell-output-display');
@@ -239,7 +248,6 @@
       if (svg) {
         setupTrigger(container, svg);
       } else {
-        // Observer in case Mermaid renders asynchronously
         const observer = new MutationObserver(() => {
           const loadedSvg = container.querySelector('svg');
           if (loadedSvg && !container.dataset.lightboxAttached) {
@@ -251,11 +259,19 @@
       }
     });
 
-    // 2. PlantUML / SVG images inside figures or content
-    const diagramImgs = document.querySelectorAll('img[src*=".svg"], img[src*="mediabag"], .plantuml img, figure img');
-    diagramImgs.forEach((img) => {
+    // 2. PlantUML / SVG images / Markdown images in content
+    const contentImgs = document.querySelectorAll('main.content img, #quarto-document-content img, .plantuml img, figure img, img[src*=".svg"], img[src*="mediabag"]');
+    contentImgs.forEach((img) => {
       if (img.dataset.lightboxAttached) return;
       setupTrigger(img.parentElement.tagName.toLowerCase() === 'figure' ? img.parentElement : img, img);
+    });
+
+    // 3. RevealJS Slide Images and SVG elements
+    const slideImgs = document.querySelectorAll('.reveal .slides section img, .reveal .slides section svg, .reveal .slides figure');
+    slideImgs.forEach((el) => {
+      if (el.dataset.lightboxAttached) return;
+      const target = (el.tagName.toLowerCase() === 'figure') ? (el.querySelector('img, svg') || el) : el;
+      setupTrigger(el, target);
     });
   }
 
@@ -268,7 +284,7 @@
       const badge = document.createElement('button');
       badge.className = 'dl-expand-badge';
       badge.type = 'button';
-      badge.title = 'Visualizar diagrama em tela cheia com zoom e pan';
+      badge.title = 'Visualizar em tela cheia com zoom e pan';
       badge.innerHTML = `
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <polyline points="15 3 21 3 21 9"></polyline>
@@ -288,13 +304,12 @@
     }
 
     wrapper.addEventListener('click', (e) => {
-      // Avoid triggering if clicking code or other links
       if (e.target.closest('a, button:not(.dl-expand-badge), pre, code')) return;
       openLightbox(targetElement);
     });
   }
 
-  // Initialize on DOMContentLoaded and polling for async Mermaid
+  // Initialize on DOMContentLoaded and polling for dynamic elements / RevealJS
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       attachDiagramTriggers();
@@ -307,13 +322,27 @@
     setTimeout(attachDiagramTriggers, 1500);
   }
 
-  // Quarto tab change listener (re-attach if diagrams are in tabs)
+  // Quarto tab change & Reveal slide change listener
   document.addEventListener('click', (e) => {
-    if (e.target.closest('.nav-link, .nav-item')) {
+    if (e.target.closest('.nav-link, .nav-item, .navigate-left, .navigate-right, .navigate-up, .navigate-down')) {
       setTimeout(attachDiagramTriggers, 200);
       setTimeout(attachDiagramTriggers, 600);
     }
   });
+
+  // Reveal slidechanged event if Reveal is present
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', () => {
+      if (window.Reveal) {
+        window.Reveal.on('slidechanged', () => {
+          setTimeout(attachDiagramTriggers, 100);
+        });
+        window.Reveal.on('ready', () => {
+          setTimeout(attachDiagramTriggers, 100);
+        });
+      }
+    });
+  }
 
   // Export to window
   window.DiagramLightbox = {
