@@ -1,3 +1,5 @@
+![](/assets/images/00-apresentacao/intro.png){.nostretch fig-align="center" width="100%"}
+
 ## Contextualização
 
 Na Engenharia de Software, desenvolver um sistema não se resume a escrever linhas de código que executam sem interrupções imediatas. Um produto só possui real valor quando atende aos requisitos declarados, satisfaz as necessidades explícitas e implícitas dos seus usuários, comporta-se de maneira confiável sob condições adversas e pode ser mantido e evoluído sem custos proibitivos [@pressman2016].
