@@ -97,7 +97,7 @@ Abaixo apresentamos um exemplo de referência completo para a abordagem **2.2 �
 
 ### Exemplo: 2.2 — Integração Incremental *Top-Down* (*Checkout de E-commerce*)
 
-#### 1. Diagrama de Classes UML (Mermaid)
+#### 1. Diagrama de Classes UML
 
 ```{mermaid}
 classDiagram
@@ -172,7 +172,180 @@ classDiagram
     AntiFraudeStub ..|> IAntiFraudeService : implementa
 ```
 
-#### 2. Explicação Textual do Cenário
+#### 2. Código-fonte do Diagrama (Mermaid e PlantUML)
+
+Observe como o diagrama acima pode ser expresso em sintaxe textual tanto no **Mermaid** quanto no **PlantUML**:
+
+::: {.panel-tabset}
+### Sintaxe Mermaid
+```text
+classDiagram
+    class Pedido {
+        -String id
+        -String clienteId
+        -Double valorTotal
+        -List~Item~ itens
+        +calcularTotal() Double
+    }
+
+    class Item {
+        -String produtoId
+        -Integer quantidade
+        -Double precoUnitario
+    }
+
+    class ProcessadorCheckout {
+        -IPagamentoService pagamentoService
+        -IEstoqueService estoqueService
+        -IAntiFraudeService antiFraudeService
+        +ProcessadorCheckout(IPagamentoService, IEstoqueService, IAntiFraudeService)
+        +processar(Pedido pedido) Boolean
+    }
+
+    class IPagamentoService {
+        <<interface>>
+        +autorizar(Double valor) Boolean
+        +capturar(String transacaoId) String
+    }
+
+    class IEstoqueService {
+        <<interface>>
+        +reservar(List~Item~ itens) Boolean
+        +consultarDisponibilidade(String produtoId) Integer
+    }
+
+    class IAntiFraudeService {
+        <<interface>>
+        +analisarRisco(String clienteId, Double valor) String
+    }
+
+    class PagamentoStub {
+        <<Stub (Simulador)>>
+        -Boolean respostaPadrao
+        +autorizar(Double valor) Boolean
+        +capturar(String transacaoId) String
+        +configurarResposta(Boolean status) void
+    }
+
+    class EstoqueStub {
+        <<Stub (Simulador)>>
+        -Map~String, Integer~ estoqueSimulado
+        +reservar(List~Item~ itens) Boolean
+        +consultarDisponibilidade(String produtoId) Integer
+    }
+
+    class AntiFraudeStub {
+        <<Stub (Simulador)>>
+        -String scoreSimulado
+        +analisarRisco(String clienteId, Double valor) String
+    }
+
+    Pedido *-- Item : contém
+    ProcessadorCheckout ..> Pedido : recebe
+    ProcessadorCheckout --> IPagamentoService : utiliza
+    ProcessadorCheckout --> IEstoqueService : utiliza
+    ProcessadorCheckout --> IAntiFraudeService : utiliza
+
+    PagamentoStub ..|> IPagamentoService : implementa
+    EstoqueStub ..|> IEstoqueService : implementa
+    AntiFraudeStub ..|> IAntiFraudeService : implementa
+```
+
+* 📖 [Documentação Oficial do Mermaid](https://mermaid.js.org/)
+* 💻 [Simulador Online — Mermaid Live Editor](https://mermaid.live/)
+
+### Sintaxe PlantUML
+```text
+@startuml
+skinparam classAttributeIconSize 0
+
+class Pedido {
+  - id: String
+  - clienteId: String
+  - valorTotal: Double
+  - itens: List<Item>
+  + calcularTotal(): Double
+}
+
+class Item {
+  - produtoId: String
+  - quantidade: Integer
+  - precoUnitario: Double
+}
+
+class ProcessadorCheckout {
+  - pagamentoService: IPagamentoService
+  - estoqueService: IEstoqueService
+  - antiFraudeService: IAntiFraudeService
+  + ProcessadorCheckout(pagamentoService: IPagamentoService, estoqueService: IEstoqueService, antiFraudeService: IAntiFraudeService)
+  + processar(pedido: Pedido): Boolean
+}
+
+interface IPagamentoService {
+  + autorizar(valor: Double): Boolean
+  + capturar(transacaoId: String): String
+}
+
+interface IEstoqueService {
+  + reservar(itens: List<Item>): Boolean
+  + consultarDisponibilidade(produtoId: String): Integer
+}
+
+interface IAntiFraudeService {
+  + analisarRisco(clienteId: String, valor: Double): String
+}
+
+class PagamentoStub <<Stub (Simulador)>> {
+  - respostaPadrao: Boolean
+  + autorizar(valor: Double): Boolean
+  + capturar(transacaoId: String): String
+  + configurarResposta(status: Boolean): void
+}
+
+class EstoqueStub <<Stub (Simulador)>> {
+  - estoqueSimulado: Map<String, Integer>
+  + reservar(itens: List<Item>): Boolean
+  + consultarDisponibilidade(produtoId: String): Integer
+}
+
+class AntiFraudeStub <<Stub (Simulador)>> {
+  - scoreSimulado: String
+  + analisarRisco(clienteId: String, valor: Double): String
+}
+
+Pedido *-- "1..*" Item : contém
+ProcessadorCheckout ..> Pedido : recebe
+ProcessadorCheckout --> IPagamentoService : utiliza
+ProcessadorCheckout --> IEstoqueService : utiliza
+ProcessadorCheckout --> IAntiFraudeService : utiliza
+
+PagamentoStub ..|> IPagamentoService : implementa
+EstoqueStub ..|> IEstoqueService : implementa
+AntiFraudeStub ..|> IAntiFraudeService : implementa
+@enduml
+```
+
+* 📖 [Documentação Oficial do PlantUML](https://plantuml.com/)
+* 💻 [Simulador Online — PlantText Editor](https://www.planttext.com/)
+* 💻 [Servidor Online Oficial — PlantUML Web Server](https://www.plantuml.com/plantuml/uml/)
+:::
+
+::: {.callout-note}
+### 🛠️ Ferramentas, Documentação e Simuladores Online
+Você pode testar, editar e visualizar seus diagramas diretamente no navegador antes de colocá-los no seu relatório:
+
+* **Mermaid**: [Documentação Oficial](https://mermaid.js.org/) | [Mermaid Live Editor](https://mermaid.live/) (renderização em tempo real).
+* **PlantUML**: [Documentação Oficial](https://plantuml.com/) | [PlantText Editor](https://www.planttext.com/) | [PlantUML Web Server](https://www.plantuml.com/plantuml/uml/).
+:::
+
+::: {.callout-tip}
+### 📚 Precisa revisar modelagem com Diagramas de Classes?
+Se você precisa relembrar os conceitos de classes, interfaces, visibilidade (`+`, `-`, `#`), atributos, métodos e tipos de relacionamentos (associação, agregação, composição, dependência e realização), consulte a aula do professor:
+
+👉 **[Modelagem de Software com Diagramas de Classes UML](https://maxwellamaral.github.io/lessons/softeng/design/uml_classes/)**
+:::
+
+#### 3. Explicação Textual do Cenário
 
 > **Contexto**: No desenvolvimento do fluxo de finalização de compras, a classe de controle de alto nível `ProcessadorCheckout` precisa orquestrar validação de risco, reserva de produtos e cobrança financeira. No entanto, as integrações reais com adquirentes de cartão (`IPagamentoService`), armazém logístico (`IEstoqueService`) e birô de crédito (`IAntiFraudeService`) são lentas, custosas ou ainda estão sendo desenvolvidas por outras equipes.
 >
@@ -256,5 +429,8 @@ Antes de considerar sua atividade finalizada, confira o seguinte *checklist*:
 
 * [Aula 02 — Introdução à Gestão da Qualidade de Produto](index.qmd)
 * [Apresentação de Slides da Aula 02](slides.qmd)
+* [Material de Apoio: Modelagem de Software com Diagramas de Classes UML (Prof. Maxwell Amaral)](https://maxwellamaral.github.io/lessons/softeng/design/uml_classes/)
+* [Mermaid — Documentação Oficial e Live Editor](https://mermaid.js.org/)
+* [PlantUML — Documentação Oficial e PlantText Editor](https://plantuml.com/)
 * @pressman2016 — Capítulo 22 (*Estratégias de Teste de Software*)
 * @delamaro2007 — Capítulo 1 (*Conceitos Básicos de Teste de Software*)
