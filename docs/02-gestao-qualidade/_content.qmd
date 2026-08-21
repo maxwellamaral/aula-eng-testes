@@ -11,8 +11,6 @@ Ao final desta aula, você será capaz de responder e fundamentar:
 1. **Quais são as características genéricas de um software de alta qualidade?**
 2. **O que é garantia da qualidade de software (SQA)?**
 3. **Quais são as estratégias aplicáveis aos testes de software?**
-4. **Quais métodos são usados para projetar casos de teste eficazes?**
-5. **Existem métodos práticos para garantir que um software está correto?**
 
 ::: {.callout-note}
 ### Conceito-chave — A natureza da qualidade em software
@@ -137,96 +135,13 @@ Verifica se o software se integra perfeitamente a outros elementos do sistema ma
 
 ---
 
-## 4. Métodos para projetar casos de teste eficazes
-
-Testar não consiste em inventar entradas aleatórias esperando que algo dê errado. Como o teste exaustivo é computacionalmente impossível (o número de combinações de entradas, estados e dados é virtualmente infinito), o objetivo da Engenharia de Testes é **projetar um conjunto mínimo de casos de teste com a máxima probabilidade de revelar a maior quantidade possível de defeitos** [@delamaro2007; @pressman2016].
-
-Para isso, empregam-se duas grandes famílias complementares de técnicas:
-
-![Métodos para Projeto de Casos de Teste](/assets/images/02-gestao-qualidade/04-metodos-projeto-testes.svg){#fig-metodos-testes fig-align="center" width="85%"}
-
-### Técnicas de Caixa-Preta (*Black-Box / Funcional*)
-
-As técnicas de caixa-preta tratam o sistema como um bloco opaco. Os casos de teste são derivados exclusivamente da especificação de requisitos e do comportamento externo esperado, sem examinar o código-fonte interno.
-
-1. **Particionamento em Classes de Equivalência (*Equivalence Partitioning*)**:
-   Divide o domínio de entrada em classes de dados válidos e inválidos. Parte-se da premissa de que todos os valores pertencentes a uma mesma classe receberão tratamento análogo pelo programa. Testa-se apenas um ou poucos representantes de cada classe, reduzindo drasticamente a quantidade de testes necessários.
-2. **Análise de Valor-Limite (*Boundary Value Analysis*)**:
-   A experiência em Engenharia de Software demonstra que a maioria esmagadora dos defeitos ocorre nas **fronteiras** das classes de equivalência (erros de `>`, `>=`, `<`, `<=`, índices nulos ou limites superiores). Essa técnica projeta casos de teste que incidem exatamente nos valores limite, imediatamente abaixo e imediatamente acima das fronteiras.
-3. **Tabela de Decisão (*Decision Table*)**:
-   Modela regras de negócio complexas que combinam múltiplas condições lógicas booleanas para disparar ações específicas.
-4. **Teste de Transição de Estados (*State Transition Testing*)**:
-   Mapeia como o sistema reage a eventos e estímulos externos dependendo do seu estado interno atual (ex.: ciclo de vida de um pedido de compras).
-
-### Técnicas de Caixa-Branca (*White-Box / Estrutural*)
-
-As técnicas de caixa-branca utilizam o conhecimento da estrutura lógica interna, dos fluxos de controle e das instruções do código-fonte para derivar casos de teste [@pressman2016; @delamaro2007].
-
-1. **Teste de Caminhos Básicos (*Basis Path Testing*)**:
-   Representa o fluxo do código por meio de um **Grafo de Fluxo de Controle** ($G$). A partir da topologia do grafo, calcula-se a **Complexidade Ciclomática de McCabe** $V(G)$:
-
-   $$V(G) = A - N + 2$$
-
-   Onde $A$ é o número de arestas e $N$ é o número de nós do grafo (ou equivalentemente, $V(G) = P + 1$, onde $P$ é o número de nós de predicado/decisão). $V(G)$ define o número de caminhos linearmente independentes que precisam ser executados para garantir cobertura estrutural completa da lógica básica.
-2. **Critérios de Cobertura Lógica**:
-   * *Cobertura de Instruções (*Statement Coverage*)*: assegura que cada linha executável de código foi executada pelo menos uma vez.
-   * *Cobertura de Decisões/Ramos (*Branch Coverage*)*: assegura que cada ramificação condicional (verdadeiro e falso) foi percorrida.
-   * *Cobertura de Condições (*Condition Coverage*)*: avalia cada subexpressão booleana individual dentro de decisões compostas.
-
-::: {.callout-tip}
-### Complementaridade essencial
-Nenhuma técnica substitui a outra. O teste de caixa-preta pode detectar a ausência de uma funcionalidade inteira exigida pelo usuário (o que o teste estrutural não enxerga se o código correspondente nunca foi escrito). Já o teste de caixa-branca detecta ramos ocultos, caminhos de erro não documentados e vulnerabilidades internas que o teste funcional não alcança.
-:::
-
----
-
-## 5. Existem métodos práticos para garantir que um software está correto?
-
-Uma das perguntas mais instigantes da Ciência da Computação e da Engenharia de Software é: **podemos provar matematicamente que um software está 100% correto?**
-
-### Métodos Formais e Verificação de Corretude
-
-A resposta teórica é sim: por meio de **Métodos Formais de Software** [@pressman2016, Cap. 28]. Métodos formais utilizam rigor matemático para:
-
-* Especificar o comportamento esperado do sistema usando lógica de predicados, teoria dos conjuntos e linguagens formais (como Z, VDM, B-Method e Alloy).
-* Anotar programas com **Pré-condições** ($P$), **Pós-condições** ($Q$) e **Invariantes** ($I$).
-* Realizar **Provas Formais de Teoremas** (*Theorem Proving*) ou **Verificação de Modelos (*Model Checking*)** para provar formalmente que a transição de estados satisfaz a especificação axiomática:
-
-$$\{P\} \; \text{Código} \; \{Q\}$$
-
-A metodologia **Cleanroom (Engenharia de Software Sala Limpa)** foi um marco histórico que combinou métodos formais de verificação de corretude estática com controle estatístico de qualidade, eliminando o teste unitário convencional em favor da verificação matemática rigorosa antes da integração.
-
-### Limitações práticas na indústria contemporânea
-
-Se a prova formal existe, por que ela não é adotada em todos os sistemas de software?
-
-1. **Custo e complexidade proibitivos**: a prova matemática de sistemas com milhões de linhas de código exige esforço humano e computacional exponencial.
-2. **Ambientes dinâmicos e dependências externas**: sistemas modernos operam sobre frameworks complexos, bancos de dados distribuídos, APIs de terceiros e sistemas operacionais cujo comportamento exato não é formalizável na prática.
-3. **O problema da especificação correta**: a prova formal garante apenas que o *código é matematicamente equivalente à sua especificação formal*. Se a especificação formal contiver uma premissa errada sobre o que o usuário humano realmente necessitava, o software estará "provadamente correto", mas continuará sendo inútil na prática.
-
-::: {.callout-important}
-### A máxima fundamental de Edsger W. Dijkstra
-> *"O teste de programas pode ser uma maneira muito eficaz de mostrar a presença de defeitos, mas é irremediavelmente inadequado para mostrar a sua ausência."*
-:::
-
-### A resposta pragmática da Engenharia de Software
-
-Diante da impossibilidade prática da prova formal absoluta para sistemas genéricos, a Engenharia de Software responde com uma **estratégia de garantia empírica em múltiplas camadas**:
-
-* **Prevenção estática**: revisões formais de requisitos e arquitetura, linters, tipagem estática e analisadores de segurança (SAST).
-* **Automação contínua (CI/CD)**: pirâmide de testes automatizados executando suítes de unidade, integração e aceitação a cada commit.
-* **Tolerância a falhas e arquiteturas resilientes**: padrões como *circuit breaker*, *fallbacks*, isolamento de microsserviços e redundância.
-* **Observabilidade e monitoramento em produção**: métricas de saúde, logs estruturados e *canary deployments* para detectar e mitigar qualquer anomalia em tempo real.
-
----
-
-## Python e ferramentas em foco — Formalizando expectativas com `pytest`
+## Python e ferramentas em foco — Automatizando testes de unidade com `pytest`
 
 ::: {.callout-tip}
 ### Python e ferramentas em foco — Expressando critérios de qualidade no código
 Na stack de VVTS, utilizamos o **Python 3.11+** e o framework **`pytest`** para transformar requisitos e regras de negócio em verificações automáticas e repetíveis.
 
-Observe como as técnicas de **Particionamento em Classes de Equivalência** e **Análise de Valor-Limite** orientam diretamente a estruturação dos testes automatizados:
+Como vimos na estratégia em espiral, o **Teste de Unidade** é a primeira linha de defesa: ele valida funções, métodos e regras isoladas antes da integração. Observe como podemos implementar verificações com asserções diretas e testes parametrizados:
 :::
 
 ```{pyodide-python}
@@ -259,8 +174,8 @@ def calcular_desconto(valor_compra: float, fidelidade: bool) -> float:
 Observe que, uma vez executada a célula acima (clicando no botão `Run Code`), a função `calcular_desconto` fica registrada na sessão do navegador. A célula seguinte tem **acesso direto ao contexto anterior**:
 
 ```{pyodide-python}
-# Bloco 2: Executando cenários de fronteira usando a função declarada no Bloco 1
-print("--- Cenários de Partição e Valor-Limite ---")
+# Bloco 2: Executando cenários de teste da função declarada no Bloco 1
+print("--- Verificação Manual de Cenários de Teste ---")
 print(f"R$  99.99 (sem fidelidade) -> R$ {calcular_desconto(99.99, False):.2f}")
 print(f"R$ 100.00 (sem fidelidade) -> R$ {calcular_desconto(100.00, False):.2f}")
 print(f"R$ 500.00 (com fidelidade) -> R$ {calcular_desconto(500.00, True):.2f}")
@@ -274,22 +189,22 @@ import micropip
 await micropip.install("pytest")
 import pytest
 
-# 1. Testando classes inválidas e limites inferiores (Valor-Limite e Equivalência)
+# 1. Testando tratamento de erros e exceções em nível de unidade
 def test_valor_compra_invalido_deve_lancar_excecao():
     with pytest.raises(ValueError):
         calcular_desconto(0.0, fidelidade=False)
     with pytest.raises(ValueError):
         calcular_desconto(-15.50, fidelidade=False)
 
-# 2. Testando partições válidas e fronteiras exatas (R$ 99.99, R$ 100.00, R$ 500.00, R$ 500.01)
+# 2. Testando diferentes faixas de valores e regras de negócio com parametrização
 @pytest.mark.parametrize("valor, fidelidade, esperado", [
-    (99.99, False, 99.99),     # Limite superior da partição 0%
-    (100.00, False, 95.00),    # Limite inferior da partição 5%
-    (500.00, False, 475.00),   # Limite superior da partição 5%
-    (500.01, False, 450.01),   # Limite inferior da partição 10%
-    (100.00, True, 93.00),     # Partição 5% + 2% fidelidade
+    (99.99, False, 99.99),     # Faixa 0% de desconto
+    (100.00, False, 95.00),    # Faixa 5% de desconto
+    (500.00, False, 475.00),   # Faixa 5% de desconto
+    (500.01, False, 450.01),   # Faixa 10% de desconto
+    (100.00, True, 93.00),     # Faixa 5% + 2% fidelidade
 ])
-def test_calculo_desconto_fronteiras(valor, fidelidade, esperado):
+def test_calculo_desconto_faixas(valor, fidelidade, esperado):
     assert calcular_desconto(valor, fidelidade) == esperado
 
 # Executando a suíte de testes e exibindo o feedback:
@@ -304,8 +219,8 @@ for v, f, esp in [
     (500.01, False, 450.01),
     (100.00, True, 93.00),
 ]:
-    test_calculo_desconto_fronteiras(v, f, esp)
-    print(f"✅ Partição R$ {v:6.2f} (fidelidade={str(f):5}) -> R$ {esp:6.2f} [PASSOU]")
+    test_calculo_desconto_faixas(v, f, esp)
+    print(f"✅ Cenário R$ {v:6.2f} (fidelidade={str(f):5}) -> R$ {esp:6.2f} [PASSOU]")
 ```
 
 Essa disciplina fornecerá o ferramental metodológico para projetar e automatizar baterias de testes com alto poder de detecção de defeitos.
@@ -325,18 +240,12 @@ Utilize as questões abaixo para autoavaliação da sua compreensão dos tópico
 3. **Quais são as estratégias aplicáveis aos testes de software?**
    * *Síntese:* A estratégia organiza o teste em uma espiral evolutiva de níveis: Teste de Unidade, Teste de Integração (*top-down*, *bottom-up*, *smoke* e regressão), Teste de Validação (critérios de aceitação, testes Alfa e Beta) e Teste de Sistema (segurança, recuperação, desempenho e estresse).
 
-4. **Quais métodos são usados para projetar casos de teste eficazes?**
-   * *Síntese:* Métodos de Caixa-Preta/Funcionais (particionamento de equivalência, análise de valor-limite, tabelas de decisão e matrizes de estado) combinados com métodos de Caixa-Branca/Estruturais (caminhos básicos, complexidade ciclomática de McCabe e cobertura de instruções e condições).
-
-5. **Existem métodos práticos para garantir que um software está correto?**
-   * *Síntese:* Métodos formais matemáticos e abordagens de Sala Limpa (*Cleanroom*) oferecem provas formais de corretude teórica, mas enfrentam barreiras severas de custo e aplicabilidade para sistemas complexos. Na prática da engenharia, a confiabilidade é obtida pela combinação rigorosa de verificações estáticas, pirâmide de testes automatizados, integração contínua (CI/CD) e arquitetura tolerante a falhas.
-
 ---
 
 ## Referências e materiais relacionados
 
-* @pressman2016 — Capítulos 19 (Conceitos de Qualidade), 21 (Garantia da Qualidade de Software), 22 (Estratégias de Teste de Software), 23 (Teste de Aplicativos Convencionais) e 28 (Modelagem Formal e Verificação).
-* @delamaro2007 — Capítulos 1 (Conceitos Básicos) e 2 (Critérios de Teste de Software).
+* @pressman2016 — Capítulos 19 (Conceitos de Qualidade), 21 (Garantia da Qualidade de Software) e 22 (Estratégias de Teste de Software).
+* @delamaro2007 — Capítulo 1 (Conceitos Básicos).
 * @sommerville2007 — Capítulos 22 (Gestão da Qualidade) e 23 (Teste de Software).
 * [Aula 01 — Introdução à Engenharia de Software (Revisão)](../01-introducao-engsoft/index.qmd)
 

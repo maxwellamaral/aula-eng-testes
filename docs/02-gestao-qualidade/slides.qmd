@@ -1,6 +1,6 @@
 ---
 title: "Aula 02 — Introdução à Gestão da Qualidade de Produto"
-subtitle: "Dimensões de qualidade, SQA, estratégias e métodos de teste"
+subtitle: "Dimensões de qualidade, SQA e estratégias de teste"
 author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
 institute: "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) — Campus João Pessoa"
 lang: pt-BR
@@ -180,88 +180,6 @@ Estratégia de Testes
 - **Teste**: atividade planejada e sistemática cujo objetivo é **revelar falhas**.
 - **Depuração**: atividade investigativa e técnica para **localizar a causa-raiz no código, corrigir o defeito e validar a correção** sem introduzir novas falhas [@pressman2016].
 
-## Podemos testar todas as possibilidades? {.question}
-
-::: {.chapter}
-Métodos de Teste
-:::
-
-Imagine um campo de texto que aceita uma senha de 8 a 16 caracteres.
-
-Quantas combinações possíveis de caracteres existem? O teste exaustivo é viável?
-
-Se não podemos testar tudo, **como escolher os testes mais eficazes?**
-
-## Métodos para Projeto de Casos de Teste {.example}
-
-::: {.chapter}
-Métodos de Teste
-:::
-
-![](/assets/images/02-gestao-qualidade/04-metodos-projeto-testes.png){.nostretch fig-align="center" width="85%"}
-
-## Técnicas de Caixa-Preta (Funcionais) {.concept}
-
-::: {.chapter}
-Métodos de Teste
-:::
-
-Tratam o sistema como um bloco opaco, baseando-se apenas nos requisitos:
-
-- **Particionamento em Classes de Equivalência**: divide entradas em conjuntos válidos e inválidos homogêneos.
-- **Análise de Valor-Limite**: testa exatamente as fronteiras das partições (onde ocorre a maioria dos erros).
-- **Tabelas de Decisão**: modela regras de negócio com combinações de condições booleanas.
-- **Transição de Estados**: mapeia o comportamento do sistema diante de eventos e mudanças de estado.
-
-## Técnicas de Caixa-Branca (Estruturais) {.concept .definition}
-
-::: {.chapter}
-Métodos de Teste
-:::
-
-Utilizam a estrutura lógica interna e o código-fonte:
-
-- **Teste de Caminhos Básicos**: garante a execução de caminhos linearmente independentes no grafo de fluxo.
-- **Complexidade Ciclomática de McCabe $V(G)$**:
-
-$$V(G) = A - N + 2 = P + 1$$
-
-Define o número mínimo de casos de teste necessários para cobrir todas as decisões lógicas fundamentais.
-
-## É possível provar que um software está 100% correto? {.question}
-
-::: {.chapter}
-Verificação e Limites
-:::
-
-Podemos usar matemática e lógica formal para provar que um programa nunca irá falhar?
-
-O que acontece quando levamos a teoria para os sistemas comerciais do mundo real?
-
-## Limites da Prova Formal e a Máxima de Dijkstra {.concept .definition}
-
-::: {.chapter}
-Verificação e Limites
-:::
-
-> *"O teste de programas pode ser uma maneira muito eficaz de mostrar a presença de defeitos, mas é irremediavelmente inadequado para mostrar a sua ausência."*
-> — Edsger W. Dijkstra
-
-Métodos formais garantem apenas que o código atende à sua especificação formal. Se a especificação humana estiver incorreta, o software será provadamente inútil.
-
-## A Resposta da Engenharia de Software {.example}
-
-::: {.chapter}
-Verificação e Limites
-:::
-
-Como não há prova matemática viável para sistemas complexos genéricos, a indústria adota **qualidade em múltiplas camadas**:
-
-- **Prevenção Estática**: revisões por pares, linters e análise estática de segurança.
-- **Automação Contínua**: pirâmide de testes no pipeline de CI/CD.
-- **Arquitetura Resiliente**: tolerância a falhas, isolamento e *fallbacks*.
-- **Observabilidade**: logs estruturados, monitoramento e métricas em produção.
-
 ## Atividade em duplas — Classificando a Qualidade {.activity}
 
 ::: {.chapter}
@@ -270,18 +188,18 @@ Síntese
 
 Considere um sistema de transferência bancária instantânea (ex.: Pix):
 
-1. Identifique **duas dimensões de Garvin** críticas para esse sistema.
-2. Formule **um caso de teste funcional (caixa-preta)** aplicando análise de valor-limite em um valor de transferência.
+1. Identifique **duas dimensões de Garvin** críticas para a confiabilidade desse sistema.
+2. Exemplifique um cenário para **teste de unidade** e outro para **teste de integração** nesse fluxo.
 3. Destaque um risco que exigiria um **teste de sistema (estresse ou segurança)**.
 
 Discutam em 5 minutos e compartilhem suas conclusões.
 
 ## O que levar desta aula {.takeaway}
 
-Qualidade de software não é um evento final: é uma disciplina contínua.
+Qualidade de software não é um evento final: é uma disciplina contínua construída ao longo de todo o ciclo de vida.
 
-Testes eficazes não buscam combinações infinitas, mas utilizam técnicas estruturadas de caixa-preta e caixa-branca para encontrar o maior número de falhas com custo controlado.
+A qualidade sustentável integra a governança de processos (**SQA**), a inspeção de artefatos (**QC**) e uma estratégia progressiva de testes em espiral (**unidade, integração, validação e sistema**).
 
-Na próxima semana, aprofundaremos as características de qualidade com a **ISO/IEC 25010**.
+Na próxima semana, aprofundaremos em conceitos de erro, defeito, falha, V&V estático e dinâmico, e a relação entre engenharia de requisitos e testes.
 
 [📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}

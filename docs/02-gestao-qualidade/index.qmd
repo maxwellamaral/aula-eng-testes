@@ -1,6 +1,6 @@
 ---
 title: "Aula 02 — Introdução à Gestão da Qualidade de Produto"
-subtitle: "Dimensões de qualidade, SQA, estratégias e métodos de projeto de testes"
+subtitle: "Dimensões de qualidade, SQA e estratégias de teste"
 lang: pt-BR
 format:
   html:
