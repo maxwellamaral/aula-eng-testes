@@ -128,10 +128,18 @@ Verifica se o software se integra perfeitamente a outros elementos do sistema ma
 * **Validação**: *"Estamos construindo o produto certo?"* — Confere se o software atende às reais necessidades de negócio e expectativas do usuário final.
 :::
 
+::: {.callout-note}
 #### Teste versus Depuração (*Debugging*)
 É fundamental não confundir as duas atividades:
+
 * **Teste**: processo planejado e sistemático cujo objetivo é **revelar a presença de falhas**.
 * **Depuração (*Debugging*)**: consequência de um teste bem-sucedido. É a atividade investigativa de engenharia para **localizar a causa-raiz no código, corrigir o defeito e validar a correção** sem introduzir novas falhas [@pressman2016].
+:::
+
+::: {.callout-tip}
+### 🧪 Atividade Prática — Laboratório 02
+Pratique e aprofunde esses conceitos modelando cenários reais com diagramas UML e apoio de IA no [Laboratório 02 — Estratégias e Níveis de Teste na Prática](laboratorio.html).
+:::
 
 ---
 
@@ -247,6 +255,7 @@ Utilize as questões abaixo para autoavaliação da sua compreensão dos tópico
 * @pressman2016 — Capítulos 19 (Conceitos de Qualidade), 21 (Garantia da Qualidade de Software) e 22 (Estratégias de Teste de Software).
 * @delamaro2007 — Capítulo 1 (Conceitos Básicos).
 * @sommerville2007 — Capítulos 22 (Gestão da Qualidade) e 23 (Teste de Software).
+* [Laboratório 02 — Estratégias e Níveis de Teste na Prática](laboratorio.html)
 * [Aula 01 — Introdução à Engenharia de Software (Revisão)](../01-introducao-engsoft/index.qmd)
 
 ::: {#refs}

@@ -11,6 +11,7 @@ format:
 ## Material da aula
 
 - 🖥️ [Visualizar apresentação de slides](slides.qmd)
+- 🧪 [Roteiro do Laboratório 02 — Estratégias e Níveis de Teste na Prática](laboratorio.html)
 :::
 
 {{< include _content.qmd >}}
