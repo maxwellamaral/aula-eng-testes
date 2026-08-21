@@ -318,5 +318,4 @@ Antes de considerar sua atividade finalizada, confira o seguinte *checklist*:
 * [Material de Apoio: Modelagem de Software com Diagramas de Classes UML (Prof. Maxwell Amaral)](https://maxwellamaral.github.io/lessons/softeng/design/uml_classes/)
 * [Mermaid — Documentação Oficial e Live Editor](https://mermaid.js.org/)
 * [PlantUML — Documentação Oficial e PlantText Editor](https://plantuml.com/)
-* @pressman2016 — Capítulo 22 (*Estratégias de Teste de Software*)
-* @delamaro2007 — Capítulo 1 (*Conceitos Básicos de Teste de Software*)
+
