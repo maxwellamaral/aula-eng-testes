@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570" width="960" height="570">
+  <defs>
+    <!-- Fundo geral escuro -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d18"/>
+      <stop offset="100%" stop-color="#0f1b30"/>
+    </linearGradient>
+
+    <!-- Preenchimento suave dos setores da espiral -->
+    <linearGradient id="bandGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.25"/>
+    </linearGradient>
+    
+    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.15"/>
+    </linearGradient>
+
+    <filter id="spiralGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#38bdf8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Fundo do Container -->
+  <rect width="960" height="570" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Título e Subtítulo -->
+  <text x="480" y="38" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">A Espiral da Estratégia de Teste de Software</text>
+  <text x="480" y="60" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="12.5">Conceito clássico de Roger S. Pressman: correspondência entre fases de engenharia e níveis de teste</text>
+
+  <!-- ================= PREENCHIMENTO DAS FAIXAS DA ESPIRAL ================= -->
+  <!-- Faixa 3-4 (Validação/Sistema) -->
+  <path d="M 160 290 A 372.5 195 0 0 1 905 290 A 412.5 215 0 0 1 80 290 A 440 230 0 0 1 940 290" 
+        fill="url(#bandGrad)" stroke="none" opacity="0.4"/>
+
+  <!-- Faixa 2-3 (Integração/Validação) -->
+  <path d="M 240 290 A 290 150 0 0 1 820 290 A 330 170 0 0 1 160 290 A 372.5 195 0 0 1 905 290" 
+        fill="url(#bandGrad)" stroke="none" opacity="0.6"/>
+
+  <!-- Faixa 1-2 (Unidade/Integração) -->
+  <path d="M 320 290 A 207.5 105 0 0 1 735 290 A 247.5 125 0 0 1 240 290 A 290 150 0 0 1 820 290" 
+        fill="url(#bandGrad)" stroke="none" opacity="0.8"/>
+
+  <!-- Núcleo Central (Unidade/Código) -->
+  <path d="M 395 290 A 127.5 60 0 0 1 650 290 A 165 80 0 0 1 320 290 A 207.5 105 0 0 1 735 290" 
+        fill="url(#innerGrad)" stroke="none"/>
+
+
+  <!-- ================= LINHA CONTÍNUA DA ESPIRAL ================= -->
+  <g filter="url(#spiralGlow)">
+    <path d="M 395 295
+             A 127.5 60 0 0 1 650 290
+             A 165 80 0 0 1 320 290
+             A 207.5 105 0 0 1 735 290
+             A 247.5 125 0 0 1 240 290
+             A 290 150 0 0 1 820 290
+             A 330 170 0 0 1 160 290
+             A 372.5 195 0 0 1 905 290
+             A 412.5 215 0 0 1 80 290"
+          fill="none" 
+          stroke="#38bdf8" 
+          stroke-width="2.5" 
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Segmento de Início da Espiral no Centro -->
+  <line x1="395" y1="295" x2="650" y2="255" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="395" cy="295" r="4.5" fill="#f43f5e"/>
+
+
+  <!-- ================= TEXTOS DA PARTE SUPERIOR (NÍVEIS DE TESTE) ================= -->
+  <!-- Nível 4: Teste de sistema (entre volta 3 e 4) -->
+  <text x="480" y="112" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" letter-spacing="0.3">Teste de sistema</text>
+
+  <!-- Nível 3: Teste de validação (entre volta 2 e 3) -->
+  <text x="480" y="158" text-anchor="middle" fill="#e0f2fe" font-family="system-ui, -apple-system, sans-serif" font-size="15.5" font-weight="700" letter-spacing="0.3">Teste de validação</text>
+
+  <!-- Nível 2: Teste de integração (entre volta 1 e 2) -->
+  <text x="480" y="202" text-anchor="middle" fill="#bae6fd" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" letter-spacing="0.3">Teste de integração</text>
+
+  <!-- Nível 1: Teste de unidade (no núcleo da volta 1) -->
+  <text x="510" y="246" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" font-weight="700" letter-spacing="0.3">Teste de unidade</text>
+
+
+  <!-- ================= TEXTOS DA PARTE INFERIOR (FASES / ARTEFATOS) ================= -->
+  <!-- Código (no núcleo central) -->
+  <text x="520" y="340" text-anchor="middle" fill="#f1f5f9" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600">Código</text>
+
+  <!-- Projeto (entre volta 1 e 2) -->
+  <text x="480" y="392" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="15.5" font-weight="600">Projeto</text>
+
+  <!-- Requisitos (entre volta 2 e 3) -->
+  <text x="480" y="440" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">Requisitos</text>
+
+  <!-- Engenharia de sistemas (entre volta 3 e 4) -->
+  <text x="480" y="488" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="16.5" font-weight="600">Engenharia de sistemas</text>
+
+  <!-- Indicação do sentido de propagação -->
+  <g transform="translate(60, 528)">
+    <text x="0" y="0" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="12">
+      <tspan fill="#f43f5e" font-weight="700">&#9679; Origem no Código</tspan> &#8594; A espiral progride expandindo do <tspan fill="#38bdf8" font-weight="600">Teste de Unidade</tspan> até o <tspan fill="#ffffff" font-weight="600">Teste de Sistema</tspan>.
+    </text>
+  </g>
+</svg>

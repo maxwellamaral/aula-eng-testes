@@ -31,6 +31,25 @@ Pense em um sistema que você considera excelente.
 
 O que o torna superior? É apenas a ausência de travamentos ou envolve facilidade de uso, velocidade, manutenibilidade e segurança?
 
+## Aspecto psicológico da qualidade {.concept}
+
+::: {.callout-important}
+### Como diz Presman e Maxim (2016)
+
+“De um ponto de vista **psicológico**, a análise e o projeto de software (juntamente com a sua codificação) são **tarefas construtivas**. 
+
+O **engenheiro de software** analisa, modela e então cria um programa de computador e sua documentação. 
+
+Como qualquer outro construtor, o engenheiro de software tem **orgulho** do edifício que ele construiu e encara com **desconfiança** qualquer um que tenta estragar sua obra. 
+
+Quando o teste começa, há uma tentativa sutil, embora definida de **“quebrar”** aquela coisa que o engenheiro de software construiu. Do ponto de vista do construtor, o teste pode ser considerado como (psicologicamente) **destrutivo**. 
+
+Assim, o construtor vai, calmamente, **projetando** e **executando** testes que demonstram que o programa funciona, **em vez de descobrir os erros**. 
+
+Infelizmente, os **erros estão presentes**. E se o engenheiro de software não os encontrar, **o cliente encontrará!**” [@pressman2016]
+
+:::
+
 ## Qualidade é multidimensional {.concept}
 
 ::: {.chapter}
@@ -113,7 +132,7 @@ Qual é a diferença entre **controlar o produto** e **garantir o processo**?
 
 Estrutura organizacional, garantia de processo e controle de artefatos.
 
-## Relação entre SQM, SQA e QC {.example}
+### Relação entre SQM, SQA e QC {.example}
 
 ::: {.chapter}
 Garantia da Qualidade
@@ -141,13 +160,17 @@ Em um sistema com banco de dados, APIs, regras de negócio e interfaces web:
 
 Devemos testar tudo de uma vez no final (*Big Bang*) ou construir a confiança progressivamente em camadas?
 
-## A Espiral de Níveis de Teste {.example}
+## Níveis de Teste {.example}
 
 ::: {.chapter}
 Estratégia de Testes
 :::
 
 ![](/assets/images/02-gestao-qualidade/03-niveis-estrategia-testes.png){.nostretch fig-align="center" width="85%"}
+
+## A Espiral de Níveis de Teste
+
+![Conceito da espiral para estratégias de teste de software. Fonte: Adaptado de @pressman2016.](/assets/images/02-gestao-qualidade/03-espiral-estrategia-testes.svg){#fig-espiral-testes fig-align="center" width="85%"}
 
 ## Os Quatro Níveis de Teste {.concept}
 
@@ -180,6 +203,40 @@ Estratégia de Testes
 - **Teste**: atividade planejada e sistemática cujo objetivo é **revelar falhas**.
 - **Depuração**: atividade investigativa e técnica para **localizar a causa-raiz no código, corrigir o defeito e validar a correção** sem introduzir novas falhas [@pressman2016].
 
+## Quando o teste termina? {.question}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+- Quando podemos dizer que o teste terminou?
+- É possível testar todas as combinações de dados e caminhos?
+
+::: {.callout}
+*"O teste nunca termina; o encargo simplesmente passa do engenheiro de software para o usuário final."*  
+— **Pressman e Maxim (2016)**
+:::
+
+Resposta pragmática da indústria: *"O teste acaba quando o tempo ou o dinheiro acabam."*
+
+## A falácia do "software 100% seguro" {.concept}
+
+::: {.chapter}
+Estratégia de Testes
+:::
+
+Na segurança da informação e engenharia de testes: **não existe software absolutamente seguro**.
+
+::: {.callout-note}
+### Perspectivas fundamentais
+
+- **Bruce Schneier**: *"And no software is secure against reverse-engineering."* [@schneier1998] — Segurança é um processo contínuo de gestão de riscos, não um produto estático.
+- **(ISC)² (CSSLP)**: *"All software is vulnerable until it and the data it processes is disposed in a secure manner."* [@isc2_csslp]
+- **Evandro Lorens (APCF)**: *“Não existe software seguro 100%. Todo software é vulnerável de alguma forma. Não existe código perfeito nem inviolável.”* [@lorens2021]
+:::
+
+O objetivo dos testes não é provar perfeição, mas **reduzir o risco a um nível operacionalmente aceitável**.
+
 ## Atividade em duplas — Classificando a Qualidade {.activity}
 
 ::: {.chapter}
@@ -203,3 +260,6 @@ A qualidade sustentável integra a governança de processos (**SQA**), a inspeç
 Na próxima semana, aprofundaremos em conceitos de erro, defeito, falha, V&V estático e dinâmico, e a relação entre engenharia de requisitos e testes.
 
 [📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}
+
+## Referências
+

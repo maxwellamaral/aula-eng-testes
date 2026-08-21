@@ -17,6 +17,24 @@ Ao final desta aula, você será capaz de responder e fundamentar:
 A qualidade de software é multidimensional: ela envolve a conformidade com especificações explícitas, o atendimento a expectativas implícitas (como usabilidade e desempenho), a qualidade do processo de desenvolvimento e o valor agregado ao negócio e aos usuários [@pressman2016; @sommerville2007].
 :::
 
+
+::: {.callout-important}
+### Como diz Presman e Maxim (2016)
+
+“De um ponto de vista **psicológico**, a análise e o projeto de software (juntamente com a sua codificação) são **tarefas construtivas**. 
+
+O **engenheiro de software** analisa, modela e então cria um programa de computador e sua documentação. 
+
+Como qualquer outro construtor, o engenheiro de software tem **orgulho** do edifício que ele construiu e encara com **desconfiança** qualquer um que tenta estragar sua obra. 
+
+Quando o teste começa, há uma tentativa sutil, embora definida de **“quebrar”** aquela coisa que o engenheiro de software construiu. Do ponto de vista do construtor, o teste pode ser considerado como (psicologicamente) **destrutivo**. 
+
+Assim, o construtor vai, calmamente, **projetando** e **executando** testes que demonstram que o programa funciona, **em vez de descobrir os erros**. 
+
+Infelizmente, os **erros estão presentes**. E se o engenheiro de software não os encontrar, **o cliente encontrará!**” [@pressman2016]
+
+:::
+
 ---
 
 ## 1. Características genéricas de um software de alta qualidade
@@ -94,6 +112,8 @@ A estratégia clássica de teste segue uma abordagem em **espiral**: inicia-se n
 
 ![Estratégia e Níveis de Teste de Software](/assets/images/02-gestao-qualidade/03-niveis-estrategia-testes.svg){#fig-niveis-testes fig-align="center" width="85%"}
 
+![Conceito da espiral para estratégias de teste de software. Fonte: Adaptado de @pressman2016.](/assets/images/02-gestao-qualidade/03-espiral-estrategia-testes.svg){#fig-espiral-testes fig-align="center" width="85%"}
+
 ### Níveis de teste
 
 #### 1. Teste de Unidade (*Unit Testing*)
@@ -140,6 +160,47 @@ Verifica se o software se integra perfeitamente a outros elementos do sistema ma
 ### 🧪 Atividade Prática — Laboratório 02
 Pratique e aprofunde esses conceitos modelando cenários reais com diagramas UML e apoio de IA no [Laboratório 02 — Estratégias e Níveis de Teste na Prática](laboratorio.html).
 :::
+
+## Quando o teste termina?
+
+* Quando nós podemos dizer que o teste terminou?
+* Será que já testamos o suficiente?
+
+É consenso entre os profissionais e pesquisadores de engenharia de software que **o teste exaustivo é computacionalmente inviável** (não é possível testar todas as combinações possíveis de dados, caminhos e estados). Como observam @pressman2016:
+
+> "O teste nunca termina; o encargo simplesmente passa do engenheiro de software para o usuário final."
+
+Os autores apontam com ironia uma resposta pragmática comum na indústria: *"O teste acaba quando o tempo ou o dinheiro acabam"* [@pressman2016].
+
+### A falácia do "software 100% seguro" (*There is no secure software*)
+
+Essa limitação teórica e prática do teste conecta-se diretamente à segurança da informação. Na segurança de software, vigora o princípio fundamental de que **não existe software absolutamente seguro**:
+
+1. **A perspectiva de Bruce Schneier**: O renomado especialista e criptógrafo Bruce Schneier afirma categoricamente em seu ensaio *Security Pitfalls in Cryptography*:
+
+   > *"And no software is secure against reverse-engineering."* ("E nenhum software é seguro contra engenharia reversa") [@schneier1998].
+   
+   Schneier argumenta que a segurança não é um produto estático que se adquire ou finaliza, mas sim um **processo contínuo de gestão de riscos**. Mesmo com algoritmos criptográficos matematicamente sólidos, falhas de implementação, ambiguidades de arquitetura, vulnerabilidades de rede e a ação de engenharia reversa tornam impossível blindar um software em sentido absoluto.
+
+2. **Visão da indústria e certificações ((ISC)²)**: O guia oficial da certificação *CSSLP* (*Certified Secure Software Lifecycle Professional*) reforça que a vulnerabilidade é inerente ao ciclo de vida:
+
+   > *"All software is vulnerable until it and the data it processes, transmits and stores is disposed in a secure manner."* [@isc2_csslp]
+   
+   Ou seja, todo software carrega vulnerabilidades latentes até que ele e os dados que manipula sejam descartados de maneira segura.
+
+3. **A perspectiva da perícia forense (Evandro Lorens / APCF)**: No contexto brasileiro, Evandro Lorens, diretor da Associação Nacional dos Peritos Criminais Federais (APCF), sintetizou a natureza vulnerável de qualquer sistema computacional:
+
+   > “Não existe software seguro 100%. Todo software é vulnerável de alguma forma. Por natureza, não existe código perfeito. Não existe software que não possa ser violado.” [@lorens2021]
+
+   Essa constatação fundamenta por que a perícia forense é capaz de extrair dados de dispositivos bloqueados: a segurança não é absoluta, sendo sempre uma relação entre tempo, recursos disponíveis e técnicas de análise.
+
+4. **Postura pragmática da engenharia de testes**: Em comunidades técnicas de segurança, costuma-se sintetizar:
+
+   > *"Não existe software seguro — existe apenas software cujas vulnerabilidades ainda não foram amplamente descobertas e exploradas."*
+
+Portanto, o objetivo de uma estratégia de testes não é provar a ausência absoluta de defeitos ou garantir segurança inviolável, mas sim **reduzir o risco operacional a um nível aceitável**, detectando o maior número possível de falhas críticas antes da entrega.
+
+
 
 ---
 
