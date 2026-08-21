@@ -93,9 +93,9 @@ Para **cada uma das 13 abordagens** acima, sua entrega deve conter obrigatoriame
 
 ## 🌟 Exemplo Modelo ("Guia do Estudante")
 
-Abaixo apresentamos um exemplo de referência completo para a abordagem **2.2 — Integração Incremental *Top-Down* com *Stubs*** no domínio de *E-commerce*. Utilize este nível de detalhe e clareza como padrão para a sua pesquisa:
+Abaixo apresentamos um exemplo de referência enxuto e completo para a abordagem **2.2 — Integração Incremental *Top-Down* com *Stubs*** no domínio de **Transferências Pix**. Utilize este padrão de clareza, simplicidade e precisão técnica para a sua pesquisa:
 
-### Exemplo: 2.2 — Integração Incremental *Top-Down* (*Checkout de E-commerce*)
+### Exemplo: 2.2 — Integração Incremental *Top-Down* (*Transferência Bancária Pix*)
 
 #### 1. Diagrama de Classes UML
 
@@ -106,143 +106,49 @@ Seguem exemplos de diagramas que ilustram a aplicação deste conceito no cenár
 @startuml
 skinparam classAttributeIconSize 0
 
-class Pedido {
-  - id: String
-  - clienteId: String
-  - valorTotal: Double
-  - itens: List<Item>
-  + calcularTotal(): Double
+class TransferenciaPixService {
+  - gatewayBacen: IGatewayBacen
+  + TransferenciaPixService(gateway: IGatewayBacen)
+  + executarTransferencia(chaveDestino: String, valor: Double): Boolean
 }
 
-class Item {
-  - produtoId: String
-  - quantidade: Integer
-  - precoUnitario: Double
+interface IGatewayBacen {
+  + liquidar(chaveDestino: String, valor: Double): Boolean
 }
 
-class ProcessadorCheckout {
-  - pagamentoService: IPagamentoService
-  - estoqueService: IEstoqueService
-  - antiFraudeService: IAntiFraudeService
-  + ProcessadorCheckout(pagamentoService: IPagamentoService, estoqueService: IEstoqueService, antiFraudeService: IAntiFraudeService)
-  + processar(pedido: Pedido): Boolean
-}
-
-interface IPagamentoService {
-  + autorizar(valor: Double): Boolean
-  + capturar(transacaoId: String): String
-}
-
-interface IEstoqueService {
-  + reservar(itens: List<Item>): Boolean
-  + consultarDisponibilidade(produtoId: String): Integer
-}
-
-interface IAntiFraudeService {
-  + analisarRisco(clienteId: String, valor: Double): String
-}
-
-class PagamentoStub <<Stub (Simulador)>> {
+class GatewayBacenStub <<Stub (Simulador)>> {
   - respostaPadrao: Boolean
-  + autorizar(valor: Double): Boolean
-  + capturar(transacaoId: String): String
-  + configurarResposta(status: Boolean): void
+  + liquidar(chaveDestino: String, valor: Double): Boolean
+  + simularFalha(): void
 }
 
-class EstoqueStub <<Stub (Simulador)>> {
-  - estoqueSimulado: Map<String, Integer>
-  + reservar(itens: List<Item>): Boolean
-  + consultarDisponibilidade(produtoId: String): Integer
-}
-
-class AntiFraudeStub <<Stub (Simulador)>> {
-  - scoreSimulado: String
-  + analisarRisco(clienteId: String, valor: Double): String
-}
-
-Pedido *-- "1..*" Item : contém
-ProcessadorCheckout ..> Pedido : recebe
-ProcessadorCheckout --> IPagamentoService : utiliza
-ProcessadorCheckout --> IEstoqueService : utiliza
-ProcessadorCheckout --> IAntiFraudeService : utiliza
-
-PagamentoStub ..|> IPagamentoService : implementa
-EstoqueStub ..|> IEstoqueService : implementa
-AntiFraudeStub ..|> IAntiFraudeService : implementa
+TransferenciaPixService --> IGatewayBacen : utiliza
+GatewayBacenStub ..|> IGatewayBacen : implementa
 @enduml
 ```
 
 ### Visualização Mermaid
 ```{mermaid}
 classDiagram
-    class Pedido {
-        -String id
-        -String clienteId
-        -Double valorTotal
-        -List~Item~ itens
-        +calcularTotal() Double
+    class TransferenciaPixService {
+        -IGatewayBacen gatewayBacen
+        +executarTransferencia(chaveDestino, valor) Boolean
     }
 
-    class Item {
-        -String produtoId
-        -Integer quantidade
-        -Double precoUnitario
-    }
-
-    class ProcessadorCheckout {
-        -IPagamentoService pagamentoService
-        -IEstoqueService estoqueService
-        -IAntiFraudeService antiFraudeService
-        +processar(Pedido pedido) Boolean
-    }
-
-    class IPagamentoService {
+    class IGatewayBacen {
         <<interface>>
-        +autorizar(Double valor) Boolean
-        +capturar(String transacaoId) String
+        +liquidar(chaveDestino, valor) Boolean
     }
 
-    class IEstoqueService {
-        <<interface>>
-        +reservar(List~Item~ itens) Boolean
-        +consultarDisponibilidade(String produtoId) Integer
-    }
-
-    class IAntiFraudeService {
-        <<interface>>
-        +analisarRisco(String clienteId, Double valor) String
-    }
-
-    class PagamentoStub {
+    class GatewayBacenStub {
         <<service>>
         -Boolean respostaPadrao
-        +autorizar(Double valor) Boolean
-        +capturar(String transacaoId) String
-        +configurarResposta(Boolean status) void
+        +liquidar(chaveDestino, valor) Boolean
+        +simularFalha() void
     }
 
-    class EstoqueStub {
-        <<service>>
-        -Map~String, Integer~ estoqueSimulado
-        +reservar(List~Item~ itens) Boolean
-        +consultarDisponibilidade(String produtoId) Integer
-    }
-
-    class AntiFraudeStub {
-        <<service>>
-        -String scoreSimulado
-        +analisarRisco(String clienteId, Double valor) String
-    }
-
-    Pedido *-- Item : contem
-    ProcessadorCheckout ..> Pedido : recebe
-    ProcessadorCheckout --> IPagamentoService : utiliza
-    ProcessadorCheckout --> IEstoqueService : utiliza
-    ProcessadorCheckout --> IAntiFraudeService : utiliza
-
-    PagamentoStub ..|> IPagamentoService : implementa
-    EstoqueStub ..|> IEstoqueService : implementa
-    AntiFraudeStub ..|> IAntiFraudeService : implementa
+    TransferenciaPixService --> IGatewayBacen : utiliza
+    GatewayBacenStub ..|> IGatewayBacen : implementa
 ```
 
 
@@ -254,74 +160,25 @@ Observe como o diagrama acima pode ser expresso em sintaxe textual tanto no **Me
 ### Sintaxe Mermaid
 ```text
 classDiagram
-    class Pedido {
-        -String id
-        -String clienteId
-        -Double valorTotal
-        -List~Item~ itens
-        +calcularTotal() Double
+    class TransferenciaPixService {
+        -IGatewayBacen gatewayBacen
+        +executarTransferencia(chaveDestino, valor) Boolean
     }
 
-    class Item {
-        -String produtoId
-        -Integer quantidade
-        -Double precoUnitario
-    }
-
-    class ProcessadorCheckout {
-        -IPagamentoService pagamentoService
-        -IEstoqueService estoqueService
-        -IAntiFraudeService antiFraudeService
-        +processar(Pedido pedido) Boolean
-    }
-
-    class IPagamentoService {
+    class IGatewayBacen {
         <<interface>>
-        +autorizar(Double valor) Boolean
-        +capturar(String transacaoId) String
+        +liquidar(chaveDestino, valor) Boolean
     }
 
-    class IEstoqueService {
-        <<interface>>
-        +reservar(List~Item~ itens) Boolean
-        +consultarDisponibilidade(String produtoId) Integer
-    }
-
-    class IAntiFraudeService {
-        <<interface>>
-        +analisarRisco(String clienteId, Double valor) String
-    }
-
-    class PagamentoStub {
+    class GatewayBacenStub {
         <<service>>
         -Boolean respostaPadrao
-        +autorizar(Double valor) Boolean
-        +capturar(String transacaoId) String
-        +configurarResposta(Boolean status) void
+        +liquidar(chaveDestino, valor) Boolean
+        +simularFalha() void
     }
 
-    class EstoqueStub {
-        <<service>>
-        -Map~String, Integer~ estoqueSimulado
-        +reservar(List~Item~ itens) Boolean
-        +consultarDisponibilidade(String produtoId) Integer
-    }
-
-    class AntiFraudeStub {
-        <<service>>
-        -String scoreSimulado
-        +analisarRisco(String clienteId, Double valor) String
-    }
-
-    Pedido *-- Item : contem
-    ProcessadorCheckout ..> Pedido : recebe
-    ProcessadorCheckout --> IPagamentoService : utiliza
-    ProcessadorCheckout --> IEstoqueService : utiliza
-    ProcessadorCheckout --> IAntiFraudeService : utiliza
-
-    PagamentoStub ..|> IPagamentoService : implementa
-    EstoqueStub ..|> IEstoqueService : implementa
-    AntiFraudeStub ..|> IAntiFraudeService : implementa
+    TransferenciaPixService --> IGatewayBacen : utiliza
+    GatewayBacenStub ..|> IGatewayBacen : implementa
 ```
 
 * 📖 [Documentação Oficial do Mermaid](https://mermaid.js.org/)
@@ -332,69 +189,24 @@ classDiagram
 @startuml
 skinparam classAttributeIconSize 0
 
-class Pedido {
-  - id: String
-  - clienteId: String
-  - valorTotal: Double
-  - itens: List<Item>
-  + calcularTotal(): Double
+class TransferenciaPixService {
+  - gatewayBacen: IGatewayBacen
+  + TransferenciaPixService(gateway: IGatewayBacen)
+  + executarTransferencia(chaveDestino: String, valor: Double): Boolean
 }
 
-class Item {
-  - produtoId: String
-  - quantidade: Integer
-  - precoUnitario: Double
+interface IGatewayBacen {
+  + liquidar(chaveDestino: String, valor: Double): Boolean
 }
 
-class ProcessadorCheckout {
-  - pagamentoService: IPagamentoService
-  - estoqueService: IEstoqueService
-  - antiFraudeService: IAntiFraudeService
-  + ProcessadorCheckout(pagamentoService: IPagamentoService, estoqueService: IEstoqueService, antiFraudeService: IAntiFraudeService)
-  + processar(pedido: Pedido): Boolean
-}
-
-interface IPagamentoService {
-  + autorizar(valor: Double): Boolean
-  + capturar(transacaoId: String): String
-}
-
-interface IEstoqueService {
-  + reservar(itens: List<Item>): Boolean
-  + consultarDisponibilidade(produtoId: String): Integer
-}
-
-interface IAntiFraudeService {
-  + analisarRisco(clienteId: String, valor: Double): String
-}
-
-class PagamentoStub <<Stub (Simulador)>> {
+class GatewayBacenStub <<Stub (Simulador)>> {
   - respostaPadrao: Boolean
-  + autorizar(valor: Double): Boolean
-  + capturar(transacaoId: String): String
-  + configurarResposta(status: Boolean): void
+  + liquidar(chaveDestino: String, valor: Double): Boolean
+  + simularFalha(): void
 }
 
-class EstoqueStub <<Stub (Simulador)>> {
-  - estoqueSimulado: Map<String, Integer>
-  + reservar(itens: List<Item>): Boolean
-  + consultarDisponibilidade(produtoId: String): Integer
-}
-
-class AntiFraudeStub <<Stub (Simulador)>> {
-  - scoreSimulado: String
-  + analisarRisco(clienteId: String, valor: Double): String
-}
-
-Pedido *-- "1..*" Item : contém
-ProcessadorCheckout ..> Pedido : recebe
-ProcessadorCheckout --> IPagamentoService : utiliza
-ProcessadorCheckout --> IEstoqueService : utiliza
-ProcessadorCheckout --> IAntiFraudeService : utiliza
-
-PagamentoStub ..|> IPagamentoService : implementa
-EstoqueStub ..|> IEstoqueService : implementa
-AntiFraudeStub ..|> IAntiFraudeService : implementa
+TransferenciaPixService --> IGatewayBacen : utiliza
+GatewayBacenStub ..|> IGatewayBacen : implementa
 @enduml
 ```
 
@@ -420,13 +232,13 @@ Se você precisa relembrar os conceitos de classes, interfaces, visibilidade (`+
 
 #### 3. Explicação Textual do Cenário
 
-> **Contexto**: No desenvolvimento do fluxo de finalização de compras, a classe de controle de alto nível `ProcessadorCheckout` precisa orquestrar validação de risco, reserva de produtos e cobrança financeira. No entanto, as integrações reais com adquirentes de cartão (`IPagamentoService`), armazém logístico (`IEstoqueService`) e birô de crédito (`IAntiFraudeService`) são lentas, custosas ou ainda estão sendo desenvolvidas por outras equipes.
+> **Contexto**: No desenvolvimento do módulo de transferências instantâneas (`TransferenciaPixService`), o serviço financeiro precisa enviar a ordem para a câmara de liquidação do Banco Central (`IGatewayBacen`). No entanto, a API real do Banco Central exige certificados digitais de produção, conexão com a Rede do Sistema Financeiro Nacional (RSFN) e tarifação por chamada.
 >
 > **Como a abordagem Top-Down com Classes e Stubs é aplicada**:
-> 1. **Classe Real de Alto Nível sob Teste**: A classe controladora `ProcessadorCheckout` é implementada e testada no topo da hierarquia de integração.
-> 2. **Interfaces e Classes *Stub***: São criadas as implementações simuladas `PagamentoStub`, `EstoqueStub` e `AntiFraudeStub`, que implementam os contratos das respectivas interfaces fornecendo retornos previsíveis em memória (ex.: `PagamentoStub.autorizar()` retorna imediatamente `True` sem realizar chamadas de rede reais).
-> 3. **Injeção de Dependências**: Na suíte de testes de integração, os *stubs* são injetados no construtor de `ProcessadorCheckout`, permitindo testar a lógica orquestradora: ordem de execução (antifraude $\rightarrow$ estoque $\rightarrow$ pagamento), tratamento de exceções quando um stub simula falha e persistência do estado do `Pedido`.
-> 4. **Avanço na Espiral de Testes**: À medida que os módulos reais de infraestrutura ficarem prontos, cada *stub* é gradualmente substituído pela classe concreta real (ex.: `CieloPaymentGateway` substituindo `PagamentoStub`), validando a integração descendente camada por camada.
+> 1. **Classe Real de Alto Nível sob Teste**: A classe controladora `TransferenciaPixService` (topo da hierarquia) é implementada e testada primeiro, validando as regras de negócio de envio.
+> 2. **Interface e Classe *Stub***: Define-se a interface de contrato `IGatewayBacen` e cria-se a classe `GatewayBacenStub`, que simula a resposta do Banco Central diretamente na memória (ex.: autoriza qualquer transação abaixo de R$ 10.000,00 ou simula rejeição quando configurada via `simularFalha()`).
+> 3. **Injeção de Dependências**: No teste de integração, o `GatewayBacenStub` é injetado no construtor de `TransferenciaPixService`. Assim, é possível verificar se o serviço trata corretamente timeouts, confirmações de pagamento e registro de comprovantes sem gastar dinheiro real nem depender do ambiente externo do Banco Central.
+> 4. **Avanço na Espiral de Testes**: Quando o conector de rede real for homologado, o `GatewayBacenStub` é substituído pelo `GatewayBacenReal`, avançando a integração para a camada de infraestrutura.
 
 ---
 
