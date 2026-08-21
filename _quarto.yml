@@ -56,3 +56,6 @@ format:
     filters:
       - pyodide
       - diagram
+    include-after-body:
+      - text: |
+          <script src="/assets/js/diagram-lightbox.js"></script>

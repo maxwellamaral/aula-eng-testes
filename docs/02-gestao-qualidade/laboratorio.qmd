@@ -235,6 +235,7 @@ Se você precisa relembrar os conceitos de classes, interfaces, visibilidade (`+
 > **Contexto**: No desenvolvimento do módulo de transferências instantâneas (`TransferenciaPixService`), o serviço financeiro precisa enviar a ordem para a câmara de liquidação do Banco Central (`IGatewayBacen`). No entanto, a API real do Banco Central exige certificados digitais de produção, conexão com a Rede do Sistema Financeiro Nacional (RSFN) e tarifação por chamada.
 >
 > **Como a abordagem Top-Down com Classes e Stubs é aplicada**:
+>
 > 1. **Classe Real de Alto Nível sob Teste**: A classe controladora `TransferenciaPixService` (topo da hierarquia) é implementada e testada primeiro, validando as regras de negócio de envio.
 > 2. **Interface e Classe *Stub***: Define-se a interface de contrato `IGatewayBacen` e cria-se a classe `GatewayBacenStub`, que simula a resposta do Banco Central diretamente na memória (ex.: autoriza qualquer transação abaixo de R$ 10.000,00 ou simula rejeição quando configurada via `simularFalha()`).
 > 3. **Injeção de Dependências**: No teste de integração, o `GatewayBacenStub` é injetado no construtor de `TransferenciaPixService`. Assim, é possível verificar se o serviço trata corretamente timeouts, confirmações de pagamento e registro de comprovantes sem gastar dinheiro real nem depender do ambiente externo do Banco Central.
