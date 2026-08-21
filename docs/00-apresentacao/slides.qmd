@@ -12,6 +12,9 @@ format:
     chalkboard: true
     preview-links: auto
     css: ../../assets/css/slides.css
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/diagram-lightbox.js"></script>
 ---
 
 ## Boas-Vindas & Abertura

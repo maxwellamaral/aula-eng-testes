@@ -1,4 +1,4 @@
-![](/assets/images/00-apresentacao/intro.png){.nostretch fig-align="center" width="100%"}
+![Gestão da Qualidade de Software](/assets/images/00-apresentacao/intro.png){#fig-intro02 fig-align="center" width="100%"}
 
 ## Contextualização
 

@@ -59,7 +59,3 @@ format:
     include-after-body:
       - text: |
           <script src="/assets/js/diagram-lightbox.js"></script>
-  revealjs:
-    include-after-body:
-      - text: |
-          <script src="/assets/js/diagram-lightbox.js"></script>
