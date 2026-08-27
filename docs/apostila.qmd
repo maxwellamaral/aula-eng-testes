@@ -24,3 +24,9 @@ format:
 # Aula 02: Introdução à Gestão da Qualidade de Produto
 
 {{< include 02-gestao-qualidade/_content.qmd >}}
+
+\newpage
+
+# Aula 03: Introdução à Engenharia de Testes
+
+{{< include 03-introducao-testes/_content.qmd >}}
