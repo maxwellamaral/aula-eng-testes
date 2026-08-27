@@ -1,0 +1,18 @@
+---
+title: "Aula 03 — Introdução à Engenharia de Testes"
+subtitle: "Erro, defeito, falha, V&V e a ponte entre requisitos e testes"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## Material da aula
+
+- 📚 [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
+- 🖥️ [Visualizar apresentação de slides](slides.qmd)
+- 📖 [Apostila completa da disciplina](../apostila.pdf)
+:::
+
+{{< include _content.qmd >}}

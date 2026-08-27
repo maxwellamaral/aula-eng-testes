@@ -1,0 +1,261 @@
+![Relação entre requisitos, evidências e teste](/assets/images/02-introducao-testes/erro-defeito.jpeg){#fig-erro-defeito fig-align="center" width="82%"}
+
+## Contextualização
+
+Um sistema pode executar sem travar e ainda assim estar errado. O problema pode estar em uma decisão humana, em um requisito ambíguo, no código que implementa uma regra ou no modo como o sistema é usado. A Engenharia de Testes organiza a busca por evidências para que a equipe não confunda esses diferentes fenômenos.
+
+Nesta aula, vamos construir um vocabulário comum para discutir qualidade e conectar cada evidência ao requisito que deveria fundamentá-la. A distinção é importante: um teste não corrige um defeito e uma execução sem falhas não prova que o produto seja perfeito [@pressman2016].
+
+### Objetivos da aula
+
+Ao final desta aula, você será capaz de:
+
+1. distinguir **erro**, **defeito** e **falha** em um encadeamento causal;
+2. explicar o papel da **verificação** e da **validação**;
+3. diferenciar atividades estáticas de atividades dinâmicas;
+4. relacionar requisitos, critérios de aceitação, casos de teste e evidências;
+5. analisar um relato de problema e indicar que tipo de evidência deve ser produzida.
+
+::: {.callout-note}
+### Pergunta-guia
+
+Quando um usuário informa que “o sistema calculou o valor errado”, o que precisamos investigar para saber **onde** o problema foi introduzido, **como** ele se manifesta e **qual requisito** deveria orientar a correção?
+:::
+
+---
+
+## 1. Uma cadeia de causalidade: erro → defeito → falha
+
+Os termos são relacionados, mas não são sinônimos. Uma forma útil de raciocinar é acompanhar o problema desde a ação humana até o comportamento observável do software.
+
+### Erro
+
+Um **erro** é uma ação humana incorreta ou uma decisão equivocada. Pode ocorrer ao elicitar uma necessidade, interpretar uma regra de negócio, escrever uma especificação, projetar um algoritmo, implementar uma função ou preparar um ambiente de execução. Essa compreensão é compatível com a definição normativa de erro como uma ação humana que produz um resultado incorreto [@ieee6101990; @ieee10442009; @iso24765].
+
+Exemplos:
+
+- interpretar “desconto de 10% para compras acima de R$ 500” como “a partir de R$ 500”;
+- esquecer, durante o projeto, que o fuso horário do negócio é diferente do fuso do servidor;
+- escrever uma condição usando `>` quando a regra exigia `>=`.
+
+O erro pertence à atividade humana. Ele não é diretamente observado pelo usuário: é uma possível causa de um problema em um artefato ou no comportamento do sistema.
+
+### Defeito
+
+Um **defeito** é a manifestação de um erro em um artefato de software. Também é chamado de *fault* ou, no uso informal, *bug*. Pode estar em um requisito, modelo, código, dado de configuração, script de implantação ou teste. A IEEE descreve *fault* como um passo, processo ou definição de dados incorretos em um programa e também como uma manifestação de um erro no software [@ieee6101990; @ieee10442009; @iso24765].
+
+Exemplos:
+
+- requisito que não define se o limite de R$ 500 é inclusivo;
+- fórmula implementada com `valor > 500` quando a especificação exige `valor >= 500`;
+- teste que verifica apenas valores muito abaixo e muito acima do limite, omitindo exatamente R$ 500.
+
+Um defeito pode permanecer **latente**: existir no artefato sem produzir sintoma em todos os contextos. A literatura normativa reconhece que um defeito só produz uma falha quando é exercitado em determinadas condições de entrada, estado, ambiente ou uso [@ieee10442009; @ieee6101990].
+
+### Falha
+
+Uma **falha** é um comportamento observado do sistema que se desvia do resultado esperado durante a execução ou operação. Ela é a evidência de que, em determinadas condições, o produto não entregou o serviço esperado. Em termos normativos, falha é a incapacidade de um sistema ou componente de desempenhar uma função requerida dentro dos limites especificados; uma falha pode ocorrer quando um defeito é exercitado [@ieee6101990; @ieee10442009; @iso24765].
+
+Exemplos:
+
+- uma compra de exatamente R$ 500 recebe desconto de 0% quando deveria receber 5%;
+- o sistema aceita uma data impossível e grava um registro inconsistente;
+- a tela informa “pagamento aprovado”, embora o serviço externo tenha recusado a transação.
+
+A falha é observável, mas sua causa ainda precisa ser investigada. Uma falha pode revelar um defeito no código, no requisito, nos dados, na configuração ou até em uma dependência externa.
+
+::: {.callout-important}
+### Não confunda o sintoma com a causa
+
+**Teste** procura evidências de falhas. **Depuração** investiga a causa, corrige o defeito e verifica se a correção não introduziu novos problemas. Encontrar uma falha não significa, sozinho, ter localizado o defeito ou descoberto o erro original [@pressman2016].
+:::
+
+### Exemplo completo
+
+Considere a regra: “clientes com compra de **R$ 100 ou mais** recebem 5% de desconto”.
+
+| Etapa | O que aconteceu | Evidência |
+|---|---|---|
+| Erro | A pessoa desenvolvedora interpretou “ou mais” como “acima de”. | Decisão ou interpretação registrada na análise |
+| Defeito | O código usa `valor > 100` em vez de `valor >= 100`. | Inspeção do código |
+| Falha | Uma compra de R$ 100 recebe o preço cheio. | Execução do caso de teste ou uso do sistema |
+
+A cadeia não é sempre linear nem exclusiva: um requisito ambíguo pode causar decisões diferentes, vários defeitos podem combinar-se e um mesmo defeito pode produzir falhas distintas conforme os dados e o ambiente.
+
+::: {.callout-note}
+### Convenção de linguagem
+
+Na indústria, *bug* é usado como termo guarda-chuva para problemas de software. Nesta disciplina, adotamos o modelo causal:
+
+**erro humano → defeito em um artefato → falha durante a execução**.
+
+Assim, usamos **erro** para a ação ou decisão humana, **defeito** para o problema em um artefato e **falha** para o comportamento observado em execução.
+
+### Nota sobre a terminologia de Pressman e Maxim
+
+O livro-texto principal adota, no capítulo sobre técnicas de revisão, uma convenção diferente para a gestão da qualidade. Nesse contexto, os autores usam **erro** para um problema de qualidade identificado antes da liberação do software — ou antes de sua propagação para outra atividade estrutural do processo — e **defeito** para um problema identificado depois da liberação ou propagação. No mesmo trecho, **defeito** e **falha** são tratados como sinônimos [@pressman2016].
+
+Pressman e Maxim observam que essa distinção temporal não é dominante na comunidade de Engenharia de Software e que os termos erro, defeito, falha e *bug* são frequentemente usados como sinônimos [@pressman2016]. Em processos incrementais, também pode ser difícil estabelecer uma fronteira clara entre antes e depois da entrega.
+
+Portanto, ao ler outras fontes, verifique a convenção utilizada. Para esta disciplina, manteremos o modelo causal porque ele separa a origem humana do problema, o artefato afetado e o comportamento observado. A diferença em relação à convenção temporal de Pressman não é um erro de conteúdo, mas uma escolha terminológica que precisa ser declarada.
+:::
+
+---
+
+## 2. Verificação e validação: duas perguntas diferentes
+
+A sigla **V&V** reúne duas perspectivas complementares da qualidade:
+
+- **Verificação**: estamos construindo o produto **corretamente**, de acordo com especificações, modelos, padrões e decisões técnicas?
+- **Validação**: estamos construindo o produto **certo**, isto é, um produto que atende às necessidades e expectativas legítimas dos usuários e demais interessados?
+
+A verificação compara o produto de trabalho com uma base de referência. A validação examina se essa base e o produto resultante fazem sentido para o problema real. Um sistema pode ser verificado contra uma especificação e ainda ser inadequado se a especificação não representar a necessidade do usuário.
+
+| Pergunta | Foco | Exemplos de evidência |
+|---|---|---|
+| “Estamos construindo corretamente?” | conformidade com especificações e decisões técnicas | revisão de requisito, inspeção de código, análise estática, teste de unidade contra contrato |
+| “Estamos construindo o produto certo?” | adequação ao uso e às necessidades dos interessados | validação com usuário, teste de aceitação, protótipo avaliado, teste de sistema em cenário real |
+
+::: {.callout-warning}
+### V&V não é uma etapa final
+
+Verificação e validação acontecem ao longo do ciclo de vida. Revisar uma história de usuário antes da implementação é V&V; executar um teste de aceitação após a integração também é V&V. O momento e a formalidade dependem do risco, do contexto e do artefato avaliado.
+:::
+
+---
+
+## 3. V&V estático e dinâmico
+
+A distinção **estático/dinâmico** responde a outra pergunta: o artefato foi avaliado sem execução ou por meio da execução do software?
+
+### V&V estático
+
+A avaliação **estática** não executa o software sob teste. A equipe examina um artefato para encontrar inconsistências, omissões, ambiguidades, violações de padrão e defeitos antes que eles se propaguem.
+
+Podem ser avaliados requisitos, modelos, código-fonte, casos de teste, configurações e documentação. Técnicas comuns incluem:
+
+- revisão informal e *walkthrough*;
+- revisão técnica formal e inspeção;
+- leitura cruzada de requisitos e critérios de aceitação;
+- análise estática automatizada, linters e verificadores de tipos;
+- análise de dependências, cobertura estrutural de artefatos e checagens de consistência.
+
+Uma revisão de requisito pode descobrir que “resposta rápida” não define um limite mensurável. Nenhuma execução é necessária para reconhecer a ambiguidade; a equipe já pode corrigi-la e evitar uma família inteira de testes mal especificados.
+
+### V&V dinâmico
+
+A avaliação **dinâmica** executa o software, ou uma parte dele, em condições definidas. Entradas, estado, ambiente e versão devem ser conhecidos para que o resultado seja interpretável.
+
+Um teste dinâmico normalmente explicita:
+
+1. pré-condições e ambiente;
+2. entradas ou estímulos;
+3. ações a executar;
+4. resultado esperado;
+5. resultado observado;
+6. decisão e evidência da execução.
+
+Testes de unidade, integração, sistema, aceitação, desempenho e segurança são exemplos de atividades dinâmicas quando exercitam o produto. A estratégia de testes de Pressman e Maxim organiza planejamento, projeto de casos, execução e avaliação de dados; ela também destaca que testes de baixo nível verificam componentes e testes de nível superior validam funções do sistema em relação aos requisitos [@pressman2016].
+
+| Característica | Estático | Dinâmico |
+|---|---|---|
+| Execução do produto | não é necessária | é necessária para observar o comportamento |
+| Melhor oportunidade | antes da propagação do defeito | quando o comportamento precisa ser exercitado |
+| Pode encontrar | ambiguidade, omissão, inconsistência, padrão violado | falha em uma combinação de entrada, estado e ambiente |
+| Limitação | não observa diretamente comportamento em execução | não revela tudo que não foi exercitado |
+
+As abordagens se complementam. Um teste dinâmico pode revelar que o sistema falha; uma inspeção pode localizar o defeito ou mostrar que o caso de teste não cobre o requisito. Nenhuma delas, isoladamente, demonstra ausência de todos os defeitos.
+
+---
+
+## 4. Engenharia de requisitos como base do teste
+
+O teste precisa de uma resposta para a pergunta **“esperado segundo qual referência?”**. Essa referência é a base de teste: requisitos, critérios de aceitação, contratos, modelos, riscos, normas e necessidades dos interessados.
+
+A relação entre requisitos e testes pode ser organizada assim:
+
+1. **Necessidade** — um interessado precisa acompanhar o estado de uma solicitação.
+2. **Requisito** — o sistema deve permitir consultar o estado usando o identificador da solicitação.
+3. **Critério de aceitação** — para um identificador existente, exibir estado e data da última atualização; para um inexistente, informar que não foi encontrado sem expor dados de terceiros.
+4. **Condições de teste** — identificador existente, inexistente, vazio, malformado e pertencente a outro usuário.
+5. **Caso de teste** — entradas, pré-condições, passos e resultados esperados.
+6. **Evidência** — registro da versão, ambiente, dados, resultado observado e decisão.
+
+::: {.callout-tip}
+### Requisito testável
+
+Um requisito é mais testável quando é claro, consistente, necessário, viável, rastreável e verificável. Troque “o sistema deve ser rápido” por uma condição observável, como “a consulta deve responder em até 2 segundos para 95% das requisições, sob o perfil de carga definido”. O número e o contexto precisam ser acordados com os interessados; o teste não deve inventá-los.
+:::
+
+### Rastreabilidade e mudança
+
+A **rastreabilidade** liga necessidade, requisito, decisão de projeto, implementação, caso de teste, resultado e defeito. Ela permite responder:
+
+- quais testes fornecem evidência para um requisito;
+- quais requisitos são afetados por uma alteração;
+- que versão e ambiente produziram um resultado;
+- quais riscos permanecem sem evidência suficiente.
+
+Rastreabilidade não significa criar um vínculo burocrático para cada linha de código. Significa manter relações úteis para interpretar mudanças e tomar decisões. Se o requisito muda, casos de teste e critérios de aceitação precisam ser revisados; se um teste falha após uma alteração, a equipe precisa saber qual expectativa foi afetada.
+
+::: {.callout-important}
+### Teste não é apenas “rodar o sistema”
+
+Sem requisito, contrato ou expectativa explícita, uma execução pode produzir um resultado, mas não necessariamente uma **evidência de qualidade**. O valor do teste está na comparação justificável entre comportamento observado e comportamento esperado.
+:::
+
+---
+
+## 5. Atividade em sala — classifique e conecte
+
+Em duplas, analise cada situação. Para cada item, registre:
+
+1. se há **erro**, **defeito**, **falha** ou mais de um elemento, usando a convenção causal adotada nesta aula;
+2. se a melhor primeira evidência é estática ou dinâmica;
+3. qual requisito, critério ou expectativa deve ser rastreado;
+4. como Pressman e Maxim poderiam nomear o problema de acordo com a convenção temporal apresentada na seção anterior.
+
+Ao comparar as respostas, não trate as duas classificações como uma contradição factual. A primeira descreve a relação causal entre origem, artefato e comportamento; a segunda classifica o problema conforme o momento em que ele foi descoberto [@pressman2016].
+
+### Situações
+
+**A.** A história de usuário diz apenas: “o relatório deve carregar rapidamente”. Ninguém definiu tempo, volume de dados ou ambiente.
+
+**B.** Durante a inspeção, a equipe encontra `if idade > 60` em uma regra que diz “pessoas com 60 anos ou mais”.
+
+**C.** Em produção, uma pessoa com 60 anos recebe a mensagem “benefício não disponível”.
+
+**D.** O caso de teste verifica apenas um usuário administrador, mas o requisito afirma que cada usuário deve consultar somente seus próprios dados.
+
+### Produto da atividade
+
+Complete uma tabela com as colunas `situação`, `classificação`, `evidência inicial`, `base de teste` e `próximo passo`. Na discussão, compare as respostas para perceber que uma falha observada pode levar a investigações diferentes e que um defeito pode ser encontrado antes de qualquer execução.
+
+---
+
+## Para revisar
+
+1. Qual é a diferença entre o erro cometido por uma pessoa, o defeito em um artefato e a falha observada durante o uso?
+2. Por que um defeito pode existir sem produzir uma falha em toda execução?
+3. Como as perguntas de verificação e validação diferem?
+4. Dê um exemplo de V&V estático e outro de V&V dinâmico para o mesmo requisito.
+5. Por que um caso de teste precisa de um resultado esperado?
+6. Como a rastreabilidade entre requisito e teste ajuda quando um requisito muda?
+7. O que um teste que passa permite afirmar — e o que ele não permite afirmar?
+
+::: {.callout-note}
+### Síntese
+
+**Erro** é uma ação ou decisão humana; **defeito** é o problema introduzido em um artefato; **falha** é o comportamento observado fora do esperado. **Verificação** avalia conformidade com especificações; **validação** avalia adequação às necessidades. V&V **estático** examina artefatos sem executá-los; V&V **dinâmico** obtém evidência exercitando o produto. Requisitos claros, critérios de aceitação e rastreabilidade dão significado aos resultados de teste. Essas são as convenções adotadas nesta aula; Pressman e Maxim apresentam também uma distinção temporal entre erro, defeito e falha, explicitada na seção anterior [@pressman2016].
+:::
+
+## Materiais relacionados
+
+- [Aula 01 — Introdução à Engenharia de Software](../01-introducao-engsoft/index.qmd)
+- [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
+- [Imagem de apoio — erro e defeito](../../assets/images/02-introducao-testes/erro-defeito.jpeg)
+
+## Referências
+
+::: {#refs}
+:::

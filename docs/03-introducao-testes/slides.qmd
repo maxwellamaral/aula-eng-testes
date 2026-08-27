@@ -1,0 +1,411 @@
+---
+title: "Aula 03 — Introdução à Engenharia de Testes"
+subtitle: "Erro, defeito, falha, V&V e a ponte entre requisitos e testes"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+institute: "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) — Campus João Pessoa"
+lang: pt-BR
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    css: ../../assets/css/slides.css
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/diagram-lightbox.js"></script>
+---
+
+## Introdução à Engenharia de Testes {.section .lead}
+
+Como transformar problemas observados em evidências de qualidade?
+
+![](/assets/images/02-introducao-testes/erro-defeito.jpeg){.nostretch fig-align="center" width="62%"}
+
+[📖 Acessar conteúdo escrito da aula](index.qmd){.slide-link}
+
+## Um sistema pode funcionar e ainda estar errado? {.question}
+
+::: {.chapter}
+O problema da linguagem
+:::
+
+Uma tela responde, o servidor não cai e o teste automatizado passa.
+
+Isso é suficiente para afirmar que o produto atende ao usuário?
+
+Que referência permite dizer que o resultado está correto?
+
+## O caminho da investigação {.concept}
+
+::: {.chapter}
+O problema da linguagem
+:::
+
+Na Engenharia de Testes, precisamos separar três perguntas:
+
+1. **Como o problema foi introduzido?**
+2. **Em que artefato ele está presente?**
+3. **Como ele se manifesta no uso?**
+
+A mesma situação pode receber nomes diferentes conforme a convenção terminológica adotada.
+
+## A cadeia causal {.example}
+
+::: {.chapter}
+Erro, defeito e falha
+:::
+
+```text
+AÇÃO OU DECISÃO HUMANA
+          ↓
+DEFEITO EM UM ARTEFATO
+          ↓
+COMPORTAMENTO OBSERVÁVEL
+```
+
+Nesta aula, adotamos:
+
+**erro humano → defeito → falha**
+
+## Erro: a origem humana {.concept .definition}
+
+::: {.chapter}
+Erro, defeito e falha
+:::
+
+**Erro** é uma ação humana incorreta ou uma decisão equivocada.
+
+Pode ocorrer ao:
+
+- elicitar uma necessidade;
+- interpretar uma regra;
+- escrever uma especificação;
+- projetar ou implementar uma solução;
+- preparar o ambiente.
+
+A definição normativa o descreve como uma ação humana que produz um resultado incorreto [@ieee6101990; @ieee10442009; @iso24765].
+
+## Defeito: o problema no artefato {.concept .definition}
+
+::: {.chapter}
+Erro, defeito e falha
+:::
+
+**Defeito** é a manifestação de um erro em um artefato de software.
+
+Pode estar em:
+
+- requisito ou modelo;
+- código;
+- dados e configuração;
+- script de implantação;
+- caso de teste.
+
+A IEEE também usa *fault* para um passo, processo ou definição de dados incorretos [@ieee6101990; @ieee10442009; @iso24765].
+
+## Falha: o comportamento observado {.concept .definition}
+
+::: {.chapter}
+Erro, defeito e falha
+:::
+
+**Falha** é o comportamento observado que se desvia do resultado esperado.
+
+É a incapacidade do sistema ou componente de desempenhar uma função requerida dentro dos limites especificados [@ieee6101990; @ieee10442009; @iso24765].
+
+Uma falha pode ocorrer quando um defeito é exercitado em determinadas condições.
+
+## Um exemplo: desconto no limite {.example}
+
+::: {.chapter}
+Erro, defeito e falha
+:::
+
+Regra: compras de **R$ 100 ou mais** recebem 5% de desconto.
+
+| Elemento | Exemplo |
+|---|---|
+| Erro | Interpretar “ou mais” como “acima de” |
+| Defeito | Implementar `valor > 100` |
+| Falha | Compra de R$ 100 recebe preço cheio |
+
+A falha é observável. A causa ainda precisa ser investigada.
+
+## Defeitos podem permanecer latentes {.concept}
+
+::: {.chapter}
+Erro, defeito e falha
+:::
+
+Um defeito pode existir sem produzir sintoma em todos os contextos.
+
+Ele pode depender de:
+
+- uma entrada específica;
+- um estado particular;
+- uma configuração;
+- um ambiente;
+- uma sequência de uso.
+
+Um defeito só produz uma falha quando é exercitado em determinadas condições [@ieee6101990; @ieee10442009].
+
+## Pressman usa outra convenção {.question}
+
+::: {.chapter}
+Duas convenções legítimas
+:::
+
+Como o livro-texto principal nomeia um problema encontrado durante uma revisão?
+
+E como nomeia o mesmo problema depois da liberação do software?
+
+## A distinção temporal de Pressman {.concept .definition}
+
+::: {.chapter}
+Duas convenções legítimas
+:::
+
+No capítulo sobre técnicas de revisão, Pressman e Maxim usam:
+
+- **erro**: problema de qualidade encontrado antes da liberação ou propagação;
+- **defeito**: problema encontrado depois da liberação ou propagação;
+- **defeito e falha**: termos tratados como sinônimos nesse contexto [@pressman2016].
+
+Os autores reconhecem que essa distinção temporal não é dominante na comunidade [@pressman2016].
+
+## Como evitar a confusão {.takeaway}
+
+::: {.chapter}
+Duas convenções legítimas
+:::
+
+As classificações respondem a perguntas diferentes:
+
+| Modelo causal | Modelo temporal |
+|---|---|
+| Onde o problema está na cadeia? | Quando foi descoberto? |
+| erro → defeito → falha | antes → depois da liberação |
+
+Nesta disciplina, usamos o **modelo causal** e declaramos a diferença em relação a Pressman.
+
+## Teste não é depuração {.example}
+
+::: {.chapter}
+Sintoma e causa
+:::
+
+- **Teste**: procura evidências de falhas.
+- **Depuração**: investiga a causa, localiza o defeito, corrige e verifica a correção.
+
+Encontrar uma falha não significa ter localizado o defeito ou descoberto o erro original [@pressman2016].
+
+## Estamos construindo o produto corretamente? {.question}
+
+::: {.chapter}
+Verificação e validação
+:::
+
+Essa pergunta aponta para a **verificação**.
+
+O foco está em conformidade com:
+
+- especificações;
+- modelos;
+- contratos;
+- padrões;
+- decisões técnicas.
+
+## Estamos construindo o produto certo? {.question}
+
+::: {.chapter}
+Verificação e validação
+:::
+
+Essa pergunta aponta para a **validação**.
+
+O foco está em:
+
+- necessidades dos usuários;
+- expectativas dos interessados;
+- problema real;
+- contexto de uso.
+
+As duas perguntas são complementares [@pressman2016].
+
+## V&V acontece durante todo o ciclo {.concept}
+
+::: {.chapter}
+Verificação e validação
+:::
+
+**Estático:** examinar sem executar.
+
+- revisar uma história de usuário;
+- inspecionar um requisito;
+- analisar código com um linter;
+- revisar um caso de teste.
+
+**Dinâmico:** exercitar o produto.
+
+- executar um teste de unidade;
+- testar uma integração;
+- validar um cenário de aceitação;
+- medir desempenho.
+
+## Estático ou dinâmico? {.example}
+
+::: {.chapter}
+Duas formas de obter evidência
+:::
+
+| Situação | Tipo |
+|---|---|
+| “O sistema deve ser rápido” não define limite | Estático |
+| Verificar resposta em até 2 segundos | Dinâmico |
+| Inspecionar `idade > 60` contra o requisito | Estático |
+| Executar o caso com idade igual a 60 | Dinâmico |
+
+Uma abordagem não substitui a outra.
+
+## Qual é a base do teste? {.question}
+
+::: {.chapter}
+Requisitos e evidências
+:::
+
+Um teste precisa responder:
+
+> **Esperado segundo qual referência?**
+
+A base de teste pode ser formada por:
+
+- requisitos;
+- critérios de aceitação;
+- contratos;
+- modelos;
+- riscos;
+- normas;
+- necessidades dos interessados.
+
+## Do requisito à evidência {.example}
+
+::: {.chapter}
+Requisitos e evidências
+:::
+
+**Necessidade:** acompanhar o estado de uma solicitação.
+
+**Requisito:** consultar o estado usando um identificador.
+
+**Critério:** mostrar estado e data para identificador existente; não expor dados de terceiros.
+
+**Testes:** identificador existente, inexistente, vazio, malformado e de outro usuário.
+
+**Evidência:** versão, ambiente, dados, resultado observado e decisão.
+
+## Um requisito testável {.concept .definition}
+
+::: {.chapter}
+Requisitos e evidências
+:::
+
+Pouco testável:
+
+> O sistema deve ser rápido.
+
+Mais testável:
+
+> A consulta deve responder em até 2 segundos para 95% das requisições, sob o perfil de carga definido.
+
+O critério precisa ser acordado com os interessados. O teste não deve inventá-lo.
+
+## Rastreabilidade conecta decisões {.concept}
+
+::: {.chapter}
+Requisitos e evidências
+:::
+
+A rastreabilidade liga:
+
+```text
+necessidade → requisito → projeto → implementação
+       → caso de teste → resultado → defeito
+```
+
+Ela ajuda a descobrir:
+
+- quais testes sustentam um requisito;
+- quais requisitos uma mudança afeta;
+- qual versão produziu um resultado;
+- quais riscos ainda não têm evidência.
+
+## Um teste verde encerra a discussão? {.question}
+
+::: {.chapter}
+Qualidade como decisão
+:::
+
+Todos os testes disponíveis passaram.
+
+Isso prova que o software:
+
+- atende às necessidades do usuário?
+- está adequado ao contexto real?
+- cobre os riscos relevantes?
+- não possui nenhum defeito?
+
+**Não.** Resultado de teste é evidência contextual, não conclusão isolada.
+
+## Atividade: classifique e conecte {.activity}
+
+::: {.chapter}
+Síntese
+:::
+
+Para cada situação, registre:
+
+1. erro, defeito, falha ou mais de um elemento;
+2. primeira evidência estática ou dinâmica;
+3. requisito ou expectativa rastreável;
+4. como Pressman nomearia o problema pela convenção temporal.
+
+Use o modelo causal desta aula e compare as duas convenções.
+
+## Quatro situações para investigar {.activity}
+
+::: {.chapter}
+Síntese
+:::
+
+**A.** “O relatório deve carregar rapidamente”, sem limite, volume ou ambiente.
+
+**B.** O código usa `idade > 60`, mas o requisito diz “60 anos ou mais”.
+
+**C.** Em produção, uma pessoa com 60 anos recebe “benefício não disponível”.
+
+**D.** O teste verifica apenas um administrador, embora cada usuário deva acessar somente seus dados.
+
+Preencha: situação · classificação · evidência inicial · base de teste · próximo passo.
+
+## O que levar desta aula {.takeaway}
+
+::: {.chapter}
+Síntese
+:::
+
+- **Erro:** ação ou decisão humana incorreta.
+- **Defeito:** problema presente em um artefato.
+- **Falha:** comportamento observado fora do esperado.
+- **Verificação:** estamos construindo corretamente?
+- **Validação:** estamos construindo o produto certo?
+- **Estático:** examinar sem executar.
+- **Dinâmico:** exercitar o produto.
+- **Requisitos e rastreabilidade:** dão significado à evidência.
+
+A terminologia deve ser declarada: esta aula usa o modelo causal; Pressman também apresenta uma convenção temporal [@pressman2016].
+
+[📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}
+
+## Referências
+

@@ -41,6 +41,7 @@ header-includes:
 - 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.text-base .module-link}
 - 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.text-base .module-link}
 - 🧪 [Laboratório 02: Estratégias e Níveis de Teste na Prática](02-gestao-qualidade/laboratorio.html){.text-base .module-link}
+- 📄 [Aula 03: Introdução à Engenharia de Testes](03-introducao-testes/index.qmd){.text-base .module-link}
 :::
 
 :::
