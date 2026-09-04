@@ -283,13 +283,9 @@ print("--- Executando Verificações com Pytest no Navegador ---")
 test_valor_compra_invalido_deve_lancar_excecao()
 print("✅ Teste de entradas inválidas com pytest.raises: APROVADO")
 
-for v, f, esp in [
-    (99.99, False, 99.99),
-    (100.00, False, 95.00),
-    (500.00, False, 475.00),
-    (500.01, False, 450.01),
-    (100.00, True, 93.00),
-]:
+# No terminal, o pytest injeta cada tupla automaticamente.
+# No navegador (Pyodide), lemos os parâmetros anotados no próprio decorator sem duplicar a lista:
+for v, f, esp in test_calculo_desconto_faixas.pytestmark[0].args[1]:
     test_calculo_desconto_faixas(v, f, esp)
     print(f"✅ Cenário R$ {v:6.2f} (fidelidade={str(f):5}) -> R$ {esp:6.2f} [PASSOU]")
 ```
