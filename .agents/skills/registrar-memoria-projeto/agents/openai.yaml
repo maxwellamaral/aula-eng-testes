@@ -1,0 +1,4 @@
+interface:
+  display_name: "Registrar memória do projeto"
+  short_description: "Registre proveniência e consolide decisões no Hermes remoto"
+  default_prompt: "Use $registrar-memoria-projeto para registrar a proveniência da sessão e consolidar apenas decisões duráveis do projeto."
