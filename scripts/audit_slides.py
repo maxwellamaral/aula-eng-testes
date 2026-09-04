@@ -6,22 +6,30 @@ visibilidade e enquadramento de todas as imagens em todos os slides.
 """
 
 import asyncio
-import os
 import sys
+from pathlib import Path
+
 from playwright.async_api import async_playwright
 
-async def audit_slides(slides_html_path: str, screenshots_dir: str = "scratch/slides_audit") -> bool:
-    if not os.path.exists(slides_html_path):
-        print(f"Erro: Arquivo não encontrado: {slides_html_path}")
+
+async def audit_slides(
+    slides_html_path: str | Path,
+    screenshots_dir: str | Path = "scratch/slides_audit",
+) -> bool:
+    slides_path = Path(slides_html_path).resolve()
+    screenshots_path = Path(screenshots_dir).resolve()
+
+    if not slides_path.is_file():
+        print(f"Erro: Arquivo não encontrado: {slides_path}")
         return False
 
-    os.makedirs(screenshots_dir, exist_ok=True)
+    screenshots_path.mkdir(parents=True, exist_ok=True)
     
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page(viewport={"width": 1280, "height": 720})
         
-        file_url = f"file://{os.path.abspath(slides_html_path)}"
+        file_url = slides_path.as_uri()
         print(f"Carregando apresentação: {file_url}")
         await page.goto(file_url, wait_until="networkidle")
         await asyncio.sleep(1)
@@ -58,7 +66,8 @@ async def audit_slides(slides_html_path: str, screenshots_dir: str = "scratch/sl
                             right: rect.right,
                             display: computed.display,
                             visibility: computed.visibility,
-                            isVisible: rect.width > 0 && rect.height > 0 && computed.visibility !== 'hidden' && computed.display !== 'none'
+                            isVisible: rect.width > 0 && rect.height > 0 && computed.visibility !== 'hidden' && computed.display !== 'none',
+                            isWithinViewport: rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth
                         };
                     });
                     return {
@@ -77,23 +86,24 @@ async def audit_slides(slides_html_path: str, screenshots_dir: str = "scratch/sl
                 print(f"==================================================")
                 slide_ok = True
                 for img in data['images']:
-                    filename = os.path.basename(img['src'])
+                    filename = Path(img['src']).name
                     print(f"  Imagem: {filename}")
                     print(f"  - Carregada: {img['complete']}")
                     print(f"  - Resolução Original: {img['naturalWidth']}x{img['naturalHeight']} px")
                     print(f"  - Dimensões na Tela: {img['renderedWidth']:.1f}x{img['renderedHeight']:.1f} px")
                     print(f"  - Posição (Bounding Box): Top={img['top']:.1f}px, Left={img['left']:.1f}px")
+                    print(f"  - Contida no viewport: {img['isWithinViewport']}")
                     
-                    if not img['isVisible'] or img['renderedHeight'] < 50 or img['renderedWidth'] < 50:
+                    if not img['isVisible'] or not img['isWithinViewport'] or img['renderedHeight'] < 50 or img['renderedWidth'] < 50:
                         slide_ok = False
                         all_passed = False
-                        print(f"  >>> ❌ [FALHA] Imagem {filename} NÃO está visível ou colapsou (dimensão zerada)!")
+                        print(f"  >>> ❌ [FALHA] Imagem {filename} não está visível, está pequena demais ou extrapola o viewport!")
                     else:
-                        print(f"  >>> ✅ [OK] Imagem perfeitamente renderizada e visível!")
+                        print(f"  >>> ✅ [OK] Imagem visível, dimensionada e contida no viewport.")
                 
                 # Salvar screenshot
-                screenshot_path = os.path.join(screenshots_dir, f"slide_{data['slideIndex']:02d}.png")
-                await page.screenshot(path=screenshot_path)
+                screenshot_path = screenshots_path / f"slide_{data['slideIndex']:02d}.png"
+                await page.screenshot(path=str(screenshot_path))
                 print(f"  Screenshot: {screenshot_path}\n")
 
         await browser.close()

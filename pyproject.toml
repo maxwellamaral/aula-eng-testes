@@ -1,0 +1,21 @@
+[project]
+name = "vvts-courseware"
+version = "0.1.0"
+description = "Material didático Quarto de Verificação, Validação e Testes de Software"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "jupyter>=1.1.1",
+  "nbformat>=5.10.4",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3.5",
+]
+visual-audit = [
+  "playwright>=1.51.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

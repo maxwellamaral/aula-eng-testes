@@ -1,47 +1,43 @@
 ---
 page-layout: article
-header-includes:
-  - <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 ---
-<!-- Navegação -->
-::: {.flex .items-center .gap-2 .mt-4 .mb-4 .text-sm .breadcrumb-nav}
-[🏠 Home](../../){.transition-colors}
+
+::: {.course-index}
+
+::: {.breadcrumb-nav}
+[🏠 Home](../../)
 <span>/</span>
-[📚 Aulas & Materiais](#){.transition-colors}
+[📚 Aulas & Materiais](#)
 :::
 
-<!-- Título -->
-::: {.mb-10 .mt-8}
-# Aulas & Materiais {.title-glow .text-4xl .md:text-4xl .font-extrabold .mb-6 .tracking-tight .leading-tight}
+::: {.catalog-header}
+# Aulas & Materiais {.catalog-title}
 :::
 
-<!-- Módulos de Aprendizagem -->
-::: {.overflow-hidden .mb-8}
+::: {.course-modules}
 
-::: {.p-4}
-## 🎓 Módulos de Aprendizagem {.text-2xl .font-semibold}
+## 🎓 Módulos de Aprendizagem
+
+::: {.course-module}
+### Apresentação da disciplina
+
+::: {.module-list}
+- 📄 [Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina](00-apresentacao/index.qmd){.module-link}
+- 🖥️ [Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.module-link}
+:::
 :::
 
-::: {.p-6 .pt-4 .pl-6}
+::: {.course-module}
+### Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade
 
-<!-- Apresentação da disciplina -->
-::: {.glass-card .mb-6 .p-4}
-### Apresentação da disciplina {.text-xl .font-bold .mb-3}
-
-- 📄 [Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina](00-apresentacao/index.qmd){.text-base .module-link}
-- 🖥️ [Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.text-base .module-link}
+::: {.module-list}
+- 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.module-link}
+- 🖥️ [Visualizar Apresentação de Slides (Aula 01)](01-introducao-engsoft/slides.qmd){.module-link}
+- 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.module-link}
+- 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.module-link}
+- 🧪 [Laboratório 02: Estratégias e Níveis de Teste na Prática](02-gestao-qualidade/laboratorio.qmd){.module-link}
+- 📄 [Aula 03: Introdução à Engenharia de Testes](03-introducao-testes/index.qmd){.module-link}
 :::
-
-<!-- Introdução a Engenharia de Software -->
-::: {.glass-card .p-4}
-### Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade {.text-xl .font-bold .mb-3}
-
-- 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.text-base .module-link}
-- 🖥️ [Visualizar Apresentação de Slides (Aula 01)](01-introducao-engsoft/slides.qmd){.text-base .module-link}
-- 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.text-base .module-link}
-- 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.text-base .module-link}
-- 🧪 [Laboratório 02: Estratégias e Níveis de Teste na Prática](02-gestao-qualidade/laboratorio.html){.text-base .module-link}
-- 📄 [Aula 03: Introdução à Engenharia de Testes](03-introducao-testes/index.qmd){.text-base .module-link}
 :::
 
 :::

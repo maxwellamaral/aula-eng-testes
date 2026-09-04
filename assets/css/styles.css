@@ -32,62 +32,6 @@ body.quarto-light {
   color: #0f172a !important;
 }
 
-/* Glow effect for main title (Dark Mode) */
-body.quarto-dark .title-glow {
-  text-shadow: 0 0 20px rgba(79, 209, 197, 0.8), 0 0 40px rgba(79, 209, 197, 0.5), 0 0 60px rgba(79, 209, 197, 0.3);
-}
-
-body.quarto-light .title-glow {
-  color: #0f172a !important;
-  text-shadow: none !important;
-}
-
-/* Card Glow and border effects */
-body.quarto-dark .feature-card {
-  background: linear-gradient(145deg, rgba(26, 43, 72, 0.4), rgba(5, 12, 26, 0.6)) !important;
-  border: 1px solid rgba(79, 209, 197, 0.3) !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-}
-
-body.quarto-dark .feature-card:hover {
-  box-shadow: 0 0 25px rgba(79, 209, 197, 0.25) !important;
-  border-color: rgba(79, 209, 197, 0.6) !important;
-  transform: translateY(-2px);
-  text-decoration: none !important;
-}
-
-body.quarto-light .feature-card {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-  color: #1e293b !important;
-}
-
-body.quarto-light .feature-card:hover {
-  border-color: #0284c7 !important;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15) !important;
-  transform: translateY(-2px);
-  text-decoration: none !important;
-}
-
-.cta-btn {
-  background: linear-gradient(180deg, #1a2b48 0%, #0f192b 100%) !important;
-  border: 1px solid rgba(30, 58, 138, 0.5) !important;
-  border-radius: 8px !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
-}
-
-.cta-btn:hover {
-  background: linear-gradient(180deg, #23395d 0%, #142139 100%) !important;
-  border-color: rgba(79, 209, 197, 0.5) !important;
-  box-shadow: 0 0 15px rgba(30, 58, 138, 0.4) !important;
-  text-decoration: none !important;
-}
-
 /* Timeline navigation style for sidebar/TOC */
 .timeline-dot {
   position: relative;
@@ -213,94 +157,6 @@ div.qpyodide-console-area {
   border: 1px solid #2d3748 !important;
   background-color: #0d1117 !important;
   border-radius: 6px;
-}
-
-/* Glassmorphism & Neon Cyan styles for Aulas & Materiais (Dark Mode) */
-body.quarto-dark .glass-card {
-  background: rgba(8, 45, 61, 0.4) !important;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 206, 209, 0.2) !important;
-  border-radius: 12px;
-  transition: all 0.3s ease !important;
-}
-
-body.quarto-dark .glass-card:hover {
-  border-color: rgba(0, 206, 209, 0.4) !important;
-  box-shadow: 0 0 20px rgba(0, 206, 209, 0.25) !important;
-}
-
-body.quarto-dark .glass-card h3 {
-  color: #ffffff !important;
-  text-shadow: 0 0 10px rgba(0, 255, 213, 0.4);
-}
-
-body.quarto-dark .module-link {
-  color: #cbd5e1 !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-}
-
-body.quarto-dark .module-link:hover {
-  color: #00ced1 !important;
-  text-decoration: none !important;
-}
-
-body.quarto-dark .breadcrumb-nav {
-  color: #94a3b8 !important;
-}
-
-body.quarto-dark .breadcrumb-nav a {
-  color: #94a3b8 !important;
-}
-
-body.quarto-dark .breadcrumb-nav a:hover {
-  color: #00ced1 !important;
-}
-
-/* Glassmorphism / Clean Cards for Aulas & Materiais (Light Mode) */
-body.quarto-light .glass-card {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.3s ease !important;
-}
-
-body.quarto-light .glass-card:hover {
-  border-color: #0284c7 !important;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12) !important;
-  transform: translateY(-2px);
-}
-
-body.quarto-light .glass-card h3 {
-  color: #0f172a !important;
-  text-shadow: none !important;
-  border-left: 3px solid #0284c7 !important;
-  padding-left: 0.6rem !important;
-}
-
-body.quarto-light .module-link {
-  color: #1e293b !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-}
-
-body.quarto-light .module-link:hover {
-  color: #0284c7 !important;
-  text-decoration: underline !important;
-}
-
-body.quarto-light .breadcrumb-nav {
-  color: #64748b !important;
-}
-
-body.quarto-light .breadcrumb-nav a {
-  color: #0369a1 !important;
-}
-
-body.quarto-light .breadcrumb-nav a:hover {
-  color: #0284c7 !important;
 }
 
 body.quarto-dark .neon-border {
@@ -547,7 +403,7 @@ blockquote {
   border-radius: 0 8px 8px 0 !important;
 }
 
-/* Restore list styles overridden by Tailwind CSS Preflight */
+/* Preserve list markers in Quarto content */
 main.content ol,
 #quarto-document-content ol,
 .content ol {

@@ -1,0 +1,110 @@
+/* Catálogo de aulas: componentes locais, sem utilitários Tailwind. */
+.course-index {
+  padding: 1rem 1.5rem 3rem;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.catalog-header {
+  margin: 2rem 0 2.5rem;
+}
+
+.catalog-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+body.quarto-dark .catalog-title {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(79, 209, 197, 0.55);
+}
+
+body.quarto-light .catalog-title {
+  color: #0f172a;
+}
+
+.course-modules {
+  max-width: 72rem;
+}
+
+.course-modules > h2 {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.course-module {
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.course-module + .course-module {
+  margin-top: 1.5rem;
+}
+
+.course-module h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+body.quarto-dark .course-module {
+  background: rgba(8, 45, 61, 0.4);
+  border: 1px solid rgba(0, 206, 209, 0.2);
+}
+
+body.quarto-light .course-module {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.module-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.module-list li + li {
+  margin-top: 0.5rem;
+}
+
+.module-link {
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+body.quarto-dark .breadcrumb-nav,
+body.quarto-dark .breadcrumb-nav a {
+  color: #94a3b8;
+}
+
+body.quarto-dark .breadcrumb-nav a:hover,
+body.quarto-dark .module-link:hover {
+  color: #00ced1;
+}
+
+body.quarto-dark .module-link {
+  color: #cbd5e1;
+}
+
+body.quarto-light .breadcrumb-nav {
+  color: #64748b;
+}
+
+body.quarto-light .breadcrumb-nav a,
+body.quarto-light .module-link {
+  color: #0369a1;
+}
+
+body.quarto-light .breadcrumb-nav a:hover,
+body.quarto-light .module-link:hover {
+  color: #0284c7;
+}

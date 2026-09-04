@@ -1,5 +1,6 @@
 # Quarto build & cache outputs
 _site/
+site_libs/
 .quarto/
 **/*.quarto_ipynb
 *_files/
@@ -48,6 +49,4 @@ Thumbs.db
 /content/apostila_files/*
 
 .agents/
-specs/
 resources/
-AGENTS.md

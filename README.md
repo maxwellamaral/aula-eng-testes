@@ -1,6 +1,6 @@
 # Site de Verificação, Validação e Testes de Software
 
-Repositório do material didático de **Verificação, Validação e Testes de Software (VVTS)**, do Bacharelado em Engenharia de Software — IFPB Campus João Pessoa. O site será construído com Quarto; exemplos e práticas usam Python 3.11+ e a stack definida em `AGENTS.md`.
+Repositório do material didático de **Verificação, Validação e Testes de Software (VVTS)**, do Bacharelado em Engenharia de Software — IFPB Campus João Pessoa. O site é construído com Quarto; exemplos e práticas usam Python 3.11+. As convenções operacionais e pedagógicas versionadas estão em `AGENTS.md` e `specs/`.
 
 ## Gerar uma nova aula com IA agêntica
 
@@ -18,7 +18,7 @@ Antes de solicitar a aula, informe ao agente:
 - exemplo, atividade ou ferramenta que deve aparecer;
 - regras de uso de IA, entrega ou avaliação, somente se já definidas.
 
-Não é necessário especificar detalhes editoriais: o agente deve obtê-los em `AGENTS.md` e nas specs. Se uma escolha pedagógica importante ainda não estiver decidida, responda à pergunta do agente antes de pedir a implementação.
+Não é necessário especificar detalhes editoriais: o agente deve obtê-los em `AGENTS.md` e nas especificações pertinentes em `specs/`. Se uma escolha pedagógica importante ainda não estiver decidida, responda à pergunta do agente antes de pedir a implementação.
 
 ### 2. Faça o pedido
 
@@ -33,34 +33,11 @@ Use um pequeno exemplo em Python, sem introduzir Django, API ou valor-limite nes
 Inclua uma atividade curta de classificação de entradas. Não há entrega nem avaliação definida.
 ```
 
-Para criar aula e laboratório juntos, diga explicitamente que deseja um par e inclua a função prática do laboratório. O agente usará a skill local `criar-par-aula-laboratorio`.
+Para criar aula e laboratório juntos, diga explicitamente que deseja um par e inclua a função prática do laboratório. O agente deve seguir `specs/padrao-aula.md` e `specs/padrao-laboratorio.md`.
 
-### Exemplo com memória persistente
+### Continuidade pedagógica
 
-Para manter a continuidade entre as aulas e registrar decisões duráveis, inclua a consulta e a consolidação da memória no pedido:
-
-```text
-Antes de criar a nova aula, consulte minha memória persistente, especialmente
-knowledge/projects/aula-vvts.md, e as instruções do repositório.
-
-Quero criar a Aula 02 — Fundamentos de Engenharia de Testes.
-
-Ela corresponde à semana 2. O foco é diferenciar erro, defeito e falha, além de
-apresentar verificação estática, validação e testes dinâmicos. A aula deve
-conectar requisitos às evidências de qualidade, sem antecipar técnicas de
-caixa-preta ou caixa-branca.
-
-Não haverá entrega nem avaliação. Crie a página no padrão atual do projeto,
-atualize o índice das aulas se necessário e execute `quarto render`.
-
-Ao concluir, registre a sessão pelo fluxo de memória: crie a proveniência em
-raw/daily via Hermes e consolide somente as decisões estáveis e pendências em
-knowledge/projects/aula-vvts.md. Não registre credenciais ou arquivos
-temporários.
-```
-
-O Hermes é responsável por registrar a proveniência em `raw/daily/` e atualizar
-a nota canônica do projeto. Não edite `raw/daily/` manualmente neste WSL.
+Antes de criar ou revisar uma aula, leia `AGENTS.md`, `specs/projeto-pedagogico.md`, a aula anterior e os materiais já publicados. Use apenas as decisões curriculares disponíveis no repositório ou fornecidas pelo docente; não registre nem presuma informações acadêmicas que não estejam definidas.
 
 ### Slides são uma solicitação separada
 
@@ -71,8 +48,7 @@ Ao solicitar slides, informe isso claramente junto da aula ou em um pedido poste
 Exemplo de solicitação de slides:
 
 ```text
-Antes de criar a apresentação, consulte minha memória persistente, especialmente
-knowledge/projects/aula-vvts.md, e leia specs/padrao-slides.md.
+Leia AGENTS.md, specs/padrao-slides.md e o material da aula correspondente.
 
 Crie a apresentação de slides para a Aula 02 — Introdução à Gestão da Qualidade de Produto
 em docs/02-gestao-qualidade/slides.qmd.
@@ -80,22 +56,22 @@ em docs/02-gestao-qualidade/slides.qmd.
 Construa uma narrativa própria para condução presencial (com frames de abertura, contextualização,
 problema/evidência, conceitos-chave, contraste de abordagens e síntese), sem converter
 mecanicamente o texto da aula em slides. Utilize o formato Reveal.js nativo do Quarto,
-mantenha o tema escuro consistente com o site e priorize imagens vetoriais (SVG).
+mantenha o tema consistente com o site e priorize imagens vetoriais (SVG).
 
-Ao concluir, atualize o link no material da aula, renderize com `quarto render` e verifique o resultado.
+Ao concluir, atualize o link no material da aula, execute `uv run quarto render` e audite o deck alterado.
 ```
 
 ### 3. O que o agente deve fazer
 
 Ao receber o pedido, o agente deve:
 
-1. Ler `AGENTS.md` e as specs pertinentes em `specs/`.
-2. Conferir a continuidade com o cronograma, páginas anteriores e materiais existentes.
+1. Ler `AGENTS.md` e as especificações pertinentes em `specs/`.
+2. Conferir a continuidade com as páginas anteriores e materiais existentes; confirmar com o docente informações curriculares ausentes.
 3. Pedir decisão ao professor apenas quando faltar uma definição pedagógica relevante.
-4. Criar `docs/aulas/aula-XX-assunto.qmd` no padrão da disciplina.
+4. Criar `docs/NN-tema/index.qmd` e `_content.qmd` no padrão da disciplina.
 5. Explicar o conceito a partir de um problema ou evidência, com exemplos e atividades que apoiem o objetivo.
 6. Introduzir Python e ferramentas da stack apenas quando forem necessários ao tema.
-7. Atualizar índice e `_quarto.yml` somente se a estrutura de navegação exigir.
+7. Atualizar `docs/index.qmd` e `docs/apostila.qmd` quando a estrutura de navegação ou a apostila exigir.
 8. Renderizar o site e relatar os arquivos modificados e o resultado da validação.
 
 O agente não deve inventar datas, pesos, critérios de nota, regras de entrega, política de IA, detalhes de *cases* ou decisões curriculares.
@@ -111,26 +87,35 @@ Leia a aula gerada verificando principalmente:
 - atividade viável e critérios observáveis, quando houver laboratório;
 - clareza para leitura autônoma pelo estudante.
 
-Você pode pedir: “revise esta aula conforme `specs/padrao-aula.md` e aplique apenas correções necessárias”. A skill `revisar-material-didatico` faz essa revisão sem alterar arquivos, salvo quando a implementação for explicitamente solicitada.
+Você pode pedir: “revise esta aula conforme `specs/padrao-aula.md` e aplique apenas correções necessárias”. A revisão deve apontar problemas de conteúdo, progressão, acessibilidade, fontes e executabilidade antes de modificar os arquivos.
 
 ## Ambiente e validação
 
-Quando o projeto Quarto estiver inicializado, o fluxo esperado é:
+O fluxo esperado é:
 
 ```bash
 uv sync
-uv run pytest
 uv run quarto render
+uv run python scripts/render_apostila.py
 ```
 
-Se o Quarto estiver instalado fora do ambiente `uv`, use `quarto render`. Nunca edite `_site/` manualmente. Commits, push e publicação exigem solicitação explícita.
+Execute `uv run pytest` quando houver testes. Para auditar slides, instale a dependência opcional e o navegador uma vez:
 
-A apostila PDF é gerada durante a renderização. Ela só estará disponível para download público depois que a versão que a contém for publicada no site.
+```bash
+uv sync --group visual-audit
+uv run playwright install chromium
+uv run python scripts/audit_slides.py _site/docs/NN-tema/slides.html
+```
+
+O Quarto é uma dependência do sistema e deve estar disponível no `PATH`. A renderização completa também requer Java, Graphviz (`dot`) e PlantUML para os diagramas; o workflow de publicação instala esses componentes. Nunca edite `_site/` manualmente. Commits, push e publicação exigem solicitação explícita.
+
+A apostila PDF é gerada pelo comando explícito `uv run python scripts/render_apostila.py` após a renderização. Ela só estará disponível para download público depois que a versão que a contém for publicada no site.
 
 ## Fontes de orientação
 
 - `AGENTS.md`: regras operacionais, stack e limites de decisão.
-- `specs/projeto-pedagogico.md`: ementa, objetivos e cronograma.
+- `specs/projeto-pedagogico.md`: decisões curriculares disponíveis e limites do repositório.
 - `specs/padrao-aula.md`: formato e critérios de qualidade das aulas.
 - `specs/padrao-laboratorio.md`: formato das práticas.
+- `specs/padrao-slides.md`: narrativa e validação das apresentações.
 - `specs/estrutura-site.md`: organização e navegação do site.

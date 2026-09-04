@@ -19,9 +19,6 @@ project:
     - assets/css/*.css
     - docs/**/_*.qmd
     - assets/images/**/*
-  post-render:
-    - scripts/render_apostila.sh
-
 bibliography: docs/references.bib
 
 website:
@@ -46,7 +43,10 @@ format:
     highlight-style:
       dark: dracula
       light: github
-    css: assets/css/styles.css
+    css:
+      - assets/css/styles.css
+      - assets/css/landing.css
+      - assets/css/catalog.css
     lightbox: true
     toc: true
     toc-title: "Nesta página"
