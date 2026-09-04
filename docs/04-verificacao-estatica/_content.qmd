@@ -1,0 +1,195 @@
+## Contextualização
+
+Na aula anterior, distinguimos V&V estático de V&V dinâmico: a primeira examina artefatos sem executar o software; a segunda observa o comportamento durante a execução. Esta aula aprofunda a primeira alternativa. Antes de executar um caso de teste, uma equipe pode encontrar uma regra ambígua, um caminho ausente, uma inconsistência entre artefatos ou uma violação de padrão ao ler e discutir o material produzido.
+
+A pergunta não é “quem cometeu o erro?”, mas **o que o artefato declara, o que deveria declarar e que evidência sustenta a divergência?**. Essa postura é essencial para que a revisão seja uma atividade de qualidade, e não uma avaliação da pessoa autora.
+
+### Objetivos da aula
+
+Ao final desta aula, você será capaz de:
+
+1. distinguir revisão informal, teste de mesa, *walkthrough*, revisão técnica formal e inspeção pelo grau de estrutura e pelos registros produzidos;
+2. explicar o impacto técnico e econômico da detecção precoce usando o Modelo de Amplificação de Defeitos;
+3. preparar uma revisão estática de um requisito ou trecho de código, definindo escopo, versão, critérios e perguntas de uma lista de verificação;
+4. registrar uma descoberta de inspeção com evidência, impacto e encaminhamento, sem propor correções não verificadas como se fossem fatos;
+5. participar de uma inspeção guiada, aplicando diretrizes de conduta e separando a análise do artefato da avaliação de sua autoria.
+
+::: {.callout-note}
+### Pergunta-guia
+
+Se não executamos o software, como podemos produzir uma evidência confiável de que um requisito está incompleto ou de que o código não representa a regra que deveria implementar?
+:::
+
+---
+
+## 1. O que a verificação estática examina
+
+A verificação estática avalia um produto de trabalho sem exercitar seu comportamento em execução. Requisitos, histórias de usuário, critérios de aceitação, diagramas, código, casos de teste, configurações e documentação podem ser objetos de revisão. O resultado é uma descoberta fundamentada no próprio artefato e em sua base de referência — por exemplo, um requisito relacionado, uma convenção de código ou um critério de aceitação [@pressman2016].
+
+Isso não torna a revisão uma substituta do teste dinâmico. Uma leitura pode revelar que uma condição de contorno está ausente; ela não demonstra, sozinha, como o sistema integrado se comporta sob uma entrada, estado e ambiente específicos. As duas formas de evidência respondem a perguntas diferentes.
+
+::: {.callout-important}
+### Revisar não é depurar nem testar
+
+Uma inspeção pode apontar uma provável causa ou uma inconsistência, mas a correção ainda precisa ser implementada e verificada. Um teste de mesa não é “executar manualmente” o software: ele é uma leitura estruturada do artefato, eventualmente acompanhando valores e decisões no papel ou em uma tabela, sem produzir uma execução do produto sob teste.
+:::
+
+---
+
+## 2. A importância econômica: Modelo de Amplificação de Defeitos
+
+Por que revisar documentos e código antes de executar o software? O **Modelo de Amplificação de Defeitos** apresentado por Pressman ilustra que erros não identificados em uma etapa podem ser propagados e amplificados pelo trabalho das etapas seguintes. Por isso, a descoberta precoce reduz tanto o volume de problemas que chega aos testes quanto o custo das atividades posteriores de qualidade [@pressman2016].
+
+O modelo é uma representação didática, não uma taxa universal para todo projeto. No exemplo hipotético de Pressman, dez defeitos preliminares de projeto chegam a **94 erros antes do início dos testes** e resultam em **20 erros latentes** liberados ao campo quando não há revisões. Mantidas as demais condições do exemplo, as revisões de projeto e código reduzem esse cenário para **24 erros antes dos testes** e **três erros latentes** no campo [@pressman2016].
+
+| Cenário hipotético de Pressman | Erros antes do início dos testes | Erros latentes liberados ao campo |
+|---|---:|---:|
+| Sem revisões de projeto e código | 94 | 20 |
+| Com revisões de projeto e código | 24 | 3 |
+
+No mesmo exemplo, o custo total sem revisões é aproximadamente três vezes maior. A lição não é assumir que todo processo terá os mesmos números, mas reconhecer que artefatos posteriores são construídos sobre decisões anteriores: detectar uma divergência em requisitos, projeto ou código antes de ela se propagar costuma reduzir retrabalho e risco [@pressman2016].
+
+> “Revisões são como um filtro no fluxo de trabalho da gestão de qualidade. Um número muito pequeno de revisões e o fluxo será ‘sujo’. Um número muito grande de revisões e o fluxo diminui muito e vira um gotejamento.” [@pressman2016]
+
+---
+
+## 3. Técnicas de revisão: do diálogo à inspeção
+
+As técnicas se sobrepõem na prática. A diferença central está no grau de planejamento, independência da preparação, papéis, critérios e rastros deixados pela atividade. Pressman e Maxim apresentam *walkthroughs* e inspeções como formas de revisão técnica formal; elas exigem planejamento, preparação, diretrizes e manutenção de registros [@pressman2016].
+
+| Técnica | Como ocorre | Estrutura e registro esperados |
+|---|---|---|
+| **Revisão informal** | uma ou mais pessoas leem e comentam um artefato | pode não ter papéis, roteiro ou registro padronizado |
+| **Teste de mesa** | a pessoa autora e/ou revisores percorrem logicamente um artefato, usando uma lista de verificação quando disponível | foco pequeno; anotações de problemas tornam a atividade rastreável |
+| **Walkthrough** | a pessoa autora apresenta o artefato e explica seu raciocínio; revisores questionam com base na preparação prévia | agenda, escopo e registro das questões aumentam a disciplina da revisão |
+| **Revisão técnica formal** | reunião planejada para avaliar uma parte delimitada de um artefato contra requisitos e padrões | preparação, papéis, lista de problemas, decisão e acompanhamento |
+| **Inspeção** | revisão formal e sistemática, guiada por critérios e registros para localizar defeitos no artefato | papéis claros, preparação individual, checklist, registro de descobertas e *follow-up* |
+
+::: {.callout-tip}
+### A técnica não é uma escala de “melhor”
+
+Uma conversa breve entre pares pode ser suficiente para esclarecer uma dúvida local. Já um artefato com maior risco, impacto ou número de dependências se beneficia de escopo explícito, preparação individual e registros. O objetivo é obter evidência proporcional ao contexto, não burocratizar toda leitura de código.
+:::
+
+---
+
+## 4. Revisão técnica formal: fluxo, papéis e conduta
+
+Uma revisão técnica formal concentra-se em uma parte pequena e identificável de um artefato. Esse recorte permite que a equipe se prepare, discuta evidências e mantenha a reunião orientada à descoberta de problemas. Na descrição de Pressman e Maxim, a atividade inclui preparação prévia, um líder de revisão, revisores, a pessoa produtora do artefato e uma pessoa registradora; ao final, a equipe decide se aceita, rejeita ou aceita provisoriamente o artefato, com acompanhamento das pendências [@pressman2016].
+
+### Fluxo mínimo
+
+1. **Planejar** — identificar o artefato, sua versão, a base de referência, o escopo da revisão e os critérios aplicáveis.
+2. **Preparar** — cada revisor lê o material individualmente e registra questões com localização e evidência. Pressman e Maxim recomendam limitar a preparação a até duas horas por pessoa [@pressman2016].
+3. **Conduzir a reunião** — percorrer o escopo definido, esclarecer o entendimento e consolidar as descobertas; a reunião não é o momento de projetar todas as soluções. A referência recomenda uma reunião de menos de duas horas [@pressman2016].
+4. **Decidir** — registrar a situação técnica do artefato: aceito, aceito com pendências secundárias ou rejeitado, exigindo nova revisão após correções [@pressman2016].
+5. **Acompanhar** — conferir se cada pendência teve tratamento, justificativa ou reavaliação; o *follow-up* pode ser atribuído à liderança da revisão [@pressman2016].
+
+### Papéis úteis
+
+| Papel | Responsabilidade durante a revisão |
+|---|---|
+| **Pessoa produtora** | disponibiliza o artefato e seu contexto; esclarece dúvidas sobre a intenção registrada |
+| **Liderança ou moderação** | avalia a completude inicial, organiza a agenda, protege o escopo, o tempo e a regra de revisar o produto, não a pessoa |
+| **Revisores** | examinam o material contra a base de referência e apresentam evidências de suas questões |
+| **Pessoa registradora** | mantém a lista de descobertas, decisões e pendências de forma verificável |
+
+::: {.callout-warning}
+### Regra de condução: revise o produto, não a pessoa produtora
+
+Formule observações sobre o artefato: “o critério de aceitação não define o resultado para esta condição” é verificável. “quem escreveu isso não entendeu a regra” não é uma descoberta de inspeção e desloca a discussão do produto para a pessoa. Uma revisão útil é construtiva, específica e rastreável [@pressman2016].
+:::
+
+### Diretrizes de conduta para a RTF
+
+As diretrizes precisam ser definidas antes da revisão e aceitas pelas pessoas participantes. Entre as recomendações de Pressman e Maxim estão [@pressman2016]:
+
+1. **Revisar o produto, não a pessoa produtora.** Formule questões verificáveis, aponte problemas com respeito e mantenha o clima construtivo.
+2. **Estabelecer uma agenda e mantê-la.** A moderação protege o foco e o prazo da reunião.
+3. **Limitar debates e refutações.** Quando não houver consenso sobre o impacto de uma questão, registre-a para discussão posterior, fora da reunião.
+4. **Enunciar áreas problemáticas sem tentar resolver tudo.** A RTF serve para descobrir e registrar problemas; a solução fica para depois da reunião.
+5. **Tomar notas.** A pessoa registradora mantém uma lista de problemas e decisões que possa orientar o trabalho posterior.
+6. **Limitar participantes e exigir preparação prévia.** A referência recomenda que a liderança solicite comentários escritos como evidência de que o material foi examinado.
+
+---
+
+## 5. Checklist: transformar atenção em perguntas verificáveis
+
+Uma lista de verificação não decide se há defeito; ela orienta a leitura para perguntas recorrentes. A descoberta só deve ser registrada quando a equipe puder apontar a localização no artefato e a referência que torna a questão relevante. Pressman e Maxim destacam o uso de checklists por artefato como apoio a testes de mesa e revisões [@pressman2016].
+
+### Checklist inicial para código
+
+- O trecho implementa uma regra que pode ser ligada a um requisito, contrato ou critério de aceitação identificável?
+- Condições, limites, valores nulos, exceções e caminhos alternativos foram tratados de forma consistente?
+- Nomes de variáveis e funções, assinaturas de interfaces e efeitos colaterais comunicam a intenção do código?
+- Há duplicação de lógica, código inacessível, tratamento de erro ausente ou violação de convenção aplicável ao projeto?
+- Os testes relacionados representam as condições de fronteira e os caminhos de erro conhecidos?
+- A descoberta pode ser localizada por arquivo, função, intervalo de linhas ou identificador de requisito?
+
+---
+
+## 6. Prática de inspeção guiada
+
+A prática usa um **artefato e uma versão definidos pelo docente**: pode ser um requisito com critérios de aceitação, um trecho de código ou ambos. A turma não deve completar lacunas de domínio inventando regras. Quando uma referência necessária estiver ausente, registre a ausência como questão a esclarecer.
+
+### Preparação
+
+Antes da inspeção, complete a ficha abaixo para o artefato selecionado:
+
+| Campo | Registro |
+|---|---|
+| Identificação e versão do artefato | |
+| Tipo de artefato | requisito / código / outro: |
+| Escopo delimitado | |
+| Base de referência | requisito, critério, padrão ou decisão relacionada |
+| Checklist adotado | requisitos / código / outro: |
+| Participantes e papéis | |
+
+### Roteiro da inspeção
+
+1. **Delimite o objeto.** Confirme qual versão será revisada e quais partes ficam fora do escopo.
+2. **Faça a preparação individual.** Cada revisor percorre o artefato com o checklist e registra questões de forma independente, sem discutir soluções.
+3. **Apresente a base de referência.** A pessoa produtora ou moderadora expõe o objetivo e os critérios disponíveis; não acrescente regras que não estejam confirmadas.
+4. **Percorra o artefato.** Em um *walkthrough*, a pessoa produtora explica a leitura; os revisores fazem perguntas ancoradas na preparação e nas diretrizes de conduta.
+5. **Registre descobertas.** A pessoa registradora consolida apenas itens que indiquem localização e evidência. Discordâncias ou informações ausentes também devem ser anotadas para esclarecimento posterior.
+6. **Classifique o encaminhamento.** Para cada item, defina se exige correção, esclarecimento, verificação adicional ou se foi descartado com justificativa.
+7. **Conclua e acompanhe.** Registre a decisão sobre o artefato e quem verificará os itens pendentes após a atualização.
+
+### Registro de descobertas
+
+| ID | Localização | Tipo de questão | Evidência e referência | Impacto a investigar | Encaminhamento | Situação |
+|---|---|---|---|---|---|---|
+| I-01 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+| I-02 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+| I-03 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+
+### Critério de conclusão da prática
+
+A inspeção está concluída quando a ficha identifica artefato, versão, escopo, participantes e base de referência; cada descoberta possui localização e evidência; e a equipe registra uma decisão e os próximos passos. Encontrar muitos itens não é sinal de sucesso por si só: o valor está na qualidade, rastreabilidade e conduta profissional demonstrada durante o processo de avaliação.
+
+---
+
+## Para revisar
+
+1. Como o Modelo de Amplificação de Defeitos justifica economicamente a introdução de revisões estáticas logo no início do desenvolvimento?
+2. Que diferença de estrutura, papéis e manutenção de registros separa uma revisão informal de uma inspeção ou RTF?
+3. Explique três diretrizes de conduta que tornam uma RTF produtiva e evitam conflitos de ego.
+4. O que torna uma questão de inspeção verificável e justa, em vez de uma opinião depreciativa sobre a pessoa autora?
+5. Que informação precisa constar no registro de descobertas para que outra pessoa possa acompanhar e corrigir um problema?
+6. Quando uma equipe encontra uma regra ausente ou obscura na documentação durante a inspeção de código, por que não deve inventar a solução na reunião?
+
+::: {.callout-note}
+### Síntese
+
+A verificação estática examina artefatos sem executar o software e procura evidências de omissões, ambiguidades, inconsistências e violações de padrão. Revisões, testes de mesa, *walkthroughs* e inspeções variam no grau de estrutura, mas uma revisão técnica formal torna explícitos escopo, preparação, papéis, critérios, registros, decisão e acompanhamento. O Modelo de Amplificação de Defeitos mostra, em um cenário hipotético, como filtrar problemas estaticamente reduz os defeitos liberados ao campo e o custo do projeto. Para que as revisões funcionem, a equipe mantém o foco construtivo no produto, e nunca na pessoa produtora [@pressman2016].
+:::
+
+## Materiais relacionados
+
+- [Aula 03 — Introdução à Engenharia de Testes](../03-introducao-testes/index.qmd)
+- [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
+
+## Referências
+
+::: {#refs}
+:::

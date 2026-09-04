@@ -1,0 +1,19 @@
+---
+title: "Aula 04 — Verificação Estática"
+subtitle: "Revisões, testes de mesa, walkthroughs e inspeções guiadas"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## Material da aula
+
+- 📚 [Aula 03 — Introdução à Engenharia de Testes](../03-introducao-testes/index.qmd)
+- 🖥️ [Visualizar apresentação de slides](slides.qmd)
+- 🧪 [Roteiro do Laboratório 04 — Inspeção Estática Guiada](laboratorio.qmd)
+- 📖 [Apostila completa da disciplina](../apostila.pdf)
+:::
+
+{{< include _content.qmd >}}

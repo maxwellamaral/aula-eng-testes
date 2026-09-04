@@ -1,0 +1,285 @@
+---
+title: "Aula 04 — Verificação Estática"
+subtitle: "Revisões, testes de mesa, walkthroughs e inspeções guiadas"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+institute: "Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) — Campus João Pessoa"
+lang: pt-BR
+format:
+  revealjs:
+    theme: dark
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    css: ../../assets/css/slides.css
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/diagram-lightbox.js"></script>
+---
+
+## Verificação Estática {.section .lead}
+
+**Revisões, testes de mesa, walkthroughs e inspeções**
+
+Antes de executar o software, o que já podemos verificar no requisito, no código e nos testes?
+
+[📖 Acessar conteúdo escrito da aula](index.qmd){.slide-link}
+
+## Que evidência existe antes da execução? {.question}
+
+::: {.chapter}
+O problema
+:::
+
+Uma equipe ainda não executou o sistema.
+
+Mesmo assim, ela encontra:
+
+- uma regra ambígua;
+- uma condição de fronteira ausente;
+- uma inconsistência entre requisito e código;
+- uma violação de padrão.
+
+Isso é opinião — ou evidência de qualidade?
+
+## Verificar não é executar {.concept .definition}
+
+::: {.chapter}
+Duas formas de obter evidência
+:::
+
+**Verificação estática** examina artefatos sem exercitar o software:
+
+- requisitos e critérios de aceitação;
+- modelos, diagramas e documentação;
+- código, configurações e casos de teste.
+
+**Verificação dinâmica** observa o comportamento durante a execução.
+
+As duas abordagens se complementam [@pressman2016].
+
+## Revisar não é depurar nem testar {.example}
+
+::: {.chapter}
+Duas formas de obter evidência
+:::
+
+| Atividade | Pergunta principal |
+|---|---|
+| **Revisão** | O artefato é consistente com sua referência? |
+| **Teste de mesa** | O fluxo lógico revela uma questão no artefato? |
+| **Teste dinâmico** | O comportamento observado diverge do esperado? |
+| **Depuração** | Qual é a causa e como corrigir sem introduzir outra falha? |
+
+Uma inspeção pode encontrar uma inconsistência; a correção ainda precisa ser implementada e verificada.
+
+## Por que revisar cedo? {.question}
+
+::: {.chapter}
+Custo e propagação
+:::
+
+Um problema em uma decisão de projeto pode chegar ao código, aos testes e à produção.
+
+Em cada etapa, novos artefatos podem ser construídos sobre uma premissa incorreta.
+
+**O que acontece com o custo de correção quando a descoberta é adiada?**
+
+## O Modelo de Amplificação de Defeitos {.concept}
+
+::: {.chapter}
+Custo e propagação
+:::
+
+Pressman usa um modelo para mostrar como erros não identificados podem ser **propagados e amplificados** durante o desenvolvimento [@pressman2016].
+
+```text
+requisitos / projeto
+         ↓
+projeto detalhado
+         ↓
+código e testes
+         ↓
+produção
+```
+
+A revisão atua como um filtro antes que uma decisão incorreta afete mais artefatos.
+
+## Um contraste hipotético de Pressman {.example}
+
+::: {.chapter}
+Custo e propagação
+:::
+
+O exemplo parte de **10 defeitos preliminares de projeto**. Não é uma taxa universal para qualquer equipe ou produto [@pressman2016].
+
+| Cenário | Antes dos testes | Erros latentes no campo |
+|---|---:|---:|
+| Sem revisões de projeto e código | **94** | **20** |
+| Com revisões de projeto e código | **24** | **3** |
+
+No exemplo, o custo total sem revisões é aproximadamente três vezes maior [@pressman2016].
+
+## O filtro precisa ser proporcional {.takeaway}
+
+::: {.chapter}
+Custo e propagação
+:::
+
+> “Revisões são como um filtro no fluxo de trabalho da gestão de qualidade. Um número muito pequeno de revisões e o fluxo será ‘sujo’. Um número muito grande de revisões e o fluxo diminui muito e vira um gotejamento.” [@pressman2016]
+
+Não se trata de revisar tudo com o mesmo rigor.
+
+Trata-se de escolher uma evidência proporcional ao **risco**, ao **impacto** e ao **tamanho do artefato**.
+
+## Toda leitura é uma inspeção? {.question}
+
+::: {.chapter}
+Técnicas de revisão
+:::
+
+Uma pessoa lê o código de outra e deixa um comentário.
+
+Outra equipe faz preparação individual, usa checklist, registra descobertas e acompanha pendências.
+
+As duas atividades têm o mesmo grau de estrutura?
+
+## Do diálogo à inspeção {.concept}
+
+::: {.chapter}
+Técnicas de revisão
+:::
+
+| Técnica | Marca principal |
+|---|---|
+| **Revisão informal** | leitura e comentários, sem processo padronizado |
+| **Teste de mesa** | percurso lógico de um artefato, com anotações e checklist quando aplicável |
+| **Walkthrough** | pessoa autora apresenta; revisores questionam a partir da preparação |
+| **RTF / inspeção** | planejamento, papéis, critérios, registro, decisão e acompanhamento |
+
+*Walkthroughs* e inspeções são formas de revisão técnica formal na apresentação de Pressman e Maxim [@pressman2016].
+
+## Uma RTF começa antes da reunião {.concept .definition}
+
+::: {.chapter}
+Revisão técnica formal
+:::
+
+Uma RTF examina uma **parte pequena e identificável** de um artefato.
+
+```text
+planejar → preparar → conduzir → decidir → acompanhar
+```
+
+- definir artefato, versão, escopo e base de referência;
+- preparar questões individualmente;
+- registrar descobertas, decisão e pendências.
+
+A referência recomenda preparação e reunião com duração limitada, para manter o foco [@pressman2016].
+
+## Papéis tornam a revisão observável {.concept}
+
+::: {.chapter}
+Revisão técnica formal
+:::
+
+| Papel | Responsabilidade |
+|---|---|
+| **Pessoa produtora** | disponibiliza o artefato e esclarece a intenção registrada |
+| **Moderação** | organiza agenda, escopo e condução |
+| **Revisores** | apresentam questões ancoradas na referência e na preparação |
+| **Pessoa registradora** | mantém a lista de descobertas, decisões e pendências |
+
+Ao final, o artefato pode ser aceito, aceito com pendências ou exigir nova revisão [@pressman2016].
+
+## A regra que protege a equipe {.takeaway}
+
+::: {.chapter}
+Conduta na RTF
+:::
+
+# Revise o produto, não a pessoa.
+
+Em vez de:
+
+> “Quem escreveu isso não entendeu a regra.”
+
+Registre:
+
+> “O critério de aceitação não define o resultado para esta condição.”
+
+A segunda formulação é específica, verificável e permite encaminhamento [@pressman2016].
+
+## Diretrizes para uma reunião produtiva {.concept}
+
+::: {.chapter}
+Conduta na RTF
+:::
+
+1. **Mantenha a agenda.** A moderação protege o foco e o prazo.
+2. **Limite debates.** Sem consenso imediato, registre para discussão posterior.
+3. **Não resolva tudo na reunião.** A RTF revela e registra problemas; a solução vem depois.
+4. **Tome notas.** A lista de problemas orienta correções e acompanhamento.
+5. **Exija preparação prévia.** Comentários escritos mostram que o artefato foi examinado.
+
+Diretrizes devem ser combinadas antes da revisão [@pressman2016].
+
+## Checklist transforma atenção em perguntas {.concept .definition}
+
+::: {.chapter}
+Preparação da inspeção
+:::
+
+Para um trecho de código, pergunte:
+
+- qual requisito, contrato ou critério de aceitação ele implementa?
+- limites, nulos, exceções e caminhos alternativos são consistentes?
+- nomes e efeitos colaterais comunicam a intenção?
+- há duplicação, código inacessível ou tratamento de erro ausente?
+- a descoberta pode ser localizada por arquivo, função, linha ou requisito?
+
+Checklist não decide sozinho: ele orienta a busca por evidências [@pressman2016].
+
+## Prática: inspeção guiada {.activity}
+
+::: {.chapter}
+Aplicação
+:::
+
+Use o **artefato e a versão definidos pelo docente**.
+
+1. delimite escopo e base de referência;
+2. faça preparação individual com checklist;
+3. percorra o artefato em *walkthrough*;
+4. registre questões com localização e evidência;
+5. defina encaminhamento e *follow-up*.
+
+Não complete lacunas de domínio inventando regras: registre a ausência como questão a esclarecer.
+
+## O registro transforma discussão em evidência {.activity}
+
+::: {.chapter}
+Aplicação
+:::
+
+| ID | Localização | Evidência e referência | Encaminhamento | Situação |
+|---|---|---|---|---|
+| I-01 | | | | aberta / resolvida / descartada |
+| I-02 | | | | aberta / resolvida / descartada |
+
+A prática está concluída quando há artefato, versão, escopo, referência, descobertas localizáveis, decisão e próximos passos.
+
+## O que levar desta aula {.takeaway}
+
+::: {.chapter}
+Síntese
+:::
+
+- **Estático**: examinar artefatos sem executar o software.
+- **Revisões precoces**: reduzem propagação, retrabalho e risco.
+- **RTF**: escopo, preparação, papéis, checklist, registro, decisão e acompanhamento.
+- **Conduta**: revisar o produto, não a pessoa.
+- **Inspeção guiada**: registrar evidência e encaminhar lacunas sem inventar requisitos.
+
+[📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}
+
+## Referências

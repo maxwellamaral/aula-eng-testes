@@ -37,6 +37,8 @@ page-layout: article
 - 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.module-link}
 - 🧪 [Laboratório 02: Estratégias e Níveis de Teste na Prática](02-gestao-qualidade/laboratorio.qmd){.module-link}
 - 📄 [Aula 03: Introdução à Engenharia de Testes](03-introducao-testes/index.qmd){.module-link}
+- 📄 [Aula 04: Verificação Estática](04-verificacao-estatica/index.qmd){.module-link}
+- 🧪 [Laboratório 04: Inspeção Estática Guiada](04-verificacao-estatica/laboratorio.qmd){.module-link}
 :::
 :::
 

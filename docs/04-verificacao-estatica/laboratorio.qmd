@@ -1,0 +1,236 @@
+---
+title: "Laboratório 04 — Inspeção Estática Guiada"
+subtitle: "Da leitura de requisitos e código ao registro rastreável de descobertas"
+lang: pt-BR
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+::: {.callout-note}
+## Contexto da prática
+
+Este laboratório transforma os conceitos da Aula 04 em uma revisão estática completa. Você não executará o programa: examinará um requisito e um trecho curto de código, percorrerá suas decisões em um teste de mesa e registrará descobertas que outra pessoa possa verificar e acompanhar.
+
+O cenário é didático e fictício. Ele existe para exercitar o método de inspeção, não para representar uma regra de negócio real.
+:::
+
+## Objetivos de aprendizagem
+
+Ao concluir este laboratório, você será capaz de:
+
+1. delimitar o escopo e a base de referência de uma inspeção estática;
+2. encontrar ambiguidades, omissões e inconsistências em um requisito e em sua implementação;
+3. realizar um teste de mesa sem confundi-lo com a execução do software;
+4. registrar descobertas com localização, evidência, impacto a investigar e encaminhamento;
+5. participar de uma reunião curta de revisão técnica formal, aplicando papéis e diretrizes de conduta.
+
+## Pré-requisitos e materiais
+
+- [Aula 04 — Verificação Estática](index.qmd);
+- um editor de texto ou folha para registrar a preparação individual;
+- o requisito e o código fornecidos neste roteiro;
+- a ficha de registro apresentada na seção de prática.
+
+Nenhuma IDE, execução de código ou ferramenta de análise é necessária nesta primeira prática. O foco é aprender a produzir evidência a partir da leitura estruturada do artefato.
+
+---
+
+## 1. O método: observe, referencie, registre
+
+Uma descoberta de inspeção não é apenas uma impressão como “este código parece estranho”. Ela deve permitir que outra pessoa responda a três perguntas:
+
+1. **Onde está a questão?** — requisito, critério, função, condição ou linha identificável.
+2. **Qual evidência a sustenta?** — trecho do artefato comparado com a base de referência.
+3. **O que precisa acontecer depois?** — correção, esclarecimento, verificação adicional ou descarte justificado.
+
+::: {.callout-important}
+### Regra da prática
+
+Revise o produto, não a pessoa produtora. Escreva “a condição permite uma terceira renovação quando o requisito limita duas” em vez de “a pessoa programadora errou”. A primeira formulação é verificável, construtiva e encaminhável [@pressman2016].
+:::
+
+---
+
+## 2. Artefato didático: renovação de empréstimo
+
+Considere uma biblioteca fictícia. O artefato abaixo contém um requisito, critérios de aceitação e uma implementação que supostamente os representa.
+
+### Requisito R-01
+
+> A pessoa usuária pode renovar um empréstimo de item por **até duas vezes**, desde que não exista reserva ativa do item por **outra pessoa** e que o item não esteja em atraso. Quando a renovação não for permitida, o sistema deve informar o motivo.
+
+### Critérios de aceitação
+
+| ID | Critério |
+|---|---|
+| CA-01 | Depois de duas renovações concluídas, uma nova tentativa deve ser recusada. |
+| CA-02 | Uma reserva ativa feita pela própria pessoa usuária não bloqueia a renovação. |
+| CA-03 | Uma reserva ativa feita por outra pessoa bloqueia a renovação. |
+| CA-04 | Se houver atraso, a renovação deve ser recusada e o motivo deve ser informado. |
+
+### Trecho de código sob inspeção
+
+```python
+MAX_RENOVACOES = 2
+
+
+def pode_renovar(renovacoes: int, ha_reserva: bool, atraso_dias: int) -> bool:
+    if renovacoes > MAX_RENOVACOES:
+        return False
+    if ha_reserva:
+        return False
+    return atraso_dias <= 0
+```
+
+::: {.callout-tip}
+### O que está e o que não está disponível
+
+A base de referência deste exercício é somente R-01 e seus critérios de aceitação. Não suponha multas, categorias especiais de item, política de férias ou regras de uma biblioteca real. Se uma informação adicional for necessária para julgar o artefato, registre-a como uma questão a esclarecer.
+:::
+
+---
+
+## 3. Prática A — Inspeção do requisito
+
+Faça uma leitura individual de R-01 e dos critérios de aceitação antes de discutir com outras pessoas. Use as perguntas abaixo para orientar a inspeção.
+
+### Checklist de requisitos
+
+- A regra define o comportamento permitido e o comportamento recusado?
+- Os limites e as condições de fronteira podem ser interpretados de uma única maneira?
+- Cada motivo de recusa tem um resultado esperado observável?
+- Os critérios de aceitação são consistentes com o requisito?
+- Há informação suficiente para identificar quem fez uma reserva ativa?
+- Há algum termo que precisaria ser esclarecido antes de implementação ou teste?
+
+### Registro individual
+
+Registre pelo menos **duas questões**. Para cada uma, indique a localização exata, a evidência e o encaminhamento. Não proponha uma regra nova como se ela já estivesse aprovada.
+
+| ID | Localização | Questão | Evidência | Encaminhamento inicial |
+|---|---|---|---|---|
+| RQ-01 | | | | correção / esclarecimento / descarte |
+| RQ-02 | | | | correção / esclarecimento / descarte |
+
+---
+
+## 4. Prática B — Teste de mesa do código
+
+Agora percorra a função no papel ou em uma tabela. **Não a execute.** Para cada cenário, acompanhe as condições na ordem em que aparecem e anote o retorno que a leitura do código produz.
+
+| Cenário | `renovacoes` | `ha_reserva` | `atraso_dias` | Retorno previsto pelo código | Resultado esperado segundo R-01/CA | Questão encontrada? |
+|---|---:|---|---:|---|---|---|
+| A | 1 | `False` | 0 | | | |
+| B | 2 | `False` | 0 | | | |
+| C | 0 | `True` | 0 | | | |
+| D | 0 | `False` | 1 | | | |
+| E | -1 | `False` | 0 | | | |
+
+### Perguntas de inspeção do código
+
+1. Qual cenário revela uma divergência clara entre o limite do código e CA-01?
+2. A variável `ha_reserva` contém informação suficiente para distinguir CA-02 de CA-03?
+3. A assinatura e o tipo de retorno permitem cumprir a exigência de informar o motivo da recusa?
+4. Que comportamento o código produz para uma quantidade negativa de renovações? A base de referência define esse caso?
+5. Quais questões são defeitos prováveis de implementação e quais são lacunas que exigem esclarecimento da regra?
+
+::: {.callout-note}
+### Pista de método
+
+O objetivo não é “consertar” a função durante a inspeção. O objetivo é registrar a divergência e a referência que a sustenta. A correção deve ser discutida, implementada e verificada depois da reunião [@pressman2016].
+:::
+
+---
+
+## 5. Prática C — Mini RTF
+
+Reúnam-se para revisar R-01, seus critérios e a função. A atividade funciona com três ou mais pessoas; se houver menos participantes, uma pessoa pode acumular papéis, mantendo o registro explícito.
+
+### Papéis
+
+| Papel | Ação na prática |
+|---|---|
+| Pessoa produtora | apresenta brevemente o objetivo do artefato, sem defender soluções |
+| Moderação | confirma o escopo, mantém a agenda e interrompe debates improdutivos |
+| Revisores | apresentam questões baseadas na preparação individual e na referência |
+| Pessoa registradora | consolida as descobertas, decisões e pendências |
+
+### Agenda sugerida
+
+1. confirmar artefato, versão e base de referência;
+2. apresentar as questões encontradas individualmente;
+3. consolidar apenas itens com localização e evidência;
+4. classificar cada item: correção, esclarecimento, verificação adicional ou descarte justificado;
+5. registrar a decisão sobre o artefato e o responsável pelo *follow-up*.
+
+### Regras de condução
+
+- revise o produto, não a pessoa produtora;
+- mantenha a agenda e limite debates sem consenso;
+- enuncie problemas sem tentar resolvê-los integralmente na reunião;
+- mantenha notas visíveis e verificáveis;
+- se não há informação suficiente, registre a questão em vez de inventar uma resposta [@pressman2016].
+
+---
+
+## 6. Registro consolidado de descobertas
+
+Depois da reunião, produza uma lista única. Uma descoberta só entra na lista quando houver evidência suficiente para localizá-la e relacioná-la à base de referência.
+
+| ID | Localização | Tipo | Evidência e referência | Impacto a investigar | Encaminhamento | Situação |
+|---|---|---|---|---|---|---|
+| I-01 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+| I-02 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+| I-03 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+
+### Relatório resumido
+
+Ao final, escreva um resumo curto que responda:
+
+1. **o que foi revisado?**;
+2. **quem participou e em quais papéis?**;
+3. **quais foram as descobertas e a decisão sobre o artefato?**.
+
+Esse registro transforma a conversa em evidência histórica e em uma lista de ações acompanháveis [@pressman2016].
+
+---
+
+## 7. Autoavaliação e discussão posterior
+
+Use esta lista depois da prática, antes de consultar a discussão com a turma ou o docente.
+
+- [ ] Delimitei o artefato e sua base de referência.
+- [ ] Fiz preparação individual antes da reunião.
+- [ ] Registrei pelo menos duas questões com localização e evidência.
+- [ ] Diferenciei uma divergência observável de uma regra ausente que precisa de esclarecimento.
+- [ ] Percorri a função manualmente, sem executá-la.
+- [ ] Mantive o foco no artefato, sem avaliar a pessoa produtora.
+- [ ] Registrei encaminhamento e situação para cada descoberta consolidada.
+
+### Observações esperadas para discussão
+
+Compare a própria análise com estas perguntas, sem tratá-las como um único gabarito possível:
+
+- Na tentativa após duas renovações concluídas, a condição `renovacoes > MAX_RENOVACOES` ainda permite o retorno `True`. Como isso se relaciona a CA-01?
+- O booleano `ha_reserva` não informa quem fez a reserva. Que efeito isso tem sobre a distinção entre CA-02 e CA-03?
+- A função retorna somente `bool`. Que informação adicional seria necessária para cumprir a parte de R-01 que exige informar o motivo?
+- Para `renovacoes = -1`, o código produz um resultado, mas R-01 e os critérios não definem esse dado inválido. Isso é uma regra a inventar ou uma lacuna a registrar?
+
+::: {.callout-important}
+### Critério de conclusão
+
+A prática está concluída quando há uma ficha com artefato, versão, escopo e base de referência; uma tabela de teste de mesa preenchida; descobertas localizáveis e evidenciadas; e uma decisão com próximos passos. A quantidade de itens encontrados não é, por si só, uma medida de qualidade.
+:::
+
+## Materiais relacionados
+
+- [Aula 04 — Verificação Estática](index.qmd)
+- [Slides da Aula 04](slides.qmd)
+- [Apostila completa da disciplina](../apostila.pdf)
+
+## Referências
+
+::: {#refs}
+:::

@@ -30,3 +30,9 @@ format:
 # Aula 03: Introdução à Engenharia de Testes
 
 {{< include 03-introducao-testes/_content.qmd >}}
+
+\newpage
+
+# Aula 04: Verificação Estática
+
+{{< include 04-verificacao-estatica/_content.qmd >}}
