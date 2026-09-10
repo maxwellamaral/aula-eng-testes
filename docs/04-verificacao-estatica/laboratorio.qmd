@@ -29,7 +29,8 @@ Ao concluir este laboratório, você será capaz de:
 ## Pré-requisitos e materiais
 
 - [Aula 04 — Verificação Estática](index.qmd);
-- um editor de texto ou folha para registrar a preparação individual;
+- [Planilha de ficha de preparação e registro de descobertas](ficha-inspecao-lab04.xlsx) (Excel, para baixar e preencher);
+- um editor de texto ou folha para registrar a preparação individual, caso prefira não usar a planilha;
 - o requisito e o código fornecidos neste roteiro;
 - a ficha de registro apresentada na seção de prática.
 
@@ -228,6 +229,7 @@ A prática está concluída quando há uma ficha com artefato, versão, escopo e
 
 - [Aula 04 — Verificação Estática](index.qmd)
 - [Slides da Aula 04](slides.qmd)
+- [Planilha de ficha de preparação e registro de descobertas](ficha-inspecao-lab04.xlsx)
 - [Apostila completa da disciplina](../apostila.pdf)
 
 ## Referências

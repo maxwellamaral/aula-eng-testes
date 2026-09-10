@@ -128,47 +128,6 @@ Uma lista de verificação não decide se há defeito; ela orienta a leitura par
 
 ---
 
-## 6. Prática de inspeção guiada
-
-A prática usa um **artefato e uma versão definidos pelo docente**: pode ser um requisito com critérios de aceitação, um trecho de código ou ambos. A turma não deve completar lacunas de domínio inventando regras. Quando uma referência necessária estiver ausente, registre a ausência como questão a esclarecer.
-
-### Preparação
-
-Antes da inspeção, complete a ficha abaixo para o artefato selecionado:
-
-| Campo | Registro |
-|---|---|
-| Identificação e versão do artefato | |
-| Tipo de artefato | requisito / código / outro: |
-| Escopo delimitado | |
-| Base de referência | requisito, critério, padrão ou decisão relacionada |
-| Checklist adotado | requisitos / código / outro: |
-| Participantes e papéis | |
-
-### Roteiro da inspeção
-
-1. **Delimite o objeto.** Confirme qual versão será revisada e quais partes ficam fora do escopo.
-2. **Faça a preparação individual.** Cada revisor percorre o artefato com o checklist e registra questões de forma independente, sem discutir soluções.
-3. **Apresente a base de referência.** A pessoa produtora ou moderadora expõe o objetivo e os critérios disponíveis; não acrescente regras que não estejam confirmadas.
-4. **Percorra o artefato.** Em um *walkthrough*, a pessoa produtora explica a leitura; os revisores fazem perguntas ancoradas na preparação e nas diretrizes de conduta.
-5. **Registre descobertas.** A pessoa registradora consolida apenas itens que indiquem localização e evidência. Discordâncias ou informações ausentes também devem ser anotadas para esclarecimento posterior.
-6. **Classifique o encaminhamento.** Para cada item, defina se exige correção, esclarecimento, verificação adicional ou se foi descartado com justificativa.
-7. **Conclua e acompanhe.** Registre a decisão sobre o artefato e quem verificará os itens pendentes após a atualização.
-
-### Registro de descobertas
-
-| ID | Localização | Tipo de questão | Evidência e referência | Impacto a investigar | Encaminhamento | Situação |
-|---|---|---|---|---|---|---|
-| I-01 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
-| I-02 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
-| I-03 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
-
-### Critério de conclusão da prática
-
-A inspeção está concluída quando a ficha identifica artefato, versão, escopo, participantes e base de referência; cada descoberta possui localização e evidência; e a equipe registra uma decisão e os próximos passos. Encontrar muitos itens não é sinal de sucesso por si só: o valor está na qualidade, rastreabilidade e conduta profissional demonstrada durante o processo de avaliação.
-
----
-
 ## Para revisar
 
 1. Como o Modelo de Amplificação de Defeitos justifica economicamente a introdução de revisões estáticas logo no início do desenvolvimento?
@@ -186,6 +145,7 @@ A verificação estática examina artefatos sem executar o software e procura ev
 
 ## Materiais relacionados
 
+- [Laboratório 04 — Inspeção Estática Guiada](laboratorio.qmd)
 - [Aula 03 — Introdução à Engenharia de Testes](../03-introducao-testes/index.qmd)
 - [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
 
