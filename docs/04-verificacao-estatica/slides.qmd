@@ -92,14 +92,12 @@ Custo e propagação
 
 Pressman usa um modelo para mostrar como erros não identificados podem ser **propagados e amplificados** durante o desenvolvimento [@pressman2016].
 
-```text
-requisitos / projeto
-         ↓
-projeto detalhado
-         ↓
-código e testes
-         ↓
-produção
+```{mermaid}
+%%{init: {'theme': 'dark'}}%%
+flowchart LR
+    A[Requisitos / projeto] --> B[Projeto detalhado]
+    B --> C[Código e testes]
+    C --> D[Produção]
 ```
 
 A revisão atua como um filtro antes que uma decisão incorreta afete mais artefatos.
@@ -166,8 +164,13 @@ Revisão técnica formal
 
 Uma RTF examina uma **parte pequena e identificável** de um artefato.
 
-```text
-planejar → preparar → conduzir → decidir → acompanhar
+```{mermaid}
+%%{init: {'theme': 'dark'}}%%
+flowchart LR
+    A[Planejar] --> B[Preparar]
+    B --> C[Conduzir]
+    C --> D[Decidir]
+    D --> E[Acompanhar]
 ```
 
 - definir artefato, versão, escopo e base de referência;
@@ -197,11 +200,17 @@ Ao final, o artefato pode ser aceito, aceito com pendências ou exigir nova revi
 Conduta na RTF
 :::
 
-# Revise o produto, não a pessoa.
+**Revise o produto, não a pessoa.**
 
 Em vez de:
 
 > “Quem escreveu isso não entendeu a regra.”
+
+## Registre o produto, não a opinião {.takeaway}
+
+::: {.chapter}
+Conduta na RTF
+:::
 
 Registre:
 
@@ -245,15 +254,16 @@ Checklist não decide sozinho: ele orienta a busca por evidências [@pressman201
 Aplicação
 :::
 
-Use o **artefato e a versão definidos pelo docente**.
+O Laboratório 04 usa um cenário fixo: requisito **R-01** (renovação de empréstimo) e a função `pode_renovar`.
 
 1. delimite escopo e base de referência;
-2. faça preparação individual com checklist;
-3. percorra o artefato em *walkthrough*;
-4. registre questões com localização e evidência;
-5. defina encaminhamento e *follow-up*.
+2. prepare-se individualmente com checklist;
+3. percorra o requisito e o código em teste de mesa;
+4. registre questões, participe de uma mini RTF e defina o encaminhamento.
 
-Não complete lacunas de domínio inventando regras: registre a ausência como questão a esclarecer.
+Não invente regras ausentes: registre a lacuna como questão a esclarecer.
+
+[🧪 Acesse o roteiro completo do Laboratório 04](laboratorio.qmd){.slide-link}
 
 ## O registro transforma discussão em evidência {.activity}
 

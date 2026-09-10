@@ -97,7 +97,7 @@
 }
 
 /* Code Blocks */
-.reveal pre {
+.reveal pre:not(.mermaid) {
   box-shadow: none;
   border: 1px solid var(--slide-border);
   border-radius: 8px;
@@ -107,6 +107,21 @@
 
 .reveal code {
   font-family: 'Fira Code', monospace;
+}
+
+/* Diagramas Mermaid - garantir escala responsiva sem corte ou clipping */
+.reveal pre.mermaid {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+  width: 100%;
+  text-align: center;
+}
+
+.reveal pre.mermaid svg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Gramática visual dos frames didáticos (specs/padrao-slides.md) */
