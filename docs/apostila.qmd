@@ -33,6 +33,8 @@ format:
 
 \newpage
 
+# Módulo 2: Verificação e Validação
+
 # Aula 04: Verificação Estática
 
 {{< include 04-verificacao-estatica/_content.qmd >}}
