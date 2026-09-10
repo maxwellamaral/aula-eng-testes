@@ -21,25 +21,63 @@ page-layout: article
 ::: {.course-module}
 ### Apresentação da disciplina
 
-::: {.module-list}
-- 📄 [Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina](00-apresentacao/index.qmd){.module-link}
-- 🖥️ [Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.module-link}
+::: {.lesson-group}
+#### Aula 00: Apresentação do Plano de Ensino e Introdução à Disciplina {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Conteúdo da Aula](00-apresentacao/index.qmd){.lesson-link}
+- [🖥️ Visualizar Apresentação de Slides](00-apresentacao/slides.qmd){.lesson-link}
 :::
+:::
+
 :::
 
 ::: {.course-module}
 ### Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade
 
-::: {.module-list}
-- 📄 [Aula 01: Introdução à Engenharia de Software](01-introducao-engsoft/index.qmd){.module-link}
-- 🖥️ [Visualizar Apresentação de Slides (Aula 01)](01-introducao-engsoft/slides.qmd){.module-link}
-- 📄 [Aula 02: Introdução à Gestão da Qualidade de Produto](02-gestao-qualidade/index.qmd){.module-link}
-- 🖥️ [Visualizar Apresentação de Slides (Aula 02)](02-gestao-qualidade/slides.qmd){.module-link}
-- 🧪 [Laboratório 02: Estratégias e Níveis de Teste na Prática](02-gestao-qualidade/laboratorio.qmd){.module-link}
-- 📄 [Aula 03: Introdução à Engenharia de Testes](03-introducao-testes/index.qmd){.module-link}
-- 📄 [Aula 04: Verificação Estática](04-verificacao-estatica/index.qmd){.module-link}
-- 🧪 [Laboratório 04: Inspeção Estática Guiada](04-verificacao-estatica/laboratorio.qmd){.module-link}
+::: {.lesson-group}
+#### Aula 01: Introdução à Engenharia de Software {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Conteúdo da Aula](01-introducao-engsoft/index.qmd){.lesson-link}
+- [🖥️ Visualizar Apresentação de Slides](01-introducao-engsoft/slides.qmd){.lesson-link}
 :::
+:::
+
+::: {.lesson-group}
+#### Aula 02: Introdução à Gestão da Qualidade de Produto {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Conteúdo da Aula](02-gestao-qualidade/index.qmd){.lesson-link}
+- [🖥️ Visualizar Apresentação de Slides](02-gestao-qualidade/slides.qmd){.lesson-link}
+- [🧪 Laboratório 02: Estratégias e Níveis de Teste na Prática](02-gestao-qualidade/laboratorio.qmd){.lesson-link}
+:::
+:::
+
+::: {.lesson-group}
+#### Aula 03: Introdução à Engenharia de Testes {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Conteúdo da Aula](03-introducao-testes/index.qmd){.lesson-link}
+- [🖥️ Visualizar Apresentação de Slides](03-introducao-testes/slides.qmd){.lesson-link}
+:::
+:::
+
+:::
+
+::: {.course-module}
+### Módulo 2: Verificação e Validação
+
+::: {.lesson-group}
+#### Aula 04: Verificação Estática {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Conteúdo da Aula](04-verificacao-estatica/index.qmd){.lesson-link}
+- [🖥️ Visualizar Apresentação de Slides](04-verificacao-estatica/slides.qmd){.lesson-link}
+- [🧪 Laboratório 04: Inspeção Estática Guiada](04-verificacao-estatica/laboratorio.qmd){.lesson-link}
+:::
+:::
+
 :::
 
 :::
