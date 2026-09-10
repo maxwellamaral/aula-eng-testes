@@ -81,7 +81,7 @@ Pode ocorrer ao:
 - elicitar uma necessidade;
 - interpretar uma regra;
 - escrever uma especificação;
-- projetar ou implementar uma solução;
+- projetar ou implementar uma solução de apoio;
 - preparar o ambiente.
 
 A definição normativa o descreve como uma ação humana que produz um resultado incorreto [@ieee6101990; @ieee10442009; @iso24765].

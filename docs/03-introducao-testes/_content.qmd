@@ -30,12 +30,12 @@ Os termos são relacionados, mas não são sinônimos. Uma forma útil de racioc
 
 ### Erro
 
-Um **erro** é uma ação humana incorreta ou uma decisão equivocada. Pode ocorrer ao elicitar uma necessidade, interpretar uma regra de negócio, escrever uma especificação, projetar um algoritmo, implementar uma função ou preparar um ambiente de execução. Essa compreensão é compatível com a definição normativa de erro como uma ação humana que produz um resultado incorreto [@ieee6101990; @ieee10442009; @iso24765].
+Um **erro** é uma ação humana incorreta ou uma decisão equivocada. Pode ocorrer ao elicitar uma necessidade, interpretar uma regra de negócio, escrever uma especificação, projetar/desenhar um algoritmo, implementar uma função de apoio ou preparar um ambiente de execução. Essa compreensão é compatível com a definição normativa de erro como uma ação humana que produz um resultado incorreto [@ieee6101990; @ieee10442009; @iso24765].
 
 Exemplos:
 
 - interpretar “desconto de 10% para compras acima de R$ 500” como “a partir de R$ 500”;
-- esquecer, durante o projeto, que o fuso horário do negócio é diferente do fuso do servidor;
+- esquecer, durante o projeto/especificação, que o fuso horário do negócio é diferente do fuso do servidor;
 - escrever uma condição usando `>` quando a regra exigia `>=`.
 
 O erro pertence à atividade humana. Ele não é diretamente observado pelo usuário: é uma possível causa de um problema em um artefato ou no comportamento do sistema.
@@ -170,7 +170,7 @@ As abordagens se complementam. Um teste dinâmico pode revelar que o sistema fal
 
 ## 4. Engenharia de requisitos como base do teste
 
-O teste precisa de uma resposta para a pergunta **“esperado segundo qual referência?”**. Essa referência é a base de teste: requisitos, critérios de aceitação, contratos, modelos, riscos, normas e necessidades dos interessados.
+O teste precisa de uma resposta para a pergunta **“o resultado é esperado segundo qual referência?”**. Essa referência é a base de teste: requisitos, critérios de aceitação, contratos, modelos, riscos, normas e necessidades dos interessados.
 
 A relação entre requisitos e testes pode ser organizada assim:
 
