@@ -40,9 +40,7 @@ format:
     theme:
       dark: darkly
       light: cosmo
-    highlight-style:
-      dark: dracula
-      light: github
+    highlight-style: dracula
     css:
       - assets/css/styles.css
       - assets/css/landing.css
