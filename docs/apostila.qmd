@@ -1,40 +1,40 @@
 ---
-title: "Apostila da Disciplina: Verificação, Validação e Testes de Software"
+title: "Verificação, Validação e Testes de Software"
 subtitle: "Notas de Aula Integradas (VVTS)"
-author: "Prof. Maxwell Amaral"
-date: "2026-07-30"
+author: "Prof. Me. Maxwell Anderson Ielpo do Amaral"
+date: "2026"
 bibliography: references.bib
 format:
   typst:
+    template-partials:
+      - typst-template.typ
     toc: true
     toc-title: "Sumário"
-    number-sections: true
+    number-sections: false
     lang: pt-BR
     resource-path: ["..", "."]
 ---
 
-\newpage
+# Módulo 1: Introdução à Engenharia de Software e Gestão da Qualidade
 
-# Módulo 1: Introdução a Engenharia de Software e Gestão da Qualidade
+Este módulo reúne os fundamentos da Engenharia de Software, as dimensões e normas de Gestão da Qualidade de Produto e a introdução à Engenharia de Testes, articulando processos, normas e garantia da qualidade no ciclo de vida de software.
+
+## Aula 01: Introdução à Engenharia de Software
 
 {{< include 01-introducao-engsoft/_content.qmd >}}
 
-\newpage
-
-# Aula 02: Introdução à Gestão da Qualidade de Produto
+## Aula 02: Introdução à Gestão da Qualidade de Produto
 
 {{< include 02-gestao-qualidade/_content.qmd >}}
 
-\newpage
-
-# Aula 03: Introdução à Engenharia de Testes
+## Aula 03: Introdução à Engenharia de Testes
 
 {{< include 03-introducao-testes/_content.qmd >}}
 
-\newpage
-
 # Módulo 2: Verificação e Validação
 
-# Aula 04: Verificação Estática
+Este módulo aborda os métodos, processos e práticas de Verificação e Validação, iniciando pela Verificação Estática de software por meio de inspeções, revisões técnicas formais e testes de mesa.
+
+## Aula 04: Verificação Estática
 
 {{< include 04-verificacao-estatica/_content.qmd >}}
