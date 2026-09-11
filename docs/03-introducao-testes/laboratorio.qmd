@@ -1,0 +1,133 @@
+---
+title: "Laboratório 03 — Classifique e conecte"
+subtitle: "Erro, defeito, falha, evidências e rastreabilidade"
+lang: pt-BR
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+::: {.callout-note}
+## Contexto da prática
+
+Este laboratório transforma os conceitos da Aula 03 em uma análise estruturada de situações de teste. O foco não é encontrar uma única palavra para cada problema, mas distinguir a origem humana, o artefato afetado, o comportamento observado e a evidência que deve ser produzida.
+
+A atividade usa a convenção causal adotada na aula: **erro humano → defeito em um artefato → falha durante a execução**. A convenção temporal apresentada por Pressman e Maxim é registrada separadamente; ela não substitui a análise causal [@pressman2016].
+:::
+
+## Objetivos de aprendizagem
+
+Ao concluir este laboratório, você será capaz de:
+
+1. classificar uma situação como erro, defeito, falha ou uma combinação desses elementos;
+2. indicar se a primeira evidência apropriada é estática ou dinâmica e justificá-la;
+3. relacionar cada situação a uma base de teste rastreável;
+4. propor um próximo passo de investigação sem supor uma causa ainda não evidenciada;
+5. distinguir a convenção causal da classificação temporal descrita por Pressman e Maxim.
+
+## Pré-requisitos e materiais
+
+- [Aula 03 — Introdução à Engenharia de Testes](index.qmd);
+- [Planilha do laboratório](classifique-e-conecte-lab03.xlsx) (Excel, para baixar e preencher);
+- este roteiro;
+- editor de planilhas ou uma tabela equivalente para registrar a análise.
+
+---
+
+## 1. Como preencher o registro
+
+Para cada situação, complete as colunas abaixo:
+
+| Coluna | O que registrar |
+|---|---|
+| `situação` | Identificador e resumo do relato analisado. |
+| `classificação causal` | Erro, defeito, falha ou mais de um; indique o elemento e a justificativa observável. |
+| `evidência inicial` | Estática ou dinâmica, com o artefato ou a execução que deve ser examinada primeiro. |
+| `base de teste` | Requisito, critério, contrato ou expectativa explícita que fundamenta a análise. |
+| `convenção de Pressman e Maxim` | Problema identificado antes da liberação/propagação (erro) ou depois (defeito/falha), quando o momento estiver disponível. |
+| `próximo passo` | Ação para esclarecer, inspecionar, reproduzir ou ampliar a cobertura. |
+
+::: {.callout-important}
+### Limite da análise
+
+Não deduza o erro humano apenas porque existe uma falha, nem afirme uma causa no código sem evidência. Quando a situação não fornece dados suficientes, registre a lacuna e indique como investigá-la.
+:::
+
+---
+
+## 2. Exemplo guiado
+
+Considere a regra: **“Clientes com compra de R$ 100 ou mais recebem 5% de desconto.”** Durante uma inspeção do código, a equipe encontra a condição `valor > 100`.
+
+| Situação | Classificação causal | Evidência inicial | Base de teste | Convenção de Pressman e Maxim | Próximo passo |
+|---|---|---|---|---|---|
+| Código usa `valor > 100` para uma regra que exige “R$ 100 ou mais”. | **Defeito** no código: a condição exclui o valor de fronteira definido pela regra. Pode ter origem em uma interpretação humana incorreta, mas esse erro não foi observado diretamente. | **Estática**: inspecionar a condição e compará-la com a regra. | Regra de desconto: “R$ 100 ou mais”. | **Erro**, pois foi identificado antes de liberação ou propagação para outra atividade, conforme a convenção temporal apresentada na aula. | Corrigir ou esclarecer a condição aprovada e criar/revisar um caso de teste para `valor = 100`. |
+
+O exemplo mostra que uma inspeção pode revelar um defeito sem executar o produto. Se, depois, uma compra de R$ 100 receber preço cheio, haverá também uma **falha** observada dinamicamente. A planilha inclui esse exemplo preenchido na aba `Exemplo`.
+
+---
+
+## 3. Atividade — classifique e conecte
+
+Em duplas, analisem as quatro situações. Registrem a análise na aba `Atividade` da [planilha do laboratório](classifique-e-conecte-lab03.xlsx).
+
+### Situações
+
+**A.** A história de usuário diz apenas: “o relatório deve carregar rapidamente”. Ninguém definiu tempo, volume de dados ou ambiente.
+
+**B.** Durante a inspeção, a equipe encontra `if idade > 60` em uma regra que diz “pessoas com 60 anos ou mais”.
+
+**C.** Em produção, uma pessoa com 60 anos recebe a mensagem “benefício não disponível”.
+
+**D.** O caso de teste verifica apenas um usuário administrador, mas o requisito afirma que cada usuário deve consultar somente seus próprios dados.
+
+### Etapas executáveis
+
+1. Leia cada relato e identifique o que está explícito: decisão humana, artefato, comportamento em execução, requisito ou lacuna de informação.
+2. Preencha a classificação causal sem transformar hipótese em fato.
+3. Escolha a primeira evidência: inspeção de requisito, código ou caso de teste para análise estática; execução reproduzível para análise dinâmica.
+4. Registre a base de teste que precisa ser consultada ou que está ausente.
+5. Aplique a convenção temporal de Pressman e Maxim somente com base no momento de descoberta informado; quando esse momento não estiver claro, registre a limitação.
+6. Defina o próximo passo que aumentaria a evidência disponível.
+
+::: {.callout-tip}
+### Perguntas para orientar a discussão
+
+- O relato descreve algo que uma pessoa fez, algo presente em um artefato, um comportamento em execução ou mais de um desses elementos?
+- Há uma expectativa verificável? Se não houver, qual esclarecimento é necessário antes de medir ou executar um teste?
+- A evidência inicial pode ser obtida sem executar o produto?
+- O que ainda seria necessário observar para relacionar uma falha a um defeito específico?
+:::
+
+---
+
+## 4. Evidências e artefatos esperados
+
+Ao final, a dupla deve ter uma planilha ou tabela equivalente com:
+
+- uma linha preenchida para cada situação A–D;
+- classificação causal justificada pelo relato;
+- indicação da primeira evidência e da base de teste;
+- classificação temporal de Pressman e Maxim, ou o registro explícito de que faltam dados para aplicá-la;
+- próximo passo verificável para cada situação.
+
+## 5. Critério de conclusão
+
+::: {.callout-important}
+### Prática concluída
+
+A prática está concluída quando todas as quatro situações possuem registro preenchido e cada classificação está acompanhada de uma evidência ou de uma lacuna explicitamente identificada. Não é necessário concordar com uma hipótese de causa sem dados; a qualidade da análise está na relação justificável entre relato, base de teste e próximo passo.
+:::
+
+## Materiais relacionados
+
+- [Aula 03 — Introdução à Engenharia de Testes](index.qmd)
+- [Slides da Aula 03](slides.qmd)
+- [Planilha do laboratório](classifique-e-conecte-lab03.xlsx)
+- [Apostila completa da disciplina](../apostila.pdf)
+
+## Referências
+
+::: {#refs}
+:::

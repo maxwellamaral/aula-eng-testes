@@ -60,6 +60,7 @@ page-layout: article
 ::: {.lesson-links}
 - [📄 Conteúdo da Aula](03-introducao-testes/index.qmd){.lesson-link}
 - [🖥️ Visualizar Apresentação de Slides](03-introducao-testes/slides.qmd){.lesson-link}
+- [🧪 Laboratório 03: Classifique e conecte](03-introducao-testes/laboratorio.qmd){.lesson-link}
 :::
 :::
 

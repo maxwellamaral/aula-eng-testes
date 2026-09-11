@@ -12,6 +12,7 @@ format:
 
 - 📚 [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
 - 🖥️ [Visualizar apresentação de slides](slides.qmd)
+- 🧪 [Laboratório 03 — Classifique e conecte](laboratorio.qmd)
 - 📖 [Apostila completa da disciplina](../apostila.pdf)
 :::
 

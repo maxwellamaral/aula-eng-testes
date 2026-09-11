@@ -206,33 +206,6 @@ Sem requisito, contrato ou expectativa explícita, uma execução pode produzir 
 
 ---
 
-## 5. Atividade em sala — classifique e conecte
-
-Em duplas, analise cada situação. Para cada item, registre:
-
-1. se há **erro**, **defeito**, **falha** ou mais de um elemento, usando a convenção causal adotada nesta aula;
-2. se a melhor primeira evidência é estática ou dinâmica;
-3. qual requisito, critério ou expectativa deve ser rastreado;
-4. como Pressman e Maxim poderiam nomear o problema de acordo com a convenção temporal apresentada na seção anterior.
-
-Ao comparar as respostas, não trate as duas classificações como uma contradição factual. A primeira descreve a relação causal entre origem, artefato e comportamento; a segunda classifica o problema conforme o momento em que ele foi descoberto [@pressman2016].
-
-### Situações
-
-**A.** A história de usuário diz apenas: “o relatório deve carregar rapidamente”. Ninguém definiu tempo, volume de dados ou ambiente.
-
-**B.** Durante a inspeção, a equipe encontra `if idade > 60` em uma regra que diz “pessoas com 60 anos ou mais”.
-
-**C.** Em produção, uma pessoa com 60 anos recebe a mensagem “benefício não disponível”.
-
-**D.** O caso de teste verifica apenas um usuário administrador, mas o requisito afirma que cada usuário deve consultar somente seus próprios dados.
-
-### Produto da atividade
-
-Complete uma tabela com as colunas `situação`, `classificação`, `evidência inicial`, `base de teste` e `próximo passo`. Na discussão, compare as respostas para perceber que uma falha observada pode levar a investigações diferentes e que um defeito pode ser encontrado antes de qualquer execução.
-
----
-
 ## Para revisar
 
 1. Qual é a diferença entre o erro cometido por uma pessoa, o defeito em um artefato e a falha observada durante o uso?
@@ -251,6 +224,7 @@ Complete uma tabela com as colunas `situação`, `classificação`, `evidência 
 
 ## Materiais relacionados
 
+- [Laboratório 03 — Classifique e conecte](laboratorio.qmd)
 - [Aula 01 — Introdução à Engenharia de Software](../01-introducao-engsoft/index.qmd)
 - [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
 - [Imagem de apoio — erro e defeito](../../assets/images/02-introducao-testes/erro-defeito.jpeg)
