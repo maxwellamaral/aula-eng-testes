@@ -39,7 +39,7 @@ Mesmo assim, ela encontra:
 - uma inconsistência entre requisito e código;
 - uma violação de padrão.
 
-Isso é opinião — ou evidência de qualidade?
+Isso é opinião — ou evidência para qualidade?
 
 ## Verificar não é executar {.concept .definition}
 
@@ -67,6 +67,7 @@ Duas formas de obter evidência
 |---|---|
 | **Revisão** | O artefato é consistente com sua referência? |
 | **Teste de mesa** | O fluxo lógico revela uma questão no artefato? |
+| **Teste de mesa**^[O **teste de mesa** (*desk checking*) é uma técnica de **verificação estática informal** na qual a própria pessoa autora e/ou revisores percorrem logicamente um artefato de software (como código-fonte, algoritmo, modelo ou requisito).] | O fluxo lógico revela uma questão no artefato? |
 | **Teste dinâmico** | O comportamento observado diverge do esperado? |
 | **Depuração** | Qual é a causa e como corrigir sem introduzir outra falha? |
 
@@ -102,6 +103,20 @@ flowchart LR
 
 A revisão atua como um filtro antes que uma decisão incorreta afete mais artefatos.
 
+**O filtro alcança requisitos, modelos de projeto, dados de teste e código — não apenas o produto executável.**
+
+## Sem revisões: o fluxo acumula erros {.example}
+
+<img src="../../assets/images/04-verificacao-estatica/amplificacao-sem-revisoes.svg" alt="Fluxo sem revisões: 10 erros iniciais chegam a 94 antes dos testes e a 12 falhas latentes no campo." style="width: 90%; height: auto;">
+
+<p class="caption">Exemplo hipotético de Pressman e Maxim; os valores não são taxas universais.</p>
+
+## Com revisões: filtros interrompem a propagação {.example}
+
+<img src="../../assets/images/04-verificacao-estatica/amplificacao-com-revisoes.svg" alt="Fluxo com revisões: 10 erros iniciais são reduzidos a 24 antes dos testes e a 3 defeitos latentes no campo." style="width: 90%; height: auto;">
+
+<p class="caption">O mesmo exemplo, agora com revisões de projeto e de código.</p>
+
 ## Um contraste hipotético de Pressman {.example}
 
 ::: {.chapter}
@@ -112,7 +127,7 @@ O exemplo parte de **10 defeitos preliminares de projeto**. Não é uma taxa uni
 
 | Cenário | Antes dos testes | Erros latentes no campo |
 |---|---:|---:|
-| Sem revisões de projeto e código | **94** | **20** |
+| Sem revisões de projeto e código | **94** | **12** |
 | Com revisões de projeto e código | **24** | **3** |
 
 No exemplo, o custo total sem revisões é aproximadamente três vezes maior [@pressman2016].
@@ -147,16 +162,34 @@ As duas atividades têm o mesmo grau de estrutura?
 Técnicas de revisão
 :::
 
-| Técnica | Marca principal |
-|---|---|
-| **Revisão informal** | leitura e comentários, sem processo padronizado |
-| **Teste de mesa** | percurso lógico de um artefato, com anotações e checklist quando aplicável |
-| **Walkthrough** | pessoa autora apresenta; revisores questionam a partir da preparação |
-| **RTF / inspeção** | planejamento, papéis, critérios, registro, decisão e acompanhamento |
+| Categoria | Abordagens | Marca principal |
+|---|---|---|
+| **Informal** | teste de mesa, reunião informal e programação em pares | pode ocorrer sem planejamento, preparação, estrutura ou *follow-up* formalizados |
+| **RTF** | *walkthrough* e inspeção | planejamento, preparação, papéis, registro, decisão e acompanhamento |
 
-*Walkthroughs* e inspeções são formas de revisão técnica formal na apresentação de Pressman e Maxim [@pressman2016].
+*Walkthroughs* e inspeções pertencem à classe das revisões técnicas formais; RTF não é um terceiro nível paralelo a essas duas formas [@pressman2016].
+
+## O que uma RTF busca alcançar? {.concept .definition}
+
+::: {.chapter}
+Revisão técnica formal
+:::
+
+1. **Descobrir erros** de função, lógica ou implementação.
+2. **Verificar** o atendimento aos requisitos.
+3. **Garantir** conformidade com padrões predefinidos.
+4. **Favorecer** uniformidade no desenvolvimento.
+5. **Tornar** o projeto mais gerenciável.
+
+Além disso, a revisão cria uma base de **treinamento**, **respaldo** e **continuidade**, pois distribui o conhecimento sobre o software entre mais pessoas [@pressman2016].
 
 ## Uma RTF começa antes da reunião {.concept .definition}
+
+<img src="../../assets/images/04-verificacao-estatica/fluxo-revisao-tecnica-formal.svg" alt="Fluxo detalhado da RTF: solicitação, organização, preparação, reunião, decisão, registros e acompanhamento." style="width: 92%; height: auto;">
+
+<p class="caption">A rejeição exige correções e uma nova revisão; a aceitação provisória exige correções, mas dispensa outra reunião.</p>
+
+## Limites mantêm a revisão focalizada {.concept}
 
 ::: {.chapter}
 Revisão técnica formal
@@ -164,20 +197,12 @@ Revisão técnica formal
 
 Uma RTF examina uma **parte pequena e identificável** de um artefato.
 
-```{mermaid}
-%%{init: {'theme': 'dark'}}%%
-flowchart LR
-    A[Planejar] --> B[Preparar]
-    B --> C[Conduzir]
-    C --> D[Decidir]
-    D --> E[Acompanhar]
-```
+- **3–5 participantes**;
+- **1–2 horas** de preparação por pessoa, nunca mais de duas;
+- reunião com **menos de 2 horas**;
+- normalmente, **2–3 revisores** recebem o material antecipadamente.
 
-- definir artefato, versão, escopo e base de referência;
-- preparar questões individualmente;
-- registrar descobertas, decisão e pendências.
-
-A referência recomenda preparação e reunião com duração limitada, para manter o foco [@pressman2016].
+Restringir o escopo e exigir preparação aumenta a probabilidade de revelar erros [@pressman2016].
 
 ## Papéis tornam a revisão observável {.concept}
 
@@ -187,10 +212,11 @@ Revisão técnica formal
 
 | Papel | Responsabilidade |
 |---|---|
-| **Pessoa produtora** | disponibiliza o artefato e esclarece a intenção registrada |
-| **Moderação** | organiza agenda, escopo e condução |
-| **Revisores** | apresentam questões ancoradas na referência e na preparação |
-| **Pessoa registradora** | mantém a lista de descobertas, decisões e pendências |
+| **Pessoa produtora** | solicita, apresenta e percorre o artefato |
+| **Liderança do projeto** | aciona a liderança de revisão |
+| **Liderança de revisão** | verifica completude, organiza, conduz e acompanha |
+| **Revisores** | preparam questões e examinam o artefato |
+| **Pessoa registradora** | anota problemas e consolida os registros |
 
 Ao final, o artefato pode ser aceito, aceito com pendências ou exigir nova revisão [@pressman2016].
 
@@ -224,13 +250,72 @@ A segunda formulação é específica, verificável e permite encaminhamento [@p
 Conduta na RTF
 :::
 
-1. **Mantenha a agenda.** A moderação protege o foco e o prazo.
-2. **Limite debates.** Sem consenso imediato, registre para discussão posterior.
-3. **Não resolva tudo na reunião.** A RTF revela e registra problemas; a solução vem depois.
-4. **Tome notas.** A lista de problemas orienta correções e acompanhamento.
-5. **Exija preparação prévia.** Comentários escritos mostram que o artefato foi examinado.
+1. **Revise o produto, não a pessoa.** Preserve um clima construtivo.
+2. **Mantenha a agenda.** Proteja foco, escopo e prazo.
+3. **Limite debates.** Registre divergências para investigação posterior.
+4. **Não resolva tudo na reunião.** Primeiro descubra e registre os problemas.
+5. **Tome notas.** Use os registros no retrabalho e no acompanhamento.
 
 Diretrizes devem ser combinadas antes da revisão [@pressman2016].
+
+## Diretrizes que sustentam o processo {.concept}
+
+::: {.chapter}
+Conduta na RTF
+:::
+
+6. **Limite o grupo e exija preparação.** Comentários prévios evidenciam a leitura.
+7. **Crie checklists por produto.** Cada artefato apresenta riscos diferentes.
+8. **Reserve tempo e recursos.** Preparação e acompanhamento fazem parte do projeto.
+9. **Treine revisores.** Papéis, técnicas e registros precisam ser praticados.
+10. **Avalie as primeiras revisões.** Melhore o processo, não julgue indivíduos.
+
+As diretrizes orientam todas as fases; não acrescentam dez novas etapas ao fluxo [@pressman2016].
+
+## NASA-STD-8739.9: inspeção formal detalhada {.concept}
+
+::: {.chapter}
+Material suplementar
+:::
+
+**Fluxo histórico:** planejamento → visão geral → preparação → reunião → retrabalho → acompanhamento.
+
+- critérios mensuráveis de entrada e saída;
+- autor, moderador, leitor, registrador e inspetores;
+- defeitos classificados por tipo e severidade;
+- terceira hora para discutir soluções;
+- eventual reinspeção;
+- métricas para melhorar o processo, não avaliar pessoas.
+
+O padrão foi **cancelado em 25 de agosto de 2023** e aparece aqui como referência histórica [@nasaSTD87399].
+
+## Pressman e a NASA: escopo e organização {.concept .smaller}
+
+::: {.chapter}
+Comparação
+:::
+
+| Aspecto | Pressman | Padrão histórico e documentos atuais da NASA |
+|---|---|---|
+| **Escopo** | visão geral da RTF | inspeção formal detalhada; hoje, requisitos institucionais |
+| **Papéis** | produtor, liderança, revisores e registrador | papéis especializados; hoje, participantes necessários |
+| **Critérios** | completude, decisão e acompanhamento | entrada e saída mensuráveis; hoje, prontidão e conclusão |
+
+O padrão histórico detalha uma forma específica de inspeção. Os documentos atuais preservam requisitos essenciais sem reproduzir todo aquele processo.
+
+## Pressman e a NASA: condução e resultado {.concept .smaller}
+
+::: {.chapter}
+Comparação
+:::
+
+| Aspecto | Pressman | Padrão histórico e documentos atuais da NASA |
+|---|---|---|
+| **Leitura** | preparação prévia e checklist | preparação documentada; hoje, checklist ou leitura formal |
+| **Resultado** | aceitar, rejeitar ou aceitar provisoriamente | retrabalho e eventual reinspeção; hoje, ações até a resolução |
+| **Medição** | lista e relatório-síntese | defeitos, esforço e taxas; hoje, medidas necessárias |
+
+O referencial vigente reúne **NPR 7150.2D**, **NASA-STD-8739.8B** e o _Software Engineering Handbook_ [@nasaNPR71502D; @nasaSTD87398B; @nasaSWEHPeerReviews].
 
 ## Checklist transforma atenção em perguntas {.concept .definition}
 
@@ -248,7 +333,21 @@ Para um trecho de código, pergunte:
 
 Checklist não decide sozinho: ele orienta a busca por evidências [@pressman2016].
 
-## Prática: inspeção guiada {.activity}
+## Um pequeno recorte dos checklists NASA {.activity .smaller}
+
+::: {.chapter}
+Preparação da inspeção
+:::
+
+No Laboratório 04, a turma pratica com **seis perguntas selecionadas**, e não com as 102 perguntas das listas traduzidas.
+
+- **PAT-003**: clareza e completude dos requisitos;
+- **PAT-013**: uso de dados e testabilidade;
+- **PAT-017**: finalidade da unidade e clareza da lógica.
+
+Cada pergunta mantém checklist, seção e número de origem. A adaptação de um item do PAT-017, criado para código C, é declarada antes de sua aplicação ao código Python.
+
+## Prática: mini-RTF guiada {.activity}
 
 ::: {.chapter}
 Aplicação
@@ -256,27 +355,46 @@ Aplicação
 
 O Laboratório 04 usa um cenário fixo: requisito **R-01** (renovação de empréstimo) e a função `pode_renovar`.
 
-1. delimite escopo e base de referência;
-2. prepare-se individualmente com checklist;
-3. percorra o requisito e o código em teste de mesa;
-4. registre questões, participe de uma mini RTF e defina o encaminhamento.
+1. confira o pacote, delimite o escopo e distribua o material;
+2. use o recorte de checklist e faça o teste de mesa na preparação individual;
+3. consolide as descobertas na reunião, sem resolver os problemas;
+4. registre a decisão global sobre o artefato;
+5. acompanhe as correções e faça nova revisão quando necessário.
 
 Não invente regras ausentes: registre a lacuna como questão a esclarecer.
 
 [🧪 Acesse o roteiro completo do Laboratório 04](laboratorio.qmd){.slide-link}
 
-## O registro transforma discussão em evidência {.activity}
+## Duas decisões que não podem ser confundidas {.activity}
 
 ::: {.chapter}
 Aplicação
 :::
 
-| ID | Localização | Evidência e referência | Encaminhamento | Situação |
-|---|---|---|---|---|
-| I-01 | | | | aberta / resolvida / descartada |
-| I-02 | | | | aberta / resolvida / descartada |
+**Cada descoberta** recebe tipo, evidência, encaminhamento, responsável e situação.
 
-A prática está concluída quando há artefato, versão, escopo, referência, descobertas localizáveis, decisão e próximos passos.
+**O artefato como um todo** recebe uma decisão global:
+
+1. aceitar sem modificações;
+2. aceitar provisoriamente, condicionado a correções secundárias;
+3. rejeitar por erros graves e exigir nova revisão.
+
+Uma situação como “em retrabalho” descreve uma descoberta; ela não substitui a decisão sobre o artefato.
+
+## O registro acompanha a correção {.activity}
+
+::: {.chapter}
+Aplicação
+:::
+
+O trabalho não termina quando a reunião acaba.
+
+1. A pessoa responsável corrige a descoberta e registra a evidência da mudança.
+2. Outra pessoa compara a correção com a descoberta e com a base de referência.
+3. O item é confirmado, reaberto, mantido como pendente ou descartado com justificativa.
+4. Se o artefato foi rejeitado, a versão corrigida passa por nova revisão.
+
+A planilha separa preparação, aplicação do recorte NASA, teste de mesa, descobertas, decisão global e acompanhamento.
 
 ## O que levar desta aula {.takeaway}
 
@@ -286,9 +404,9 @@ Síntese
 
 - **Estático**: examinar artefatos sem executar o software.
 - **Revisões precoces**: reduzem propagação, retrabalho e risco.
-- **RTF**: escopo, preparação, papéis, checklist, registro, decisão e acompanhamento.
+- **RTF**: escopo, preparação, papéis, checklist, registro, decisão, retrabalho e acompanhamento.
 - **Conduta**: revisar o produto, não a pessoa.
-- **Inspeção guiada**: registrar evidência e encaminhar lacunas sem inventar requisitos.
+- **Mini-RTF guiada**: registrar evidência, verificar correções e reabrir o que não foi resolvido.
 
 [📖 Consulte o material completo e detalhado desta aula](index.qmd){.slide-link}
 
