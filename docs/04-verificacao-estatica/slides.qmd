@@ -66,7 +66,7 @@ Duas formas de obter evidência
 | Atividade | Pergunta principal |
 |---|---|
 | **Revisão** | O artefato é consistente com sua referência? |
-| **Teste de mesa** | O fluxo lógico revela uma questão no artefato? |
+| <span class="custom-tooltip">**Teste de mesa**<span class="tooltip-box">O <strong>teste de mesa</strong> (<em>desk checking</em>) é uma técnica de <strong>verificação estática informal</strong> na qual a própria pessoa autora e/ou revisores percorrem logicamente um artefato de software (como código-fonte, algoritmo, modelo ou requisito).</span></span> | O fluxo lógico revela uma questão no artefato? |
 | **Teste dinâmico** | O comportamento observado diverge do esperado? |
 | **Depuração** | Qual é a causa e como corrigir sem introduzir outra falha? |
 

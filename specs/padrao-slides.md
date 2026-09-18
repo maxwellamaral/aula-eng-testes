@@ -15,6 +15,17 @@ Organize a apresentação com frames de abertura, contextualização, problema o
 - Represente fluxos, processos e sequências como diagrama (por exemplo, Mermaid `flowchart`), nunca como diagrama ASCII dentro de um bloco de código (` ```text `). Um bloco de código sinaliza "código-fonte" para quem assiste, não um processo.
 - Dentro do corpo de um slide (`## `), nunca use um heading de nível igual ou inferior ao `slide-level` do documento (por padrão, nível 1, `# `). O Reveal.js trata esse heading como início de um **slide novo**, partindo o conteúdo ao meio e deixando o slide original incompleto. Para destacar uma frase de impacto dentro do slide, use ênfase (`**texto**`) ou um heading de nível superior ao `slide-level` (por exemplo, `### `), nunca `#`.
 
+## Tooltips de conceitos
+
+Sempre que for solicitado adicionar tooltips a termos ou conceitos nos slides, adote obrigatoriamente o padrão rico via CSS (estilizado em `assets/css/slides.css`):
+
+- **Estrutura HTML/Markdown**:
+  ```html
+  <span class="custom-tooltip">**Conceito**<span class="tooltip-box">Texto explicativo com suporte a <strong>negrito</strong> e <em>itálico</em>.</span></span>
+  ```
+- **Proibido usar o atributo nativo `title="..."`** para conceitos, pois ele não suporta formatação tipográfica e não segue a identidade visual dos slides.
+- A classe `.custom-tooltip` adiciona linha pontilhada indicativa na cor de destaque (`var(--slide-accent)`), cursor `help`, e o balão `.tooltip-box` suporta tags filhas `<strong>` e `<em>`, garantindo alto contraste e contenção adequada no viewport.
+
 ## Revisão após a criação
 
 Toda criação ou alteração de um deck exige as duas etapas abaixo, nesta ordem. Nenhuma delas substitui a outra.

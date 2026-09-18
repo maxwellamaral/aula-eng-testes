@@ -26,6 +26,7 @@ Não edite `_site/`, `.quarto/`, PDFs gerados ou outros artefatos de build. Não
 - Preserve o conteúdo canônico da aula em `_content.qmd` quando ele também integrar a apostila.
 - Mantenha `index.qmd` como página de contexto, navegação e inclusão do conteúdo canônico.
 - Slides são uma entrega independente: devem ter narrativa própria para aula presencial, não uma cópia linear da página.
+- Tooltips de conceitos em slides: sempre adote o padrão rico via CSS (`.custom-tooltip` com `.tooltip-box` aninhado e tags HTML `<strong>` e `<em>`), aproveitando os estilos configurados em `assets/css/slides.css`. Nunca use o atributo nativo HTML `title` para conceitos.
 - Use fontes verificáveis e registre-as em `docs/references.bib` quando citadas.
 - Mantenha imagens em `assets/images/<nn>-<tema>/` e links relativos compatíveis com o site publicado.
 - Antes da renderização final, carregue a habilidade `humanizer` e revise todo texto didático criado ou alterado. Preserve precisão técnica, terminologia, citações e tom acadêmico; humanizar não autoriza simplificar conceitos nem introduzir opiniões ou fatos ausentes das fontes.
