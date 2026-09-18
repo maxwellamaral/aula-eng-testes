@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-labelledby="title desc">
+  <title id="title">Amplificação de defeitos com revisões</title>
+  <desc id="desc">Exemplo hipotético de Pressman. Revisões no projeto preliminar, no projeto detalhado e no código reduzem dez erros iniciais a vinte e quatro erros antes dos testes. Três etapas de teste com cinquenta por cento de detecção reduzem o total a três defeitos latentes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="620" rx="20" fill="url(#bg)" stroke="#334155" stroke-width="2"/>
+  <text x="60" y="58" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="30" font-weight="750">Com revisões: filtros interrompem a propagação</text>
+  <text x="60" y="88" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16">O mesmo exemplo, agora com revisão de projeto e de código</text>
+
+  <g font-family="system-ui, sans-serif" filter="url(#shadow)">
+    <g transform="translate(55,135)">
+      <rect width="260" height="230" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+      <text x="22" y="38" fill="#6ee7b7" font-size="19" font-weight="700">Projeto preliminar</text>
+      <text x="22" y="78" fill="#cbd5e1" font-size="15">Erros introduzidos</text>
+      <text x="238" y="80" text-anchor="end" fill="#f8fafc" font-size="25" font-weight="750">10</text>
+      <line x1="22" y1="102" x2="238" y2="102" stroke="#475569"/>
+      <text x="22" y="132" fill="#cbd5e1" font-size="15">Revisão remove</text>
+      <text x="238" y="134" text-anchor="end" fill="#34d399" font-size="22" font-weight="700">70%</text>
+      <rect x="20" y="164" width="220" height="46" rx="9" fill="#022c22" stroke="#34d399"/>
+      <text x="32" y="193" fill="#a7f3d0" font-size="15" font-weight="650">Seguem adiante</text>
+      <text x="226" y="195" text-anchor="end" fill="#ecfdf5" font-size="25" font-weight="750">3</text>
+    </g>
+
+    <g transform="translate(355,135)">
+      <rect width="330" height="230" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+      <text x="22" y="38" fill="#6ee7b7" font-size="19" font-weight="700">Projeto detalhado</text>
+      <text x="22" y="74" fill="#cbd5e1" font-size="14">2 passam sem amplificação</text>
+      <text x="22" y="100" fill="#cbd5e1" font-size="14">1 × 1,5 = 1,5 é amplificado</text>
+      <text x="22" y="126" fill="#cbd5e1" font-size="14">+ 25 novos erros ≈ 29</text>
+      <line x1="22" y1="145" x2="308" y2="145" stroke="#475569"/>
+      <text x="22" y="173" fill="#cbd5e1" font-size="14">Revisão remove 50%</text>
+      <rect x="20" y="184" width="290" height="32" rx="8" fill="#022c22" stroke="#34d399"/>
+      <text x="32" y="206" fill="#a7f3d0" font-size="14" font-weight="650">Seguem para o código</text>
+      <text x="296" y="207" text-anchor="end" fill="#ecfdf5" font-size="22" font-weight="750">15</text>
+    </g>
+
+    <g transform="translate(725,135)">
+      <rect width="420" height="230" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+      <text x="22" y="38" fill="#6ee7b7" font-size="19" font-weight="700">Código e teste de unidade</text>
+      <text x="22" y="74" fill="#cbd5e1" font-size="14">5 passam sem amplificação</text>
+      <text x="22" y="100" fill="#cbd5e1" font-size="14">10 × 3 = 30 são amplificados</text>
+      <text x="22" y="126" fill="#cbd5e1" font-size="14">+ 25 novos erros = 60</text>
+      <line x1="22" y1="145" x2="398" y2="145" stroke="#475569"/>
+      <text x="22" y="173" fill="#cbd5e1" font-size="14">Revisão remove 60%</text>
+      <rect x="20" y="184" width="380" height="32" rx="8" fill="#022c22" stroke="#34d399"/>
+      <text x="32" y="206" fill="#a7f3d0" font-size="14" font-weight="650">Chegam ao início dos testes</text>
+      <text x="386" y="207" text-anchor="end" fill="#ecfdf5" font-size="22" font-weight="750">24</text>
+    </g>
+  </g>
+
+  <path d="M315 250 H345" stroke="#34d399" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M685 250 H715" stroke="#34d399" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(55,420)" font-family="system-ui, sans-serif">
+    <text x="0" y="0" fill="#e2e8f0" font-size="17" font-weight="700">Testes detectam 50% dos erros recebidos em cada etapa</text>
+    <line x1="0" y1="55" x2="1060" y2="55" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+    <g fill="#0f172a" stroke="#38bdf8" stroke-width="3">
+      <circle cx="80" cy="55" r="34"/><circle cx="390" cy="55" r="34"/><circle cx="700" cy="55" r="34"/>
+    </g>
+    <g fill="#f8fafc" font-size="20" font-weight="750" text-anchor="middle">
+      <text x="80" y="62">12</text><text x="390" y="62">6</text><text x="700" y="62">3</text>
+    </g>
+    <g fill="#cbd5e1" font-size="14" text-anchor="middle">
+      <text x="80" y="112">Integração</text><text x="390" y="112">Validação</text><text x="700" y="112">Sistema</text>
+    </g>
+    <g transform="translate(840,20)">
+      <rect width="220" height="96" rx="14" fill="#022c22" stroke="#34d399" stroke-width="2"/>
+      <text x="110" y="31" text-anchor="middle" fill="#6ee7b7" font-size="14" font-weight="700">LIBERADOS AO CAMPO</text>
+      <text x="110" y="72" text-anchor="middle" fill="#ecfdf5" font-size="36" font-weight="800">3</text>
+      <text x="110" y="90" text-anchor="middle" fill="#a7f3d0" font-size="12">defeitos latentes</text>
+    </g>
+  </g>
+</svg>

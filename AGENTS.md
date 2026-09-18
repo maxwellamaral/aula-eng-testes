@@ -28,6 +28,7 @@ Não edite `_site/`, `.quarto/`, PDFs gerados ou outros artefatos de build. Não
 - Slides são uma entrega independente: devem ter narrativa própria para aula presencial, não uma cópia linear da página.
 - Use fontes verificáveis e registre-as em `docs/references.bib` quando citadas.
 - Mantenha imagens em `assets/images/<nn>-<tema>/` e links relativos compatíveis com o site publicado.
+- Antes da renderização final, carregue a habilidade `humanizer` e revise todo texto didático criado ou alterado. Preserve precisão técnica, terminologia, citações e tom acadêmico; humanizar não autoriza simplificar conceitos nem introduzir opiniões ou fatos ausentes das fontes.
 
 ## Ambiente e validação
 

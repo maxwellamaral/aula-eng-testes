@@ -1,0 +1,134 @@
+---
+title: "PAT-014 — Lista de Verificação de Projeto Arquitetural"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+Esta lista de verificação foi elaborada para verificar o projeto arquitetural de software de missões da NASA. Ela contém exemplos de perguntas que podem ser usadas para inspecionar e analisar um projeto arquitetural. Esta lista de verificação pode ser modificada para atender às necessidades do projeto ou da organização.
+
+::: {.callout-note}
+## Sobre esta tradução
+
+Esta é uma tradução didática para português brasileiro. Como indicado no documento da NASA, a lista é adaptável às necessidades de cada projeto ou organização. A terminologia pode ser ajustada ao contexto da equipe sem alterar os critérios técnicos avaliados [@nasaPeerReviewChecklists]. Consulte também o [documento original da PAT-014](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-014-Architecture-Design-Checklist.docx).
+:::
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | O projeto implementa as especificações e os requisitos? |
+| 2. | As especificações e os requisitos estão completos? |
+| 3. | O algoritmo abstrato está especificado para cada unidade/subunidade de nível inferior? |
+| 4. | O projeto apresenta coesão funcional? |
+
+## Estudos de alternativas
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | Foram realizados e documentados estudos de alternativas de projeto? |
+| 2. | As premissas foram documentadas? |
+| | Os objetivos estão definidos? |
+| | Os critérios para a análise de alternativas estão definidos? |
+| 3. | O projeto ou algoritmo selecionado atenderá a todos os seus requisitos? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | Os principais parâmetros de desempenho estão especificados (tempo real, tamanho da memória, requisitos de velocidade, volume de E/S em disco etc.)? |
+| 2. | Os requisitos de sincronização são atendidos (faseamento, tempos-limite etc.)? |
+| 3. | O projeto contempla o ambiente operacional real? |
+| 4. | O impacto de falhas está definido? |
+
+## Lógica
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | Há lógica ausente ou incompleta? |
+| 2. | Todos os estados ou casos possíveis estão definidos? |
+| 3. | As ações tomadas estão corretas em todos os casos? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | A visão conceitual está documentada para todos os objetos, relacionamentos e parâmetros? |
+| 2. | Há alguma estrutura de dados necessária que não tenha sido definida, ou vice-versa? |
+
+## Interfaces
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | A interface do operador foi projetada tendo o usuário em mente (isto é, vocabulário e mensagens úteis)? |
+| 2. | A interface facilitará a solução de problemas? |
+| 3. | Todas as interfaces são consistentes entre si, com outros CSCs e com os requisitos? |
+| 4. | Todas as interfaces fornecem os tipos e as quantidades de informação exigidos? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | O módulo descrito por este projeto pode ser testado ou inspecionado para demonstrar que satisfaz os requisitos? |
+| 2. | O conjunto de programas pode ser integrado e testado de maneira incremental? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | O projeto prevê detecção de erros e recuperação (por exemplo, é realizada a verificação das entradas)? |
+| 2. | As condições anormais são consideradas? |
+| 3. | O projeto satisfaz todos os compromissos de integridade de sistemas relativos a este produto? |
+| 4. | Todas as condições, códigos e mensagens de erro estão especificados de forma completa e significativa? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | O ocultamento de informações é utilizado? O projeto é modular? |
+| 2. | Os CSCs apresentam alta coesão e baixo acoplamento? |
+| 3. | A documentação segue os padrões do projeto ou da NASA? |
+| 4. | Há rastreabilidade entre os documentos de manutenção e o projeto? |
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | A arquitetura, incluindo o fluxo de dados e as interfaces, está representada com clareza? |
+| 2. | Há representações múltiplas e consistentes do projeto? |
+| 3. | Todas as decisões, dependências e premissas deste projeto estão documentadas? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | Todas as partes do projeto são rastreadas até os requisitos? |
+| 2. | Todas as decisões de projeto podem ser rastreadas até os estudos de alternativas? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | Os elementos de dados, procedimentos e funções são nomeados e utilizados de maneira consistente em todo o conjunto de programas? |
+| 2. | Os elementos de dados, procedimentos e funções são consistentes com as interfaces externas? |
+
+## Nível de detalhamento
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1. | O projeto possui detalhes suficientes para avançar à próxima fase? |
+| 2. | Todas as declarações possíveis de “A ser determinado” (*To Be Determined* — TBD) foram resolvidas? |
+
+## Resumo da análise
+
+| Registro |
+|---|
+| |
+| |
+| |
+
+## Referências
+
+::: {#refs}
+:::

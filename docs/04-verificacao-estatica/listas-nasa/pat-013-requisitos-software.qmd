@@ -1,0 +1,164 @@
+---
+title: "PAT-013 — Lista de Verificação de Requisitos de Software"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+## Nota sobre esta versão
+
+Esta página é uma tradução didática e uma adaptação da lista de verificação PAT-013 da NASA [@nasaPeerReviewChecklists]. Ajuste as perguntas, os critérios e o nível de rigor ao contexto do projeto ou da organização. Consulte também o [documento original em inglês](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-013-Software-Requirements-Checklist.docx).
+:::
+
+Esta lista de verificação foi elaborada para verificar os requisitos dos softwares de missão da NASA. Ela contém exemplos de perguntas que podem ser usadas para inspecionar e analisar formalmente os requisitos de software. Esta lista de verificação pode ser modificada para atender às necessidades do projeto ou da organização.
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os objetivos e o escopo do subsistema ou módulo a ser desenvolvido estão definidos? |
+| 2 | A terminologia é consistente com a terminologia dos usuários e/ou patrocinadores? |
+| 3 | Os requisitos são claros e não ambíguos? |
+| 4 | É fornecida uma visão geral funcional do conjunto de programas? |
+| 5 | É apresentada uma visão geral dos modos operacionais, dos estados e do conceito de operação? |
+| 6 | O ambiente de software (conjuntos de programas que coexistem no mesmo ambiente) e o ambiente de hardware (configurações específicas) foram especificados? |
+| 7 | Caso tenham sido feitas suposições que afetem a implementação, elas estão declaradas? |
+| 8 | Os requisitos foram expressos em termos de entradas, saídas e processamento para cada função? |
+
+## Completude
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os atributos, as suposições e as restrições exigidos do conjunto de programas estão listados por completo? |
+| 2 | Foi atribuída uma prioridade a todos os requisitos e restrições? |
+| 3 | Foram definidos os critérios para atribuir os níveis de prioridade dos requisitos? |
+| 4 | Os requisitos foram especificados para cada entrega ou etapa de implementação? |
+| 5 | Foram especificados os requisitos de instalação (empacotamento, preparação do local e treinamento de operadores)? |
+| 6 | A linguagem-alvo, o ambiente de desenvolvimento e o ambiente de execução foram escolhidos? |
+
+## Conformidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A documentação segue os padrões do projeto e/ou do centro da NASA? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos são mutuamente consistentes? |
+| 2 | Os requisitos deste documento são consistentes com os requisitos dos documentos relacionados? |
+| 3 | Os requisitos são consistentes com o ambiente operacional real (por exemplo, temporização do hardware, precisão, sequenciamento de eventos, taxas de dados e largura de banda)? |
+| 4 | Os requisitos permanecem dentro da capacidade dos requisitos alocados pela organização? |
+
+## Correção
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos parecem viáveis quanto a custo, cronograma e tecnologia? |
+| 2 | Os requisitos são consistentes com o ambiente operacional real (por exemplo, temporização do hardware, precisão, sequenciamento de eventos, taxas de dados e largura de banda)? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Foram especificados o tipo, a taxa, as unidades, a exatidão, a resolução, os limites, o intervalo e os valores críticos de todos os itens de dados internos? |
+| 2 | Os objetos de dados e suas partes componentes foram especificados? |
+| 3 | Foi mostrado o mapeamento entre as visões locais dos dados e os dados globais? |
+| 4 | Foi descrito o gerenciamento dos dados armazenados e compartilhados? |
+| 5 | Foi fornecida uma lista das funções que definem e/ou usam os dados armazenados e compartilhados? |
+| 6 | Há requisitos especiais de integridade para os dados armazenados? |
+| 7 | Foram especificados os tipos e a frequência de ocorrência das operações sobre dados armazenados (por exemplo, recuperar, armazenar, modificar e excluir)? |
+| 8 | Foram especificados os modos de acesso (por exemplo, aleatório e sequencial) aos dados compartilhados? |
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as funções descritas são necessárias e suficientes para atender aos objetivos da missão e/ou do sistema? |
+| 2 | Todas as entradas de uma função são necessárias e suficientes para executar a operação exigida? |
+| 3 | Cada função descreve claramente como as saídas (e os dados compartilhados) são geradas a partir das entradas (e dos dados compartilhados)? |
+| 4 | Todos os estados das funções estão definidos? |
+
+## Interface
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | As entradas e saídas de todas as interfaces são suficientes e necessárias? |
+| 2 | Todas as saídas produzidas por uma função são usadas por outra função interna ou transferidas por uma interface externa? |
+| 3 | Estão incluídos os requisitos de interface entre hardware, software, pessoal e procedimentos? |
+| 4 | O conteúdo, os formatos e as restrições de todas as telas foram descritos no Documento de Requisitos de Software (Software Requirements Document — SRD), na Especificação de Requisitos de Software (Software Requirements Specification — SRS), no Manual do Operador de Software ou no Guia do Usuário de Software? |
+| 5 | Todos os elementos de dados que cruzam os limites entre conjuntos de programas estão identificados? |
+| 6 | Todos os elementos de dados estão descritos aqui, na documentação do banco de dados ou no SIS-1? |
+| 7 | O fluxo de dados entre as funções internas do software foi representado? |
+
+## Nível de detalhe
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos estão livres de decisões de projeto? |
+| 2 | Todos os itens “A determinar” (“To Be Determined” — TBD) foram resolvidos? |
+| 3 | Foram especificados, para cada função, a exatidão, a precisão, o intervalo, o tipo, a taxa, as unidades, a frequência e o volume das entradas e saídas? |
+| 4 | As interfaces foram descritas com detalhes suficientes para que o trabalho de projeto possa começar? |
+| 5 | Os requisitos funcionais foram descritos com detalhes suficientes para que o trabalho de projeto possa começar? (Consulte a Lista de Verificação de Requisitos Funcionais.) |
+| 6 | Os requisitos de desempenho foram descritos com detalhes suficientes para que o trabalho de projeto possa começar? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos apresentam baixo acoplamento (isto é, alterar uma função não provocará efeitos adversos e inesperados em todo o software)? |
+| 2 | Os requisitos minimizarão a complexidade do projeto? |
+| 3 | Os requisitos de manutenibilidade do Documento de Requisitos Funcionais (Functional Requirements Document — FRD) e do Documento de Projeto Funcional (Functional Design Document — FDD) foram atribuídos às funções? |
+| 4 | Os requisitos de portabilidade do FRD e do FDD foram atribuídos às funções? |
+| 5 | Foi especificado o uso de projeto ou código herdado, ou de ferramentas pré-selecionadas, como COTS (Commercial Off-The-Shelf, produto comercial pronto), GOTS (Government Off-The-Shelf, produto governamental pronto), MOTS (Modified Off-The-Shelf, produto pronto modificado), software de código aberto ou código reutilizado? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos de desempenho do FRD e do FDD foram alocados a cada função? |
+| 2 | Os requisitos de margem de recursos e de desempenho foram declarados juntamente com os meios para gerenciá-los? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os fatores de qualidade foram especificados como requisitos mensuráveis ou como objetivos de projeto priorizados? |
+| 2 | Os requisitos de confiabilidade do FRD e do FDD foram atribuídos às funções? |
+| 3 | Os requisitos de disponibilidade do FRD e do FDD foram atribuídos às funções? |
+| 4 | Os requisitos de proteção (*security*, incluindo cibersegurança e controle de acesso) e de segurança operacional (*safety*) do FRD e do FDD foram atribuídos às funções? |
+| 5 | São necessárias verificação de erros e recuperação? |
+| 6 | Os eventos indesejados são considerados e as respostas exigidas para eles estão especificadas? |
+| 7 | Os estados iniciais ou especiais são considerados (por exemplo, inicialização a frio e encerramento anormal)? |
+| 8 | As suposições sobre as sequências previstas das funções foram declaradas? Essas sequências são obrigatórias? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O software pode ser testado, demonstrado, analisado ou inspecionado para comprovar que satisfaz os requisitos? |
+| 2 | Cada requisito está formulado de modo que seja separável ou atômico, não ambíguo e testável? |
+| 3 | Foram estabelecidos os critérios gerais de aceitação do software? |
+| 4 | Foram estabelecidos critérios claros de aprovação ou reprovação para os testes de aceitação? |
+| 5 | Os métodos de verificação (teste, demonstração, análise ou inspeção) foram definidos para cada requisito? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todos os requisitos de software são rastreados até requisitos de nível superior (do sistema)? |
+| 2 | Todas as funções, estruturas e restrições são rastreadas até os requisitos, e vice-versa? |
+| 3 | Os requisitos do Documento de Projeto Funcional (FDD) e do Diagrama Funcional Integrado de Software (Integrated Software Functional Diagram — ISFD) foram alocados às funções do software? |
+| 4 | Os requisitos (ou a matriz de rastreabilidade) indicam o nível dos requisitos? |
+| 5 | O Documento de Requisitos Funcionais (FRD), o Documento de Projeto Funcional (FDD), assim como quaisquer objetivos de projeto derivados e restrições de implementação, foram especificados e priorizados? |
+| 6 | Cada requisito está formulado de modo que possa ser referenciado de maneira única em documentos subordinados? |
+
+## Resumo da análise
+
+Use este espaço para registrar a síntese da análise, as principais não conformidades encontradas e os encaminhamentos necessários.
+
+
+# Referências {#refs}

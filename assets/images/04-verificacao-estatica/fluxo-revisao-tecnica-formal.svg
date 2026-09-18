@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="1400" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">Fluxo de uma revisão técnica formal</title>
+  <desc id="desc">Fluxo adaptado de Pressman e Maxim. O produtor solicita a revisão; as lideranças verificam e organizam o material; revisores se preparam; a equipe conduz a reunião e registra problemas; decide entre aceitar, aceitar provisoriamente ou rejeitar; produz registros, corrige pendências e realiza acompanhamento. A rejeição leva a uma nova revisão.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#000" flood-opacity="0.32"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-amber" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrow-rose" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#fb7185"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="820" rx="22" fill="url(#bg)" stroke="#334155" stroke-width="2"/>
+  <text x="60" y="58" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="32" font-weight="750">Fluxo de uma revisão técnica formal</text>
+  <text x="60" y="91" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="17">Do pedido de revisão ao acompanhamento das correções</text>
+
+  <g font-family="system-ui, sans-serif">
+    <text x="60" y="143" fill="#7dd3fc" font-size="16" font-weight="750" letter-spacing="1.2">ANTES DA REUNIÃO</text>
+    <line x1="220" y1="137" x2="1340" y2="137" stroke="#1e3a5f" stroke-width="2"/>
+
+    <path d="M330 230 H375" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M655 230 H700" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M1020 230 H1065" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <g transform="translate(60,170)">
+        <rect width="270" height="120" rx="15" fill="#172554" stroke="#38bdf8" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#0c4a6e" stroke="#7dd3fc"/>
+        <text x="31" y="38" text-anchor="middle" fill="#e0f2fe" font-size="18" font-weight="800">1</text>
+        <text x="60" y="35" fill="#e0f2fe" font-size="18" font-weight="750">Solicitar revisão</text>
+        <text x="20" y="70" fill="#cbd5e1" font-size="14">Produtor informa que a parte</text>
+        <text x="20" y="93" fill="#cbd5e1" font-size="14">identificável está concluída.</text>
+      </g>
+
+      <g transform="translate(375,170)">
+        <rect width="280" height="120" rx="15" fill="#172554" stroke="#38bdf8" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#0c4a6e" stroke="#7dd3fc"/>
+        <text x="31" y="38" text-anchor="middle" fill="#e0f2fe" font-size="18" font-weight="800">2</text>
+        <text x="60" y="35" fill="#e0f2fe" font-size="18" font-weight="750">Verificar e organizar</text>
+        <text x="20" y="70" fill="#cbd5e1" font-size="14">Líder de revisão avalia completude,</text>
+        <text x="20" y="93" fill="#cbd5e1" font-size="14">distribui material e define agenda.</text>
+      </g>
+
+      <g transform="translate(700,170)">
+        <rect width="320" height="120" rx="15" fill="#172554" stroke="#38bdf8" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#0c4a6e" stroke="#7dd3fc"/>
+        <text x="31" y="38" text-anchor="middle" fill="#e0f2fe" font-size="18" font-weight="800">3</text>
+        <text x="60" y="35" fill="#e0f2fe" font-size="18" font-weight="750">Preparar individualmente</text>
+        <text x="20" y="70" fill="#cbd5e1" font-size="14">Dois ou três revisores examinam,</text>
+        <text x="20" y="93" fill="#cbd5e1" font-size="14">anotam questões e se familiarizam.</text>
+      </g>
+
+      <g transform="translate(1065,170)">
+        <rect width="275" height="120" rx="15" fill="#172554" stroke="#38bdf8" stroke-width="2"/>
+        <text x="137.5" y="36" text-anchor="middle" fill="#7dd3fc" font-size="16" font-weight="750">LIMITES DE FOCO</text>
+        <text x="20" y="69" fill="#cbd5e1" font-size="14">3–5 participantes</text>
+        <text x="20" y="92" fill="#cbd5e1" font-size="14">1–2 h de preparação por pessoa</text>
+        <text x="20" y="113" fill="#cbd5e1" font-size="14">reunião com menos de 2 h</text>
+      </g>
+    </g>
+
+    <text x="60" y="352" fill="#6ee7b7" font-size="16" font-weight="750" letter-spacing="1.2">DURANTE A REUNIÃO</text>
+    <line x1="255" y1="346" x2="1340" y2="346" stroke="#064e3b" stroke-width="2"/>
+
+    <path d="M400 435 H445" stroke="#34d399" stroke-width="3" marker-end="url(#arrow-green)"/>
+    <path d="M820 435 H865" stroke="#34d399" stroke-width="3" marker-end="url(#arrow-green)"/>
+
+    <g filter="url(#shadow)">
+      <g transform="translate(60,382)">
+        <rect width="340" height="108" rx="15" fill="#052e2b" stroke="#34d399" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#064e3b" stroke="#6ee7b7"/>
+        <text x="31" y="38" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="800">4</text>
+        <text x="60" y="35" fill="#ecfdf5" font-size="18" font-weight="750">Abrir a reunião</text>
+        <text x="20" y="70" fill="#cbd5e1" font-size="14">Líder apresenta a agenda; produtor</text>
+        <text x="20" y="93" fill="#cbd5e1" font-size="14">faz uma breve introdução.</text>
+      </g>
+
+      <g transform="translate(445,382)">
+        <rect width="375" height="108" rx="15" fill="#052e2b" stroke="#34d399" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#064e3b" stroke="#6ee7b7"/>
+        <text x="31" y="38" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="800">5</text>
+        <text x="60" y="35" fill="#ecfdf5" font-size="18" font-weight="750">Percorrer e questionar</text>
+        <text x="20" y="70" fill="#cbd5e1" font-size="14">Produtor repassa o artefato; revisores</text>
+        <text x="20" y="93" fill="#cbd5e1" font-size="14">levantam questões preparadas.</text>
+      </g>
+
+      <g transform="translate(865,382)">
+        <rect width="475" height="108" rx="15" fill="#052e2b" stroke="#34d399" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#064e3b" stroke="#6ee7b7"/>
+        <text x="31" y="38" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="800">6</text>
+        <text x="60" y="35" fill="#ecfdf5" font-size="18" font-weight="750">Registrar problemas válidos</text>
+        <text x="20" y="70" fill="#cbd5e1" font-size="14">Registrador anota as questões importantes;</text>
+        <text x="20" y="93" fill="#cbd5e1" font-size="14">a equipe descobre problemas, não projeta soluções.</text>
+      </g>
+    </g>
+
+    <text x="60" y="552" fill="#fcd34d" font-size="16" font-weight="750" letter-spacing="1.2">DECISÃO, REGISTRO E ACOMPANHAMENTO</text>
+    <line x1="410" y1="546" x2="1340" y2="546" stroke="#78350f" stroke-width="2"/>
+
+    <path d="M270 650 H330" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrow-amber)"/>
+    <path d="M720 650 H780" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrow-amber)"/>
+    <path d="M1130 650 H1185" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrow-amber)"/>
+
+    <g filter="url(#shadow)">
+      <g transform="translate(60,592)">
+        <polygon points="105,0 210,58 105,116 0,58" fill="#451a03" stroke="#fbbf24" stroke-width="2"/>
+        <text x="105" y="48" text-anchor="middle" fill="#fef3c7" font-size="17" font-weight="750">7. Decidir</text>
+        <text x="105" y="72" text-anchor="middle" fill="#fde68a" font-size="13">três resultados</text>
+      </g>
+
+      <g transform="translate(330,578)">
+        <rect width="390" height="145" rx="15" fill="#29220d" stroke="#fbbf24" stroke-width="2"/>
+        <text x="20" y="31" fill="#fef3c7" font-size="17" font-weight="750">Resultado técnico</text>
+        <circle cx="27" cy="59" r="6" fill="#34d399"/>
+        <text x="43" y="65" fill="#e2e8f0" font-size="14">aceitar sem modificações;</text>
+        <circle cx="27" cy="88" r="6" fill="#fbbf24"/>
+        <text x="43" y="94" fill="#e2e8f0" font-size="14">aceitar provisoriamente e corrigir;</text>
+        <circle cx="27" cy="117" r="6" fill="#fb7185"/>
+        <text x="43" y="123" fill="#e2e8f0" font-size="14">rejeitar, corrigir e realizar nova revisão.</text>
+      </g>
+
+      <g transform="translate(780,578)">
+        <rect width="350" height="145" rx="15" fill="#29220d" stroke="#fbbf24" stroke-width="2"/>
+        <circle cx="31" cy="31" r="18" fill="#713f12" stroke="#fde68a"/>
+        <text x="31" y="38" text-anchor="middle" fill="#fffbeb" font-size="18" font-weight="800">8</text>
+        <text x="60" y="35" fill="#fef3c7" font-size="18" font-weight="750">Consolidar registros</text>
+        <text x="20" y="73" fill="#cbd5e1" font-size="14">Documento assinado, relatório-síntese</text>
+        <text x="20" y="97" fill="#cbd5e1" font-size="14">e lista de problemas/ações.</text>
+        <text x="20" y="121" fill="#94a3b8" font-size="13">O quê? Quem? Descobertas e conclusões.</text>
+      </g>
+
+      <g transform="translate(1185,592)">
+        <rect width="155" height="116" rx="15" fill="#29220d" stroke="#fbbf24" stroke-width="2"/>
+        <text x="77.5" y="34" text-anchor="middle" fill="#fef3c7" font-size="16" font-weight="750">9. Acompanhar</text>
+        <text x="77.5" y="64" text-anchor="middle" fill="#cbd5e1" font-size="13">verificar correções</text>
+        <text x="77.5" y="86" text-anchor="middle" fill="#cbd5e1" font-size="13">e evitar pendências</text>
+        <text x="77.5" y="106" text-anchor="middle" fill="#cbd5e1" font-size="13">“esquecidas”</text>
+      </g>
+    </g>
+
+    <path d="M525 723 V770 H230 V505" fill="none" stroke="#fb7185" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrow-rose)"/>
+    <text x="250" y="760" fill="#fda4af" font-size="13" font-weight="700">se rejeitado: corrigir e realizar nova revisão</text>
+  </g>
+</svg>

@@ -1,0 +1,121 @@
+---
+title: "PAT-015 — Lista de Verificação de Projeto Detalhado"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+Esta lista de verificação foi elaborada para verificar o projeto detalhado empregado em software de missões da NASA. Ela contém exemplos de perguntas que podem ser usadas para inspecionar e analisar formalmente o projeto detalhado. A lista pode ser modificada para atender às necessidades do projeto ou da organização [@nasaPeerReviewChecklists].
+
+::: {.callout-note}
+## Tradução didática
+
+Esta é uma tradução didática integral da checklist NASA PAT-015. Antes de aplicá-la, adapte a terminologia, os critérios de aceitação, os padrões e os campos de registro ao contexto do seu projeto, sem eliminar perguntas relevantes para os riscos do produto. Consulte também o [documento original em inglês](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-015-Detailed-Design-Checklist.docx).
+:::
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O projeto implementa o algoritmo especificado? |
+| 2 | Este projeto atenderá aos requisitos especificados? |
+| 3 | Ele está em conformidade com a arquitetura? |
+
+## Lógica
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as variáveis e constantes estão definidas e inicializadas? (Não se esqueça dos ponteiros.) |
+| 2 | Falta alguma lógica? |
+| 3 | Há literais empregados onde deveria ser usado o nome de uma constante de dados? |
+| 4 | As condições de maior que zero, igual a zero, menor que zero ou outras condições (para casos de uma estrutura `switch`) são tratadas individualmente? |
+| 5 | As ramificações estão expressas corretamente (isto é, a lógica não está invertida)? |
+| 6 | As ações de cada caso estão corretas? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todos os blocos de dados estão especificados (quanto à estrutura e ao uso) e são utilizados? |
+| 2 | Todas as rotinas que modificam um bloco de dados estão cientes do uso desse bloco por qualquer outra rotina? |
+| 3 | Todas as unidades lógicas, todos os eventos e todos os sinalizadores de sincronização estão definidos? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os mecanismos de sincronização estão corretos e terão o desempenho exigido? |
+
+## Interligações
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | As listas de argumentos correspondem em quantidade, tipo e ordem? |
+| 2 | Todas as entradas e saídas das interligações estão devidamente definidas e verificadas? |
+| 3 | A área de dados está mapeada conforme esperado pela unidade receptora? |
+| 4 | São emitidas mensagens para todas as condições de erro? |
+| 5 | Os códigos de retorno de situações específicas correspondem à definição global documentada de cada código de retorno? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O projeto está descrito de forma testável, mensurável ou demonstrável? |
+| 2 | O projeto contém pontos de verificação que auxiliem os testes? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | São usados valores padrão e eles estão corretos? |
+| 2 | São realizadas verificações de limites nos acessos à memória (vetores, estruturas de dados, ponteiros etc.) para garantir que a memória do programa não seja alterada indevidamente? |
+| 3 | As interligações foram verificadas quanto à destruição não intencional de dados? |
+| 4 | É realizada a verificação de erros em entradas, saídas, interligações, interfaces e resultados? |
+| 5 | Eventos indesejados são considerados (por exemplo, em uma espaçonave, se um *single-event upset* — SEU — alterar uma localização crítica de dados, existem cópias de segurança, testes de verificação dos dados e procedimentos de reinicialização)? |
+
+## Nível de detalhe
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A finalidade de todas as unidades ou processos está documentada? |
+| 2 | A razão de expansão entre código e documentação de projeto é inferior a 10:1? |
+| 3 | Todos os atributos obrigatórios dos módulos estão definidos? |
+| 4 | Todas as premissas adotadas sobre este módulo (conforme percebidas pelo restante do conjunto de programas) estão documentadas? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Esta unidade apresenta alta coesão interna e baixo acoplamento externo (isto é, as mudanças nesta unidade não provocam efeitos imprevistos dentro dela e têm efeito mínimo sobre outras unidades)? |
+| 2 | O projeto coloca em risco o cumprimento de algum padrão de programação do projeto (por exemplo: o cabeçalho atende aos padrões do projeto? Ele inclui a finalidade; a autoria ou a pessoa responsável pelo desenvolvimento; o ambiente; os recursos não padronizados utilizados; o histórico de desenvolvimento; os parâmetros de entrada e saída; o arquivo utilizado; as estruturas de dados utilizadas; as unidades que invocam esta unidade; e notas explicativas)? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as partes do projeto estão rastreadas até os requisitos correspondentes? |
+| 2 | Todas as decisões de projeto podem ser rastreadas até os estudos de alternativas? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os elementos de dados são nomeados e utilizados de forma consistente em toda a unidade e em suas interfaces? |
+| 2 | O projeto de todas as interfaces das unidades é consistente entre elas e com a especificação de interfaces do sistema? |
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O projeto da unidade, incluindo o fluxo de dados, o fluxo de controle e as interfaces, está representado com clareza? |
+
+## Resumo da análise
+
+Use este espaço para sintetizar as principais constatações, decisões e ações de acompanhamento resultantes da análise.
+
+- **Principais constatações:**
+- **Decisões:**
+- **Ações de acompanhamento:**
+
+## Referências {#refs}

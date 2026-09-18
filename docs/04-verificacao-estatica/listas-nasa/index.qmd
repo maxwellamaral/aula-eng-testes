@@ -1,0 +1,67 @@
+---
+title: "Listas de verificação da NASA para revisões e inspeções"
+subtitle: "Traduções para consulta — material suplementar da Aula 04"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-important}
+## Leitura necessária
+
+Leia **as oito listas** antes de concluir o estudo da Aula 04. Compare as perguntas usadas para requisitos, projeto, código e testes. Essa leitura é necessária para perceber que uma lista de verificação deve ser específica para o tipo de artefato e adaptada aos riscos, padrões e objetivos de cada projeto — ela não é um formulário universal nem substitui o julgamento técnico.
+:::
+
+## Sobre o material
+
+O *NASA Software Engineering Handbook* reúne listas para apoiar revisões por pares e inspeções ao longo do ciclo de vida. A própria NASA apresenta essas listas como pontos de partida que podem receber perguntas adicionais relevantes ao projeto, inclusive sobre segurança operacional e cibersegurança [@nasaPeerReviewChecklists].
+
+As páginas abaixo são **traduções didáticas para português brasileiro**, preparadas para consulta nesta disciplina. Os documentos originais em inglês foram preservados para conferência. Termos, critérios e recomendações devem ser confrontados com as normas, tecnologias e necessidades atuais do projeto.
+
+As traduções não são publicações oficiais da NASA e não foram revisadas ou endossadas pela agência. Em caso de dúvida, consulte o documento original correspondente.
+
+## Requisitos
+
+- [PAT-003 — Lista de Verificação de Requisitos Funcionais](pat-003-requisitos-funcionais.qmd)  
+  Foco em clareza, completude, interfaces, desempenho, confiabilidade, testabilidade e rastreabilidade.
+- [PAT-013 — Lista de Verificação de Requisitos de Software](pat-013-requisitos-software.qmd)  
+  Cobertura ampla da especificação de requisitos, incluindo dados, funções, interfaces, ambiente e critérios de aceitação.
+
+## Projeto de software
+
+- [PAT-014 — Lista de Verificação de Projeto Arquitetural](pat-014-projeto-arquitetural.qmd)  
+  Arquitetura, alternativas de projeto, interfaces, desempenho, confiabilidade e rastreabilidade.
+- [PAT-015 — Lista de Verificação de Projeto Detalhado](pat-015-projeto-detalhado.qmd)  
+  Lógica, estruturas de dados, ligações entre unidades, testabilidade e manutenibilidade.
+- [PAT-016 — Lista de Verificação de Projeto Funcional](pat-016-projeto-funcional.qmd)  
+  Funções, estados, fluxos de dados, interfaces, decisões e restrições de projeto.
+
+## Código
+
+- [PAT-017 — Lista de Verificação para Inspeção de Código C](pat-017-inspecao-codigo-c.qmd)  
+  Organização do código, uso de dados e ponteiros, lógica, comentários, memória e práticas de manutenção.
+
+## Testes
+
+- [PAT-018 — Lista de Verificação de Plano de Testes](pat-018-plano-testes.qmd)  
+  Estratégia, ambiente, cobertura, critérios, recursos, responsabilidades e rastreabilidade do plano.
+- [PAT-019 — Lista de Verificação de Procedimentos de Teste](pat-019-procedimentos-teste.qmd)  
+  Passos, resultados esperados, dados, interfaces, recuperação, segurança e execução independente.
+
+::: {.callout-tip}
+## Roteiro de leitura
+
+Para cada lista, identifique: **(1)** quais categorias de defeito ela procura; **(2)** quais perguntas dependem de uma base de referência; **(3)** quais itens precisariam ser atualizados para o contexto do seu projeto; e **(4)** quais perguntas deveriam entrar na preparação do Laboratório 04.
+:::
+
+## Fonte e documentos originais
+
+Os oito arquivos DOCX foram baixados da seção 7.10 do *NASA Software Engineering Handbook*, versão D [@nasaPeerReviewChecklists]. Cada tradução contém um link para o respectivo original em inglês.
+
+[Consultar a coleção oficial da NASA](https://swehb.nasa.gov/spaces/SWEHBVD/pages/102695640/7.10+-+Peer+Review+and+Inspections+Including+Checklists){.btn .btn-primary}
+
+## Referências
+
+::: {#refs}
+:::

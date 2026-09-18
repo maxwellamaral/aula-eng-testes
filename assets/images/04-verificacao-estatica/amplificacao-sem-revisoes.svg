@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-labelledby="title desc">
+  <title id="title">Amplificação de defeitos sem revisões</title>
+  <desc id="desc">Exemplo hipotético de Pressman. Dez erros no projeto preliminar chegam a 37 após o projeto detalhado e a 94 antes dos testes. Três etapas de teste com cinquenta por cento de detecção reduzem o total a doze defeitos latentes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#fb7185"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="620" rx="20" fill="url(#bg)" stroke="#334155" stroke-width="2"/>
+  <text x="60" y="58" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="30" font-weight="750">Sem revisões: problemas atravessam e se multiplicam</text>
+  <text x="60" y="88" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16">Exemplo hipotético — os valores ilustram o mecanismo, não uma taxa universal</text>
+
+  <g font-family="system-ui, sans-serif" filter="url(#shadow)">
+    <g transform="translate(55,135)">
+      <rect width="260" height="230" rx="16" fill="#1e293b" stroke="#fb7185" stroke-width="2"/>
+      <text x="22" y="38" fill="#fda4af" font-size="19" font-weight="700">Projeto preliminar</text>
+      <text x="22" y="78" fill="#cbd5e1" font-size="15">Erros introduzidos</text>
+      <text x="238" y="80" text-anchor="end" fill="#f8fafc" font-size="25" font-weight="750">10</text>
+      <line x1="22" y1="102" x2="238" y2="102" stroke="#475569"/>
+      <text x="22" y="132" fill="#cbd5e1" font-size="15">Detecção por revisão</text>
+      <text x="238" y="134" text-anchor="end" fill="#fb7185" font-size="22" font-weight="700">0%</text>
+      <rect x="20" y="164" width="220" height="46" rx="9" fill="#4c0519" stroke="#fb7185"/>
+      <text x="32" y="193" fill="#fecdd3" font-size="15" font-weight="650">Seguem adiante</text>
+      <text x="226" y="195" text-anchor="end" fill="#fff1f2" font-size="25" font-weight="750">10</text>
+    </g>
+
+    <g transform="translate(355,135)">
+      <rect width="330" height="230" rx="16" fill="#1e293b" stroke="#fb7185" stroke-width="2"/>
+      <text x="22" y="38" fill="#fda4af" font-size="19" font-weight="700">Projeto detalhado</text>
+      <text x="22" y="74" fill="#cbd5e1" font-size="14">6 passam sem amplificação</text>
+      <text x="22" y="100" fill="#cbd5e1" font-size="14">4 × 1,5 = 6 são amplificados</text>
+      <text x="22" y="126" fill="#cbd5e1" font-size="14">+ 25 novos erros</text>
+      <line x1="22" y1="145" x2="308" y2="145" stroke="#475569"/>
+      <text x="22" y="173" fill="#cbd5e1" font-size="14">37 no artefato • revisão 0%</text>
+      <rect x="20" y="184" width="290" height="32" rx="8" fill="#4c0519" stroke="#fb7185"/>
+      <text x="32" y="206" fill="#fecdd3" font-size="14" font-weight="650">Seguem para o código</text>
+      <text x="296" y="207" text-anchor="end" fill="#fff1f2" font-size="22" font-weight="750">37</text>
+    </g>
+
+    <g transform="translate(725,135)">
+      <rect width="420" height="230" rx="16" fill="#1e293b" stroke="#fb7185" stroke-width="2"/>
+      <text x="22" y="38" fill="#fda4af" font-size="19" font-weight="700">Código e teste de unidade</text>
+      <text x="22" y="74" fill="#cbd5e1" font-size="14">10 passam sem amplificação</text>
+      <text x="22" y="100" fill="#cbd5e1" font-size="14">27 × 3 = 81 são amplificados</text>
+      <text x="22" y="126" fill="#cbd5e1" font-size="14">+ 25 novos erros = 116</text>
+      <line x1="22" y1="145" x2="398" y2="145" stroke="#475569"/>
+      <text x="22" y="173" fill="#cbd5e1" font-size="14">Detecção local de 20%</text>
+      <rect x="20" y="184" width="380" height="32" rx="8" fill="#4c0519" stroke="#fb7185"/>
+      <text x="32" y="206" fill="#fecdd3" font-size="14" font-weight="650">Chegam ao início dos testes</text>
+      <text x="386" y="207" text-anchor="end" fill="#fff1f2" font-size="22" font-weight="750">94</text>
+    </g>
+  </g>
+
+  <path d="M315 250 H345" stroke="#fb7185" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M685 250 H715" stroke="#fb7185" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(55,420)" font-family="system-ui, sans-serif">
+    <text x="0" y="0" fill="#e2e8f0" font-size="17" font-weight="700">Testes detectam 50% dos erros recebidos em cada etapa</text>
+    <line x1="0" y1="55" x2="1060" y2="55" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+    <g fill="#0f172a" stroke="#38bdf8" stroke-width="3">
+      <circle cx="80" cy="55" r="34"/><circle cx="390" cy="55" r="34"/><circle cx="700" cy="55" r="34"/>
+    </g>
+    <g fill="#f8fafc" font-size="20" font-weight="750" text-anchor="middle">
+      <text x="80" y="62">47</text><text x="390" y="62">24</text><text x="700" y="62">12</text>
+    </g>
+    <g fill="#cbd5e1" font-size="14" text-anchor="middle">
+      <text x="80" y="112">Integração</text><text x="390" y="112">Validação</text><text x="700" y="112">Sistema</text>
+    </g>
+    <g transform="translate(840,20)">
+      <rect width="220" height="96" rx="14" fill="#4c0519" stroke="#fb7185" stroke-width="2"/>
+      <text x="110" y="31" text-anchor="middle" fill="#fda4af" font-size="14" font-weight="700">LIBERADOS AO CAMPO</text>
+      <text x="110" y="72" text-anchor="middle" fill="#fff1f2" font-size="36" font-weight="800">12</text>
+      <text x="110" y="90" text-anchor="middle" fill="#fecdd3" font-size="12">defeitos latentes</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,141 @@
+---
+title: "PAT-019 — Lista de Verificação de Procedimentos de Teste"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+Esta lista de verificação foi elaborada para verificar os procedimentos de teste em software de missão da NASA. Ela contém perguntas de exemplo que podem ser usadas para inspecionar e analisar formalmente os procedimentos de teste. Esta lista de verificação pode ser modificada para atender às necessidades do projeto ou da organização.
+
+::: {.callout-note}
+## Tradução didática adaptável
+
+Esta é uma tradução didática para português brasileiro da lista de verificação PAT-019 da NASA e pode ser adaptada às necessidades do projeto ou da organização [@nasaPeerReviewChecklists]. Consulte também o [documento original em inglês](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-019-Test-Procedure-Checklist.docx).
+:::
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | As instruções para o operador são explícitas e claras, de modo a facilitar a execução do procedimento de teste? |
+| 2 | As etapas de preparação e dos procedimentos de teste são precisas, inequívocas e listadas como itens individuais? |
+| 3 | Há mensagens de “progresso” que notifiquem o operador quando partes significativas do teste estiverem sendo executadas? |
+| 4 | Os critérios de sucesso e falha são claros e inequívocos? |
+
+## Completude
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A resposta esperada para cada etapa do procedimento de teste é descrita junto às instruções para o operador referentes àquela etapa? |
+| 2 | O procedimento de teste lista a precedência dos testes? |
+| 3 | O procedimento de teste indica a importância da avaliação adequada dos resultados dos testes? |
+| 4 | Os procedimentos de teste levam à determinação de sucesso ou falha? |
+
+## Conformidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O procedimento de teste lista todas as especificações, normas e documentos necessários para seu desenvolvimento? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as dependências de cada procedimento de teste estão identificadas? |
+
+## Correção
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os resultados observados durante a execução do procedimento estão de acordo com o comportamento esperado do software? |
+| 2 | As interfaces entre o código que está sendo testado e os equipamentos e softwares de teste estão corretas? |
+| 3 | Os formatos dos dados de entrada estão corretos? |
+| 4 | As instruções para o operador são apresentadas passo a passo e na ordem em que devem ser executadas? |
+| 5 | A função que está sendo testada está descrita com exatidão? |
+| 6 | A função que está sendo testada corresponde à revisão mais recente? |
+| 7 | A descrição da finalidade deste procedimento de teste é completa e exata? |
+| 8 | Há critérios de sucesso e falha dos testes nos procedimentos de teste? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Uma quantidade adequada de caminhos de controle da função testada é exercitada? |
+| 2 | Uma quantidade adequada de expressões de condições lógicas da função testada é exercitada? |
+| 3 | Os casos de teste demonstram a resposta do software a dados de entrada inválidos e conflitantes? |
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Cada requisito associado ao software é exercitado por este procedimento de teste? |
+| 2 | O procedimento declara se é ou não possível continuar em caso de interrupção do programa ou de erro indicado? Em caso afirmativo, ele indica o método de reinicialização ou outra ação de recuperação? |
+| 3 | Há um procedimento de teste para cada recurso crítico para a segurança? |
+| 4 | Há um procedimento de teste para cada recurso de cibersegurança? |
+
+## Interfaces
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O conjunto de casos de teste exercita adequadamente o tratamento do fluxo de informações por meio de interfaces externas? |
+| 2 | As informações sensíveis (PII, HIPAA etc.) são criptografadas antes de serem enviadas a interfaces externas?[^hipaa] |
+
+[^hipaa]: O documento original registra “HIPPA”; a tradução emprega a sigla correta, HIPAA (*Health Insurance Portability and Accountability Act*).
+
+## Nível de detalhe
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as mensagens de conclusão normal e anormal estão identificadas? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O controle e a incorporação de alterações nas especificações, no projeto ou no código que possam ocorrer durante o teste estão contemplados nos procedimentos de teste? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Se houver um critério de desempenho associado a alguma etapa do procedimento de teste, esse critério é declarado explicitamente junto às instruções para o operador referentes àquela etapa (por exemplo, carga da CPU, restrições de velocidade)? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os equipamentos de teste foram validados e calibrados? |
+| 2 | O software de teste foi validado? |
+| 3 | Todos os dados de entrada foram verificados? |
+| 4 | Foram coletados e documentados dados de teste suficientes para fundamentar a estimativa da confiabilidade do software? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O procedimento de teste identifica todos os equipamentos, softwares e profissionais necessários para os testes? |
+| 2 | O procedimento de teste pode ser executado com suporte mínimo da equipe de desenvolvimento? |
+| 3 | O procedimento de teste é compatível com as capacidades das instalações de teste? |
+| 4 | O cronograma de testes é descrito com nível de detalhe suficiente? |
+| 5 | O procedimento de teste prevê a participação de profissionais independentes de garantia de software para verificar a atividade de teste? |
+| 6 | O procedimento de teste prevê testes independentes? |
+| 7 | Se o software for crítico para a segurança, o procedimento de teste prevê a participação de profissionais de garantia de software para testemunhar e verificar a atividade de teste? |
+| 8 | Se o software for crítico para a segurança, há testes para todos os recursos de segurança (por exemplo, mitigações, controles etc.)? |
+| 9 | Foram definidos testes de regressão? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O procedimento de teste lista todas as especificações, procedimentos, guias ou manuais necessários para a operação? |
+| 2 | É apresentada a rastreabilidade entre os requisitos e as combinações de testes de aceitação? |
+| 3 | O autor do conjunto de dados de cada caso de teste está identificado? |
+
+## Resumo da análise
+
+
+## Referências
+
+::: {#refs}
+:::

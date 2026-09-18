@@ -1,0 +1,122 @@
+---
+title: "PAT-003 — Lista de Verificação de Requisitos Funcionais"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+## Sobre esta tradução
+
+Esta página é uma tradução didática e uma adaptação para consulta da lista de verificação PAT-003 da NASA. A lista deve ser ajustada às necessidades e ao contexto de cada projeto ou organização [@nasaPeerReviewChecklists]. Consulte também o [documento DOCX original](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-003-Functional-Requirements-Checklist.docx).
+:::
+
+Esta lista de verificação foi elaborada para verificar a seção de requisitos funcionais dos requisitos de software de missão da NASA. Ela contém exemplos de perguntas que podem ser usadas para inspecionar formalmente e analisar a seção de requisitos funcionais dos requisitos de software. Esta lista de verificação pode ser modificada para atender às necessidades do projeto ou da organização.
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos são especificados de maneira independente da implementação, de modo a não obscurecer os requisitos originais? |
+| 2 | Os requisitos de implementação, método e técnica são mantidos separados dos requisitos funcionais? |
+| 3 | Os requisitos são claros e não ambíguos (isto é, há aspectos dos requisitos que você não compreende; eles podem ser interpretados incorretamente)? |
+
+## Completude
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos são declarados da forma mais completa possível? Todos os requisitos incompletos foram registrados como “A determinar” (TBD)? |
+| 2 | Foi realizada e documentada uma análise de viabilidade? |
+| 3 | O impacto de não atender aos requisitos está documentado? |
+| 4 | Foram realizados e documentados estudos de alternativas (*trade studies*)? |
+| 5 | Foram tratadas as questões de segurança relacionadas a hardware, software, pessoal de operações e procedimentos? |
+| 6 | Foi avaliado o impacto do projeto sobre os usuários, outros sistemas e o ambiente? |
+| 7 | As funções exigidas, as interfaces externas e as especificações de desempenho estão priorizadas pela data em que são necessárias? Elas estão priorizadas por sua importância para o sistema? |
+
+## Conformidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Este documento segue os padrões de documentação de sistemas do projeto? Ele segue os padrões da NASA? Em caso de inconsistências, prevalece o padrão apropriado? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos são declarados de maneira consistente, sem contradizer a si próprios nem os requisitos de sistemas relacionados? |
+| 2 | A terminologia é consistente com a terminologia do usuário e/ou do patrocinador? |
+
+## Correção
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os objetivos do sistema estão definidos? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os valores de condições “indiferentes” (*don't care*) são realmente indiferentes? (Valores “indiferentes” identificam casos em que o valor de uma condição ou de um sinalizador é irrelevante, embora possa ser importante em outros casos.) Os valores de condições “indiferentes” são declarados explicitamente? (A identificação correta de valores “indiferentes” pode melhorar a portabilidade de um projeto.) |
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as funções são descritas de forma clara e não ambígua? |
+| 2 | Todas as funções descritas são necessárias e, em conjunto, suficientes para atender aos objetivos da missão e do sistema? |
+
+## Interfaces
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as interfaces externas estão claramente definidas? |
+| 2 | Todas as interfaces internas estão claramente definidas? |
+| 3 | Todas as interfaces são necessárias, em conjunto suficientes e consistentes entre si? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos de manutenibilidade do sistema foram especificados de maneira mensurável e verificável? |
+| 2 | Os requisitos são redigidos de modo a ter o menor acoplamento possível, para minimizar os efeitos em cascata decorrentes de alterações? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as especificações de desempenho exigidas e o grau de degradação de desempenho que pode ser tolerado são declarados explicitamente (por exemplo, considerando temporização, taxa de processamento, tamanho da memória, exatidão e precisão)? |
+| 2.a | Para cada requisito de desempenho definido, estimativas aproximadas indicam que ele pode ser atendido? |
+| 2.b | Para cada requisito de desempenho definido, está definido o impacto de não atendê-lo? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | São especificados requisitos de confiabilidade claramente definidos, mensuráveis e verificáveis? |
+| 2 | Há requisitos para detecção, relato e recuperação de erros? |
+| 3 | Eventos indesejados ou falhas (por exemplo, perturbação por evento único, perda ou embaralhamento de dados e erro do operador) são considerados, e as respostas exigidas a eles são especificadas? |
+| 4 | Foram declaradas as premissas sobre a sequência prevista das funções? Essas sequências são obrigatórias? |
+| 5 | Esses requisitos tratam adequadamente da capacidade de sobrevivência do sistema após uma falha de software ou hardware, sob a perspectiva de hardware, software, pessoal de operações e procedimentos? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O sistema pode ser testado, demonstrado, inspecionado ou analisado para mostrar que satisfaz os requisitos? |
+| 2 | Os requisitos são declarados com precisão para facilitar a especificação dos requisitos e dos critérios de sucesso dos testes de sistema? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as funções, estruturas e restrições são rastreadas até os objetivos da missão e do sistema? |
+| 2 | Cada requisito é declarado de modo que possa ser referenciado de forma única em documentos subordinados? |
+
+## Resumo da análise
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| | |
+
+## Referências {#refs}

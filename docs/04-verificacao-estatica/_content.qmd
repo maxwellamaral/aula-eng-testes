@@ -40,59 +40,117 @@ Uma inspeção pode apontar uma provável causa ou uma inconsistência, mas a co
 
 Por que revisar documentos e código antes de executar o software? O **Modelo de Amplificação de Defeitos** apresentado por Pressman ilustra que erros não identificados em uma etapa podem ser propagados e amplificados pelo trabalho das etapas seguintes. Por isso, a descoberta precoce reduz tanto o volume de problemas que chega aos testes quanto o custo das atividades posteriores de qualidade [@pressman2016].
 
-O modelo é uma representação didática, não uma taxa universal para todo projeto. No exemplo hipotético de Pressman, dez defeitos preliminares de projeto chegam a **94 erros antes do início dos testes** e resultam em **20 erros latentes** liberados ao campo quando não há revisões. Mantidas as demais condições do exemplo, as revisões de projeto e código reduzem esse cenário para **24 erros antes dos testes** e **três erros latentes** no campo [@pressman2016].
+::: {.callout-important}
+### Revisões como filtros de qualidade
+
+Na metáfora de Pressman e Maxim, as revisões funcionam como **filtros aplicados em várias etapas** da engenharia de software. Elas revelam erros antes que atravessem o processo e permitem “purificar” não apenas o código, mas também modelos de requisitos e de projeto, dados de teste e outros artefatos. O filtro não garante ausência de defeitos; ele reduz o material problemático que alimentaria as etapas seguintes [@pressman2016].
+:::
+
+O modelo é uma representação didática, não uma taxa universal para todo projeto. Cada etapa pode receber erros anteriores, amplificar parte deles, introduzir novos erros e detectar uma porcentagem do total. Nas figuras adaptadas a seguir, as revisões de projeto e código são os filtros que mudam o fluxo.
+
+![Sem revisões, erros atravessam os artefatos e podem ser amplificados pelo trabalho posterior. Adaptação do exemplo hipotético de Pressman e Maxim.](/assets/images/04-verificacao-estatica/amplificacao-sem-revisoes.svg){#fig-amplificacao-sem-revisoes fig-align="center" width="100%"}
+
+![Com revisões, parte dos erros é removida antes de alimentar a etapa seguinte. Adaptação do exemplo hipotético de Pressman e Maxim.](/assets/images/04-verificacao-estatica/amplificacao-com-revisoes.svg){#fig-amplificacao-com-revisoes fig-align="center" width="100%"}
+
+No exemplo, dez erros no projeto preliminar chegam a **94 erros antes do início dos testes** e resultam em **12 defeitos latentes** liberados ao campo quando não há revisões. Mantidas as demais condições, as revisões de projeto e código reduzem esse cenário para **24 erros antes dos testes** e **três defeitos latentes** no campo [@pressman2016].
 
 | Cenário hipotético de Pressman | Erros antes do início dos testes | Erros latentes liberados ao campo |
 |---|---:|---:|
-| Sem revisões de projeto e código | 94 | 20 |
+| Sem revisões de projeto e código | 94 | 12 |
 | Com revisões de projeto e código | 24 | 3 |
 
 No mesmo exemplo, o custo total sem revisões é aproximadamente três vezes maior. A lição não é assumir que todo processo terá os mesmos números, mas reconhecer que artefatos posteriores são construídos sobre decisões anteriores: detectar uma divergência em requisitos, projeto ou código antes de ela se propagar costuma reduzir retrabalho e risco [@pressman2016].
 
 > “Revisões são como um filtro no fluxo de trabalho da gestão de qualidade. Um número muito pequeno de revisões e o fluxo será ‘sujo’. Um número muito grande de revisões e o fluxo diminui muito e vira um gotejamento.” [@pressman2016]
 
+Portanto, filtrar cedo não significa revisar todo artefato com a mesma intensidade. A equipe ajusta escopo, técnica e rigor ao risco de propagação, ao impacto de uma falha e ao custo de retrabalho.
+
 ---
 
 ## 3. Técnicas de revisão: do diálogo à inspeção
 
-As técnicas se sobrepõem na prática. A diferença central está no grau de planejamento, independência da preparação, papéis, critérios e rastros deixados pela atividade. Pressman e Maxim apresentam *walkthroughs* e inspeções como formas de revisão técnica formal; elas exigem planejamento, preparação, diretrizes e manutenção de registros [@pressman2016].
+Pressman e Maxim organizam as abordagens em duas categorias: **revisões informais** e **revisões técnicas formais (RTFs)**. A distinção não é apenas o número de participantes. Ela envolve planejamento, preparação antecipada, estrutura da reunião, registro das descobertas e acompanhamento. Nessa classificação, *walkthroughs* e inspeções **não são níveis separados da RTF**: são formas pertencentes à classe das revisões técnicas formais [@pressman2016, pp. 439–441].
 
-| Técnica | Como ocorre | Estrutura e registro esperados |
+### Revisões informais
+
+As revisões informais incluem o teste de mesa de um artefato com uma pessoa colega, uma reunião informal com mais de duas pessoas e os aspectos de revisão da programação em pares. Como podem ocorrer sem planejamento e preparação antecipados, cronograma, estrutura de reunião ou *follow-up*, tendem a ser menos eficientes que as abordagens formais. Isso não as torna inúteis: mesmo uma leitura breve pode encontrar erros antes que eles se propaguem. Uma checklist específica para o tipo de artefato aumenta o foco, e os problemas encontrados devem ser registrados para tratamento posterior [@pressman2016, pp. 439–440].
+
+### Revisões técnicas formais
+
+A RTF é uma atividade de controle da qualidade realizada por profissionais técnicos para: descobrir erros de função, lógica ou implementação; verificar atendimento aos requisitos; conferir conformidade com padrões; favorecer uniformidade no desenvolvimento; e tornar o projeto mais gerenciável. Ela também contribui para treinamento, respaldo e continuidade, pois distribui conhecimento sobre partes do software entre mais pessoas [@pressman2016, p. 441].
+
+| Categoria e abordagem | Como ocorre | Estrutura e registro esperados |
 |---|---|---|
-| **Revisão informal** | uma ou mais pessoas leem e comentam um artefato | pode não ter papéis, roteiro ou registro padronizado |
-| **Teste de mesa** | a pessoa autora e/ou revisores percorrem logicamente um artefato, usando uma lista de verificação quando disponível | foco pequeno; anotações de problemas tornam a atividade rastreável |
-| **Walkthrough** | a pessoa autora apresenta o artefato e explica seu raciocínio; revisores questionam com base na preparação prévia | agenda, escopo e registro das questões aumentam a disciplina da revisão |
-| **Revisão técnica formal** | reunião planejada para avaliar uma parte delimitada de um artefato contra requisitos e padrões | preparação, papéis, lista de problemas, decisão e acompanhamento |
-| **Inspeção** | revisão formal e sistemática, guiada por critérios e registros para localizar defeitos no artefato | papéis claros, preparação individual, checklist, registro de descobertas e *follow-up* |
+| **Informal — teste de mesa** | a pessoa produtora e uma colega examinam uma parte pequena do artefato; uma checklist pode orientar as perguntas | pode ser improvisado, mas os problemas encontrados são anotados para solução posterior |
+| **Informal — reunião informal** | mais de duas pessoas examinam o artefato sem adotar necessariamente o processo de uma RTF | pode não ter preparação, agenda, papéis ou acompanhamento formalizados |
+| **Informal — programação em pares** | duas pessoas revisam continuamente projeto ou código enquanto o produzem | a descoberta ocorre durante a criação, sem uma reunião de revisão separada |
+| **RTF — *walkthrough*** | a pessoa produtora percorre o artefato e o explica; revisores levantam questões com base na preparação prévia | reunião planejada e controlada, com escopo pequeno, agenda, registro de problemas e decisão final |
+| **RTF — inspeção** | revisão técnica formal e sistemática do artefato por pares | preparação antecipada, critérios ou checklist, registro das descobertas e acompanhamento das correções |
 
 ::: {.callout-tip}
 ### A técnica não é uma escala de “melhor”
 
-Uma conversa breve entre pares pode ser suficiente para esclarecer uma dúvida local. Já um artefato com maior risco, impacto ou número de dependências se beneficia de escopo explícito, preparação individual e registros. O objetivo é obter evidência proporcional ao contexto, não burocratizar toda leitura de código.
+Uma conversa breve entre pares pode ser suficiente para esclarecer uma dúvida local. Já um artefato com maior risco, impacto ou número de dependências se beneficia de uma RTF com escopo explícito, preparação individual e registros. O objetivo é obter evidência proporcional ao contexto, não burocratizar toda leitura de código. Pressman e Maxim também destacam que cada organização deve experimentar e avaliar qual abordagem funciona melhor em seu contexto [@pressman2016, p. 444].
 :::
 
 ---
 
 ## 4. Revisão técnica formal: fluxo, papéis e conduta
 
-Uma revisão técnica formal concentra-se em uma parte pequena e identificável de um artefato. Esse recorte permite que a equipe se prepare, discuta evidências e mantenha a reunião orientada à descoberta de problemas. Na descrição de Pressman e Maxim, a atividade inclui preparação prévia, um líder de revisão, revisores, a pessoa produtora do artefato e uma pessoa registradora; ao final, a equipe decide se aceita, rejeita ou aceita provisoriamente o artefato, com acompanhamento das pendências [@pressman2016].
+Uma revisão técnica formal concentra-se em uma parte pequena e identificável de um artefato — por exemplo, parte de um modelo de requisitos, o projeto detalhado ou o código-fonte de um componente. O recorte permite preparação real, mantém a reunião focalizada e aumenta a probabilidade de revelar erros [@pressman2016, pp. 441–442].
 
-### Fluxo mínimo
+### Objetivos e vantagens da RTF
 
-1. **Planejar** — identificar o artefato, sua versão, a base de referência, o escopo da revisão e os critérios aplicáveis.
-2. **Preparar** — cada revisor lê o material individualmente e registra questões com localização e evidência. Pressman e Maxim recomendam limitar a preparação a até duas horas por pessoa [@pressman2016].
-3. **Conduzir a reunião** — percorrer o escopo definido, esclarecer o entendimento e consolidar as descobertas; a reunião não é o momento de projetar todas as soluções. A referência recomenda uma reunião de menos de duas horas [@pressman2016].
-4. **Decidir** — registrar a situação técnica do artefato: aceito, aceito com pendências secundárias ou rejeitado, exigindo nova revisão após correções [@pressman2016].
-5. **Acompanhar** — conferir se cada pendência teve tratamento, justificativa ou reavaliação; o *follow-up* pode ser atribuído à liderança da revisão [@pressman2016].
+Pressman e Maxim apresentam cinco objetivos para uma RTF [@pressman2016, p. 441]:
+
+1. **Descobrir erros** de função, lógica ou implementação em qualquer representação do software.
+2. **Verificar o atendimento aos requisitos** pelo artefato examinado.
+3. **Garantir conformidade com padrões** previamente definidos.
+4. **Favorecer uniformidade** na forma como o software é desenvolvido e representado.
+5. **Tornar o projeto mais gerenciável**, produzindo visibilidade sobre a situação técnica dos artefatos.
+
+::: {.callout-important}
+### A RTF entrega mais do que uma lista de defeitos
+
+Além de controlar a qualidade do artefato, a RTF funciona como **base de treinamento**: profissionais menos experientes observam diferentes estratégias de análise, projeto e implementação. Ela também promove **respaldo e continuidade**, porque distribui entre várias pessoas o conhecimento sobre partes do software que, sem a revisão, poderiam permanecer conhecidas apenas por quem as produziu [@pressman2016, p. 441].
+:::
+
+### Restrições que preservam o foco
+
+Na forma representativa descrita pelos autores, uma reunião envolve normalmente **três a cinco pessoas**, exige preparação antecipada de **uma a duas horas por pessoa** — nunca mais de duas horas — e dura **menos de duas horas**. Esses limites explicam por que a RTF não deve tentar revisar um sistema inteiro de uma só vez [@pressman2016, pp. 441–442].
+
+### Fluxo detalhado
+
+1. **Solicitar a revisão.** A pessoa produtora informa à liderança do projeto que uma parte identificável do artefato está concluída e precisa ser revisada.
+2. **Designar e organizar.** A liderança do projeto aciona uma liderança de revisão. Esta verifica se o material está completo, prepara sua distribuição para dois ou três revisores e estabelece a agenda da reunião.
+3. **Preparar individualmente.** Revisores e liderança de revisão examinam o artefato com antecedência, tomam notas e se familiarizam com o trabalho. As questões preparadas alimentam a reunião; não se começa a leitura do zero diante do grupo.
+4. **Abrir a reunião.** Participam a liderança de revisão, a pessoa produtora e os revisores. Um dos revisores assume o papel de **registrador**. A liderança apresenta a agenda, e a pessoa produtora faz uma breve introdução ao artefato.
+5. **Percorrer o artefato.** A pessoa produtora realiza o *walkthrough*, explicando o material. Os revisores levantam questões fundamentadas em sua preparação prévia.
+6. **Registrar os problemas válidos.** O registrador anota por escrito cada problema ou erro reconhecido durante a revisão. O grupo identifica áreas problemáticas, mas deixa a elaboração das soluções para depois da reunião.
+7. **Decidir a situação técnica.** Ao final, todos escolhem um de três resultados: **aceitar sem modificações**; **rejeitar por erros graves**, exigindo correção e uma nova revisão; ou **aceitar provisoriamente**, exigindo correções secundárias sem outra reunião. Os participantes assinam um documento que registra sua participação e concordância com as descobertas.
+8. **Consolidar os registros.** O registrador sintetiza as descobertas em uma **lista de problemas** e em um **relatório-síntese**. O relatório informa o que foi revisado, quem participou e quais foram as descobertas e conclusões. A lista localiza áreas problemáticas e funciona como lista de ações para orientar as correções.
+9. **Corrigir e acompanhar.** A pessoa produtora trata os itens aplicáveis fora da reunião. Um procedimento de *follow-up* verifica se cada item foi corrigido adequadamente; os autores sugerem atribuir essa responsabilidade à liderança da revisão. Se o artefato tiver sido rejeitado, as correções conduzem a uma nova revisão [@pressman2016, pp. 442–443].
+
+![Fluxo detalhado de uma revisão técnica formal: solicitação, organização, preparação, reunião, decisão, registros e acompanhamento. Adaptado de Pressman e Maxim.](/assets/images/04-verificacao-estatica/fluxo-revisao-tecnica-formal.svg){#fig-fluxo-rtf fig-align="center" width="100%"}
+
+::: {.callout-note}
+### Dois registros com funções diferentes
+
+- O **relatório-síntese** é o registro histórico da revisão: o que foi revisado, por quem e com quais conclusões.
+- A **lista de problemas** localiza as áreas problemáticas e transforma as descobertas em itens de ação para correção e acompanhamento.
+
+Uma decisão assinada não encerra o processo quando há pendências: sem acompanhamento, problemas registrados podem permanecer sem correção [@pressman2016, p. 442].
+:::
 
 ### Papéis úteis
 
 | Papel | Responsabilidade durante a revisão |
 |---|---|
-| **Pessoa produtora** | disponibiliza o artefato e seu contexto; esclarece dúvidas sobre a intenção registrada |
-| **Liderança ou moderação** | avalia a completude inicial, organiza a agenda, protege o escopo, o tempo e a regra de revisar o produto, não a pessoa |
-| **Revisores** | examinam o material contra a base de referência e apresentam evidências de suas questões |
-| **Pessoa registradora** | mantém a lista de descobertas, decisões e pendências de forma verificável |
+| **Pessoa produtora** | solicita a revisão, apresenta e percorre o artefato; depois trata os itens de ação aplicáveis |
+| **Liderança do projeto** | recebe a solicitação e aciona a liderança de revisão |
+| **Liderança de revisão** | avalia a completude, distribui o material, prepara a agenda, conduz a reunião e pode acompanhar as correções |
+| **Revisores** | preparam-se antecipadamente e levantam questões fundamentadas durante o *walkthrough* |
+| **Pessoa registradora** | um dos revisores que anota os problemas e ajuda a consolidar a lista e o relatório da revisão |
 
 ::: {.callout-warning}
 ### Regra de condução: revise o produto, não a pessoa produtora
@@ -102,20 +160,85 @@ Formule observações sobre o artefato: “o critério de aceitação não defin
 
 ### Diretrizes de conduta para a RTF
 
-As diretrizes precisam ser definidas antes da revisão e aceitas pelas pessoas participantes. Entre as recomendações de Pressman e Maxim estão [@pressman2016]:
+As diretrizes precisam ser definidas antes da revisão e aceitas pelas pessoas participantes. Entre as recomendações de Pressman e Maxim estão [@pressman2016, pp. 442–444]:
 
-1. **Revisar o produto, não a pessoa produtora.** Formule questões verificáveis, aponte problemas com respeito e mantenha o clima construtivo.
-2. **Estabelecer uma agenda e mantê-la.** A moderação protege o foco e o prazo da reunião.
-3. **Limitar debates e refutações.** Quando não houver consenso sobre o impacto de uma questão, registre-a para discussão posterior, fora da reunião.
-4. **Enunciar áreas problemáticas sem tentar resolver tudo.** A RTF serve para descobrir e registrar problemas; a solução fica para depois da reunião.
-5. **Tomar notas.** A pessoa registradora mantém uma lista de problemas e decisões que possa orientar o trabalho posterior.
-6. **Limitar participantes e exigir preparação prévia.** A referência recomenda que a liderança solicite comentários escritos como evidência de que o material foi examinado.
+1. **Revisar o produto, não a pessoa produtora.** Aponte propriedades observáveis do artefato, sem atribuir falhas à capacidade de quem o produziu. Uma formulação respeitosa reduz reações defensivas e mantém a equipe concentrada na qualidade técnica.
+2. **Estabelecer uma agenda e mantê-la.** A agenda delimita o artefato, a sequência da análise e o tempo disponível. Cabe à moderação interromper desvios e impedir que assuntos fora do escopo consumam a reunião.
+3. **Limitar debates e refutações.** Uma questão não deve monopolizar o encontro. Quando a discussão não convergir rapidamente, a equipe registra a divergência e define quem deverá investigá-la depois.
+4. **Enunciar áreas problemáticas sem tentar resolver tudo.** A reunião procura revelar e registrar problemas. Projetar e avaliar todas as soluções durante a RTF reduz o ritmo da inspeção e pode esconder outros defeitos.
+5. **Tomar notas.** Toda descoberta aceita, decisão e pendência precisa ficar por escrito. A memória da equipe não substitui a lista de problemas nem o relatório-síntese usados no retrabalho e no acompanhamento.
+6. **Limitar participantes e exigir preparação prévia.** Um grupo pequeno favorece a participação efetiva e reduz discussões paralelas. Comentários escritos entregues antes da reunião evidenciam que o material foi examinado.
+7. **Desenvolver uma checklist para cada tipo de produto.** Requisitos, modelos, código e casos de teste apresentam riscos diferentes. A lista deve concentrar a atenção nos erros recorrentes daquele artefato e evoluir com a experiência da organização.
+8. **Alocar recursos e tempo no cronograma.** Preparação, reunião, registro e acompanhamento são trabalho do projeto. Sem tempo explícito, a revisão tende a ser apressada ou eliminada quando o cronograma sofre pressão.
+9. **Treinar todas as pessoas revisoras.** Participantes precisam compreender objetivos, papéis, técnicas de leitura, critérios de registro e regras de conduta. Uma revisão simulada permite praticar o processo antes de aplicá-lo a um produto real.
+10. **Avaliar as primeiras revisões e melhorar o processo.** A organização deve observar problemas de condução, preparação e registro nas revisões iniciais e ajustar sua abordagem. Essa avaliação examina a eficácia do processo, não o desempenho individual.
+
+::: {.callout-tip}
+### Diretrizes não são novas fases do fluxo
+
+Essas recomendações atravessam o processo inteiro. Checklist, preparação, treinamento e reserva de recursos sustentam a reunião. Foco no produto, agenda, contenção dos debates e registro escrito orientam sua condução. A avaliação usa a experiência acumulada para melhorar as revisões seguintes.
+:::
+
+### Material suplementar: inspeções formais na NASA
+
+O **NASA-STD-8739.9, _Software Formal Inspections Standard_**, mostra como a NASA organizava inspeções formais de produtos de software. O processo foi concebido para revelar e eliminar defeitos cedo no ciclo de vida. Ele oferece um exemplo detalhado de RTF, mas não representa todas as formas de revisão técnica formal [@nasaSTD87399].
+
+- [Consultar a cópia local do NASA-STD-8739.9 com a Alteração 1](/assets/materials/04-verificacao-estatica/nasa/nasa-std-8739.9-change-1.pdf)
+- [Consultar o registro oficial no NASA Technical Standards System](https://standards.nasa.gov/standard/nasa/nasa-std-87399)
+
+::: {.callout-warning}
+### Referência histórica, não norma vigente
+
+O catálogo oficial classifica o NASA-STD-8739.9 como **inativo** e registra seu cancelamento em **25 de agosto de 2023**. A consulta aos registros oficiais não identificou uma norma que o tenha substituído integralmente. Hoje, os requisitos e as orientações sobre revisões por pares e inspeções estão distribuídos entre o **NPR 7150.2D**, o **NASA-STD-8739.8B** e o _NASA Software Engineering Handbook_ [@nasaSTD87399; @nasaNPR71502D; @nasaSTD87398B; @nasaSWEHPeerReviews].
+:::
+
+#### Como funcionava a inspeção do NASA-STD-8739.9
+
+O padrão histórico divide a inspeção em seis estágios: **planejamento**, **visão geral (_overview_)**, **preparação individual**, **reunião de inspeção**, **retrabalho** e **acompanhamento**. Depois da reunião, uma atividade informal chamada **terceira hora** permite discutir soluções e questões abertas sem desviar o encontro principal de seu objetivo. Quando os resultados ultrapassam os limites definidos pelo projeto, o moderador pode exigir uma reinspeção total ou parcial [@nasaSTD87399].
+
+- **Critérios controlam o início e o encerramento.** O produto precisa satisfazer critérios mensuráveis de entrada antes da inspeção e critérios de saída antes do encerramento.
+- **Cada papel tem responsabilidades próprias.** Autor, moderador, leitor e registrador participam do processo com funções distintas. Outros inspetores contribuem com perspectivas técnicas. Uma pessoa pode acumular alguns papéis, mas o autor não atua como moderador nem como leitor.
+- **A preparação antecede a reunião.** O moderador distribui produto, referências, objetivos, agenda, formulários e instrumentos de apoio. Cada inspetor analisa o material individualmente e comunica defeitos, comentários e perguntas antes do encontro.
+- **A reunião concentra-se na descoberta.** O leitor conduz a passagem pelo produto. A equipe identifica e compreende defeitos, e o registrador os classifica por severidade e tipo. A elaboração de soluções fica para depois.
+- **Retrabalho e acompanhamento fecham o ciclo.** O autor corrige os defeitos aplicáveis. Em seguida, o moderador verifica as correções, avalia possíveis efeitos colaterais e decide se os critérios de saída foram satisfeitos ou se haverá reinspeção.
+- **Métricas ajudam a revisar o processo.** Esforço, tamanho do produto, quantidade e densidade de defeitos, taxa de inspeção e resultados de reinspeções apoiam o planejamento das próximas revisões. O padrão não recomenda usar esses dados para avaliar individualmente as pessoas participantes.
+
+#### O que vigora hoje na NASA
+
+O **NPR 7150.2D**, vigente de 8 de março de 2022 a 8 de março de 2027, contém os requisitos atuais para revisões por pares e inspeções. Os requisitos SWE-087, SWE-088 e SWE-089 definem quais produtos precisam ser revisados. Também exigem checklist ou técnica formal de leitura, critérios de prontidão e conclusão, identificação dos participantes, acompanhamento das ações até a resolução e registro de medidas [@nasaNPR71502D].
+
+O **NASA-STD-8739.8B**, aprovado em 2022 e identificado como ativo no catálogo oficial, trata de garantia de software, segurança de software e IV&V. Ele relaciona os requisitos de engenharia às tarefas de garantia, mas não reproduz o processo de seis estágios do NASA-STD-8739.9 [@nasaSTD87398B]. Já a seção A.10 do _Software Engineering Handbook_ explica como aplicar, na prática, os requisitos de revisão e inspeção [@nasaSWEHPeerReviews].
+
+#### Pressman, o padrão histórico e os documentos atuais
+
+| Aspecto | RTF apresentada por Pressman e Maxim | NASA-STD-8739.9, referência histórica | Referencial atual da NASA |
+|---|---|---|---|
+| **Finalidade** | visão geral e didática da RTF como atividade de controle da qualidade | modelo operacional para inspeções formais de software | requisitos de engenharia e garantia para revisões por pares e inspeções |
+| **Fluxo** | solicitação, organização, preparação, reunião, decisão, registros, retrabalho e acompanhamento | planejamento, visão geral, preparação, reunião, retrabalho e acompanhamento, com terceira hora e eventual reinspeção | exige procedimento definido, preparação, revisão, registro, comunicação dos resultados e certificação da conclusão, sem impor o fluxo completo do padrão histórico |
+| **Papéis** | pessoa produtora, liderança do projeto, liderança de revisão, revisores e registrador | autor, moderador, leitor, registrador e demais inspetores, com restrições ao acúmulo de funções | determina a identificação dos participantes necessários; composição e responsabilidades são ajustadas ao projeto e às atividades de garantia |
+| **Entrada e saída** | a liderança verifica a completude, e o acompanhamento confirma as correções | critérios mensuráveis de entrada e saída controlam início, encerramento e reinspeção | SWE-088 exige critérios de prontidão e conclusão |
+| **Preparação** | revisores examinam previamente o produto e anotam questões | preparação individual documentada, apoiada por pacote de inspeção, checklist ou técnica de leitura | exige checklist ou técnica formal de leitura, como leitura baseada em perspectivas |
+| **Reunião** | procura encontrar e registrar problemas, sem resolver tudo durante o encontro | o leitor conduz o produto; defeitos são compreendidos, classificados e registrados; soluções ficam para depois | requer que a revisão siga um procedimento definido e tenha resultados registrados e reportados |
+| **Resultado e acompanhamento** | aceitação, rejeição ou aceitação provisória; correções são verificadas e uma rejeição conduz a nova revisão | retrabalho, acompanhamento e reinspeção total ou parcial conforme critérios definidos | ações identificadas precisam ser acompanhadas até a resolução |
+| **Registros e métricas** | lista de problemas e relatório-síntese sustentam correção e acompanhamento | registra defeitos por tipo e severidade, esforço, tamanho, taxas e resultados | SWE-089 exige o registro das medidas necessárias; o NASA-STD-8739.8B integra registros, análises e tendências à garantia de software |
+| **Treinamento e melhoria** | recomenda treinar revisores e avaliar as primeiras revisões para aperfeiçoar o processo | define treinamento, coleta de dados e análise do processo de inspeção | a orientação operacional permanece no _Software Engineering Handbook_; a garantia usa métricas e tendências para melhorar o processo |
+| **Situação documental** | fonte conceitual principal deste item | cancelado em 2023; usado aqui como referência histórica | NPR 7150.2D e NASA-STD-8739.8B são as fontes normativas atuais consultadas |
+
+As três colunas não são equivalentes. Pressman e Maxim oferecem uma visão geral da RTF; o NASA-STD-8739.9 detalha uma forma institucional de inspeção; e os documentos atuais da NASA preservam requisitos essenciais sem adotar integralmente aquela mesma prescrição operacional.
 
 ---
 
 ## 5. Checklist: transformar atenção em perguntas verificáveis
 
 Uma lista de verificação não decide se há defeito; ela orienta a leitura para perguntas recorrentes. A descoberta só deve ser registrada quando a equipe puder apontar a localização no artefato e a referência que torna a questão relevante. Pressman e Maxim destacam o uso de checklists por artefato como apoio a testes de mesa e revisões [@pressman2016].
+
+O *NASA Software Engineering Handbook* oferece listas específicas para requisitos funcionais e de software, projeto arquitetural, projeto detalhado, projeto funcional, código C, plano de testes e procedimentos de teste. A NASA apresenta essas listas como pontos de partida: cada projeto pode acrescentar perguntas relacionadas aos seus riscos e ao seu contexto, inclusive preocupações de segurança operacional e cibersegurança [@nasaPeerReviewChecklists].
+
+::: {.callout-important}
+### Leitura necessária: listas da NASA
+
+Leia as **oito listas traduzidas** no [material suplementar da Aula 04](listas-nasa/index.qmd). A leitura é necessária para comparar como o foco da inspeção muda conforme o artefato e para compreender por que uma checklist precisa ser adaptada, em vez de aplicada mecanicamente. Durante a leitura, identifique quais perguntas exigem requisitos, padrões ou outros documentos como base de referência.
+:::
 
 ### Checklist inicial para código
 
@@ -136,6 +259,8 @@ Uma lista de verificação não decide se há defeito; ela orienta a leitura par
 4. O que torna uma questão de inspeção verificável e justa, em vez de uma opinião depreciativa sobre a pessoa autora?
 5. Que informação precisa constar no registro de descobertas para que outra pessoa possa acompanhar e corrigir um problema?
 6. Quando uma equipe encontra uma regra ausente ou obscura na documentação durante a inspeção de código, por que não deve inventar a solução na reunião?
+7. Ao comparar as listas da NASA, que perguntas são específicas do artefato e quais precisariam ser adaptadas ao contexto do seu projeto?
+8. Por que o NASA-STD-8739.9 pode ser estudado como referência histórica, mas não deve ser apresentado como a norma vigente sobre inspeções de software na NASA?
 
 ::: {.callout-note}
 ### Síntese
@@ -146,6 +271,8 @@ A verificação estática examina artefatos sem executar o software e procura ev
 ## Materiais relacionados
 
 - [Laboratório 04 — Inspeção Estática Guiada](laboratorio.qmd)
+- [Material suplementar — Listas de verificação da NASA traduzidas](listas-nasa/index.qmd)
+- [NASA-STD-8739.9 com a Alteração 1 — referência histórica](/assets/materials/04-verificacao-estatica/nasa/nasa-std-8739.9-change-1.pdf)
 - [Aula 03 — Introdução à Engenharia de Testes](../03-introducao-testes/index.qmd)
 - [Aula 02 — Introdução à Gestão da Qualidade de Produto](../02-gestao-qualidade/index.qmd)
 

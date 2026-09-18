@@ -19,6 +19,7 @@ project:
     - assets/css/*.css
     - docs/**/_*.qmd
     - assets/images/**/*
+    - assets/materials/**/*
 bibliography: docs/references.bib
 
 website:

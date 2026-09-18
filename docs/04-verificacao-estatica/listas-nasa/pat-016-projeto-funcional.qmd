@@ -1,0 +1,156 @@
+---
+title: "PAT-016 — Lista de Verificação de Projeto Funcional"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+## Nota sobre esta versão
+
+Esta página é uma tradução didática da lista de verificação PAT-016 da NASA [@nasaPeerReviewChecklists]. A lista pode ser adaptada às necessidades do projeto ou da organização. Consulte também o [documento original em inglês](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-016-Functional-Design-Checklist.docx).
+:::
+
+Esta lista de verificação foi elaborada para verificar o projeto funcional de software de missões da NASA. Ela contém exemplos de perguntas que podem ser usados para inspecionar e analisar formalmente o projeto funcional. Esta lista de verificação pode ser modificada para atender às necessidades do projeto ou da organização.
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os ambientes de hardware e software foram descritos? Todos os sistemas externos foram incluídos? |
+| 2 | A arquitetura de alto nível foi descrita, ilustrada e tornada consistente com as descrições de nível mais baixo? |
+| 3 | O propósito principal do software foi definido? |
+| 4 | O projeto funcional geral foi descrito? |
+
+## Completude
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Foram realizadas e documentadas análises de viabilidade (por exemplo, prototipação, simulações ou analogias com o sistema atual)? |
+| 2 | Todos os objetivos e todas as restrições de projeto e implementação foram definidos? |
+| 3 | As capacidades de cada componente para cada etapa ou entrega em fases foram identificadas? |
+| 4 | Caso tenham sido feitas suposições devido à ausência de informações, elas foram documentadas? |
+| 5 | Todos os requisitos a determinar (TBD) do Documento de Requisitos Funcionais (Functional Requirements Document — FRD) foram analisados? |
+| 6 | Foram realizados e documentados estudos de alternativas? |
+| 7 | Todas as escolhas de compromisso e decisões foram descritas e justificadas? Os critérios de seleção e as alternativas estão incluídos? |
+| 8 | O tamanho do subsistema foi estimado (usando linhas de código ou um método alternativo)? |
+| 9 | Os requisitos de inicialização, sincronização e controle foram descritos? |
+
+## Conformidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A documentação segue os padrões do projeto e/ou do centro da NASA? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos deste documento são consistentes entre si? |
+| 2 | Os requisitos são consistentes com o FRD, com as interfaces externas e com quaisquer outros documentos relacionados? |
+
+## Correção
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O projeto parece viável quanto a custo, cronograma e tecnologia? |
+| 2 | Os diagramas de estados representam claramente a temporização? |
+| 3 | As suposições sobre as sequências previstas de funções foram declaradas? Essas sequências são obrigatórias? |
+| 4 | O projeto é consistente com o ambiente operacional real (por exemplo, temporização do hardware, precisão, sequenciamento de eventos, taxas de dados e largura de banda)? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os elementos de dados são nomeados e usados de maneira consistente? |
+| 2 | Todos os dados compartilhados entre subsistemas foram identificados? |
+| 3 | Os meios para gerenciar os dados compartilhados foram descritos? Estão indicados os subsistemas que definem e/ou usam os dados compartilhados? |
+| 4 | O fluxo de dados entre hardware, software, pessoal e procedimentos foi descrito? |
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todas as funções descritas são necessárias e suficientes para atender aos objetivos da missão ou do sistema? |
+| 2 | Todas as entradas de uma função são necessárias e suficientes para executar a operação exigida? |
+| 3 | Todas as saídas produzidas por uma função são usadas por outra função ou transferidas por uma interface externa? |
+| 4 | Todas as funções declaram claramente como a saída é derivada da entrada ou dos dados compartilhados? |
+| 5 | Todos os estados funcionais estão definidos? |
+
+## Interface
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | As interfaces internas e externas estão claramente definidas? |
+| 2 | Todas as interfaces entre sistemas, hardware, software, pessoal e procedimentos foram descritas funcionalmente? |
+| 3 | Os requisitos para a transferência de dados por cada interface foram declarados? |
+| 4 | O número e a complexidade das interfaces foram minimizados, e elas são consistentes? |
+| 5 | As entradas e saídas de todas as interfaces são suficientes e necessárias? |
+
+## Nível de detalhe
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos estão livres de decisões de projeto injustificadas? |
+| 2 | Cada requisito do Documento de Requisitos Funcionais (FRD) é rastreável até um ou mais requisitos do Documento de Projeto Funcional (Functional Design Document — FDD)? |
+| 3 | Há detalhes suficientes para prosseguir para a próxima fase do ciclo de vida? |
+| 4 | Todos os itens “a determinar” (TBD) foram resolvidos? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os requisitos de manutenibilidade do software foram especificados? |
+| 2 | As áreas de risco do projeto foram identificadas e isoladas? A complexidade do projeto é compatível com o risco, o custo e o cronograma de desenvolvimento? |
+| 3 | Todos os subsistemas herdados ou adquiridos foram documentados? Foi identificada uma análise de custo-benefício? |
+| 4 | Estão sendo usadas partes reutilizáveis de outros projetos? Seu efeito sobre o projeto e a integração foi declarado? |
+| 5 | Os requisitos apresentam baixo acoplamento? O número de requisitos afetados quando um requisito é alterado foi minimizado? |
+| 6 | Foram realizadas análises de coesão, acoplamento, estatísticas de tráfego etc.? |
+| 7 | As características do projeto permitem que o sistema atenda aos requisitos de manutenibilidade? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Todos os atributos, as suposições e as restrições de desempenho estão claramente definidos? |
+| 2 | Todos os requisitos de desempenho explícitos e implícitos têm métricas expressas (por exemplo, temporização, vazão, tamanho da memória, exatidão e precisão)? |
+| 3 | Para cada requisito de desempenho identificado (explícito ou implícito): |
+| | As estimativas de desempenho foram documentadas? |
+| | Estimativas aproximadas indicam que esses requisitos podem ser atendidos? |
+| | O impacto de uma falha está definido? |
+| | Experimentos, protótipos ou análises confirmam que os requisitos podem ser atendidos? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Foi declarado um objetivo explícito de confiabilidade? |
+| 2 | As características do projeto permitem que o sistema atenda aos requisitos de confiabilidade? |
+| 3 | As condições e os erros normais de operação são considerados? Estados especiais são considerados (por exemplo, inicializações a frio, encerramento anormal e recuperação)? |
+| 4 | Os recursos de tolerância a falhas foram identificados ou analisados? |
+| 5 | Foram descritos, no nível do subsistema, os recursos de detecção, comunicação e recuperação de erros internos e externos? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os conjuntos de programas podem ser testados, demonstrados, analisados ou inspecionados para mostrar que satisfazem os requisitos? |
+| 2 | Os componentes do subsistema podem ser desenvolvidos e testados de forma independente? De forma incremental? |
+| 3 | Foram impostas restrições especiais de integração ou de testes de integração? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | As prioridades dos requisitos estão documentadas? O impacto de não atingir os requisitos está definido? |
+| 2 | As exceções à rastreabilidade dos requisitos são justificadas? |
+| 3 | Todos os requisitos foram alocados a hardware, software, pessoal ou procedimentos? |
+| 4 | Todas as funções, estruturas e restrições são rastreadas até os requisitos, e vice-versa? |
+| 5 | Os requisitos estão formulados de modo que possam ser referenciados de maneira única em documentos subordinados? |
+| 6 | Os componentes arquiteturais de cada etapa de implementação estão identificados para referência em documentos subordinados? |
+
+## Resumo da análise
+
+
+# Referências {#refs}

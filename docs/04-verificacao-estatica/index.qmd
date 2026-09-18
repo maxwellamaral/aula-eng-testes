@@ -13,6 +13,8 @@ format:
 - 📚 [Aula 03 — Introdução à Engenharia de Testes](../03-introducao-testes/index.qmd)
 - 🖥️ [Visualizar apresentação de slides](slides.qmd)
 - 🧪 [Roteiro do Laboratório 04 — Inspeção Estática Guiada](laboratorio.qmd)
+- 📋 [Listas de verificação da NASA — traduções para consulta](listas-nasa/index.qmd)
+- 🚀 [NASA-STD-8739.9 — inspeções formais (referência histórica)](/assets/materials/04-verificacao-estatica/nasa/nasa-std-8739.9-change-1.pdf)
 - 📖 [Apostila completa da disciplina](../apostila.pdf)
 :::
 

@@ -1,0 +1,134 @@
+---
+title: "PAT-017 — Lista de Verificação para Inspeção de Código C"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+## Sobre esta tradução
+
+Esta é uma tradução didática e adaptável da lista PAT-017 da NASA. Ela contém perguntas de exemplo para a inspeção e a análise formais de código-fonte C usado em software de missão e pode ser modificada para atender às necessidades do projeto ou da organização [@nasaPeerReviewChecklists]. Consulte também o [documento original em inglês](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-017-C-Code-Inspection-Checklist.docx).
+:::
+
+::: {.callout-warning}
+## Contexto histórico e técnico
+
+Esta lista reflete o contexto da fonte e deve ser confrontada com os padrões atuais do projeto, com a versão da linguagem C adotada e com as ferramentas e práticas contemporâneas. Esse confronto não invalida a tradução nem autoriza alterar silenciosamente as recomendações originais.
+:::
+
+| Projeto | Organização examinada | Versão |
+|---|---|---|
+|  |  | `PAT20220517` |
+
+| Data(s) | Avaliador(es) |
+|---|---|
+|  |  |
+
+Esta lista de verificação foi concebida para verificar código-fonte C usado em software de missão da NASA. Ela contém perguntas de exemplo que podem ser usadas para inspecionar e analisar formalmente o código. Esta lista pode ser modificada para atender às necessidades do projeto ou da organização.
+
+## Funcionalidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Cada unidade tem uma única finalidade? |
+| 2 | Há código que deveria estar em funções separadas? |
+| 3 | O código é coerente com os requisitos de desempenho? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O código é rastreável até o projeto detalhado? |
+
+## Uso de dados
+
+Subcategorias da fonte: **Dados e variáveis**, **Constantes** e **Tipagem de ponteiros**.
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | **Dados e variáveis.** As declarações de variáveis estão agrupadas em externas e internas? |
+| 2 | **Dados e variáveis.** Todas as declarações, exceto as mais óbvias, têm comentários descritivos? |
+| 3 | **Dados e variáveis.** Cada nome é usado para uma única finalidade? |
+| 4 | **Constantes.** Os nomes de todas as constantes estão em letras maiúsculas? |
+| 5 | **Constantes.** As constantes são definidas por meio de `# define`? |
+| 6 | **Constantes.** As constantes usadas em vários arquivos são definidas em um único local comum? |
+| 7 | **Tipagem de ponteiros.** As variáveis declaradas como ponteiros são usadas como ponteiros, e não como inteiros? |
+| 8 | **Tipagem de ponteiros.** Os ponteiros são inicializados? |
+
+## Vinculação
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os conjuntos comuns de variáveis são usados de acordo com os padrões do projeto? |
+| 2 | Evitam-se arquivos aninhados de definição de variáveis, mesmo quando permitidos pelo compilador? |
+| 3 | Todos os dados têm escopo local (`static` interno ou `static` externo), a menos que a vinculação global seja especificamente necessária e esteja comentada? |
+| 4 | Os nomes de todas as macros estão em letras maiúsculas? |
+
+## Lógica
+
+Subcategorias da fonte: **Regras lexicais para operadores** e **Ordem de avaliação**.
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | **Regras lexicais para operadores.** Os operadores primários estão adjacentes aos seus operandos? |
+| 2 | **Regras lexicais para operadores.** Os operadores primários (`->`, `.`, `{)`, etc.) estão adjacentes aos seus operandos? |
+| 3 | **Regras lexicais para operadores.** Os operadores de atribuição e condicionais sempre têm espaços ao seu redor? |
+| 4 | **Regras lexicais para operadores.** Vírgulas e pontos e vírgulas são seguidos por um espaço? |
+| 5 | **Regras lexicais para operadores.** As palavras-chave são seguidas por um espaço em branco? |
+| 6 | **Regras lexicais para operadores.** O `(` após o nome de uma função fica adjacente ao identificador? |
+| 7 | **Regras lexicais para operadores.** São usados espaços para evidenciar a precedência? Quando a precedência é minimamente complicada, usam-se parênteses, especialmente em operações bit a bit? |
+| 8 | **Ordem de avaliação.** Os parênteses são usados adequadamente para indicar a precedência? |
+| 9 | **Ordem de avaliação.** O código depende da ordem de avaliação, exceto nos seguintes casos?<br>`exprl, expr2`<br>`exprl ? expr2 : exp2`<br>`exprl II expr2` |
+| 10 | **Ordem de avaliação.** Árvores `if-else` e instruções `switch` são usadas com clareza? |
+| 11 | **Ordem de avaliação.** `goto` e rótulos são usados apenas quando justificáveis e sempre em código bem comentado? |
+| 12 | **Ordem de avaliação.** O bloco de código após uma instrução `if` está delimitado por chaves `{ }`? |
+
+## Manutenção
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Usos não padronizados estão isolados em sub-rotinas e bem documentados? |
+| 2 | Cada unidade tem um ponto de saída e um ponto de entrada? |
+| 3 | A unidade é fácil de alterar? |
+| 4 | A unidade é independente de dispositivos específicos, quando possível? |
+| 5 | O cabeçalho de tipos definidos padrão do sistema é usado, quando possível (caso contrário, usa-se o cabeçalho padrão do projeto por meio de `include`)? |
+| 6 | Há rastreabilidade entre os documentos de manutenção e o código? |
+
+## Clareza
+
+Subcategorias da fonte: **Comentários** e **Disposição**.
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | **Comentários.** O cabeçalho da unidade é informativo e completo? |
+| 2 | **Comentários.** Há comentários suficientes para compreender o código? |
+| 3 | **Comentários.** Os comentários nas unidades são informativos? |
+| 4 | **Comentários.** Linhas de comentário são usadas para agrupar instruções logicamente relacionadas? |
+| 5 | **Comentários.** As funções dos vetores e das variáveis estão descritas? |
+| 6 | **Comentários.** As alterações feitas em uma unidade após suas liberações estão registradas na seção de histórico de desenvolvimento do cabeçalho? |
+| 7 | **Disposição.** A disposição do código torna a lógica evidente? |
+| 8 | **Disposição.** Os laços estão indentados e visualmente separados do código ao redor? |
+| 9 | **Disposição.** As instruções `if` estão indentadas? |
+
+## Diversos
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Se diferentes “modelos de memória” são suportados pelo compilador, o código reflete o modelo acordado quanto às declarações de ponteiros e funções? Em geral, modelos de memória estão associados às noções de ponteiros e chamadas de função “near” e “far”. |
+| 2 | Os valores retornados por chamadas de função — que indicam o sucesso ou a falha de uma solicitação — são verificados antes de prosseguir para o código seguinte? |
+| 3 | As solicitações de alocação dinâmica de memória têm seu sucesso verificado antes de qualquer tentativa de escrever nessa memória? |
+| 4 | Os ponteiros são imediatamente definidos como `NULL` (ou `0`) após a desalocação da memória? A maioria dos compiladores não “zera” os ponteiros na desalocação. |
+| 5 | O código que escreve em memória alocada dinamicamente por meio de um ponteiro primeiro verifica se o ponteiro é válido (diferente de zero)? |
+| 6 | O código que passa um ponteiro para outra função primeiro verifica se o ponteiro é válido (diferente de zero)? |
+| 7 | As funções são declaradas como `static` — ocultas de outros módulos — quando devem ser chamadas somente por outras funções do mesmo módulo? |
+| 8 | As variáveis no nível do módulo são declaradas como `static` — ocultação de informações — quando são usadas somente por funções do mesmo módulo? |
+| 9 | Chamadas recursivas de função são usadas em software crítico de missão somente quando absolutamente necessárias e bem documentadas? Chamadas recursivas podem produzir resultados imprevisíveis de tempo de execução devido às demandas sobre o espaço de “pilha” alocado dinamicamente que normalmente é usado para implementar a recursão. |
+| 10 | A alocação dinâmica de memória é minimizada em software crítico de missão? Se a alocação dinâmica for usada, existe uma forma de estimar o esgotamento da memória disponível e de se recuperar da incapacidade de alocar memória adicional? |
+
+## Resumo da análise
+
+<div style="min-height: 12rem; border: 1px solid #999; border-radius: 0.25rem;"></div>
+
+## Referências {#refs}

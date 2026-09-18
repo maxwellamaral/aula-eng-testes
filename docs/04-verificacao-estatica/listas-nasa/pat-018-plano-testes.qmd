@@ -1,0 +1,125 @@
+---
+title: "PAT-018 — Lista de Verificação de Plano de Testes"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+Esta lista de verificação foi elaborada para verificar o Plano de Testes de software de missão da NASA. Ela contém perguntas de exemplo que podem ser usadas para inspecionar e analisar formalmente o Plano de Testes. Esta lista de verificação pode ser modificada para atender às necessidades do projeto ou da organização.
+
+::: {.callout-note}
+## Adaptação para uso didático
+
+Esta tradução pode ser adaptada ao contexto, ao risco e às normas de cada projeto. As perguntas funcionam como apoio à revisão e não substituem critérios específicos do produto ou da organização [@nasaPeerReviewChecklists]. Consulte também o [documento original da NASA](../../../assets/materials/04-verificacao-estatica/nasa/originais/PAT-018-Test-Plan-Checklist.docx).
+:::
+
+## Clareza
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O Plano de Testes especifica claramente a ordem das etapas de todos os níveis de teste (por exemplo, teste de integração, teste de ponta a ponta, teste de aceitação etc.)? |
+
+## Completude
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O Plano de Testes especifica a abordagem geral e a política para os testes de aceitação? |
+| 2 | O Plano de Testes inclui uma descrição do tipo de ambiente de hardware e de software a ser utilizado? |
+| 3 | O Plano de Testes define critérios de sucesso para todos os testes? |
+| 4 | O Plano de Testes descreve adequadamente as capacidades/os requisitos que serão testados? |
+| 5 | O Plano de Testes descreve explicitamente as capacidades/os requisitos que não serão testados durante cada nível de teste? |
+| 6 | O Plano de Testes descreve as condições sob as quais os testes serão interrompidos e retomados durante os testes de integração? |
+| 7 | O conjunto de casos de teste exercita adequadamente todas as alterações significativas no código, especialmente as modificações de interface? |
+| 8 | O Plano de Testes descreve adequadamente as linhas de base dos testes de integração? |
+| 9 | Para uma entrega em fases, o Plano de Testes estabelece, em cada fase, linhas de base de teste a serem utilizadas na fase seguinte? |
+| 10 | O Plano de Testes define testes de regressão suficientes e apropriados? |
+
+## Conformidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O Plano de Testes lista todas as especificações, normas e documentos necessários para sua elaboração? |
+
+## Consistência
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A ordem dos testes de integração foi definida de modo a corresponder à ordem de integração especificada nos documentos de nível superior? |
+| 2 | O Plano de Testes é consistente com os documentos de plano de testes de nível superior? |
+
+## Correção
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os critérios de entrada e de saída do Plano de Testes são realistas? |
+| 2 | Todos os *drivers* e *stubs* necessários estão identificados e disponíveis para testar a função conforme especificado? |
+| 3 | Todas as dependências entre o simulador de entrada e o hardware são tratadas? |
+
+## Uso de dados
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O conjunto de casos de teste inclui cobertura adequada da verificação de erros de entrada (por exemplo, verificação de faixa e combinações de entradas ilegais ou conflitantes)? |
+| 2 | O conjunto de casos de teste inclui uso adequado dos valores de entrada padrão? |
+| 3 | O conjunto de casos de teste exercita um número adequado de caminhos de erro do programa? |
+| 4 | O conjunto de casos de teste atinge 100% de cobertura de código se o software for crítico para a segurança? Caso não atinja, há uma justificativa aceitável? |
+
+## Interfaces
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O conjunto de casos de teste exercita adequadamente o tratamento do fluxo de informações pelas interfaces externas? |
+
+## Nível de detalhe
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A cobertura do conjunto de casos de teste é suficientemente completa para proporcionar confiança de que as funções testadas operam corretamente no ambiente a que se destinam? |
+
+## Manutenibilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | O Plano de Testes contempla o controle e a incorporação das alterações nas especificações, no projeto ou no código que possam ocorrer durante os testes? |
+
+## Desempenho
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | As metas de desempenho dos procedimentos de teste estão declaradas explicitamente? |
+
+## Confiabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | São coletados e documentados dados de teste suficientes para apoiar a estimativa da confiabilidade do software? |
+
+## Testabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | A abordagem de teste é viável? |
+| 2 | Todos os requisitos considerados não testáveis ou impossíveis de testar estão identificados, e está explicado por que não podem ser testados? |
+| 3 | O desenvolvimento e a aquisição de instalações de teste (simuladores de entrada e analisadores de saída), métodos e ferramentas foram programados com antecedência adequada? |
+| 4 | Os cronogramas de teste estão descritos com nível de detalhe suficiente (isto é, há cronogramas de teste para cada função individual a ser testada)? |
+| 5 | O método de estimativa do uso de recursos necessário aos testes está identificado? |
+| 6 | No caso de múltiplas *builds*, todos os requisitos foram identificados para cada *build*? |
+| 7 | Os papéis e as responsabilidades de todo o pessoal envolvido na atividade de teste foram identificados? |
+| 8 | A especificação das instalações de teste é consistente com os critérios de sucesso dos testes? |
+| 9 | Há algum conflito de cronograma entre as agendas do pessoal de teste? |
+| 10 | O Plano de Testes prevê a participação de pessoal independente de garantia da qualidade para verificar a atividade de teste? |
+| 11 | O Plano de Testes prevê testes independentes? |
+
+## Rastreabilidade
+
+| # | Pergunta |
+|---:|----------------------------------------------|
+| 1 | Os testes de aceitação exercitam cada requisito especificado em documentos de nível superior, como o Documento de Requisitos Funcionais (FRD), o Documento de Projeto Funcional (FDD) e o SRD? Todos os requisitos funcionais são rastreados até os requisitos de software? |
+| 2 | Os critérios de aceitação dos testes são rastreáveis até documentos de requisitos de nível superior, como a Documentação do Banco de Dados (SIS), o Guia do Usuário/Manual do Operador de Software (UG/SOM), o FRD, o SRD e o FDD? |
+| 3 | O conjunto de casos de teste de integração exercita cada interface descrita nos documentos de nível superior? |
+
+## Resumo da análise
+
+
+## Referências {#refs}
