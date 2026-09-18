@@ -67,7 +67,6 @@ Duas formas de obter evidência
 |---|---|
 | **Revisão** | O artefato é consistente com sua referência? |
 | **Teste de mesa** | O fluxo lógico revela uma questão no artefato? |
-| **Teste de mesa**^[O **teste de mesa** (*desk checking*) é uma técnica de **verificação estática informal** na qual a própria pessoa autora e/ou revisores percorrem logicamente um artefato de software (como código-fonte, algoritmo, modelo ou requisito).] | O fluxo lógico revela uma questão no artefato? |
 | **Teste dinâmico** | O comportamento observado diverge do esperado? |
 | **Depuração** | Qual é a causa e como corrigir sem introduzir outra falha? |
 
