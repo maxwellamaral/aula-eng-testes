@@ -1,6 +1,6 @@
 ---
-title: "Laboratório 04 — Inspeção Estática Guiada"
-subtitle: "Da leitura de requisitos e código ao registro rastreável de descobertas"
+title: "Laboratório 04 — Mini-RTF guiada"
+subtitle: "Da preparação ao acompanhamento das correções"
 lang: pt-BR
 format:
   html:
@@ -11,7 +11,7 @@ format:
 ::: {.callout-note}
 ## Contexto da prática
 
-Este laboratório transforma os conceitos da Aula 04 em uma revisão estática completa. Você não executará o programa: examinará um requisito e um trecho curto de código, percorrerá suas decisões em um teste de mesa e registrará descobertas que outra pessoa possa verificar e acompanhar.
+Este laboratório propõe uma mini-RTF de ponta a ponta. Você examinará um requisito e um trecho curto de código sem executar o programa. Depois, registrará as descobertas, decidirá o destino do artefato e acompanhará as correções até o encerramento ou uma nova revisão.
 
 O cenário é didático e fictício. Ele existe para exercitar o método de inspeção, não para representar uma regra de negócio real.
 :::
@@ -24,23 +24,25 @@ Ao concluir este laboratório, você será capaz de:
 2. encontrar ambiguidades, omissões e inconsistências em um requisito e em sua implementação;
 3. realizar um teste de mesa sem confundi-lo com a execução do software;
 4. registrar descobertas com localização, evidência, impacto a investigar e encaminhamento;
-5. participar de uma reunião curta de revisão técnica formal, aplicando papéis e diretrizes de conduta.
+5. participar de uma reunião curta de revisão técnica formal, assumindo um dos papéis e seguindo as diretrizes de conduta;
+6. distinguir a decisão global sobre o artefato da classificação de cada descoberta;
+7. acompanhar o retrabalho, verificar as correções e reconhecer quando é necessária uma nova revisão.
 
 ## Pré-requisitos e materiais
 
 - [Aula 04 — Verificação Estática](index.qmd);
+- [Listas de verificação da NASA traduzidas](listas-nasa/index.qmd), para consulta opcional da fonte completa;
 - [Planilha de ficha de preparação e registro de descobertas](ficha-inspecao-lab04.xlsx) (Excel, para baixar e preencher);
-- um editor de texto ou folha para registrar a preparação individual, caso prefira não usar a planilha;
 - o requisito e o código fornecidos neste roteiro;
-- a ficha de registro apresentada na seção de prática.
+- um editor de texto ou folha para registrar a preparação individual, caso prefira não usar a planilha.
 
-Nenhuma IDE, execução de código ou ferramenta de análise é necessária nesta primeira prática. O foco é aprender a produzir evidência a partir da leitura estruturada do artefato.
+Nesta prática, você não precisará de IDE, execução de código ou ferramenta de análise. O foco é produzir evidências por meio da leitura estruturada do artefato.
 
 ---
 
 ## 1. O método: observe, referencie, registre
 
-Uma descoberta de inspeção não é apenas uma impressão como “este código parece estranho”. Ela deve permitir que outra pessoa responda a três perguntas:
+Uma descoberta de inspeção precisa ir além de uma impressão como “este código parece estranho”. Ela deve permitir que outra pessoa responda a três perguntas:
 
 1. **Onde está a questão?** — requisito, critério, função, condição ou linha identificável.
 2. **Qual evidência a sustenta?** — trecho do artefato comparado com a base de referência.
@@ -52,11 +54,13 @@ Uma descoberta de inspeção não é apenas uma impressão como “este código 
 Revise o produto, não a pessoa produtora. Escreva “a condição permite uma terceira renovação quando o requisito limita duas” em vez de “a pessoa programadora errou”. A primeira formulação é verificável, construtiva e encaminhável [@pressman2016].
 :::
 
+Antes da preparação individual, a moderação registra a solicitação, confere se o pacote contém o artefato, sua versão e a base de referência, distribui o material e informa a agenda. Se faltar algo indispensável, a revisão não começa: o pacote volta à pessoa produtora para ser completado.
+
 ---
 
 ## 2. Artefato didático: renovação de empréstimo
 
-Considere uma biblioteca fictícia. O artefato abaixo contém um requisito, critérios de aceitação e uma implementação que supostamente os representa.
+Considere uma biblioteca fictícia. O artefato abaixo contém um requisito, critérios de aceitação e uma implementação que deveria representar essas regras.
 
 ### Requisito R-01
 
@@ -93,11 +97,30 @@ A base de referência deste exercício é somente R-01 e seus critérios de acei
 
 ---
 
-## 3. Prática A — Inspeção do requisito
+## 3. Recorte didático dos checklists NASA
 
-Faça uma leitura individual de R-01 e dos critérios de aceitação antes de discutir com outras pessoas. Use as perguntas abaixo para orientar a inspeção.
+Você não usará as 102 perguntas das listas traduzidas. Esta prática seleciona seis perguntas aplicáveis a R-01 e ao trecho de código. Pressman e Maxim fornecem a base do método de revisão; as perguntas da NASA apoiam o treino com listas de verificação.
 
-### Checklist de requisitos
+Cada referência abaixo combina o identificador do documento, a seção e o número da pergunta. O número sozinho não basta, pois a numeração recomeça em cada seção.
+
+| Referência de origem | Pergunta da fonte | Uso nesta prática |
+|:--|:--|:--|
+| PAT-003, Clareza, pergunta 3 | Os requisitos são claros e não ambíguos (isto é, há aspectos dos requisitos que você não compreende; eles podem ser interpretados incorretamente)? | Use sem alteração textual em R-01 e nos critérios de aceitação. |
+| PAT-003, Completude, pergunta 1 | Os requisitos são declarados da forma mais completa possível? Todos os requisitos incompletos foram registrados como “A determinar” (TBD)? | Use sem alteração textual; trate informação ausente como questão a esclarecer, sem inventar uma regra. |
+| PAT-013, Uso de dados, pergunta 1 | Foram especificados o tipo, a taxa, as unidades, a exatidão, a resolução, os limites, o intervalo e os valores críticos de todos os itens de dados internos? | Aplique apenas os elementos pertinentes ao pequeno artefato: tipo, limites, intervalo e valores críticos. Esta restrição de escopo é uma adaptação didática. |
+| PAT-013, Testabilidade, pergunta 2 | Cada requisito está formulado de modo que seja separável ou atômico, não ambíguo e testável? | Use sem alteração textual em R-01. |
+| PAT-017, Funcionalidade, pergunta 1 | Cada unidade tem uma única finalidade? | A pergunta é independente da linguagem e pode ser aplicada diretamente à função Python. |
+| PAT-017, Lógica, pergunta 10 | Árvores `if-else` e instruções `switch` são usadas com clareza? | Para Python, use: “As estruturas condicionais da função tornam claras a lógica e as condições de fronteira?”. A adaptação retira `switch`, construção ausente do trecho, e preserva o foco na clareza das decisões. |
+
+Na planilha, as colunas **Checklist de origem**, **Seção**, **Pergunta nº** e **Pergunta da fonte** preservam a rastreabilidade. Resposta, evidência, aplicabilidade, descoberta vinculada e os demais campos são recursos operacionais criados para esta prática; eles não são colunas dos documentos NASA.
+
+---
+
+## 4. Prática A — Preparação e inspeção do requisito
+
+Depois que a moderação aceitar o pacote, faça uma leitura individual de R-01 e dos critérios de aceitação. Ainda não discuta soluções com o grupo. Use o recorte NASA e as perguntas complementares abaixo para orientar a inspeção.
+
+### Perguntas complementares da prática
 
 - A regra define o comportamento permitido e o comportamento recusado?
 - Os limites e as condições de fronteira podem ser interpretados de uma única maneira?
@@ -117,9 +140,9 @@ Registre pelo menos **duas questões**. Para cada uma, indique a localização e
 
 ---
 
-## 4. Prática B — Teste de mesa do código
+## 5. Prática B — Teste de mesa do código
 
-Agora percorra a função no papel ou em uma tabela. **Não a execute.** Para cada cenário, acompanhe as condições na ordem em que aparecem e anote o retorno que a leitura do código produz.
+Agora percorra a função no papel ou em uma tabela. **Não a execute.** Para cada cenário, acompanhe as condições na ordem em que aparecem e anote o retorno previsto pela leitura do código.
 
 | Cenário | `renovacoes` | `ha_reserva` | `atraso_dias` | Retorno previsto pelo código | Resultado esperado segundo R-01/CA | Questão encontrada? |
 |---|---:|---|---:|---|---|---|
@@ -140,14 +163,14 @@ Agora percorra a função no papel ou em uma tabela. **Não a execute.** Para ca
 ::: {.callout-note}
 ### Pista de método
 
-O objetivo não é “consertar” a função durante a inspeção. O objetivo é registrar a divergência e a referência que a sustenta. A correção deve ser discutida, implementada e verificada depois da reunião [@pressman2016].
+Não tente corrigir a função durante a inspeção. Registre a divergência e a referência que a sustenta. A correção deve ser discutida, implementada e verificada depois da reunião [@pressman2016].
 :::
 
 ---
 
-## 5. Prática C — Mini RTF
+## 6. Prática C — Reunião da mini-RTF
 
-Reúnam-se para revisar R-01, seus critérios e a função. A atividade funciona com três ou mais pessoas; se houver menos participantes, uma pessoa pode acumular papéis, mantendo o registro explícito.
+Reúnam-se para revisar R-01, seus critérios e a função. Procurem formar um grupo de pelo menos três pessoas. Em grupos menores, uma pessoa pode acumular papéis, desde que isso conste no registro. Se a prática for individual, trate-a como inspeção guiada, não como revisão por pares.
 
 ### Papéis
 
@@ -155,16 +178,17 @@ Reúnam-se para revisar R-01, seus critérios e a função. A atividade funciona
 |---|---|
 | Pessoa produtora | apresenta brevemente o objetivo do artefato, sem defender soluções |
 | Moderação | confirma o escopo, mantém a agenda e interrompe debates improdutivos |
-| Revisores | apresentam questões baseadas na preparação individual e na referência |
+| Revisores | apresentam questões baseadas na preparação individual e na base de referência |
 | Pessoa registradora | consolida as descobertas, decisões e pendências |
 
 ### Agenda sugerida
 
-1. confirmar artefato, versão e base de referência;
-2. apresentar as questões encontradas individualmente;
-3. consolidar apenas itens com localização e evidência;
-4. classificar cada item: correção, esclarecimento, verificação adicional ou descarte justificado;
-5. registrar a decisão sobre o artefato e o responsável pelo *follow-up*.
+1. confirmar artefato, versão, base de referência, papéis e tempo disponível;
+2. percorrer R-01, os critérios e a função em uma ordem conhecida por todos;
+3. apresentar as questões encontradas na preparação individual;
+4. consolidar apenas itens com localização e evidência;
+5. classificar o encaminhamento de cada item: correção, esclarecimento, verificação adicional ou descarte justificado;
+6. encerrar a reunião sem transformar o encontro em uma sessão de solução de problemas.
 
 ### Regras de condução
 
@@ -176,15 +200,42 @@ Reúnam-se para revisar R-01, seus critérios e a função. A atividade funciona
 
 ---
 
-## 6. Registro consolidado de descobertas
+## 7. Decisão global sobre o artefato
 
-Depois da reunião, produza uma lista única. Uma descoberta só entra na lista quando houver evidência suficiente para localizá-la e relacioná-la à base de referência.
+Depois de consolidar as descobertas, tome uma decisão sobre o artefato como um todo:
+
+1. **aceitar sem modificações**, quando nenhuma correção for necessária;
+2. **aceitar provisoriamente**, condicionado à correção de problemas secundários que possam ser verificados no acompanhamento;
+3. **rejeitar por erros graves**, exigir retrabalho e realizar uma nova revisão.
+
+Registre a decisão e sua justificativa. Não a confunda com o tipo, a severidade, o encaminhamento ou a situação de uma descoberta individual. Um artefato pode, por exemplo, ser aceito provisoriamente e ainda ter descobertas abertas para correção.
+
+---
+
+## 8. Retrabalho, acompanhamento e nova revisão
+
+Depois da reunião, a pessoa responsável pelo retrabalho corrige os itens encaminhados para correção e registra a evidência da mudança, como o trecho revisado ou a nova versão do artefato. Não apague o registro original.
+
+A pessoa responsável pelo acompanhamento compara a correção com a descoberta e com a base de referência. Sempre que a prática for feita em grupo, essa verificação deve ser realizada por alguém diferente de quem executou o retrabalho. Na prática individual, solicite a verificação posterior de outra pessoa, como um colega ou o docente. Para cada item, registre um dos resultados:
+
+- **correção confirmada**, quando a evidência resolve a descoberta;
+- **reabrir**, quando a correção não resolve a descoberta ou introduz outra questão;
+- **pendente**, quando ainda falta evidência para verificar;
+- **não aplicável**, para uma descoberta descartada com justificativa.
+
+Se o artefato tiver sido **rejeitado por erros graves**, a versão corrigida deverá passar por nova revisão. Uma correção reaberta também pode exigir nova revisão, conforme seu impacto. O processo só termina quando todas as descobertas estiverem resolvidas ou descartadas com justificativa.
+
+---
+
+## 9. Registros produzidos
+
+Durante a reunião e o acompanhamento, mantenha uma lista única. Uma descoberta só entra nessa lista quando houver evidência suficiente para localizá-la e relacioná-la à base de referência.
 
 | ID | Localização | Tipo | Evidência e referência | Impacto a investigar | Encaminhamento | Situação |
 |---|---|---|---|---|---|---|
-| I-01 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
-| I-02 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
-| I-03 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / resolvida / descartada |
+| I-01 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / em retrabalho / em verificação / resolvida / reaberta / descartada |
+| I-02 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / em retrabalho / em verificação / resolvida / reaberta / descartada |
+| I-03 | | ambiguidade / omissão / inconsistência / padrão / outro | | | | aberta / em retrabalho / em verificação / resolvida / reaberta / descartada |
 
 ### Relatório resumido
 
@@ -192,37 +243,42 @@ Ao final, escreva um resumo curto que responda:
 
 1. **o que foi revisado?**;
 2. **quem participou e em quais papéis?**;
-3. **quais foram as descobertas e a decisão sobre o artefato?**.
+3. **quais foram as descobertas e a decisão global sobre o artefato?**;
+4. **qual foi o resultado do acompanhamento e, se necessário, da nova revisão?**.
 
-Esse registro transforma a conversa em evidência histórica e em uma lista de ações acompanháveis [@pressman2016].
+Esse registro transforma a conversa em evidência histórica e em uma lista de ações cujo andamento pode ser acompanhado [@pressman2016].
 
 ---
 
-## 7. Autoavaliação e discussão posterior
+## 10. Autoavaliação e discussão posterior
 
 Use esta lista depois da prática, antes de consultar a discussão com a turma ou o docente.
 
 - [ ] Delimitei o artefato e sua base de referência.
 - [ ] Fiz preparação individual antes da reunião.
+- [ ] Usei o recorte de perguntas da NASA e registrei o checklist, a seção e o número de origem de cada pergunta.
 - [ ] Registrei pelo menos duas questões com localização e evidência.
 - [ ] Diferenciei uma divergência observável de uma regra ausente que precisa de esclarecimento.
 - [ ] Percorri a função manualmente, sem executá-la.
 - [ ] Mantive o foco no artefato, sem avaliar a pessoa produtora.
 - [ ] Registrei encaminhamento e situação para cada descoberta consolidada.
+- [ ] Separei a decisão global dos atributos de cada descoberta.
+- [ ] Registrei o retrabalho, a evidência da correção e o resultado da verificação.
+- [ ] Indiquei se o artefato exige nova revisão.
 
 ### Observações esperadas para discussão
 
-Compare a própria análise com estas perguntas, sem tratá-las como um único gabarito possível:
+Compare sua análise com estas perguntas, sem tratá-las como um único gabarito possível:
 
 - Na tentativa após duas renovações concluídas, a condição `renovacoes > MAX_RENOVACOES` ainda permite o retorno `True`. Como isso se relaciona a CA-01?
 - O booleano `ha_reserva` não informa quem fez a reserva. Que efeito isso tem sobre a distinção entre CA-02 e CA-03?
 - A função retorna somente `bool`. Que informação adicional seria necessária para cumprir a parte de R-01 que exige informar o motivo?
-- Para `renovacoes = -1`, o código produz um resultado, mas R-01 e os critérios não definem esse dado inválido. Isso é uma regra a inventar ou uma lacuna a registrar?
+- Para `renovacoes = -1`, o código produz um resultado, mas R-01 e os critérios não definem essa entrada. Isso é uma regra a inventar ou uma lacuna a registrar?
 
 ::: {.callout-important}
 ### Critério de conclusão
 
-A prática está concluída quando há uma ficha com artefato, versão, escopo e base de referência; uma tabela de teste de mesa preenchida; descobertas localizáveis e evidenciadas; e uma decisão com próximos passos. A quantidade de itens encontrados não é, por si só, uma medida de qualidade.
+A prática está concluída quando a planilha contém a solicitação e o aceite do pacote, a preparação individual, o recorte NASA rastreável, o teste de mesa, as descobertas localizáveis, a decisão global, o retrabalho, as evidências das correções e a verificação. Registre também a nova revisão, quando ela for exigida. A quantidade de itens encontrados, por si só, não mede a qualidade da inspeção.
 :::
 
 ## Materiais relacionados
