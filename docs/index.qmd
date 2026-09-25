@@ -79,6 +79,16 @@ page-layout: article
 :::
 :::
 
+::: {.lesson-group}
+#### Aula 05: Mini-RTF aplicada aos projetos BVapp {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Guia da prática](05-mini-rtf-projetos/index.qmd){.lesson-link}
+- [🧪 Laboratório 05: Mini-RTF com subentregas verificadas](05-mini-rtf-projetos/laboratorio.qmd){.lesson-link}
+- [📊 Ficha preenchida de exemplo](05-mini-rtf-projetos/ficha-mrtf-aula05-exemplo.xlsx){.lesson-link}
+:::
+:::
+
 :::
 
 :::

@@ -1,0 +1,44 @@
+---
+title: "Exemplo 4 — Decisão global e acompanhamento"
+subtitle: "Subentrega 4 e trabalho posterior"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+## Decisão global
+
+> **Aceitar provisoriamente, condicionado a correções secundárias.**
+>
+> O recorte é compreensível e pode continuar sendo trabalhado, mas a priorização, os dados da entidade solicitante e o encaminhamento da ordem precisam ser esclarecidos antes do encerramento da revisão.
+
+A decisão global não substitui a situação de cada descoberta.
+
+## Plano de retrabalho
+
+| ID | Ação | Responsável | Evidência esperada | Verificador | Situação inicial |
+|---|---|---|---|---|---|
+| RTF-OS-001 | Definir as condições de prioridade alta e atualizar RF-OS-03 e CA-OS-03. | B | Versão revisada do requisito e do critério. | D | Em retrabalho |
+| RTF-OS-002 | Definir identificador e regra para entidade inativa. | A | Regra de negócio registrada e RF-OS-02 atualizado. | C | Aguardando esclarecimento |
+| RTF-OS-003 | Revisar o passo 4 do fluxo e CA-OS-04. | C | Fluxo atualizado com resultado observável. | D | Em retrabalho |
+
+## Evidência do retrabalho
+
+> RF-OS-03 foi alterado para informar que uma ordem é de prioridade alta quando há risco operacional classificado como nível 1 ou quando o prazo contratual termina em até 24 horas. CA-OS-03 passou a verificar as duas condições e um caso que não satisfaz nenhuma delas.
+
+## Verificação independente
+
+| ID | Verificação | Resultado |
+|---|---|---|
+| RTF-OS-001 | D comparou o requisito revisado, o critério e os casos de fronteira. | Correção confirmada |
+| RTF-OS-002 | Ainda não foi recebida a regra do domínio. | Pendente |
+| RTF-OS-003 | D verificou se o fluxo e CA-OS-04 agora possuem resultado observável. | Reabrir: o fluxo foi alterado, mas o critério ainda não foi atualizado. |
+
+## Necessidade de nova revisão
+
+Uma nova revisão será realizada depois que RTF-OS-002 for esclarecida e RTF-OS-003 for corrigida. O recorte deverá ser reinspecionado porque uma alteração no fluxo pode afetar os requisitos de encaminhamento.
+
+## Pedido de verificação ao docente
+
+> Grupo 1 — Etapa 4. A decisão global está separada das situações individuais. Cada descoberta tem ação, responsável, evidência esperada, verificador e condição de encerramento. Solicitamos a liberação para executar o retrabalho após a aula.

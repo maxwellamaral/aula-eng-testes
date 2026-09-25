@@ -1,0 +1,71 @@
+---
+title: "Exemplo 1 — Pacote de revisão"
+subtitle: "Subentrega 1: solicitação e verificação de prontidão"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+Este é um artefato fictício para inspiração. Ele não define regras para os projetos dos grupos.
+:::
+
+## Identificação
+
+| Campo | Exemplo |
+|---|---|
+| Projeto | BVapp — Ordem de Serviços |
+| Grupo | Grupo 1 |
+| Artefato principal | Especificação de requisitos |
+| Versão | 0.8 |
+| Recorte | Abertura e priorização de ordens de serviço |
+| Data da revisão | A preencher pelo grupo |
+
+## Requisitos incluídos
+
+| ID | Requisito resumido | Critério relacionado |
+|---|---|---|
+| RF-OS-01 | Registrar uma nova ordem de serviço. | CA-OS-01 |
+| RF-OS-02 | Associar a ordem a uma entidade solicitante. | CA-OS-02 |
+| RF-OS-03 | Definir a prioridade da ordem. | CA-OS-03 |
+| RF-OS-04 | Encaminhar a ordem para atendimento. | CA-OS-04 |
+
+## Artefatos associados
+
+- fluxo “Abrir ordem de serviço”;
+- protótipo da tela de priorização;
+- tabela de critérios de aceitação;
+- glossário do domínio.
+
+## Perguntas selecionadas
+
+| Origem | Seção | Nº | Aplicação |
+|---|---|---:|---|
+| PAT-003 | Clareza | 3 | Verificar se “prioridade alta” possui significado único. |
+| PAT-003 | Completude | 1 | Verificar se faltam condições de exceção. |
+| PAT-013 | Testabilidade | 2 | Verificar se cada requisito pode ser conferido. |
+
+## Participantes e papéis
+
+| Estudante | Papel |
+|---|---|
+| A | Pessoa produtora e apresentadora |
+| B | Moderador(a) |
+| C | Relator(a) |
+| D | Revisor(a) e responsável pelo acompanhamento |
+
+## Solicitação
+
+> O Grupo 1 solicita uma mini-RTF sobre a abertura e a priorização de ordens de serviço, na versão 0.8 da especificação. O pacote inclui RF-OS-01 a RF-OS-04, seus critérios de aceitação, o fluxo de abertura e o protótipo da tela de priorização. O objetivo é verificar clareza, completude, testabilidade e rastreabilidade antes da continuidade do desenvolvimento.
+
+## Verificação de prontidão
+
+- [x] O artefato está identificado.
+- [x] A versão está registrada.
+- [x] O escopo está delimitado.
+- [x] Os requisitos possuem identificadores.
+- [x] Os critérios de aceitação estão disponíveis.
+- [x] Os participantes e papéis estão definidos.
+- [x] As perguntas de checklist estão selecionadas.
+- [ ] O docente ainda precisa liberar a passagem para a preparação individual.

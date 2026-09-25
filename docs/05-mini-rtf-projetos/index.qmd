@@ -1,0 +1,25 @@
+---
+title: "Aula 05 — Mini-RTF aplicada aos projetos BVapp"
+subtitle: "Prática dirigida com subentregas verificadas"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## Material da aula
+
+- 🧪 [Guia passo a passo da prática](laboratorio.qmd)
+- 📊 [Ficha preenchida de exemplo](ficha-mrtf-aula05-exemplo.xlsx)
+- 📄 [Exemplo 1 — Pacote de revisão](exemplos/01-pacote-de-revisao.qmd)
+- 📄 [Exemplo 2 — Preparação individual](exemplos/02-preparacao-individual.qmd)
+- 📄 [Exemplo 3 — Ata e descobertas](exemplos/03-ata-da-reuniao.qmd)
+- 📄 [Exemplo 4 — Acompanhamento](exemplos/04-acompanhamento.qmd)
+- 📄 [Exemplo 5 — Roteiro da apresentação](exemplos/05-roteiro-apresentacao.qmd)
+- 📚 [Aula 04 — Verificação Estática](../04-verificacao-estatica/index.qmd)
+:::
+
+Esta aula aplica o fluxo de mini-RTF aos requisitos dos próprios projetos BVapp. O guia foi dimensionado para o encontro presencial das **13h00 às 16h40** e prevê quatro subentregas verificadas pelo docente. O retrabalho, a verificação independente e a apresentação dos resultados acontecem depois da reunião presencial.
+
+{{< include laboratorio.qmd >}}

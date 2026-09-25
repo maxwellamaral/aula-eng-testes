@@ -1,0 +1,391 @@
+---
+title: "Aula 05 — Mini-RTF aplicada aos projetos BVapp"
+subtitle: "Subentregas verificadas, retrabalho e apresentação dos resultados"
+lang: pt-BR
+format:
+  html:
+    toc: true
+    toc-depth: 3
+bibliography: ../references.bib
+---
+
+::: {.callout-important}
+## Condição da atividade
+
+A prática presencial ocorrerá das **13h00 às 16h40**, totalizando **220 minutos**. Durante esse período, os grupos produzirão quatro subentregas e chamarão o docente para verificar cada uma delas. O grupo só avançará quando a subentrega for marcada como **liberada**.
+
+As correções completas, as evidências do retrabalho e a verificação independente serão concluídas depois da aula. A apresentação dos resultados ocorrerá **uma semana após a prática**, na data informada pelo docente.
+:::
+
+## 1. O que será feito
+
+Cada grupo conduzirá uma mini-RTF sobre um recorte da especificação de requisitos do próprio projeto BVapp. O artefato principal poderá ser acompanhado de critérios de aceitação, regras de negócio, fluxos, protótipos, modelos, backlog, código ou outra evidência relacionada.
+
+A atividade seguirá este fluxo:
+
+1. preparar o pacote de revisão;
+2. solicitar a revisão e verificar a prontidão;
+3. fazer a preparação individual;
+4. consolidar as questões;
+5. realizar a reunião;
+6. registrar as descobertas;
+7. tomar uma decisão global sobre o artefato;
+8. planejar o retrabalho;
+9. corrigir, produzir evidências e verificar de forma independente;
+10. realizar nova revisão, se necessário;
+11. apresentar os resultados uma semana depois.
+
+A atividade não será avaliada pelo número bruto de problemas encontrados. O foco é a qualidade da preparação, da rastreabilidade, dos registros, das justificativas, das evidências e da verificação.
+
+::: {.callout-note}
+### Regra de conduta
+
+Revise o produto, não o produtor. Escreva “o requisito não define o comportamento quando a ordem é cancelada” em vez de “o grupo não pensou nessa situação”.
+:::
+
+## 2. Projetos e recortes possíveis
+
+| Grupo | Projeto | Exemplo de recorte viável |
+|---|---|---|
+| 1 | BVapp — Ordem de Serviços | abertura, priorização e encerramento de uma ordem |
+| 2 | BVapp — Gestão de Ativos | cadastro, movimentação e baixa de um ativo |
+| 3 | BVapp — Financeiro | lançamento, aprovação e estorno de uma operação |
+| 4 | BVapp — Geração de Energia | registro de uma unidade e acompanhamento da geração |
+| 5 | BVapp — Gestão de Entidades | cadastro de uma entidade e seus relacionamentos |
+| 6 | BVapp — Gestão de Informação | criação, consulta e atualização de uma informação |
+
+O recorte deve ser pequeno o bastante para ser lido e discutido em uma única reunião. Não tente revisar todos os requisitos do projeto.
+
+## 3. Papéis do grupo
+
+Cada grupo terá quatro estudantes. Os papéis podem ser alternados em uma próxima revisão.
+
+| Papel | Responsabilidade principal |
+|---|---|
+| Pessoa produtora e apresentadora | Apresentar o artefato, o recorte, a versão e os critérios de aceitação. |
+| Moderador(a) | Controlar o tempo, conduzir a agenda e manter o foco no produto. |
+| Relator(a) | Registrar perguntas, descobertas, decisões e pendências. |
+| Revisor(a) e responsável pelo acompanhamento | Analisar o artefato e acompanhar o retrabalho e a verificação. |
+
+A pessoa que fizer uma correção não deverá ser a única responsável por verificar essa mesma correção. Se a separação não for possível, a limitação deverá ser registrada e uma verificação posterior deverá ser planejada.
+
+## 4. Como chamar o docente para verificar uma subentrega
+
+O docente fará verificações curtas, uma por grupo e por etapa. A verificação não substitui a responsabilidade do grupo de conferir o próprio material.
+
+### Procedimento obrigatório
+
+1. **Conclua a subentrega.** Não chame o docente para mostrar material incompleto.
+2. **Preencha o pedido de verificação** na planilha ou no quadro de chamados definido para a turma.
+3. Informe: grupo, etapa, horário, integrantes presentes, arquivos ou páginas a exibir e dúvida principal.
+4. **Sinalize que o grupo está aguardando**, usando o mecanismo combinado em sala.
+5. Enquanto aguarda, revise a própria subentrega, mas não comece a etapa seguinte.
+6. Mostre ao docente apenas o mínimo necessário para verificar o critério de passagem.
+7. Registre o resultado: **liberada**, **ajustar e chamar novamente** ou **aguardar esclarecimento**.
+8. Registre também a orientação recebida e o impacto dela no trabalho.
+
+::: {.callout-tip}
+### Pedido de verificação bem formulado
+
+> Grupo 1 — Etapa 1 — BVapp Ordem de Serviços. O pacote contém o recorte RF-OS-01 a RF-OS-04, a versão 0.8, os critérios CA-OS-01 a CA-OS-04 e os papéis do grupo. Precisamos que seja verificado se o escopo está suficientemente delimitado para iniciar a preparação individual.
+:::
+
+::: {.callout-warning}
+### O que não fazer
+
+Não chame o docente apenas para perguntar “está bom?”. Mostre a subentrega, indique o critério de passagem e formule uma dúvida específica.
+:::
+
+## 5. Cronograma presencial: 13h00–16h40
+
+O cronograma abaixo foi dimensionado para seis grupos e quatro verificações docentes. Cada grupo trabalha em paralelo; o docente circula entre os grupos em uma fila de chamados.
+
+| Horário | Duração | Atividade | Resultado esperado |
+|---|---:|---|---|
+| 13h00–13h15 | 15 min | Abertura, explicação do fluxo e distribuição dos papéis | Todos entendem as etapas, os critérios e o procedimento de chamada. |
+| 13h15–13h35 | 20 min | Etapa 1 — pacote e solicitação da revisão | Subentrega 1 pronta. |
+| 13h35–13h55 | 20 min | Verificação docente da Subentrega 1 | Grupos liberados para a Etapa 2 ou orientados a ajustar. |
+| 13h55–14h25 | 30 min | Etapa 2 — preparação individual e consolidação | Subentrega 2 pronta. |
+| 14h25–14h45 | 20 min | Verificação docente da Subentrega 2 | Grupos liberados para a Etapa 3 ou orientados a ajustar. |
+| 14h45–15h30 | 45 min | Etapa 3 — reunião e registro das descobertas | Subentrega 3 pronta. |
+| 15h30–15h55 | 25 min | Verificação docente da Subentrega 3 | Grupos liberados para a Etapa 4 ou orientados a ajustar. |
+| 15h55–16h15 | 20 min | Etapa 4 — decisão global e plano de retrabalho | Subentrega 4 pronta. |
+| 16h15–16h35 | 20 min | Verificação docente da Subentrega 4 | Plano liberado para execução após a aula. |
+| 16h35–16h40 | 5 min | Encerramento e orientações para a semana seguinte | Todos sabem o que fazer depois da aula e o que apresentar. |
+
+### A atividade cabe no tempo?
+
+**Sim, desde que o escopo seja pequeno e as verificações sejam de passagem.** Não cabe, nesse período, corrigir todos os requisitos, produzir todas as evidências e fazer a verificação independente. Por isso, a aula presencial termina com a decisão e o plano de retrabalho. A conclusão do ciclo ocorre depois da aula.
+
+Também não será possível que o docente faça uma auditoria detalhada de todos os documentos durante cada chamada. A verificação presencial confirma se a subentrega contém os elementos mínimos para avançar.
+
+## 6. Etapa 1 — Montar o pacote e solicitar a revisão
+
+### O que fazer
+
+Escolha um recorte pequeno e reúna os materiais que serão revisados. Registre a versão, o escopo, os requisitos, os critérios de aceitação, os artefatos complementares e os participantes.
+
+O pacote deve responder:
+
+- qual projeto será revisado;
+- qual artefato será analisado;
+- qual versão está sob revisão;
+- quais requisitos estão incluídos;
+- quais critérios de aceitação serão usados;
+- quais artefatos complementares serão consultados;
+- quem participará e com qual papel;
+- quais perguntas de checklist serão aplicadas.
+
+### Subentrega 1 — Pacote de revisão
+
+A subentrega deverá conter:
+
+- solicitação da revisão;
+- recorte identificável;
+- versão do artefato;
+- base de referência;
+- participantes e papéis;
+- lista inicial de perguntas de checklist;
+- pedido de verificação ao docente.
+
+### Exemplo
+
+> **Projeto:** BVapp — Ordem de Serviços  
+> **Recorte:** abertura e priorização de ordens de serviço  
+> **Versão:** especificação 0.8  
+> **Requisitos:** RF-OS-01 a RF-OS-04  
+> **Critérios:** CA-OS-01 a CA-OS-04  
+> **Artefatos:** fluxo de abertura e protótipo da tela de priorização  
+> **Pergunta inicial:** o requisito define de forma verificável quando uma ordem é considerada prioritária?
+
+Veja também o [exemplo de pacote de revisão](exemplos/01-pacote-de-revisao.qmd).
+
+### Critério de passagem
+
+O grupo poderá avançar quando o docente confirmar que o recorte é identificável, a versão está registrada e existe uma base suficiente para iniciar a preparação. Se faltar uma regra do domínio, registre-a como questão a esclarecer; não invente a resposta.
+
+## 7. Etapa 2 — Fazer a preparação individual
+
+### O que fazer
+
+Cada integrante deverá ler o pacote sozinho antes da reunião. A preparação deve utilizar perguntas de checklist e produzir questões localizáveis.
+
+Para cada questão, registre:
+
+- requisito e localização;
+- pergunta de checklist;
+- evidência;
+- impacto possível;
+- encaminhamento inicial.
+
+O grupo não deve resolver os problemas durante a preparação. Também não deve transformar uma impressão em defeito sem indicar a referência que sustenta a observação.
+
+### Subentrega 2 — Preparação consolidada
+
+A subentrega deverá mostrar:
+
+- pelo menos uma contribuição identificável de cada integrante;
+- perguntas de checklist com origem, seção e número;
+- questões com localização e evidência;
+- separação entre dúvida, lacuna, inconsistência e defeito provável;
+- consolidação sem apagar divergências relevantes.
+
+### Exemplo
+
+> **Requisito:** RF-OS-03  
+> **Pergunta:** PAT-003, Clareza, pergunta 3  
+> **Questão:** o termo “prioridade alta” aparece no requisito, mas não há regra que defina quais condições produzem essa classificação.  
+> **Evidência:** o requisito permite selecionar uma prioridade, mas o critério CA-OS-03 apenas verifica se o campo foi preenchido.  
+> **Encaminhamento:** esclarecer a regra de negócio; não escolher um limite durante a reunião.
+
+Veja o [exemplo de preparação individual](exemplos/02-preparacao-individual.qmd).
+
+### Critério de passagem
+
+O docente verificará se cada integrante participou e se as questões podem ser localizadas e relacionadas a uma base de referência. Questões sem evidência deverão ser reformuladas ou registradas como dúvidas ainda não confirmadas.
+
+## 8. Etapa 3 — Realizar a reunião e registrar as descobertas
+
+### O que fazer
+
+O moderador deverá conduzir uma reunião curta:
+
+1. confirmar artefato, versão, escopo e papéis;
+2. apresentar o contexto do recorte;
+3. percorrer os requisitos e critérios na ordem definida;
+4. ouvir as questões da preparação individual;
+5. consolidar as descobertas;
+6. classificar o encaminhamento;
+7. registrar pendências sem resolver tudo durante a reunião.
+
+A reunião identifica e registra problemas. A implementação das correções ocorre depois.
+
+### Subentrega 3 — Ata e registro das descobertas
+
+Cada descoberta deverá conter:
+
+- identificador;
+- localização;
+- requisito ou critério relacionado;
+- checklist de origem;
+- descrição objetiva;
+- evidência;
+- impacto;
+- encaminhamento;
+- responsável provisório ou próximo passo;
+- situação inicial.
+
+### Exemplo
+
+> **ID:** RTF-OS-001  
+> **Localização:** RF-OS-03, seção “priorização”  
+> **Tipo:** lacuna de regra de negócio  
+> **Descrição:** o requisito usa “prioridade alta”, mas não define as condições que atribuem essa classificação.  
+> **Evidência:** CA-OS-03 verifica apenas o preenchimento do campo.  
+> **Impacto:** duas pessoas podem classificar a mesma ordem de maneira diferente.  
+> **Encaminhamento:** esclarecer com a pessoa responsável pelo domínio.  
+> **Situação:** aberta.
+
+Veja a [ata de reunião de exemplo](exemplos/03-ata-da-reuniao.qmd).
+
+### Critério de passagem
+
+O docente verificará se as descobertas estão localizáveis, possuem evidência e não foram misturadas com avaliações pessoais. A ata deve mostrar que o grupo distinguiu a identificação do problema da solução.
+
+## 9. Etapa 4 — Tomar a decisão global e planejar o retrabalho
+
+### O que fazer
+
+Depois de consolidar as descobertas, o grupo deverá decidir sobre o artefato como um todo. A decisão global deve ser registrada separadamente da situação de cada descoberta.
+
+Use uma das opções:
+
+1. **Aceitar sem modificações**;
+2. **Aceitar provisoriamente, condicionado a correções secundárias**;
+3. **Rejeitar por erros graves e exigir nova revisão**.
+
+Depois, transforme cada descoberta em uma ação acompanhável:
+
+- o que será corrigido ou esclarecido;
+- quem fará o retrabalho;
+- qual evidência deverá ser produzida;
+- quem verificará a correção;
+- quando o item poderá ser considerado resolvido;
+- se será necessária uma nova revisão.
+
+### Subentrega 4 — Decisão e plano de retrabalho
+
+A subentrega deverá conter:
+
+- decisão global e justificativa;
+- situação de cada descoberta;
+- responsável pelo retrabalho;
+- evidência esperada;
+- pessoa verificadora;
+- condição de encerramento;
+- necessidade de nova revisão;
+- pedido de verificação ao docente.
+
+### Exemplo
+
+> **Decisão global:** aceitar provisoriamente, condicionado a correções secundárias.  
+> **Justificativa:** o recorte é compreensível e pode continuar sendo discutido, mas a priorização ainda não possui regra de negócio verificável.  
+> **RTF-OS-001:** esclarecer a regra com o domínio.  
+> **Responsável:** estudante B.  
+> **Evidência esperada:** requisito revisado e critério de aceitação atualizado.  
+> **Verificador:** estudante D.  
+> **Nova revisão:** necessária se a regra alterar outros requisitos do fluxo.
+
+Veja o [exemplo de acompanhamento](exemplos/04-acompanhamento.qmd).
+
+### Critério de passagem
+
+O docente verificará se a decisão global não foi confundida com a situação individual das descobertas. Um grupo pode aceitar provisoriamente o artefato e ainda manter itens abertos para retrabalho.
+
+## 10. Trabalho após a aula
+
+Depois de receber a liberação da Subentrega 4, o grupo deverá:
+
+1. executar o retrabalho;
+2. preservar o registro original da descoberta;
+3. anexar evidências da alteração;
+4. realizar a verificação independente;
+5. marcar cada item como confirmado, reaberto, pendente ou não aplicável;
+6. realizar nova revisão se a decisão ou o impacto exigir;
+7. preparar a apresentação da semana seguinte.
+
+### Critério de encerramento
+
+A mini-RTF só estará encerrada quando todas as descobertas estiverem resolvidas ou descartadas com justificativa, com evidências e verificações registradas. Itens apenas “encaminhados” mantêm o acompanhamento aberto.
+
+## 11. Apresentação uma semana depois
+
+A apresentação deverá mostrar o processo, não apenas o resultado final. O tempo de exposição será informado pelo docente; a estrutura abaixo serve como roteiro.
+
+### Conteúdo mínimo
+
+1. projeto e recorte revisado;
+2. versão e artefatos analisados;
+3. participantes e papéis;
+4. perguntas de checklist escolhidas e adaptações;
+5. principais descobertas;
+6. decisão global;
+7. correções realizadas;
+8. evidências produzidas;
+9. resultado da verificação independente;
+10. necessidade de nova revisão;
+11. limitações e aprendizados do grupo.
+
+### Exemplo de fala
+
+> Revisamos os requisitos de abertura e priorização de ordens de serviço na versão 0.8. Encontramos duas lacunas e uma inconsistência entre requisito e critério de aceitação. A decisão foi aceitar provisoriamente. Depois da aula, o grupo esclareceu a regra de prioridade, atualizou o critério e realizou uma verificação independente. Uma questão foi reaberta porque a alteração afetou o fluxo de encerramento.
+
+Use o [roteiro de apresentação de exemplo](exemplos/05-roteiro-apresentacao.qmd).
+
+## 12. Entrega final do grupo
+
+O pacote final deverá conter:
+
+- especificação ou recorte revisado;
+- critérios de aceitação relacionados;
+- planilha ou registro da mini-RTF;
+- solicitação e aceite das subentregas;
+- preparação individual;
+- ata da reunião;
+- descobertas rastreáveis;
+- decisão global;
+- plano e evidências do retrabalho;
+- verificação independente;
+- registro de nova revisão, se houver;
+- apresentação ou roteiro utilizado.
+
+Para inspiração, consulte a [ficha preenchida de exemplo](ficha-mrtf-aula05-exemplo.xlsx).
+
+## 13. Checklist de encerramento
+
+- [ ] O recorte e a versão estão identificados.
+- [ ] Cada etapa foi liberada pelo docente antes da etapa seguinte.
+- [ ] Todos os integrantes contribuíram para a preparação.
+- [ ] As perguntas de checklist estão rastreáveis.
+- [ ] As descobertas possuem localização e evidência.
+- [ ] A reunião separou problema e solução.
+- [ ] A decisão global está registrada separadamente.
+- [ ] Cada descoberta tem responsável e situação.
+- [ ] O retrabalho possui evidência.
+- [ ] A verificação foi independente, quando possível.
+- [ ] Itens pendentes ou reabertos estão explícitos.
+- [ ] A necessidade de nova revisão foi decidida.
+- [ ] A apresentação da semana seguinte está preparada.
+
+## Materiais relacionados
+
+- [Aula 04 — Verificação Estática](../04-verificacao-estatica/index.qmd)
+- [Laboratório 04 — Mini-RTF guiada](../04-verificacao-estatica/laboratorio.qmd)
+- [Ficha de inspeção do Laboratório 04](../04-verificacao-estatica/ficha-inspecao-lab04.xlsx)
+- [Ficha preenchida de exemplo da Aula 05](ficha-mrtf-aula05-exemplo.xlsx)
+- [Exemplos de artefatos](exemplos/01-pacote-de-revisao.qmd)
+
+## Referências
+
+::: {#refs}
+:::

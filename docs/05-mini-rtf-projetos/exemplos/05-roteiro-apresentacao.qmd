@@ -1,0 +1,72 @@
+---
+title: "Exemplo 5 — Roteiro da apresentação"
+subtitle: "Apresentação uma semana após a prática"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+A apresentação deve mostrar o processo de revisão e o que foi aprendido. Não é necessário expor todo o projeto.
+:::
+
+## Slide 1 — Projeto e recorte
+
+- BVapp — Ordem de Serviços;
+- abertura e priorização;
+- especificação versão 0.8;
+- integrantes e papéis.
+
+## Slide 2 — Base de referência
+
+- RF-OS-01 a RF-OS-04;
+- CA-OS-01 a CA-OS-04;
+- fluxo de abertura;
+- protótipo da tela de priorização;
+- perguntas PAT-003 e PAT-013 selecionadas e adaptadas.
+
+## Slide 3 — Como a revisão foi conduzida
+
+- pacote de revisão;
+- preparação individual;
+- reunião;
+- registro das descobertas;
+- decisão global;
+- retrabalho e verificação.
+
+## Slide 4 — Principais descobertas
+
+Apresente duas ou três descobertas, sempre com:
+
+- localização;
+- evidência;
+- impacto;
+- encaminhamento.
+
+## Slide 5 — Decisão global
+
+> O recorte foi aceito provisoriamente, condicionado a correções secundárias.
+
+Explique por que essa decisão foi tomada e não a confunda com a situação de cada descoberta.
+
+## Slide 6 — Retrabalho e verificação
+
+- quais itens foram corrigidos;
+- quais evidências foram produzidas;
+- quem verificou cada correção;
+- qual item foi reaberto ou permaneceu pendente;
+- se houve nova revisão.
+
+## Slide 7 — Limitações e aprendizados
+
+Exemplos:
+
+- uma regra de negócio dependia de confirmação externa;
+- uma pergunta de checklist precisou ser adaptada ao contexto;
+- a revisão encontrou uma lacuna que não aparecia na leitura coletiva;
+- a verificação independente revelou que uma correção era incompleta.
+
+## Roteiro de fala
+
+> Revisamos os requisitos de abertura e priorização de ordens de serviço na versão 0.8. A preparação individual produziu três questões rastreáveis. Na reunião, registramos duas lacunas de negócio e uma inconsistência de testabilidade. A decisão foi aceitar provisoriamente. Depois da aula, corrigimos duas questões, reabrimos uma e planejamos nova revisão porque o esclarecimento de prioridade alterou o fluxo de encaminhamento.

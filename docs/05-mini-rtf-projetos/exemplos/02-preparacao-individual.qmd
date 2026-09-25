@@ -1,0 +1,37 @@
+---
+title: "Exemplo 2 — Preparação individual"
+subtitle: "Subentrega 2: leitura independente e consolidação"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-note}
+O exemplo mostra como registrar uma questão com localização e evidência. A conclusão não deve ser copiada sem analisar o próprio projeto.
+:::
+
+## Contribuições individuais
+
+| Revisor | Requisito analisado | Questão preliminar |
+|---|---|---|
+| B | RF-OS-01 e RF-OS-03 | O fluxo informa quando a prioridade é definida? |
+| C | RF-OS-02 e CA-OS-02 | A entidade solicitante pode ser identificada sem ambiguidade? |
+| D | RF-OS-03 e CA-OS-03 | “Prioridade alta” possui regra verificável? |
+| A | RF-OS-04 e CA-OS-04 | O encaminhamento define quem recebe a ordem? |
+
+## Questões consolidadas
+
+| ID | Origem | Localização | Pergunta aplicada | Evidência | Encaminhamento |
+|---|---|---|---|---|---|
+| PQ-OS-01 | D | RF-OS-03, seção “priorização” | PAT-003, Clareza, pergunta 3 | O requisito usa “prioridade alta”, mas não define as condições que produzem essa classificação. CA-OS-03 verifica apenas se o campo foi preenchido. | Esclarecer a regra de negócio. |
+| PQ-OS-02 | C | RF-OS-02, regra de associação | PAT-013, Uso de dados, pergunta 1, adaptada | O requisito fala em “entidade solicitante”, mas não define identificador, formato ou condição para entidade inativa. | Registrar como lacuna a esclarecer. |
+| PQ-OS-03 | B | Fluxo de abertura, passo 4 | PAT-013, Testabilidade, pergunta 2 | O fluxo termina com “ordem encaminhada”, mas não indica resultado observável nem responsável pelo recebimento. | Revisar o critério CA-OS-04. |
+
+## Questão que não virou descoberta
+
+> “A tela deveria usar azul para prioridade alta” foi registrada como sugestão de interface, mas não entrou como descoberta porque não havia requisito, critério ou padrão visual que sustentasse essa obrigação.
+
+## Pedido de verificação ao docente
+
+> Grupo 1 — Etapa 2. Cada integrante realizou uma leitura individual. Consolidamos três questões com localização, pergunta de checklist, evidência e encaminhamento. Solicitamos a verificação de passagem para a reunião.

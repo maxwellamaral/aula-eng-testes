@@ -1,0 +1,46 @@
+---
+title: "Exemplo 3 — Ata da reunião e descobertas"
+subtitle: "Subentrega 3: reunião da mini-RTF"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+## Identificação da reunião
+
+| Campo | Exemplo |
+|---|---|
+| Projeto | BVapp — Ordem de Serviços |
+| Recorte | Abertura e priorização |
+| Versão | 0.8 |
+| Moderador(a) | B |
+| Relator(a) | C |
+| Participantes | A, B, C e D |
+| Duração | 45 minutos |
+
+## Agenda realizada
+
+1. confirmação do escopo e da versão;
+2. apresentação breve do fluxo;
+3. percurso dos requisitos e critérios;
+4. apresentação das questões individuais;
+5. consolidação das descobertas;
+6. definição dos encaminhamentos;
+7. preparação da decisão global.
+
+## Descobertas consolidadas
+
+| ID | Localização | Tipo | Descrição | Evidência | Impacto | Encaminhamento | Situação |
+|---|---|---|---|---|---|---|---|
+| RTF-OS-001 | RF-OS-03, seção “priorização” | Lacuna de regra | “Prioridade alta” não possui condições de classificação. | CA-OS-03 verifica somente o preenchimento do campo. | Classificações diferentes para a mesma ordem. | Esclarecer com o domínio e atualizar requisito e critério. | Aberta |
+| RTF-OS-002 | RF-OS-02, regra de associação | Lacuna de dados | Não estão definidos identificador e situação válida da entidade solicitante. | Entidades podem ser associadas de modo inconsistente. | Definir dados mínimos e regra para entidades inativas. | Aberta |
+| RTF-OS-003 | Fluxo, passo 4 | Não testabilidade | “Encaminhar para atendimento” não identifica responsável nem resultado observável. | Não é possível verificar o encerramento do fluxo. | Revisar CA-OS-04 e o fluxo. | Aberta |
+
+## Regra de condução observada
+
+As soluções não foram implementadas durante a reunião. O grupo registrou as questões e os encaminhamentos para o retrabalho posterior.
+
+## Pedido de verificação ao docente
+
+> Grupo 1 — Etapa 3. A ata contém a agenda, os participantes e três descobertas com localização, evidência, impacto e encaminhamento. Não implementamos correções durante a reunião. Solicitamos a verificação de passagem para a decisão global.
