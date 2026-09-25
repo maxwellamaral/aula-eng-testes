@@ -54,7 +54,7 @@ Revise o produto, não o produtor. Escreva “o requisito não define o comporta
 | 5 | BVapp — Gestão de Entidades | cadastro de uma entidade e seus relacionamentos |
 | 6 | BVapp — Gestão de Informação | criação, consulta e atualização de uma informação |
 
-O recorte deve ser pequeno o bastante para ser lido e discutido em uma única reunião. Não tente revisar todos os requisitos do projeto.
+O recorte deve ser pequeno o bastante para ser lido e discutido em uma única reunião, com no mínimo 04 requisitos + artefatos relacionados. Não tente revisar todos os requisitos do projeto.
 
 ## 3. Papéis do grupo
 
@@ -83,12 +83,6 @@ O docente fará verificações curtas, uma por grupo e por etapa. A verificaçã
 6. Mostre ao docente apenas o mínimo necessário para verificar o critério de passagem.
 7. Registre o resultado: **liberada**, **ajustar e chamar novamente** ou **aguardar esclarecimento**.
 8. Registre também a orientação recebida e o impacto dela no trabalho.
-
-::: {.callout-tip}
-### Pedido de verificação bem formulado
-
-> Grupo 1 — Etapa 1 — BVapp Ordem de Serviços. O pacote contém o recorte RF-OS-01 a RF-OS-04, a versão 0.8, os critérios CA-OS-01 a CA-OS-04 e os papéis do grupo. Precisamos que seja verificado se o escopo está suficientemente delimitado para iniciar a preparação individual.
-:::
 
 ::: {.callout-warning}
 ### O que não fazer
@@ -384,8 +378,5 @@ Para inspiração, consulte a [ficha preenchida de exemplo](ficha-mrtf-aula05-ex
 - [Ficha de inspeção do Laboratório 04](../04-verificacao-estatica/ficha-inspecao-lab04.xlsx)
 - [Ficha preenchida de exemplo da Aula 05](ficha-mrtf-aula05-exemplo.xlsx)
 - [Exemplos de artefatos](exemplos/01-pacote-de-revisao.qmd)
+- [Listas de verificação da NASA para revisões e inspeções](../04-verificacao-estatica/listas-nasa/index.qmd)
 
-## Referências
-
-::: {#refs}
-:::
