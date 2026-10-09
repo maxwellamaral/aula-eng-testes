@@ -39,4 +39,6 @@ Este módulo aborda os métodos, processos e práticas de Verificação e Valida
 
 {{< include 04-verificacao-estatica/_content.qmd >}}
 
+## Aula 06: Introdução ao TDD — do requisito ao primeiro comportamento web
 
+{{< include 06-introducao-tdd/_content.qmd >}}
