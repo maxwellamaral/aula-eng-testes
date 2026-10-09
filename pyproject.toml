@@ -17,5 +17,15 @@ visual-audit = [
   "playwright>=1.51.0",
 ]
 
+[project.scripts]
+render-apostila = "scripts.render_apostila:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["scripts"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
