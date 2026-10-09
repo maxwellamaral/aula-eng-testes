@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1050" viewBox="0 0 1400 1050">
+<rect x="0" y="0" width="1400" height="1050" rx="0" fill="#eef2f0" stroke="none" stroke-width="1"/>
+<rect x="55" y="37" width="1290" height="967" rx="10" fill="#ffffff" stroke="#d9e1dd" stroke-width="1"/>
+<rect x="55" y="37" width="1290" height="57" rx="10" fill="#e6ece8" stroke="none" stroke-width="1"/>
+<circle cx="85" cy="66" r="5" fill="#899d92"/>
+<circle cx="109" cy="66" r="5" fill="#899d92"/>
+<circle cx="133" cy="66" r="5" fill="#899d92"/>
+<rect x="229" y="49" width="881" height="32" rx="5" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="250" y="72" fill="#52685d" font-family="Liberation Sans" font-size="18" font-weight="normal" font-style="normal">BVapp  /  proposta visual da página</text>
+<rect x="55" y="94" width="1290" height="86" rx="0" fill="#173e33" stroke="none" stroke-width="1"/>
+<text x="93" y="150" fill="#ffffff" font-family="Liberation Sans" font-size="34" font-weight="bold" font-style="normal">BVapp</text>
+<text x="1140" y="147" fill="#c5ded2" font-family="Liberation Sans" font-size="22" font-weight="normal" font-style="normal">RF001</text>
+<text x="146" y="238" fill="#597468" font-family="Liberation Sans" font-size="21" font-weight="normal" font-style="normal">Painéis solares / Inclusão</text>
+<text x="146" y="298" fill="#174136" font-family="Liberation Sans" font-size="38" font-weight="bold" font-style="normal">Inclusão de painel solar</text>
+<text x="147" y="337" fill="#52685d" font-family="Liberation Sans" font-size="23" font-weight="normal" font-style="normal">* indica campo de preenchimento obrigatório</text>
+<text x="147" y="402" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Número de Série *</text>
+<rect x="147" y="416" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<text x="696" y="402" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Cooperado *</text>
+<rect x="696" y="416" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<path d="M 1171,433 L 1179,441" stroke="#174136" stroke-width="2" fill="none"/>
+<path d="M 1179,441 L 1187,433" stroke="#174136" stroke-width="2" fill="none"/>
+<text x="147" y="507" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Marca</text>
+<rect x="147" y="521" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<path d="M 622,538 L 630,546" stroke="#174136" stroke-width="2" fill="none"/>
+<path d="M 630,546 L 638,538" stroke="#174136" stroke-width="2" fill="none"/>
+<text x="696" y="507" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Modelo</text>
+<rect x="696" y="521" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<text x="147" y="612" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Potência de Pico (Wp)</text>
+<rect x="147" y="626" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<text x="616" y="656" fill="#174136" font-family="Liberation Sans" font-size="22" font-weight="normal" font-style="normal">↕</text>
+<text x="696" y="612" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Eficiência (%)</text>
+<rect x="696" y="626" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<text x="1165" y="656" fill="#174136" font-family="Liberation Sans" font-size="22" font-weight="normal" font-style="normal">↕</text>
+<text x="147" y="717" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Data de Fabricação</text>
+<rect x="147" y="731" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<rect x="612" y="744" width="20" height="21" rx="2" fill="none" stroke="#174136" stroke-width="1.2"/>
+<path d="M 612,750 L 632,750" stroke="#174136" stroke-width="1.2" fill="none"/>
+<text x="696" y="717" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Situação</text>
+<rect x="696" y="731" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<path d="M 1171,748 L 1179,756" stroke="#174136" stroke-width="2" fill="none"/>
+<path d="M 1179,756 L 1187,748" stroke="#174136" stroke-width="2" fill="none"/>
+<text x="147" y="822" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Fornecedor *</text>
+<rect x="147" y="836" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<text x="696" y="822" fill="#174136" font-family="Liberation Sans" font-size="23" font-weight="bold" font-style="normal">Inversor ativo</text>
+<rect x="696" y="836" width="501" height="48" rx="5" fill="#ffffff" stroke="#a3b3aa" stroke-width="1.5"/>
+<path d="M 1171,853 L 1179,861" stroke="#174136" stroke-width="2" fill="none"/>
+<path d="M 1179,861 L 1187,853" stroke="#174136" stroke-width="2" fill="none"/>
+<text x="696" y="903" fill="#52685d" font-family="Liberation Sans" font-size="18" font-weight="normal" font-style="normal">Herda informações da Usina.</text>
+<path d="M 146,934 L 1252,934" stroke="#dce4df" stroke-width="1" fill="none"/>
+<text x="147" y="973" fill="#52685d" font-family="Liberation Sans" font-size="21" font-weight="normal" font-style="normal">Proposta visual estática • não representa cadastro implementado</text>
+</svg>

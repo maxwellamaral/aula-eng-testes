@@ -1,0 +1,19 @@
+---
+title: "Aula 06 — Introdução ao TDD"
+subtitle: "Do requisito ao primeiro comportamento web"
+lang: pt-BR
+format:
+  html:
+    toc: true
+---
+
+::: {.callout-tip}
+## Material da aula
+
+- 📚 [Aula 05 — Mini-RTF aplicada aos projetos BVapp](../05-mini-rtf-projetos/index.qmd)
+- 🖥️ [Visualizar apresentação de slides](slides.qmd)
+- 🧪 [Laboratório — do requisito ao primeiro comportamento web](laboratorio.qmd)
+- 📂 Os slides oferecem links para consultar os códigos completos em uma janela expansível.
+:::
+
+{{< include _content.qmd >}} 

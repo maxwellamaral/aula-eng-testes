@@ -1,0 +1,242 @@
+---
+title: "Aula 06 — Laboratório de introdução ao TDD"
+subtitle: "Do requisito ao primeiro comportamento web"
+lang: pt-BR
+format:
+  html:
+    toc: true
+    toc-depth: 3
+bibliography: ../references.bib
+---
+
+::: {.callout-important}
+## Condição da atividade
+
+Este roteiro acompanha a demonstração comum e a aplicação do método ao recorte da Epic de cada grupo. A execução depende de um ambiente didático preparado com Python, Django, Selenium e `uv`, em repositório novo e separado do repositório dos materiais da disciplina.
+
+A preparação do ambiente e a criação da aplicação serão realizadas em etapa posterior. Este roteiro não fornece um instalador nem afirma que o ambiente já esteja pronto. Antes de executar os testes, confirme com o docente o projeto de trabalho e os comandos compatíveis com a configuração disponibilizada. Se o ambiente ainda não estiver disponível, produza o contrato e a narrativa do caso; registre a execução como pendente.
+:::
+
+## 1. O que será feito
+
+A demonstração usa a Feature **24258 — 2.1. Inclusão de novos painéis solares**, da Epic **24189 — 2. Gestão de Painéis Solares**. O trabalho executável desta aula é menor que a Feature: abrir a página de inclusão, reconhecer sua identificação e encontrar uma única lista de Cooperado visível.
+
+Você escreverá a expectativa antes de implementar o controle, observará a falha correspondente e usará um teste interno para orientar a alteração da resposta. Depois, voltará ao navegador e verificará se o comportamento esperado aparece. A extração do HTML para um template será uma refatoração, com nova execução dos testes.
+
+Ao concluir o recorte, você deverá conseguir:
+
+- relacionar cada expectativa à redação de RF001 ou à convenção didática que a concretiza;
+- explicar o caso de teste, seu oráculo e o que cada asserção observa;
+- distinguir uma falha causada por comportamento ausente de uma falha de configuração;
+- apresentar evidências do vermelho, do verde e da execução após a refatoração;
+- explicar por que a aprovação do teste interno não comprova a visibilidade do controle;
+- aplicar a mesma sequência a um comportamento pequeno da Epic do grupo, sem copiar as regras do cadastro de painéis.
+
+O roteiro aplica o [conteúdo da Aula 06](index.qmd) e os [slides](slides.qmd). Os exemplos completos estão no texto canônico e nas janelas de código dos slides. Consulte-os na etapa correspondente, sem copiar antecipadamente a implementação final.
+
+## 2. Pré-requisitos e materiais
+
+Tenha disponíveis a especificação de requisitos, as decisões e pendências da mini-RTF da Aula 05, o conteúdo da Aula 06 e um local para registrar as evidências. Para a prática do grupo, use os requisitos da própria Epic e identifique a versão consultada.
+
+Para a parte executável, o projeto precisa permitir executar os testes do Django e iniciar o navegador controlado pelo Selenium. A aplicação didática deve partir de uma infraestrutura nova; não aproveite o backend existente como implementação do comportamento que será desenvolvido por TDD.
+
+Na demonstração, os arquivos têm os nomes apresentados no conteúdo canônico:
+
+| Arquivo no projeto didático | Uso neste roteiro |
+|---|---|
+| `functional_tests/test_rf001_inclusao_painel.py` | Teste externo do primeiro recorte e narrativa dos cenários |
+| `paineis/tests.py` | Teste interno da resposta |
+| `paineis/views.py` | Resposta mínima e posterior chamada ao template |
+| `paineis/templates/paineis/inclusao.html` | HTML extraído durante a refatoração |
+
+Esses caminhos pertencem à aplicação didática, não a este repositório de materiais. A organização do projeto e suas dependências serão disponibilizadas na preparação do ambiente. Não crie uma segunda aplicação dentro da pasta da aula.
+
+Quando o projeto preparado adotar essa organização, execute os comandos abaixo na raiz da aplicação, onde estiver `manage.py`. Eles são comandos de teste, não de instalação. Se a configuração disponibilizada usar outra organização, registre os comandos equivalentes confirmados pelo docente.
+
+```{.bash}
+# Teste externo do pequeno recorte, sem executar todo o cenário de RF001.
+uv run python manage.py test functional_tests.test_rf001_inclusao_painel.PaginaInclusaoPainelTest
+
+# Testes internos da resposta.
+uv run python manage.py test paineis.tests.RespostaInclusaoPainelTest
+
+# Regressão: testes descobertos pelo projeto, após confirmar sua configuração.
+uv run python manage.py test
+```
+
+Na etapa interna, introduza e execute um método por vez. Você pode acrescentar `.test_pagina_responde_com_sucesso` ou `.test_resposta_contem_lista_de_cooperados` ao identificador `paineis.tests.RespostaInclusaoPainelTest` para selecionar o método correspondente. A execução completa não transforma testes ignorados em expectativas verificadas.
+
+## 3. Contrato e limite do primeiro recorte
+
+Antes de escrever as asserções, registre a diferença entre o requisito e a convenção usada para observá-lo.
+
+| Item | Contrato da demonstração |
+|---|---|
+| Fonte | RF001, vinculada à Feature 24258, e decisões registradas no conteúdo da Aula 06 |
+| Preparação | Página acessível na aplicação didática; navegador disponível; não é necessário salvar um painel |
+| Ação | Abrir a página de inclusão de painel |
+| Resultado esperado do recorte | Identificação da página e uma única lista de Cooperado visível |
+| Convenções de observação | Rota `/paineis/novo/`, identificação da página conforme o exemplo canônico e seletor `select[name="cooperado"]` |
+| Limite | Não submeter o formulário, persistir dados nem consultar auditoria |
+
+Cooperado é obrigatório por decisão docente, mesmo quando o backlog divergir dessa decisão. Registre a divergência; não elimine a decisão para fazer os documentos parecerem iguais. Neste primeiro recorte, entretanto, encontrar a lista visível ainda não verifica a indicação de obrigatoriedade nem a rejeição de uma submissão sem Cooperado.
+
+RF001 prevê dez campos: Número de Série, Cooperado, Marca, Modelo, Potência de Pico (Wp), Eficiência (%), Data de Fabricação, Situação, Fornecedor e Inversor ativo. Número de Série, Cooperado e Fornecedor são obrigatórios. A apresentação completa, a localização da data, a herança de Usina e a auditoria têm expectativas adicionais. Mantenha essas expectativas no registro de pendências, sem declarar RF001 concluído quando o primeiro teste passar.
+
+## 4. Etapas da demonstração comum
+
+A ordem abaixo acompanha os ciclos externo e interno apresentados na aula, com base na abordagem de Percival [@percival2024early, caps. 1–4]. O avanço depende da evidência indicada, e não de copiar todos os arquivos de uma vez. A distribuição do tempo será conduzida pelo docente; esta sequência não estabelece novos horários, prazos ou critérios de avaliação.
+
+| Etapa | Ação | Evidência | Condição para avançar |
+|---|---|---|---|
+| 1 | Delimitar o comportamento e escrever a narrativa | Contrato e caso descritos | Expectativa sustentada pela fonte; convenções separadas das regras |
+| 2 | Confirmar a condição inicial | Página identificada, sem a lista | Aplicação e navegador conseguem executar o percurso |
+| 3 | Escrever e executar a nova expectativa externa | Falha ao procurar a lista | Falha causada pelo controle ausente |
+| 4 | Escrever e executar a expectativa interna | Resposta bem-sucedida, mas sem o fragmento esperado | Falha de asserção sobre o HTML ausente |
+| 5 | Implementar o mínimo e repetir as execuções | Testes interno e externo aprovados | Mesmo contrato, sem enfraquecer as asserções |
+| 6 | Extrair o HTML para o template | Execuções antes e depois da mudança | Comportamento preservado |
+| 7 | Comparar HTML presente com controle visível | Resultados do contraexemplo e da restauração | Explicação dos limites dos dois testes |
+
+### Etapa 1 — Escrever o caso antes do código
+
+Descreva, em comentários narrativos, a preparação, a ação da pessoa usuária e o resultado que ela espera encontrar. Use o exemplo exclusivamente comentado do conteúdo canônico como referência. Não comece pela view nem pelos seletores.
+
+Em seguida, delimite o pequeno passo executável: identificação da página e lista de Cooperado visível. Indique qual trecho de RF001 sustenta a expectativa. Acrescente a rota e o seletor como convenções de implementação do teste, sem apresentá-los como regras do requisito.
+
+Mantenha o cenário mais amplo de `CenariosRF001Test` separado desse primeiro passo. Um comentário descrevendo auditoria não executa um teste de auditoria. Métodos marcados com `skip` registram pendências e não comprovam atendimento.
+
+### Etapa 2 — Confirmar o ponto de partida
+
+A sequência de Cooperado pressupõe uma página que já apresenta a identificação correta e ainda não contém a lista. Confirme essa condição com o docente. Se a demonstração começar antes dela, acompanhe primeiro os pequenos passos necessários para obter a identificação da página; não atribua uma falha de rota ou de título à ausência de Cooperado.
+
+No projeto preparado, confirme que o runner encontra o teste, que o navegador inicia e que a página pode ser acessada. Uma falha de importação, configuração, inicialização do navegador ou conexão não é a falha de comportamento procurada nesta etapa.
+
+Enquanto um problema de ambiente estiver sendo resolvido, revise o caso, a fonte da expectativa e as pendências do requisito. Registre o bloqueio sem produzir resultados de execução presumidos.
+
+### Etapa 3 — Observar o vermelho externo
+
+No arquivo de testes funcionais, use `PaginaInclusaoPainelTest` e o método `test_pagina_apresenta_lista_de_cooperados`, conforme o exemplo canônico. Preserve os comentários que explicam o percurso. O teste deve acessar a página, confirmar sua identificação, localizar `select[name="cooperado"]`, verificar que existe um único controle e conferir sua visibilidade.
+
+Execute a nova expectativa antes de acrescentar a lista à aplicação. Registre o comando efetivamente utilizado e a saída relevante. Na condição inicial definida, a busca deve encontrar zero controles e a asserção sobre a quantidade deve falhar.
+
+Leia a falha antes de editar a implementação. Se o teste passar de imediato, confira se o controle já existe ou se a asserção deixou de observar o comportamento. Não remova um controle existente para fabricar retrospectivamente um ciclo de TDD. Retome com o docente um ponto inicial adequado ou escolha um comportamento ainda ausente.
+
+### Etapa 4 — Observar o vermelho interno
+
+Em `paineis/tests.py`, introduza `RespostaInclusaoPainelTest` em passos separados. Primeiro, execute `test_pagina_responde_com_sucesso`: a resposta com status 200 confirma a condição inicial já existente. Esse resultado verde não demonstra a inclusão da lista.
+
+Depois, acrescente `test_resposta_contem_lista_de_cooperados`. Use o fragmento e a asserção `assertContains(..., count=1, html=True)` apresentados na seção "Dois ciclos na aplicação web" do conteúdo. Execute antes de inserir o fragmento na resposta e registre a falha pelo conteúdo ausente.
+
+Explique a diferença entre os dois métodos: um observa o status; o outro observa a estrutura HTML esperada. Nenhum deles abre um navegador. O cliente de teste percorre o atendimento da solicitação, incluindo rota e view e, quando houver renderização, o template. Não classifique esse percurso como unidade isolada apenas por não usar Selenium [@djangoTestingTools52].
+
+### Etapa 5 — Implementar o mínimo e voltar ao navegador
+
+Após registrar as falhas esperadas, acrescente à resposta o controle do exemplo de Verde. Preserve a identificação da página. A opção inicial "Selecione um cooperado" não representa um cadastro persistido de Cooperado.
+
+Execute o teste interno. Quando passar, execute novamente o teste externo sem mudar sua expectativa. Se o teste externo continuar vermelho, examine o que o navegador observou: o verde interno não autoriza declarar o controle visível.
+
+Registre os resultados separadamente. Não implemente gravação, validações de submissão ou os demais campos para antecipar etapas posteriores. A implementação mínima atende ao contrato deste passo, não à Feature inteira.
+
+### Etapa 6 — Refatorar e verificar regressão
+
+Com os testes aprovados, identifique a melhoria: separar o HTML da função que produz a resposta. Registre uma execução aprovada antes da alteração.
+
+Extraia o HTML para `paineis/templates/paineis/inclusao.html` e altere a view para retornar `render(...)`, seguindo os exemplos de Refatoração. Mantenha o título, os atributos do controle e a opção inicial. Não acrescente um novo comportamento durante essa extração.
+
+Execute novamente os testes interno e externo, além dos demais testes pertinentes que já passavam. Se houver regressão, investigue a extração e a localização do template. Não altere a expectativa para aceitar a perda do controle. Registre a execução posterior e explique o que permaneceu igual para a pessoa usuária.
+
+### Etapa 7 — Investigar o contraexemplo
+
+Use o exemplo "Contraexemplo — lista oculta" do conteúdo canônico em uma alteração temporária e controlada. Não substitua o controle nem seu conteúdo: o exercício mantém o HTML esperado e oculta a lista com o mecanismo mostrado na aula.
+
+Antes de executar, registre sua previsão para cada teste. Depois, execute os dois e compare a previsão com os resultados. O teste interno pode continuar aprovado porque o fragmento está na resposta; o teste externo deve falhar na verificação de visibilidade. Identifique a asserção que distingue essa situação da lista ausente.
+
+Restaure a versão visível e execute novamente os testes. A alteração temporária não deve permanecer como resultado final do laboratório.
+
+| Situação | Resultado interno esperado | Resultado externo esperado |
+|---|---|---|
+| Lista ausente, identificação correta | Falha na presença do fragmento | Falha na quantidade de controles |
+| Lista presente e oculta | Aprovação do fragmento esperado | Falha na visibilidade |
+| Lista presente e visível | Aprovação | Aprovação |
+| Mesmo HTML extraído para template | Aprovação preservada | Aprovação preservada |
+
+Esta tabela contém previsões do exercício. Preencha um registro separado com os resultados realmente observados; não apresente a tabela como log de execução.
+
+## 5. Aplicação à Epic do grupo
+
+Retome a especificação revisada na mini-RTF. Escolha um comportamento pequeno e observável da própria Epic, adequado à abertura de uma página e à apresentação de um controle ou identificação prevista no requisito. Não imponha o campo Cooperado a uma Epic que não contém essa regra.
+
+1. Registre a Epic, o requisito, o critério relacionado e a versão da fonte. Se houver divergência com o backlog, conserve os identificadores e descreva a divergência.
+2. Escreva a preparação, a ação, o resultado esperado e o limite do caso em linguagem de uso. Resolva ambiguidades antes de escolher valores esperados.
+3. Separe a regra de negócio das convenções para URL, seletor e nome do teste. Não copie os seletores de RF001 para um comportamento diferente.
+4. No projeto didático novo do grupo, escreva e execute a expectativa externa antes do comportamento. Confirme que a falha chega à asserção pretendida.
+5. Escolha a responsabilidade interna necessária para produzir esse resultado. Escreva e execute a nova expectativa antes de implementar.
+6. Implemente o mínimo, execute o teste interno e volte ao externo. Registre os dois resultados.
+7. Se houver uma melhoria estrutural justificada, refatore e repita os testes. Se não houver, registre a justificativa para manter a estrutura; não faça uma mudança artificial apenas para preencher uma etapa.
+8. Declare o que foi observado e o que ainda falta no requisito.
+
+Se o comportamento escolhido já existir, a execução pode verificar conformidade ou caracterizar o que existe, mas não comprova que ele foi desenvolvido por TDD. Escolha, com o docente, outro pequeno comportamento ainda ausente. Não copie comportamentos do backend existente para depois escrever testes que os confirmem.
+
+Se o contrato depender de opções, formatos ou regras ainda indefinidos, registre a pergunta e o motivo do bloqueio. Durante a espera, revise a narrativa e prepare a rastreabilidade; não invente valores, limites ou mensagens para obter um teste executável.
+
+## 6. Registro das evidências
+
+Use um registro que permita reconstruir a sequência. As evidências abaixo orientam a aprendizagem e a discussão em aula; não estabelecem pesos, datas ou uma política de entrega.
+
+### Identificação do recorte
+
+| Informação | Registro do grupo |
+|---|---|
+| Epic e requisito | Preencher com identificadores da fonte |
+| Fonte e versão consultada | Indicar documento e versão |
+| Decisões e divergências | Registrar ou indicar que não foram identificadas |
+| Preparação, ação e resultado esperado | Descrever o caso |
+| Convenções de observação | Indicar rota, seletor e identificação adotados |
+| Fora do alcance | Declarar comportamentos não exercitados |
+
+### Histórico de execução
+
+Para cada execução relevante, registre o teste e sua localização, a versão do código observada, o comando utilizado, o resultado esperado, a saída relevante e sua interpretação. Distinga aprovação, falha de asserção, erro de execução e teste ignorado. Preserve a evidência do vermelho antes de implementar.
+
+| Momento | Evidência a conservar |
+|---|---|
+| Nova expectativa externa | Falha significativa e asserção atingida |
+| Nova expectativa interna | Falha sobre o comportamento interno ausente |
+| Implementação mínima | Resultados interno e externo, sem enfraquecimento das expectativas |
+| Refatoração, quando realizada | Justificativa, alteração e resultados antes e depois |
+| Contraexemplo da demonstração | Previsões, resultados e explicação da diferença |
+| Restauração | Resultados após devolver a visibilidade ao controle |
+
+Capturas da página podem acompanhar o registro, mas não substituem a saída dos testes nem demonstram a ordem entre teste e implementação. Um arquivo de teste escrito também não comprova que foi executado.
+
+Ao consolidar, associe cada expectativa a uma das situações: verificada por execução, parcialmente verificada, pendente ou não exercitada neste recorte. Explique a limitação de cada conclusão. Por exemplo: "A lista de Cooperado está visível; ainda não verificamos a rejeição de inclusão sem Cooperado".
+
+## 7. Critérios de conclusão e discussão
+
+Confira o recorte com o docente a partir das evidências disponíveis:
+
+- [ ] O caso identifica a fonte, a preparação, a ação e o resultado esperado.
+- [ ] As decisões e divergências permanecem explícitas.
+- [ ] O teste externo observa o comportamento escolhido, e não apenas uma resposta bem-sucedida.
+- [ ] A nova expectativa falhou pelo motivo esperado antes da implementação.
+- [ ] O teste interno orientou uma responsabilidade menor e seu alcance foi explicado.
+- [ ] A implementação mínima foi seguida de execução interna e externa.
+- [ ] A refatoração, quando realizada, preservou os testes aprovados; sua ausência tem justificativa.
+- [ ] O contraexemplo da demonstração foi explicado e a versão visível foi restaurada.
+- [ ] O grupo distingue resultados executados, testes ignorados e pendências.
+- [ ] A conclusão declara apenas o recorte verificado, sem afirmar atendimento da Feature completa.
+
+Se uma execução não pôde ocorrer, marque-a como pendente e registre o bloqueio. O planejamento do teste pode estar pronto enquanto a parte executável permanece incompleta.
+
+Na discussão, explique de onde veio o resultado esperado, qual asserção detectou a ausência do comportamento e por que os testes interno e externo oferecem evidências diferentes. Relacione o caso à verificação do contrato e indique o que ainda precisaria ser discutido ou observado para validar sua adequação ao uso.
+
+Persistência e submissão serão trabalhadas no encontro seguinte; validações de entrada terão seus próprios casos. Não estenda este laboratório para concluir essas funcionalidades sem orientação docente.
+
+## 8. Referências e materiais relacionados
+
+- [Conteúdo canônico da Aula 06](index.qmd): contrato de RF001, exemplos completos, dois ciclos e limites das conclusões.
+- [Slides da Aula 06](slides.qmd): acompanhamento da demonstração e janelas expansíveis de código.
+- [Laboratório da Aula 05](../05-mini-rtf-projetos/laboratorio.qmd): decisões e pendências da revisão de requisitos.
+- Material de requisitos funcionais do docente, referenciado no conteúdo da aula [@amaralRequisitosSCGP2023].
+- Percival: narrativa do teste funcional, pequenos passos e ciclos externo e interno [@percival2024early, caps. 1–4].
+- Ferramentas de teste do Django: cliente de teste e asserções usadas no ciclo interno [@djangoTestingTools52].

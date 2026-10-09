@@ -38,3 +38,5 @@ Este módulo aborda os métodos, processos e práticas de Verificação e Valida
 ## Aula 04: Verificação Estática
 
 {{< include 04-verificacao-estatica/_content.qmd >}}
+
+

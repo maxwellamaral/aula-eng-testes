@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1370" viewBox="0 0 1600 1370" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Dois ciclos, um comportamento: TDD na aplicação web</title>
+  <desc id="descricao">O teste externo exige uma lista de Cooperado visível. Sua falha esperada orienta um pequeno passo interno: observar um teste falhar, implementar até passar e refatorar quando necessário mantendo os testes aprovados. Depois, executar novamente o teste externo. Se ainda faltar comportamento, escolher outro passo interno; se passar, encerrar somente o recorte observado.</desc>
+  <defs>
+    <marker id="seta" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#334155"/></marker>
+    <marker id="seta-verde" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#166534"/></marker>
+    <style>
+      text { font-family: 'Liberation Sans', sans-serif; fill: #172033; }
+      .titulo { font-size: 38px; font-weight: 700; }
+      .subtitulo { font-size: 23px; fill: #475569; }
+      .faixa { font-size: 26px; font-weight: 700; }
+      .cabecalho { font-size: 25px; font-weight: 700; }
+      .texto { font-size: 22px; }
+      .nota { font-size: 21px; fill: #475569; }
+      .seta { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#seta); stroke-linejoin: round; }
+      .seta-verde { fill: none; stroke: #166534; stroke-width: 3; marker-end: url(#seta-verde); }
+    </style>
+  </defs>
+  <rect width="1600" height="1370" fill="#ffffff"/>
+  <text x="60" y="66" class="titulo">Dois ciclos, um comportamento</text>
+  <text x="60" y="108" class="subtitulo">Exemplo de RF001: apresentar uma lista de Cooperado visível</text>
+  <rect x="40" y="145" width="1520" height="1145" rx="24" fill="#f8fbfe" stroke="#2c607d" stroke-width="3"/>
+  <text x="75" y="191" class="faixa" fill="#245571">CICLO EXTERNO · expectativa observada no navegador (Selenium)</text>
+
+  <path class="seta" d="M800,310 V416"/>
+  <path class="seta" d="M800,776 V848"/>
+  <path class="seta" d="M800,944 V1010"/>
+  <path class="seta" d="M680,1080 H110 V554 H258"/>
+  <path class="seta-verde" d="M920,1080 H1148"/>
+
+  <rect x="410" y="220" width="780" height="90" rx="14" fill="#e5f1fa" stroke="#2c607d" stroke-width="2"/>
+  <text x="800" y="257" text-anchor="middle" class="cabecalho">1. Escrever e executar o teste externo</text>
+  <text x="800" y="291" text-anchor="middle" class="texto">A página deve apresentar a lista de Cooperado visível.</text>
+  <rect x="455" y="337" width="690" height="46" rx="10" fill="#fff0ed"/>
+  <text x="800" y="367" text-anchor="middle" class="texto">Falha esperada: a página abre, mas o controle falta.</text>
+
+  <rect x="220" y="420" width="1160" height="356" rx="20" fill="#ffffff" stroke="#ae7834" stroke-width="3"/>
+  <text x="250" y="463" class="faixa">CICLO INTERNO · um pequeno passo (Django)</text>
+  <path class="seta" d="M560,554 H638"/>
+  <path class="seta" d="M950,554 H1038"/>
+  <path class="seta" d="M790,619 V674 H410 V619"/>
+  <rect x="260" y="494" width="300" height="125" rx="14" fill="#fff0ed" stroke="#a33c32" stroke-width="2"/>
+  <text x="410" y="531" text-anchor="middle" class="cabecalho">2. Observar o vermelho</text>
+  <text x="410" y="567" text-anchor="middle" class="texto">Novo teste interno falha:</text>
+  <text x="410" y="597" text-anchor="middle" class="texto">a resposta não tem a lista.</text>
+  <rect x="640" y="494" width="310" height="125" rx="14" fill="#fff7e8" stroke="#ae7834" stroke-width="2"/>
+  <text x="795" y="531" text-anchor="middle" class="cabecalho">3. Implementar e testar</text>
+  <text x="795" y="567" text-anchor="middle" class="texto">Acrescentar o mínimo.</text>
+  <text x="795" y="597" text-anchor="middle" class="texto">Executar o teste novamente.</text>
+  <rect x="1040" y="494" width="300" height="125" rx="14" fill="#ecf8ef" stroke="#357847" stroke-width="2"/>
+  <text x="1190" y="531" text-anchor="middle" class="cabecalho">4. Verde e refatoração</text>
+  <text x="1190" y="567" text-anchor="middle" class="texto">Refatorar se houver motivo.</text>
+  <text x="1190" y="597" text-anchor="middle" class="texto">Manter os testes aprovados.</text>
+  <text x="991" y="530" text-anchor="middle" class="nota">passou</text>
+  <rect x="448" y="651" width="306" height="44" rx="8" fill="#ffffff"/>
+  <text x="601" y="680" text-anchor="middle" class="nota">Ainda falha: corrigir e testar</text>
+  <text x="800" y="746" text-anchor="middle" class="nota">Um verde interno permite retornar ao navegador; não comprova o verde externo.</text>
+
+  <rect x="520" y="850" width="560" height="94" rx="14" fill="#e5f1fa" stroke="#2c607d" stroke-width="2"/>
+  <text x="800" y="888" text-anchor="middle" class="cabecalho">5. Executar novamente o teste externo</text>
+  <text x="800" y="922" text-anchor="middle" class="texto">A lista aparece na página do navegador?</text>
+  <path d="M800,1010 L920,1080 L800,1150 L680,1080 Z" fill="#ffffff" stroke="#2c607d" stroke-width="2"/>
+  <text x="800" y="1072" text-anchor="middle" class="texto">Teste externo</text>
+  <text x="800" y="1102" text-anchor="middle" class="cabecalho">passou?</text>
+
+  <text x="370" y="1024" text-anchor="middle" class="cabecalho">Não: ainda falta comportamento</text>
+  <text x="370" y="1057" text-anchor="middle" class="texto">Ler a falha e escolher outro pequeno passo.</text>
+  <text x="1035" y="1060" text-anchor="middle" class="cabecalho" fill="#166534">Sim</text>
+  <rect x="1150" y="1023" width="350" height="120" rx="14" fill="#ecf8ef" stroke="#357847" stroke-width="2"/>
+  <text x="1325" y="1062" text-anchor="middle" class="cabecalho">6. Recorte atendido</text>
+  <text x="1325" y="1095" text-anchor="middle" class="texto">Lista presente e visível.</text>
+  <text x="1325" y="1124" text-anchor="middle" class="texto">A Feature não está concluída.</text>
+
+  <rect x="250" y="1190" width="1100" height="59" rx="12" fill="#fff7e8"/>
+  <text x="800" y="1227" text-anchor="middle" class="texto">Contraexemplo: lista no HTML, mas oculta → interno passa; externo falha.</text>
+  <text x="60" y="1336" class="nota">Síntese didática própria · relação entre os ciclos baseada em Percival, capítulo 4 · Aula 06 — VVTS</text>
+</svg>

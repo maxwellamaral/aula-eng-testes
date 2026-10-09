@@ -12,8 +12,17 @@ Este repositório contém o material didático da disciplina **Verificação, Va
 - Apostila: `docs/apostila.qmd`, que inclui os fragmentos `_content.qmd`.
 - Referências bibliográficas: `docs/references.bib`.
 - Estilos e comportamento: `assets/`.
+- Frases e referências aos autores que devem ser inseridas como citação direta conforme a aula indicada na seção: `resources/frases.md`
 
 Leia as especificações relevantes em `specs/` antes de criar ou alterar material didático.
+
+## Sequência vigente dos encontros restantes
+
+- Para os encontros 06–13, siga `specs/replanejamento-tdd.md`, aprovado pelo docente. Essa especificação tem precedência sobre a sequência inicial das semanas 06–17 em `docs/00-apresentacao/slides.qmd`, sem eliminar competências nem alterar regras de avaliação.
+- Use TDD como eixo integrador, com Python, Django, Selenium e `uv`, em aplicação didática nova e repositório separado. Não copie comportamentos do backend existente.
+- A demonstração comum usa a Feature 24258 da Epic 24189; Cooperado é obrigatório por decisão docente. Preserve a divergência com o backlog e adapte as práticas dos grupos às respectivas Epics.
+- Produza primeiro o texto canônico da Aula 06. Aguarde revisão manual e autorização específica antes de criar slides, laboratório, guia docente, script de ambiente ou aplicação didática.
+- Não atualize a Aula 00 nem renderize, integre ou publique os materiais sem autorização explícita para essas etapas.
 
 ## Limites de decisão
 

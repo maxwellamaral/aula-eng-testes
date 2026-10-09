@@ -89,6 +89,16 @@ page-layout: article
 :::
 :::
 
+::: {.lesson-group}
+#### Aula 06: Introdução ao TDD — do requisito ao primeiro comportamento web {.lesson-group-title .unlisted}
+
+::: {.lesson-links}
+- [📄 Conteúdo da Aula](06-introducao-tdd/index.qmd){.lesson-link}
+- [🖥️ Visualizar Apresentação de Slides](06-introducao-tdd/slides.qmd){.lesson-link}
+- [🧪 Laboratório 06: Do requisito ao primeiro comportamento web](06-introducao-tdd/laboratorio.qmd){.lesson-link}
+:::
+:::
+
 :::
 
 :::

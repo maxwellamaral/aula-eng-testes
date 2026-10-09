@@ -1,0 +1,450 @@
+<!-- Exemplos integrais de _content.qmd, na mesma ordem. O teste de paridade detecta divergências. -->
+<dialog id="code-examples-dialog" aria-labelledby="code-examples-title">
+  <header class="code-examples-toolbar">
+    <h2 id="code-examples-title">Códigos de exemplo — Aula 06</h2>
+    <button type="button" data-code-action="expand" aria-pressed="false">Expandir janela</button>
+    <button type="button" data-code-action="smaller" aria-label="Diminuir fonte">A−</button>
+    <button type="button" data-code-action="larger" aria-label="Aumentar fonte">A+</button>
+    <button type="button" data-code-action="close" aria-label="Fechar janela">Fechar</button>
+  </header>
+  <label for="code-examples-select">Exemplo completo</label>
+  <select id="code-examples-select">
+    <option value="codigo-1">Teste externo — lista de Cooperado visível</option>
+    <option value="codigo-2">Verde — view com HTML na resposta</option>
+    <option value="codigo-3">Refatoração — view que renderiza o template</option>
+    <option value="codigo-4">Refatoração — template completo</option>
+    <option value="codigo-5">Cenário de RF001 — narrativa comentada</option>
+    <option value="codigo-6">Cenário de RF001 — comentários e código</option>
+    <option value="codigo-7">Teste interno — resposta e lista de Cooperado</option>
+    <option value="codigo-8">Verde — fragmento HTML da lista</option>
+    <option value="codigo-9">Contraexemplo — lista oculta</option>
+  </select>
+  <div id="code-examples-content" tabindex="0" aria-label="Código completo; use a rolagem para ler"></div>
+  <p class="code-examples-hint">Role para ler o código completo. A− e A+ ajustam a fonte. Esc fecha a janela.</p>
+</dialog>
+<template id="codigo-1" data-language="python" data-label="Teste externo — lista de Cooperado visível"><pre><code><span class="ce-c1"># Arquivo: bvapp-didatico/functional_tests/test_rf001_inclusao_painel.py</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">django.contrib.staticfiles.testing</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">StaticLiveServerTestCase</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">selenium</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">webdriver</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">selenium.webdriver.common.by</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">By</span>
+
+
+<span class="ce-k">class</span><span class="ce-w"> </span><span class="ce-nc">PaginaInclusaoPainelTest</span><span class="ce-p">(</span><span class="ce-n">StaticLiveServerTestCase</span><span class="ce-p">):</span>
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">setUp</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span> <span class="ce-o">=</span> <span class="ce-n">webdriver</span><span class="ce-o">.</span><span class="ce-n">Chrome</span><span class="ce-p">()</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">addCleanup</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">quit</span><span class="ce-p">)</span>
+
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_pagina_apresenta_lista_de_cooperados</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-c1"># Preparação: acessar a página prevista neste exemplo.</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">get</span><span class="ce-p">(</span><span class="ce-sa">f</span><span class="ce-s2">"</span><span class="ce-si">{</span><span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">live_server_url</span><span class="ce-si">}</span><span class="ce-s2">/paineis/novo/"</span><span class="ce-p">)</span>
+        <span class="ce-n">titulo</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_element</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">TAG_NAME</span><span class="ce-p">,</span> <span class="ce-s2">"h1"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">titulo</span><span class="ce-o">.</span><span class="ce-n">text</span><span class="ce-p">,</span> <span class="ce-s2">"Inclusão de painel solar"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1"># Observação: procurar o controle definido para Cooperado.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span>
+            <span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">CSS_SELECTOR</span><span class="ce-p">,</span> <span class="ce-s1">'select[name="cooperado"]'</span>
+        <span class="ce-p">)</span>
+
+        <span class="ce-c1"># Oráculo: a página deve apresentar uma lista visível.</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span>
+            <span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">,</span>
+            <span class="ce-s2">"RF001: a página deve apresentar a lista de Cooperado."</span><span class="ce-p">,</span>
+        <span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span>
+            <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">(),</span>
+            <span class="ce-s2">"RF001: a lista de Cooperado deve estar visível."</span><span class="ce-p">,</span>
+        <span class="ce-p">)</span></code></pre></template>
+<template id="codigo-2" data-language="python" data-label="Verde — view com HTML na resposta"><pre><code><span class="ce-c1"># Arquivo: bvapp-didatico/paineis/views.py</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">django.http</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">HttpResponse</span>
+
+
+<span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">pagina_inclusao_painel</span><span class="ce-p">(</span><span class="ce-n">request</span><span class="ce-p">):</span>
+
+    <span class="ce-c1"># Neste pequeno passo, o HTML fica diretamente na resposta</span>
+    <span class="ce-c1"># para tornar visível a mudança exigida pelo teste.</span>
+    <span class="ce-c1"># Na seção Refatorar, vamos extraí-lo para o template</span>
+    <span class="ce-c1"># paineis/templates/paineis/inclusao.html e usar diretamente</span>
+    <span class="ce-c1"># return render(request, "paineis/inclusao.html").</span>
+    <span class="ce-c1"># A extração deve preservar o comportamento observado pelos testes.</span>
+
+    <span class="ce-k">return</span> <span class="ce-n">HttpResponse</span><span class="ce-p">(</span>
+<span class="ce-w">        </span><span class="ce-sd">"""&lt;!doctype html&gt;</span>
+<span class="ce-sd">        &lt;html lang="pt-BR"&gt;</span>
+<span class="ce-sd">          &lt;head&gt;</span>
+<span class="ce-sd">            &lt;meta charset="utf-8"&gt;</span>
+<span class="ce-sd">            &lt;title&gt;Inclusão de painel solar&lt;/title&gt;</span>
+<span class="ce-sd">          &lt;/head&gt;</span>
+<span class="ce-sd">          &lt;body&gt;</span>
+<span class="ce-sd">            &lt;h1&gt;Inclusão de painel solar&lt;/h1&gt;</span>
+<span class="ce-sd">            &lt;label for="cooperado"&gt;Cooperado&lt;/label&gt;</span>
+<span class="ce-sd">            &lt;select id="cooperado" name="cooperado"&gt;</span>
+<span class="ce-sd">              &lt;option value=""&gt;Selecione um cooperado&lt;/option&gt;</span>
+<span class="ce-sd">            &lt;/select&gt;</span>
+<span class="ce-sd">          &lt;/body&gt;</span>
+<span class="ce-sd">        &lt;/html&gt;"""</span>
+    <span class="ce-p">)</span></code></pre></template>
+<template id="codigo-3" data-language="python" data-label="Refatoração — view que renderiza o template"><pre><code><span class="ce-c1"># Arquivo: bvapp-didatico/paineis/views.py</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">django.shortcuts</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">render</span>
+
+
+<span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">pagina_inclusao_painel</span><span class="ce-p">(</span><span class="ce-n">request</span><span class="ce-p">):</span>
+    <span class="ce-k">return</span> <span class="ce-n">render</span><span class="ce-p">(</span><span class="ce-n">request</span><span class="ce-p">,</span> <span class="ce-s2">"paineis/inclusao.html"</span><span class="ce-p">)</span></code></pre></template>
+<template id="codigo-4" data-language="html" data-label="Refatoração — template completo"><pre><code><span class="ce-cm">&lt;!-- Arquivo: bvapp-didatico/paineis/templates/paineis/inclusao.html --&gt;</span>
+<span class="ce-cp">&lt;!doctype html&gt;</span>
+<span class="ce-p">&lt;</span><span class="ce-nt">html</span> <span class="ce-na">lang</span><span class="ce-o">=</span><span class="ce-s">"pt-BR"</span><span class="ce-p">&gt;</span>
+  <span class="ce-p">&lt;</span><span class="ce-nt">head</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">meta</span> <span class="ce-na">charset</span><span class="ce-o">=</span><span class="ce-s">"utf-8"</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">title</span><span class="ce-p">&gt;</span>Inclusão de painel solar<span class="ce-p">&lt;/</span><span class="ce-nt">title</span><span class="ce-p">&gt;</span>
+  <span class="ce-p">&lt;/</span><span class="ce-nt">head</span><span class="ce-p">&gt;</span>
+  <span class="ce-p">&lt;</span><span class="ce-nt">body</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">h1</span><span class="ce-p">&gt;</span>Inclusão de painel solar<span class="ce-p">&lt;/</span><span class="ce-nt">h1</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">label</span> <span class="ce-na">for</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span><span class="ce-p">&gt;</span>Cooperado<span class="ce-p">&lt;/</span><span class="ce-nt">label</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">select</span> <span class="ce-na">id</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span> <span class="ce-na">name</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span><span class="ce-p">&gt;</span>
+      <span class="ce-p">&lt;</span><span class="ce-nt">option</span> <span class="ce-na">value</span><span class="ce-o">=</span><span class="ce-s">""</span><span class="ce-p">&gt;</span>Selecione um cooperado<span class="ce-p">&lt;/</span><span class="ce-nt">option</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;/</span><span class="ce-nt">select</span><span class="ce-p">&gt;</span>
+  <span class="ce-p">&lt;/</span><span class="ce-nt">body</span><span class="ce-p">&gt;</span>
+<span class="ce-p">&lt;/</span><span class="ce-nt">html</span><span class="ce-p">&gt;</span></code></pre></template>
+<template id="codigo-5" data-language="python" data-label="Cenário de RF001 — narrativa comentada"><pre><code><span class="ce-c1"># Arquivo: bvapp-didatico/functional_tests/test_rf001_inclusao_painel.py</span>
+<span class="ce-c1"># Cenário: observar a página inicial de inclusão de painel solar.</span>
+<span class="ce-c1"># Referência: redação atual de RF001 e contrato didático.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># A aplicação didática está em execução e há um navegador disponível</span>
+<span class="ce-c1"># para o teste. Não é necessário cadastrar ou salvar um painel</span>
+<span class="ce-c1"># para observar esta página.</span>
+<span class="ce-c1"># O país configurado no sistema e seu padrão de data são conhecidos</span>
+<span class="ce-c1"># na preparação do teste, sem presumir um país ou formato específico.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Uma pessoa usuária quer conhecer a página em que poderá iniciar</span>
+<span class="ce-c1"># a inclusão de um painel solar. Ela acessa essa página no navegador.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ao abrir a página, ela encontra uma identificação visível de que</span>
+<span class="ce-c1"># está na página de inclusão de painel solar.</span>
+<span class="ce-c1"># O teste deverá verificar essa identificação, não apenas confirmar</span>
+<span class="ce-c1"># que a aplicação respondeu à solicitação.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ela encontra o campo Número de Série, com um controle de texto</span>
+<span class="ce-c1"># visível e identificado para informar o número de série do painel.</span>
+<span class="ce-c1"># O teste deverá verificar o controle correspondente ao campo;</span>
+<span class="ce-c1"># encontrar somente as palavras "Número de Série" não será suficiente.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ela também encontra o campo Cooperado, apresentado como uma lista</span>
+<span class="ce-c1"># visível e identificada para a seleção de um cooperado.</span>
+<span class="ce-c1"># O teste deverá verificar esse controle, não apenas a presença</span>
+<span class="ce-c1"># da palavra "Cooperado" em algum lugar da página.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ela encontra Marca como uma lista de valores e Modelo como</span>
+<span class="ce-c1"># um campo de texto, ambos visíveis e identificados.</span>
+<span class="ce-c1"># O teste deverá verificar cada controle e sua identificação.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ela encontra Potência de Pico (Wp) e Eficiência (%) como campos</span>
+<span class="ce-c1"># numéricos, visíveis e identificados com as unidades correspondentes.</span>
+<span class="ce-c1"># O teste deverá verificar os dois controles e suas identificações,</span>
+<span class="ce-c1"># sem acrescentar limites numéricos que RF001 não definiu.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ela encontra Data de Fabricação como um campo de data.</span>
+<span class="ce-c1"># O teste deverá verificar o controle, sua identificação e a forma</span>
+<span class="ce-c1"># de apresentação da data conforme o país configurado no sistema.</span>
+<span class="ce-c1"># Não basta verificar que o controle existe para concluir</span>
+<span class="ce-c1"># que sua apresentação respeita essa configuração.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Ela encontra Situação como uma lista de valores, Fornecedor como</span>
+<span class="ce-c1"># um campo de texto e Inversor ativo como uma lista de valores.</span>
+<span class="ce-c1"># O teste deverá verificar cada controle visível e sua identificação.</span>
+<span class="ce-c1"># Não presumimos opções específicas para as listas que RF001</span>
+<span class="ce-c1"># não enumerou, nem trocamos Fornecedor por uma lista de valores.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Junto a Número de Série, Cooperado e Fornecedor, ela encontra</span>
+<span class="ce-c1"># a indicação de que os três campos são obrigatórios.</span>
+<span class="ce-c1"># O teste deverá verificar essas indicações conforme RF001.</span>
+<span class="ce-c1"># Nesta redação, o asterisco identifica os campos obrigatórios;</span>
+<span class="ce-c1"># não estendemos essa marcação aos demais campos por suposição.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Com essas observações, ela reconhece a finalidade da página,</span>
+<span class="ce-c1"># encontra os dez controles previstos em RF001 e reconhece</span>
+<span class="ce-c1"># a obrigatoriedade de Número de Série, Cooperado e Fornecedor.</span>
+<span class="ce-c1"># O cenário termina aqui, sem preencher ou submeter o formulário.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Este cenário não verifica gravação, rejeição de dados incompletos,</span>
+<span class="ce-c1"># filtros, herança de Usina, mensagem de sucesso ou auditoria.</span>
+<span class="ce-c1"># A indicação visual de obrigatoriedade não comprova que a aplicação</span>
+<span class="ce-c1"># rejeitará uma submissão sem Cooperado: isso exige outro cenário.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Cenário complementar: herdar informações da Usina pelo Inversor.</span>
+<span class="ce-c1"># Este comportamento não é verificado apenas ao abrir a página.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Para este teste, há um Inversor ativo disponível e sua Usina</span>
+<span class="ce-c1"># associada é conhecida. Os dados de preparação registram</span>
+<span class="ce-c1"># as informações dessa Usina que devem ser herdadas.</span>
+<span class="ce-c1"># A pessoa usuária seleciona esse Inversor na lista correspondente.</span>
+<span class="ce-c1"># O teste deverá verificar que as informações herdadas correspondem</span>
+<span class="ce-c1"># à Usina associada ao Inversor selecionado.</span>
+<span class="ce-c1"># RF001 não enumera essas informações nem como serão apresentadas:</span>
+<span class="ce-c1"># esclarecemos esses detalhes antes de escrever as asserções concretas.</span>
+<span class="ce-c1"># Não inventamos campos de Usina nem valores esperados.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Cenário complementar: registrar a auditoria da inclusão.</span>
+<span class="ce-c1"># Este comportamento exige realizar a inclusão, não apenas ver a página.</span>
+<span class="ce-c1">#</span>
+<span class="ce-c1"># Para este teste, são conhecidos o utilizador responsável e os dados</span>
+<span class="ce-c1"># necessários para realizar uma inclusão válida. A forma de realizar</span>
+<span class="ce-c1"># e confirmar a inclusão deverá estar definida no contrato de teste.</span>
+<span class="ce-c1"># Após a inclusão, o ID do ativo criado está disponível para comparação.</span>
+<span class="ce-c1"># O teste deverá verificar o registro de auditoria correspondente,</span>
+<span class="ce-c1"># contendo o ID desse ativo, o utilizador responsável, a data e a hora.</span>
+<span class="ce-c1"># A preparação deverá permitir conferir data e hora de forma repetível,</span>
+<span class="ce-c1"># sem presumir um fuso, formato ou tolerância que não foi definido.</span>
+<span class="ce-c1"># Esses dados não são campos que a pessoa precisa digitar no formulário.</span>
+<span class="ce-c1"># O meio de consultar a auditoria deverá ser definido antes de implementar</span>
+<span class="ce-c1"># o teste; RF001 não especifica uma tela ou uma API para essa consulta.</span></code></pre></template>
+<template id="codigo-6" data-language="python" data-label="Cenário de RF001 — comentários e código"><pre><code><span class="ce-c1"># Arquivo: bvapp-didatico/functional_tests/test_rf001_inclusao_painel.py</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">unittest</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">skip</span>
+
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">django.contrib.staticfiles.testing</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">StaticLiveServerTestCase</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">selenium</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">webdriver</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">selenium.webdriver.common.by</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">By</span>
+
+
+<span class="ce-k">class</span><span class="ce-w"> </span><span class="ce-nc">CenariosRF001Test</span><span class="ce-p">(</span><span class="ce-n">StaticLiveServerTestCase</span><span class="ce-p">):</span>
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">setUp</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span> <span class="ce-o">=</span> <span class="ce-n">webdriver</span><span class="ce-o">.</span><span class="ce-n">Chrome</span><span class="ce-p">()</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">addCleanup</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">quit</span><span class="ce-p">)</span>
+
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_apresentacao_da_pagina</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-c1"># Cenário: observar a página inicial de inclusão de painel solar.</span>
+        <span class="ce-c1"># Referência: redação atual de RF001 e contrato didático.</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># A aplicação didática está em execução e há um navegador disponível</span>
+        <span class="ce-c1"># para o teste. Não é necessário cadastrar ou salvar um painel</span>
+        <span class="ce-c1"># para observar esta página.</span>
+        <span class="ce-c1"># O país configurado no sistema e seu padrão de data são conhecidos</span>
+        <span class="ce-c1"># na preparação do teste, sem presumir um país ou formato específico.</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Uma pessoa usuária quer conhecer a página em que poderá iniciar</span>
+        <span class="ce-c1"># a inclusão de um painel solar. Ela acessa essa página no navegador.</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">get</span><span class="ce-p">(</span><span class="ce-sa">f</span><span class="ce-s2">"</span><span class="ce-si">{</span><span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">live_server_url</span><span class="ce-si">}</span><span class="ce-s2">/paineis/novo/"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ao abrir a página, ela encontra uma identificação visível de que</span>
+        <span class="ce-c1"># está na página de inclusão de painel solar.</span>
+        <span class="ce-c1"># O teste deverá verificar essa identificação, não apenas confirmar</span>
+        <span class="ce-c1"># que a aplicação respondeu à solicitação.</span>
+        <span class="ce-n">titulos</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">TAG_NAME</span><span class="ce-p">,</span> <span class="ce-s2">"h1"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">titulos</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">titulos</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">titulos</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span><span class="ce-o">.</span><span class="ce-n">text</span><span class="ce-p">,</span> <span class="ce-s2">"Inclusão de painel solar"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ela encontra o campo Número de Série, com um controle de texto</span>
+        <span class="ce-c1"># visível e identificado para informar o número de série do painel.</span>
+        <span class="ce-c1"># O teste deverá verificar o controle correspondente ao campo;</span>
+        <span class="ce-c1"># encontrar somente as palavras "Número de Série" não será suficiente.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"numero_serie"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">,</span> <span class="ce-s2">"RF001: controle numero_serie ausente ou duplicado."</span><span class="ce-p">)</span>
+        <span class="ce-n">serie</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">serie</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">serie</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"input"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">serie</span><span class="ce-o">.</span><span class="ce-n">get_property</span><span class="ce-p">(</span><span class="ce-s2">"type"</span><span class="ce-p">),</span> <span class="ce-s2">"text"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ela também encontra o campo Cooperado, apresentado como uma lista</span>
+        <span class="ce-c1"># visível e identificada para a seleção de um cooperado.</span>
+        <span class="ce-c1"># O teste deverá verificar esse controle, não apenas a presença</span>
+        <span class="ce-c1"># da palavra "Cooperado" em algum lugar da página.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"cooperado"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">cooperado</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">cooperado</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">cooperado</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"select"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ela encontra Marca como uma lista de valores e Modelo como</span>
+        <span class="ce-c1"># um campo de texto, ambos visíveis e identificados.</span>
+        <span class="ce-c1"># O teste deverá verificar cada controle e sua identificação.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"marca"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">marca</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">marca</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">marca</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"select"</span><span class="ce-p">)</span>
+
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"modelo"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">modelo</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">modelo</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">modelo</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"input"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">modelo</span><span class="ce-o">.</span><span class="ce-n">get_property</span><span class="ce-p">(</span><span class="ce-s2">"type"</span><span class="ce-p">),</span> <span class="ce-s2">"text"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ela encontra Potência de Pico (Wp) e Eficiência (%) como campos</span>
+        <span class="ce-c1"># numéricos, visíveis e identificados com as unidades correspondentes.</span>
+        <span class="ce-c1"># O teste deverá verificar os dois controles e suas identificações,</span>
+        <span class="ce-c1"># sem acrescentar limites numéricos que RF001 não definiu.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"potencia_pico"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">potencia</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">potencia</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">potencia</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"input"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">potencia</span><span class="ce-o">.</span><span class="ce-n">get_property</span><span class="ce-p">(</span><span class="ce-s2">"type"</span><span class="ce-p">),</span> <span class="ce-s2">"number"</span><span class="ce-p">)</span>
+
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"eficiencia"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">eficiencia</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">eficiencia</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">eficiencia</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"input"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">eficiencia</span><span class="ce-o">.</span><span class="ce-n">get_property</span><span class="ce-p">(</span><span class="ce-s2">"type"</span><span class="ce-p">),</span> <span class="ce-s2">"number"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ela encontra Data de Fabricação como um campo de data.</span>
+        <span class="ce-c1"># O teste deverá verificar o controle, sua identificação e a forma</span>
+        <span class="ce-c1"># de apresentação da data conforme o país configurado no sistema.</span>
+        <span class="ce-c1"># Não basta verificar que o controle existe para concluir</span>
+        <span class="ce-c1"># que sua apresentação respeita essa configuração.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"data_fabricacao"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">data_fabricacao</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">data_fabricacao</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">data_fabricacao</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"input"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">data_fabricacao</span><span class="ce-o">.</span><span class="ce-n">get_property</span><span class="ce-p">(</span><span class="ce-s2">"type"</span><span class="ce-p">),</span> <span class="ce-s2">"date"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Ela encontra Situação como uma lista de valores, Fornecedor como</span>
+        <span class="ce-c1"># um campo de texto e Inversor ativo como uma lista de valores.</span>
+        <span class="ce-c1"># O teste deverá verificar cada controle visível e sua identificação.</span>
+        <span class="ce-c1"># Não presumimos opções específicas para as listas que RF001</span>
+        <span class="ce-c1"># não enumerou, nem trocamos Fornecedor por uma lista de valores.</span>
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"situacao"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">situacao</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">situacao</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">situacao</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"select"</span><span class="ce-p">)</span>
+
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"fornecedor"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">fornecedor</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">fornecedor</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">fornecedor</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"input"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">fornecedor</span><span class="ce-o">.</span><span class="ce-n">get_property</span><span class="ce-p">(</span><span class="ce-s2">"type"</span><span class="ce-p">),</span> <span class="ce-s2">"text"</span><span class="ce-p">)</span>
+
+        <span class="ce-n">controles</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">NAME</span><span class="ce-p">,</span> <span class="ce-s2">"inversor"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">controles</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+        <span class="ce-n">inversor</span> <span class="ce-o">=</span> <span class="ce-n">controles</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">inversor</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">inversor</span><span class="ce-o">.</span><span class="ce-n">tag_name</span><span class="ce-p">,</span> <span class="ce-s2">"select"</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">## O código abaixo verifica se os rótulos dos controles estão corretos.</span>
+
+        <span class="ce-n">rotulos_por_campo</span> <span class="ce-o">=</span> <span class="ce-p">{}</span>
+        <span class="ce-k">for</span> <span class="ce-n">controle</span><span class="ce-p">,</span> <span class="ce-n">texto_esperado</span> <span class="ce-ow">in</span> <span class="ce-p">(</span>
+            <span class="ce-p">(</span><span class="ce-n">serie</span><span class="ce-p">,</span> <span class="ce-s2">"Número de Série"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">cooperado</span><span class="ce-p">,</span> <span class="ce-s2">"Cooperado"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">marca</span><span class="ce-p">,</span> <span class="ce-s2">"Marca"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">modelo</span><span class="ce-p">,</span> <span class="ce-s2">"Modelo"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">potencia</span><span class="ce-p">,</span> <span class="ce-s2">"Potência de Pico (Wp)"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">eficiencia</span><span class="ce-p">,</span> <span class="ce-s2">"Eficiência (%)"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">data_fabricacao</span><span class="ce-p">,</span> <span class="ce-s2">"Data de Fabricação"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">situacao</span><span class="ce-p">,</span> <span class="ce-s2">"Situação"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">fornecedor</span><span class="ce-p">,</span> <span class="ce-s2">"Fornecedor"</span><span class="ce-p">),</span>
+            <span class="ce-p">(</span><span class="ce-n">inversor</span><span class="ce-p">,</span> <span class="ce-s2">"Inversor ativo"</span><span class="ce-p">),</span>
+        <span class="ce-p">):</span>
+            <span class="ce-n">identificador</span> <span class="ce-o">=</span> <span class="ce-n">controle</span><span class="ce-o">.</span><span class="ce-n">get_dom_attribute</span><span class="ce-p">(</span><span class="ce-s2">"id"</span><span class="ce-p">)</span>
+            <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">identificador</span><span class="ce-p">)</span>
+            <span class="ce-n">rotulos</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">browser</span><span class="ce-o">.</span><span class="ce-n">find_elements</span><span class="ce-p">(</span><span class="ce-n">By</span><span class="ce-o">.</span><span class="ce-n">CSS_SELECTOR</span><span class="ce-p">,</span> <span class="ce-sa">f</span><span class="ce-s1">'label[for="</span><span class="ce-si">{</span><span class="ce-n">identificador</span><span class="ce-si">}</span><span class="ce-s1">"]'</span><span class="ce-p">)</span>
+            <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-nb">len</span><span class="ce-p">(</span><span class="ce-n">rotulos</span><span class="ce-p">),</span> <span class="ce-mi">1</span><span class="ce-p">)</span>
+            <span class="ce-n">rotulo</span> <span class="ce-o">=</span> <span class="ce-n">rotulos</span><span class="ce-p">[</span><span class="ce-mi">0</span><span class="ce-p">]</span>
+            <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertTrue</span><span class="ce-p">(</span><span class="ce-n">rotulo</span><span class="ce-o">.</span><span class="ce-n">is_displayed</span><span class="ce-p">())</span>
+            <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">rotulo</span><span class="ce-o">.</span><span class="ce-n">text</span><span class="ce-o">.</span><span class="ce-n">replace</span><span class="ce-p">(</span><span class="ce-s2">"*"</span><span class="ce-p">,</span> <span class="ce-s2">""</span><span class="ce-p">)</span><span class="ce-o">.</span><span class="ce-n">strip</span><span class="ce-p">(),</span> <span class="ce-n">texto_esperado</span><span class="ce-p">)</span>
+            <span class="ce-n">rotulos_por_campo</span><span class="ce-p">[</span><span class="ce-n">texto_esperado</span><span class="ce-p">]</span> <span class="ce-o">=</span> <span class="ce-n">rotulo</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Junto a Número de Série, Cooperado e Fornecedor, ela encontra</span>
+        <span class="ce-c1"># a indicação de que os três campos são obrigatórios.</span>
+        <span class="ce-c1"># O teste deverá verificar essas indicações conforme RF001.</span>
+        <span class="ce-c1"># Nesta redação, o asterisco identifica os campos obrigatórios;</span>
+        <span class="ce-c1"># não estendemos essa marcação aos demais campos por suposição.</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertIn</span><span class="ce-p">(</span><span class="ce-s2">"*"</span><span class="ce-p">,</span> <span class="ce-n">rotulos_por_campo</span><span class="ce-p">[</span><span class="ce-s2">"Número de Série"</span><span class="ce-p">]</span><span class="ce-o">.</span><span class="ce-n">text</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertIn</span><span class="ce-p">(</span><span class="ce-s2">"*"</span><span class="ce-p">,</span> <span class="ce-n">rotulos_por_campo</span><span class="ce-p">[</span><span class="ce-s2">"Cooperado"</span><span class="ce-p">]</span><span class="ce-o">.</span><span class="ce-n">text</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertIn</span><span class="ce-p">(</span><span class="ce-s2">"*"</span><span class="ce-p">,</span> <span class="ce-n">rotulos_por_campo</span><span class="ce-p">[</span><span class="ce-s2">"Fornecedor"</span><span class="ce-p">]</span><span class="ce-o">.</span><span class="ce-n">text</span><span class="ce-p">)</span>
+
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Com essas observações, ela reconhece a finalidade da página,</span>
+        <span class="ce-c1"># encontra os dez controles previstos em RF001 e reconhece</span>
+        <span class="ce-c1"># a obrigatoriedade de Número de Série, Cooperado e Fornecedor.</span>
+        <span class="ce-c1"># O cenário termina aqui, sem preencher ou submeter o formulário.</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Este cenário não verifica gravação, rejeição de dados incompletos,</span>
+        <span class="ce-c1"># filtros, herança de Usina, mensagem de sucesso ou auditoria.</span>
+        <span class="ce-c1"># A indicação visual de obrigatoriedade não comprova que a aplicação</span>
+        <span class="ce-c1"># rejeitará uma submissão sem Cooperado: isso exige outro cenário.</span>
+
+    <span class="ce-nd">@skip</span><span class="ce-p">(</span><span class="ce-s2">"Pendente: definir país, padrão de data e observação do formato na interface."</span><span class="ce-p">)</span>
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_apresentacao_localizada_da_data</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-k">raise</span> <span class="ce-ne">NotImplementedError</span><span class="ce-p">(</span><span class="ce-s2">"O oráculo da apresentação localizada ainda não foi definido."</span><span class="ce-p">)</span>
+
+    <span class="ce-nd">@skip</span><span class="ce-p">(</span><span class="ce-s2">"Pendente: definir dados do Inversor e da Usina e informações herdadas observáveis."</span><span class="ce-p">)</span>
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_heranca_de_usina</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Cenário complementar: herdar informações da Usina pelo Inversor.</span>
+        <span class="ce-c1"># Este comportamento não é verificado apenas ao abrir a página.</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Para este teste, há um Inversor ativo disponível e sua Usina</span>
+        <span class="ce-c1"># associada é conhecida. Os dados de preparação registram</span>
+        <span class="ce-c1"># as informações dessa Usina que devem ser herdadas.</span>
+        <span class="ce-c1"># A pessoa usuária seleciona esse Inversor na lista correspondente.</span>
+        <span class="ce-c1"># O teste deverá verificar que as informações herdadas correspondem</span>
+        <span class="ce-c1"># à Usina associada ao Inversor selecionado.</span>
+        <span class="ce-c1"># RF001 não enumera essas informações nem como serão apresentadas:</span>
+        <span class="ce-c1"># esclarecemos esses detalhes antes de escrever as asserções concretas.</span>
+        <span class="ce-c1"># Não inventamos campos de Usina nem valores esperados.</span>
+        <span class="ce-k">raise</span> <span class="ce-ne">NotImplementedError</span><span class="ce-p">(</span><span class="ce-s2">"Faltam os contratos de preparação, ação e observação."</span><span class="ce-p">)</span>
+
+    <span class="ce-nd">@skip</span><span class="ce-p">(</span><span class="ce-s2">"Pendente: definir inclusão válida, consulta da auditoria e controle de data e hora."</span><span class="ce-p">)</span>
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_auditoria_da_inclusao</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Cenário complementar: registrar a auditoria da inclusão.</span>
+        <span class="ce-c1"># Este comportamento exige realizar a inclusão, não apenas ver a página.</span>
+        <span class="ce-c1">#</span>
+        <span class="ce-c1"># Para este teste, são conhecidos o utilizador responsável e os dados</span>
+        <span class="ce-c1"># necessários para realizar uma inclusão válida. A forma de realizar</span>
+        <span class="ce-c1"># e confirmar a inclusão deverá estar definida no contrato de teste.</span>
+        <span class="ce-c1"># Após a inclusão, o ID do ativo criado está disponível para comparação.</span>
+        <span class="ce-c1"># O teste deverá verificar o registro de auditoria correspondente,</span>
+        <span class="ce-c1"># contendo o ID desse ativo, o utilizador responsável, a data e a hora.</span>
+        <span class="ce-c1"># A preparação deverá permitir conferir data e hora de forma repetível,</span>
+        <span class="ce-c1"># sem presumir um fuso, formato ou tolerância que não foi definido.</span>
+        <span class="ce-c1"># Esses dados não são campos que a pessoa precisa digitar no formulário.</span>
+        <span class="ce-c1"># O meio de consultar a auditoria deverá ser definido antes de implementar</span>
+        <span class="ce-c1"># o teste; RF001 não especifica uma tela ou uma API para essa consulta.</span>
+        <span class="ce-k">raise</span> <span class="ce-ne">NotImplementedError</span><span class="ce-p">(</span><span class="ce-s2">"Faltam os contratos de inclusão e de consulta da auditoria."</span><span class="ce-p">)</span></code></pre></template>
+<template id="codigo-7" data-language="python" data-label="Teste interno — resposta e lista de Cooperado"><pre><code><span class="ce-c1"># Arquivo: bvapp-didatico/paineis/tests.py</span>
+<span class="ce-kn">from</span><span class="ce-w"> </span><span class="ce-nn">django.test</span><span class="ce-w"> </span><span class="ce-kn">import</span> <span class="ce-n">SimpleTestCase</span>
+
+
+<span class="ce-k">class</span><span class="ce-w"> </span><span class="ce-nc">RespostaInclusaoPainelTest</span><span class="ce-p">(</span><span class="ce-n">SimpleTestCase</span><span class="ce-p">):</span>
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_pagina_responde_com_sucesso</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-n">resposta</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">client</span><span class="ce-o">.</span><span class="ce-n">get</span><span class="ce-p">(</span><span class="ce-s2">"/paineis/novo/"</span><span class="ce-p">)</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertEqual</span><span class="ce-p">(</span><span class="ce-n">resposta</span><span class="ce-o">.</span><span class="ce-n">status_code</span><span class="ce-p">,</span> <span class="ce-mi">200</span><span class="ce-p">)</span>
+
+    <span class="ce-k">def</span><span class="ce-w"> </span><span class="ce-nf">test_resposta_contem_lista_de_cooperados</span><span class="ce-p">(</span><span class="ce-bp">self</span><span class="ce-p">):</span>
+        <span class="ce-n">resposta</span> <span class="ce-o">=</span> <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">client</span><span class="ce-o">.</span><span class="ce-n">get</span><span class="ce-p">(</span><span class="ce-s2">"/paineis/novo/"</span><span class="ce-p">)</span>
+        <span class="ce-n">controle_esperado</span> <span class="ce-o">=</span> <span class="ce-s2">"""</span>
+<span class="ce-s2">            &lt;select id="cooperado" name="cooperado"&gt;</span>
+<span class="ce-s2">                &lt;option value=""&gt;Selecione um cooperado&lt;/option&gt;</span>
+<span class="ce-s2">            &lt;/select&gt;</span>
+<span class="ce-s2">        """</span>
+        <span class="ce-bp">self</span><span class="ce-o">.</span><span class="ce-n">assertContains</span><span class="ce-p">(</span>
+            <span class="ce-n">resposta</span><span class="ce-p">,</span>
+            <span class="ce-n">controle_esperado</span><span class="ce-p">,</span>
+            <span class="ce-n">count</span><span class="ce-o">=</span><span class="ce-mi">1</span><span class="ce-p">,</span>
+            <span class="ce-n">html</span><span class="ce-o">=</span><span class="ce-kc">True</span><span class="ce-p">,</span>
+        <span class="ce-p">)</span></code></pre></template>
+<template id="codigo-8" data-language="html" data-label="Verde — fragmento HTML da lista"><pre><code><span class="ce-cm">&lt;!-- Arquivo: bvapp-didatico/paineis/views.py (trecho da string HTML devolvida pela view) --&gt;</span>
+<span class="ce-p">&lt;</span><span class="ce-nt">h1</span><span class="ce-p">&gt;</span>Inclusão de painel solar<span class="ce-p">&lt;/</span><span class="ce-nt">h1</span><span class="ce-p">&gt;</span>
+<span class="ce-p">&lt;</span><span class="ce-nt">label</span> <span class="ce-na">for</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span><span class="ce-p">&gt;</span>Cooperado<span class="ce-p">&lt;/</span><span class="ce-nt">label</span><span class="ce-p">&gt;</span>
+<span class="ce-p">&lt;</span><span class="ce-nt">select</span> <span class="ce-na">id</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span> <span class="ce-na">name</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">option</span> <span class="ce-na">value</span><span class="ce-o">=</span><span class="ce-s">""</span><span class="ce-p">&gt;</span>Selecione um cooperado<span class="ce-p">&lt;/</span><span class="ce-nt">option</span><span class="ce-p">&gt;</span>
+<span class="ce-p">&lt;/</span><span class="ce-nt">select</span><span class="ce-p">&gt;</span></code></pre></template>
+<template id="codigo-9" data-language="html" data-label="Contraexemplo — lista oculta"><pre><code><span class="ce-cm">&lt;!-- Arquivo: bvapp-didatico/paineis/templates/paineis/inclusao.html (contraexemplo de ocultação) --&gt;</span>
+<span class="ce-p">&lt;</span><span class="ce-nt">div</span> <span class="ce-na">hidden</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">label</span> <span class="ce-na">for</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span><span class="ce-p">&gt;</span>Cooperado<span class="ce-p">&lt;/</span><span class="ce-nt">label</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;</span><span class="ce-nt">select</span> <span class="ce-na">id</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span> <span class="ce-na">name</span><span class="ce-o">=</span><span class="ce-s">"cooperado"</span><span class="ce-p">&gt;</span>
+        <span class="ce-p">&lt;</span><span class="ce-nt">option</span> <span class="ce-na">value</span><span class="ce-o">=</span><span class="ce-s">""</span><span class="ce-p">&gt;</span>Selecione um cooperado<span class="ce-p">&lt;/</span><span class="ce-nt">option</span><span class="ce-p">&gt;</span>
+    <span class="ce-p">&lt;/</span><span class="ce-nt">select</span><span class="ce-p">&gt;</span>
+<span class="ce-p">&lt;/</span><span class="ce-nt">div</span><span class="ce-p">&gt;</span></code></pre></template>
