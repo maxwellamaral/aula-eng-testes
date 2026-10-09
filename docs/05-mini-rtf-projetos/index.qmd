@@ -22,4 +22,4 @@ format:
 
 Esta aula aplica o fluxo de mini-RTF aos requisitos dos próprios projetos BVapp. O guia foi dimensionado para o encontro presencial das **13h00 às 16h40** e prevê quatro subentregas verificadas pelo docente. O retrabalho, a verificação independente e a apresentação dos resultados acontecem depois da reunião presencial.
 
-{{< include laboratorio.qmd >}}
+{{< include _content.qmd >}}
