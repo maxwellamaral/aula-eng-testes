@@ -187,8 +187,15 @@
     }, { passive: false });
 
     // Drag / Pan events
+    let hasPanned = false;
+    let mouseDownX = 0;
+    let mouseDownY = 0;
     viewport?.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
       if (e.target.closest('.diagram-lightbox-toolbar')) return;
+      hasPanned = false;
+      mouseDownX = e.clientX;
+      mouseDownY = e.clientY;
       isDragging = true;
       startX = e.clientX - translateX;
       startY = e.clientY - translateY;
@@ -197,6 +204,9 @@
 
     window.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
+      if (Math.hypot(e.clientX - mouseDownX, e.clientY - mouseDownY) > 5) {
+        hasPanned = true;
+      }
       translateX = e.clientX - startX;
       translateY = e.clientY - startY;
       updateTransform();
@@ -231,6 +241,13 @@
 
     // Click on backdrop to close
     modal.addEventListener('click', (e) => {
+      // Mouseup after a pan also generates a click; it is not a close request.
+      if (hasPanned) {
+        hasPanned = false;
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
       if (e.target === modal || e.target === viewport) {
         closeLightbox();
       }
