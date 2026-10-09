@@ -1,4 +1,4 @@
-![](../../assets/images/06-introducao-tdd/banner-aula-06-2.png)
+![](/assets/images/06-introducao-tdd/banner-aula-06-2.png)
 
 ## O problema: transformar um requisito em comportamento verificável
 
@@ -88,7 +88,7 @@ As três figuras a seguir são propostas didáticas elaboradas a partir da vers�
 
 **Wireframe desenhado em um guardanapo**
 
-![Ilustração de um wireframe de RF001 em um guardanapo, com traços irregulares e os dez campos do formulário.](../../assets/images/06-introducao-tdd/rf001-wireframe-guardanapo-2.png){#fig-rf001-guardanapo fig-alt="Rascunho ilustrativo em guardanapo da página Inclusão de painel solar, com dez campos e asteriscos em Número de Série, Cooperado e Fornecedor." width="100%"}
+![Ilustração de um wireframe de RF001 em um guardanapo, com traços irregulares e os dez campos do formulário.](/assets/images/06-introducao-tdd/rf001-wireframe-guardanapo-2.png){#fig-rf001-guardanapo fig-alt="Rascunho ilustrativo em guardanapo da página Inclusão de painel solar, com dez campos e asteriscos em Número de Série, Cooperado e Fornecedor." width="100%"}
 
 Imagine que, durante a conversa sobre o requisito, alguém desenhe a página em um guardanapo. Nesse momento, queremos discutir o que aparece na tela e como a pessoa usuária identifica as informações solicitadas. Não precisamos escolher cores, tipografia ou acabamento. No exemplo, os retângulos representam os controles de entrada; as pequenas setas distinguem as listas de valores, e os asteriscos marcam os campos obrigatórios.
 
@@ -96,9 +96,9 @@ Esse rascunho permite apontar diretamente para uma parte da proposta: o nome Coo
 
 **Wireframe desenhado em aplicativo de computador**
 
-![Wireframe digital de RF001 apresentado em um editor fictício, com controles alinhados e sem acabamento visual de produto. Exemplo 1.  ](../../assets/images/06-introducao-tdd/rf001-wireframe-computador.png){#fig-rf001-computador fig-alt="Editor fictício de wireframes com uma página de inclusão de painel solar, dez campos e controles de texto, lista, número e data." width="100%"}
+![Wireframe digital de RF001 apresentado em um editor fictício, com controles alinhados e sem acabamento visual de produto. Exemplo 1.  ](/assets/images/06-introducao-tdd/rf001-wireframe-computador.png){#fig-rf001-computador fig-alt="Editor fictício de wireframes com uma página de inclusão de painel solar, dez campos e controles de texto, lista, número e data." width="100%"}
 
-![Wireframe digital de RF001 apresentado em um editor fictício, com controles alinhados e sem acabamento visual de produto. Exemplo 2.](../../assets/images/06-introducao-tdd/rf001-wireframe-computador-2.png){#fig-rf001-computador-2 fig-alt="Editor fictício de wireframes com uma página de inclusão de painel solar, dez campos e controles de texto, lista, número e data." width="100%"}
+![Wireframe digital de RF001 apresentado em um editor fictício, com controles alinhados e sem acabamento visual de produto. Exemplo 2.](/assets/images/06-introducao-tdd/rf001-wireframe-computador-2.png){#fig-rf001-computador-2 fig-alt="Editor fictício de wireframes com uma página de inclusão de painel solar, dez campos e controles de texto, lista, número e data." width="100%"}
 
 No wireframe digital, a estrutura fica mais regular. Podemos examinar o alinhamento dos rótulos, o espaço ocupado pelos controles e a ordem de leitura sem discutir ainda a identidade visual do produto. O exemplo mostra uma interface fictícia de edição, com elementos e camadas; não é uma captura de um aplicativo comercial específico.
 
@@ -106,7 +106,7 @@ Essa representação é útil para revisar e compartilhar uma proposta depois da
 
 **Mockup com acabamento profissional**
 
-![Mockup de RF001 com hierarquia tipográfica, cores e espaçamentos definidos, preservando os campos do requisito.](../../assets/images/06-introducao-tdd/rf001-mockup-profissional-2.png){#fig-rf001-mockup fig-alt="Proposta visual estática da página Inclusão de painel solar, em branco e verde, com dez campos e indicação textual de obrigatoriedade." width="100%"}
+![Mockup de RF001 com hierarquia tipográfica, cores e espaçamentos definidos, preservando os campos do requisito.](/assets/images/06-introducao-tdd/rf001-mockup-profissional-2.png){#fig-rf001-mockup fig-alt="Proposta visual estática da página Inclusão de painel solar, em branco e verde, com dez campos e indicação textual de obrigatoriedade." width="100%"}
 
 O mockup acrescenta decisões de apresentação: cores, tipografia, bordas e espaçamentos. Aqui, podemos discutir a aparência proposta e a facilidade de localizar o título, os rótulos e as indicações de obrigatoriedade. O acabamento ajuda a pessoa que revisa a imaginar a interface, mas também exige cuidado para que ela não interprete a figura como um cadastro já implementado. As cores e o estilo são escolhas ilustrativas, não uma identidade visual oficial do BVapp.
 
@@ -126,7 +126,7 @@ No desenvolvimento dirigido por testes (*Test-Driven Development*, TDD):
 2. Execute-o, examine a falha e faça a mudança necessária para que passe. 
 3. Com os testes aprovados, avalie se há uma melhoria na organização do código que possa ser feita sem alterar o comportamento. 
 
-![Ciclo [vermelho]{style="color: #d00000;"}-[verde]{style="color: #006400;"}-[refatorar]{style="color: #0066cc;"}](../../assets/images/06-introducao-tdd/infografico-ciclo-tdd.png){#fig-ciclo-tdd fig-alt="Infográfico do ciclo vermelho-verde-refatorar" width="100%"}
+![Ciclo [vermelho]{style="color: #d00000;"}-[verde]{style="color: #006400;"}-[refatorar]{style="color: #0066cc;"}](/assets/images/06-introducao-tdd/infografico-ciclo-tdd.png){#fig-ciclo-tdd fig-alt="Infográfico do ciclo vermelho-verde-refatorar" width="100%"}
 
 Essa sequência é o ciclo [vermelho]{style="color: #d00000;"}–[verde]{style="color: #006400;"}–[refatorar]{style="color: #0066cc;"}. Valente apresenta a prática na seção 8.7; Percival a desenvolve em pequenos passos na construção de uma aplicação web [@engsoftmoderna, seção 8.7; @percival2024early, caps. 1–4].
 
@@ -707,7 +707,7 @@ Uma página pode devolver o HTML esperado e, ainda assim, não apresentar o cont
 
 Percival apresenta essa relação como *double-loop TDD*: dentro do trabalho para aprovar um teste funcional externo, realizamos ciclos internos de [vermelho]{style="color: #d00000;"}–[verde]{style="color: #006400;"}–[refatorar]{style="color: #0066cc;"}. Quando um passo interno estiver aprovado, retornamos ao teste funcional para verificar o avanço e identificar o que ainda falta [@percival2024early, cap. 4, seção "Double-loop TDD"]. Não são duas alternativas entre as quais devemos escolher, nem duas suítes que precisam ser escritas inteiras antes de implementar.
 
-![Fluxo dos ciclos externo e interno: definir a expectativa no navegador, observar a falha esperada, desenvolver um pequeno passo com teste interno, implementar e [refatorar]{style="color: #0066cc;"} mantendo os testes aprovados, retornar ao navegador e repetir enquanto faltar comportamento. A aprovação encerra apenas o recorte observado.](../../assets/images/06-introducao-tdd/tdd-dois-ciclos.png){#fig-tdd-dois-ciclos fig-alt="Diagrama de dois ciclos encaixados. O teste externo orienta a expectativa de uma lista de Cooperado visível. A falha esperada leva ao ciclo interno: teste falha, implementação e nova execução, verde e eventual refatoração. O teste externo é executado novamente; se ainda faltar comportamento, outro passo interno é escolhido; se passar, somente o recorte observado está atendido." width=100%}
+![Fluxo dos ciclos externo e interno: definir a expectativa no navegador, observar a falha esperada, desenvolver um pequeno passo com teste interno, implementar e [refatorar]{style="color: #0066cc;"} mantendo os testes aprovados, retornar ao navegador e repetir enquanto faltar comportamento. A aprovação encerra apenas o recorte observado.](/assets/images/06-introducao-tdd/tdd-dois-ciclos.png){#fig-tdd-dois-ciclos fig-alt="Diagrama de dois ciclos encaixados. O teste externo orienta a expectativa de uma lista de Cooperado visível. A falha esperada leva ao ciclo interno: teste falha, implementação e nova execução, verde e eventual refatoração. O teste externo é executado novamente; se ainda faltar comportamento, outro passo interno é escolhido; se passar, somente o recorte observado está atendido." width=100%}
 
 A @fig-tdd-dois-ciclos é uma síntese didática própria, baseada na relação descrita por Percival. Leia as setas como uma sequência de decisões: uma falha observada orienta o próximo pequeno passo; um [verde]{style="color: #006400;"} interno autoriza voltar ao navegador, mas não permite declarar automaticamente a aprovação externa. O fluxo pressupõe que o teste conseguiu executar e observar a aplicação. Falhas de infraestrutura devem ser resolvidas antes de atribuir o [vermelho]{style="color: #d00000;"} à ausência de comportamento.
 
