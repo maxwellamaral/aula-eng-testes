@@ -27,7 +27,7 @@ format:
 
 ## Introdução ao TDD {.section .lead}
 
-<img src="../../assets/images/06-introducao-tdd/banner-aula-06-2.png" alt="Banner da Aula 06 — Introdução ao TDD." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;">
+<img src="../../assets/images/06-introducao-tdd/banner-aula-06-2.png" alt="Banner da Aula 06 — Introdução ao TDD." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;"/>
 
 **Do requisito ao primeiro comportamento web**
 
@@ -37,27 +37,29 @@ format:
 
 Como uma expectativa do requisito orienta a próxima mudança no código?
 
-[Texto canônico — fonte QMD](_content.qmd){.slide-link}
-
 [Roteiro de laboratório](laboratorio.qmd){.slide-link}
 
-<a href="#codigo-1" class="slide-link" data-code-example="codigo-1" aria-haspopup="dialog">Abrir códigos completos em janela expansível</a>
+## Objetivos de aprendizagem {.example}
 
-::: {.notes}
-Esta apresentação reorganiza o texto canônico para conduzir perguntas, leitura de código e demonstração. Não acrescenta conteúdo teórico. A aplicação e o ambiente ainda serão preparados em etapa própria. Enquanto isso, trate as transições de execução como expectativas a ensaiar, não como resultados já observados na aplicação da turma.
-:::
+Ao final desta aula, a pessoa estudante deverá ser capaz de:
+
+- **relacionar um comportamento observável a um requisito** e reconhecer divergências que exigem decisão antes do teste;
+- **descrever um caso de teste** com preparação, ação, resultado esperado e asserções;
+- **explicar por que o teste deve falhar** antes da implementação e reconhecer o motivo dessa falha;
+- **distinguir o teste funcional externo dos testes internos** que orientam a implementação;
+- **explicar o ciclo [vermelho]{style="color: #d00000;"}–[verde]{style="color: #006400;"}–[refatorar]{style="color: #0066cc;"}** e o papel da regressão;
+- **delimitar o que os resultados da suíte permitem concluir** e o que ainda não foi verificado.
 
 ## A página abriu. Isso basta? {.question}
 
-A página responde, mas a pessoa não encontra onde selecionar Cooperado.
+A página responde, mas a pessoa não encontra onde selecionar iniciar um cadastro de painel solar, por exemplo.
 
 **Qual evidência permite dizer que esse comportamento está correto?**
 
 - O servidor não apresentou erro?
-- A palavra “Cooperado” aparece no HTML?
-- Existe uma lista de Cooperado visível?
+- A palavra “Cadastrar painel solar” aparece no HTML?
 
-::: {.notes}
+::: notes
 Peça uma justificativa antes de revelar a expectativa escolhida. A resposta depende do contrato: o passo da demonstração exige um controle de lista visível, não apenas uma resposta ou uma palavra. Não iniciar por instalação ou por uma enumeração de ferramentas.
 :::
 
@@ -71,75 +73,123 @@ A revisão examina o requisito. O teste compara uma observação da execução c
 
 [@pressman2016, seção 22.1.1]
 
-::: {.notes}
+::: notes
 Retome a proposta da Aula 05 sem afirmar que todos os grupos concluíram sua revisão. Os registros da mini-RTF ajudam a localizar lacunas e divergências antes de transformá-las em asserções. Revisão e teste se complementam em V&V.
+:::
+
+## O mesmo cuidado será necessário ao escrever testes {.example}
+
+<img src="/assets/images/06-introducao-tdd/comportamento-requisitos.png" style="height: 430px; width: auto; max-width: 100%; object-fit: contain;"/>
+
+::: {.callout-important appearance="minimal"}
+A expectativa precisa ter uma base de referência identificável.
+:::
+
+::: notes
+Antes de executar o software, defina qual comportamento será observado e qual resultado permitirá julgá-lo. Se o requisito admite duas interpretações incompatíveis, escrever um teste para uma delas não resolve a divergência. A expectativa precisa ter uma base de referência identificável.
 :::
 
 ## Cooperado: qual regra vamos testar? {.example}
 
+Feature 24258 - "**2.1. Inclusão de novos painéis solares**" do BVapp.
+
 | Referência | O que registra |
-|---|---|
-| CA01 — 24482 | Cooperado opcional |
-| US — 24495 | Vínculo com Cooperado no registro completo |
-| Decisão docente | Cooperado obrigatório no contrato didático |
+|------------------------------------|------------------------------------|
+| CA01 — 24482 | Cooperado opcional. [Ver aqui.](https://200.129.79.50:8104/projects/bvapp/work_packages/24482/activity?query_id=1464) |
+| US — 24495 | Vínculo com Cooperado no registro completo. [Ver aqui.](https://200.129.79.50:8104/projects/bvapp/work_packages/24495/activity?query_id=1464) |
+| Decisão docente | Cooperado obrigatório no contrato (para fins didáticos). |
 
-**Preservar a divergência na origem; explicitar a decisão no teste.**
-
-::: {.notes}
+::: notes
 Localizar a Feature 24258, da Epic 24189. Não reescrever o backlog para fingir que ele sempre foi consistente. A indicação de obrigatoriedade na página será uma expectativa de apresentação; rejeição de envio sem Cooperado fica para outro incremento.
 :::
 
-## Três alcances sobre a mesma página {.concept}
+## Parênteses: uma outra maneira de escrever requisitos {.concept}
 
-- **Meta de apresentação:** dez campos, controles, rótulos e indicações de obrigatoriedade de RF001.
-- **Passo demonstrado:** título já existente e uma lista de Cooperado visível.
-- **Obrigações complementares:** herança de Usina e auditoria, em cenários próprios.
+[Feature 24258 — Inclusão de novos painéis solares](/docs/06-introducao-tdd/#invent%C3%A1rio-de-aceita%C3%A7%C3%A3o)
 
-**Aprovar o passo não encerra RF001 nem a Feature.**
+**\[RF001\]** Página de inclusão de painel solar no BVapp, acessível pelo navegador, para orientar o início do cadastro e as informações deste primeiro incremento.
 
-::: {.notes}
+::::: columns
+::: {.column width="50%"}
+- **Número de Série`*`** — texto
+- **Cooperado`*`** — lista de valores
+- **Marca** — lista de valores
+- **Modelo** — texto
+- **Potência de Pico (Wp)** — número
+:::
+
+::: {.column width="50%"}
+- **Eficiência (%)** — número
+- **Data de Fabricação** — data
+- **Situação** — lista de valores
+- **Fornecedor`*`** — texto
+- **Inversor ativo** — lista de valores; herda informações da Usina
+:::
+:::::
+
+**Requisitos adicionais:** registrar auditoria com ID do ativo, utilizador, data e hora. Apresentar datas conforme o padrão do país configurado no sistema.`*` indica campo obrigatório.
+
+::: notes
 A apresentação localizada da data pertence à expectativa de apresentação, mas ainda depende da definição do país e do modo de observação. Persistência, submissão e validações não entram na implementação desta aula. Usar essas distinções durante toda a demonstração.
 :::
 
 ## Wireframe: conversar sobre a estrutura {.example}
 
-<img src="../../assets/images/06-introducao-tdd/rf001-wireframe-guardanapo-2.png" alt="Rascunho em guardanapo de RF001, com dez campos e asteriscos em Número de Série, Cooperado e Fornecedor." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;">
+<img src="../../assets/images/06-introducao-tdd/rf001-wireframe-guardanapo-2.png" alt="Rascunho em guardanapo de RF001, com dez campos e asteriscos em Número de Série, Cooperado e Fornecedor." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;"/>
 
-<p class="caption">O rascunho ajuda a discutir campos, controles e obrigatoriedade, antes do acabamento visual.</p>
+<center>O rascunho ajuda a discutir campos, controles e obrigatoriedade, antes do acabamento visual.</center>
 
-::: {.notes}
-Retomar os dez campos de RF001. Perguntar se os controles e as indicações de obrigatoriedade correspondem ao requisito. A figura é uma proposta estática, não evidência de execução.
+::: notes
+Imagine que, durante a conversa sobre o requisito, alguém desenhe a página em um guardanapo. Nesse momento, queremos discutir o que aparece na tela e como a pessoa usuária identifica as informações solicitadas. Não precisamos escolher cores, tipografia ou acabamento. No exemplo, os retângulos representam os controles de entrada; as pequenas setas distinguem as listas de valores, e os asteriscos marcam os campos obrigatórios. Esse rascunho permite apontar diretamente para uma parte da proposta: o nome Cooperado está claro? A indicação de obrigatoriedade aparece junto ao campo? A informação herdada da Usina está compreensível? Podemos riscar, mover ou acrescentar uma anotação enquanto discutimos. Sua utilidade está nessa conversa inicial, com pouco investimento no desenho. A imagem é uma ilustração de um rascunho em guardanapo, não uma fotografia de um artefato real.
 :::
 
 ## Wireframe digital: organizar os controles {.example}
 
-<img src="../../assets/images/06-introducao-tdd/rf001-wireframe-computador.png" alt="Primeiro exemplo de wireframe digital de RF001 em editor fictício, com dez campos e controles de texto, lista, número e data." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;">
+<img src="../../assets/images/06-introducao-tdd/rf001-wireframe-computador-2.png" alt="Segundo exemplo de wireframe digital de RF001 em editor fictício, com dez campos e controles de texto, lista, número e data." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;"/>
 
-<p class="caption">Exemplo 1 — examinar alinhamento, espaço e ordem de leitura.</p>
+<center>Exemplo — Permite examinar alinhamento, espaço e ordem de leitura.</center>
 
-::: {.notes}
-O editor é fictício. A regularidade permite revisar a estrutura, sem estabelecer ainda a identidade visual do produto. Comparar com o rascunho anterior.
+::: notes
+Essa representação é útil para revisar e compartilhar uma proposta depois da conversa inicial. Ao confrontá-la com RF001, podemos conferir se cada campo aparece com o tipo de controle solicitado: Cooperado e Marca como listas, Modelo e Fornecedor como entradas de texto, Potência de Pico e Eficiência como entradas numéricas e Data de Fabricação como entrada de data. O desenho também registra dúvidas para revisão. Por exemplo, a nota de Inversor ativo informa a herança de Usina, mas não define quais valores estarão disponíveis nem como essa herança ocorrerá.
 :::
 
-## Wireframe digital: outra representação de RF001 {.example}
+## O protótipo de alta fidelidade ajuda a perguntar {.example}
 
-<img src="../../assets/images/06-introducao-tdd/rf001-wireframe-computador-2.png" alt="Segundo exemplo de wireframe digital de RF001 em editor fictício, com dez campos e controles de texto, lista, número e data." style="height: 430px; width: auto; max-width: 100%; object-fit: contain;">
+<img src="../../assets/images/06-introducao-tdd/rf001-mockup-profissional-2.png" alt="Mockup estático da página de inclusão de painel solar com os campos de RF001." style="height: 390px; width: auto; max-width: 100%; object-fit: contain;"/>
 
-<p class="caption">Exemplo 2 — conferir a mesma estrutura em outra representação.</p>
+<center>Proposta didática estática de RF001; não é uma tela funcional do BVapp.</center>
 
-::: {.notes}
-As duas imagens do texto canônico estão disponíveis para comparação. A figura não comprova funcionamento, acessibilidade ou usabilidade.
+::: notes
+O mockup acrescenta decisões de apresentação: cores, tipografia, bordas e espaçamentos. Aqui, podemos discutir a aparência proposta e a facilidade de localizar o título, os rótulos e as indicações de obrigatoriedade. O acabamento ajuda a pessoa que revisa a imaginar a interface, mas também exige cuidado para que ela não interprete a figura como um cadastro já implementado. As cores e o estilo são escolhas ilustrativas, não uma identidade visual oficial do BVapp.
 :::
 
-## O protótipo ajuda a perguntar {.example}
+## TDD: o teste participa do desenvolvimento {.concept}
 
-<img src="../../assets/images/06-introducao-tdd/rf001-mockup-profissional-2.png" alt="Mockup estático da página de inclusão de painel solar com os campos de RF001." style="height: 390px; width: auto; max-width: 100%; object-fit: contain;">
+```{=html}
+<img
+  src="../../assets/images/06-introducao-tdd/infografico-ciclo-tdd.png"
+  alt="Infográfico do ciclo TDD."
+  style="height: 480px; width: auto; max-width: 100%; object-fit: contain;"
+/>
+```
 
-<p class="caption">Proposta didática estática de RF001; não é uma tela funcional do BVapp.</p>
+## TDD: o teste participa do desenvolvimento {.concept}
 
-::: {.notes}
-Apontar Número de Série, Cooperado e Fornecedor, com suas indicações de obrigatoriedade. Perguntar o que a imagem permite revisar e o que não permite verificar. Desenhar um asterisco não prova rejeição de submissão; a imagem também não comprova auditoria, herança, acessibilidade ou usabilidade. Comparar o acabamento com os wireframes dos slides anteriores.
-:::
+```{=html}
+<img
+  src="../../assets/images/06-introducao-tdd/infografico-ciclo-tdd-2.png"
+  alt="Infográfico do ciclo TDD."
+  style="height: 480px; width: auto; max-width: 100%; object-fit: contain;"
+/>
+```
+
+## TDD: o teste participa do desenvolvimento {.concept}
+
+No desenvolvimento dirigido por testes (*Test-Driven Development*, TDD):
+
+1.  Escreva o teste de um comportamento antes de implementar esse comportamento.
+2.  Execute-o, examine a falha e faça a mudança necessária para que passe.
+3.  Com os testes aprovados, avalie se há uma melhoria na organização do código que possa ser feita sem alterar o comportamento.
 
 ## O que vamos aprender a explicar? {.concept}
 
@@ -148,43 +198,59 @@ Apontar Número de Série, Cooperado e Fornecedor, com suas indicações de obri
 - Como os ciclos externo e interno orientam a mudança.
 - O que permanece estável na refatoração e o que continua pendente.
 
-::: {.notes}
-Estes resultados retomam os objetivos do texto canônico. Não apresentar prazos, notas ou regras de entrega. O roteiro organiza evidências de aprendizagem, não uma avaliação nova.
+## Onde ficam o exemplos no projeto? {.concept}
+
+```{=html}
+<img
+  src="../../assets/images/06-introducao-tdd/estrutura-pastas.png"
+  alt="Estrutura de pastas do projeto."
+  style="height: 480px; width: auto; max-width: 100%; object-fit: contain;"
+/>
+```
+
+## Antes do seletor, a expectativa {.activity}
+
+**Ao abrir a página, a pessoa encontra um cadastro de painel solar visível.**
+
+Identifique:
+
+1.  preparação;
+2.  ação;
+3.  resultado esperado;
+4.  referência que justifica esse resultado.
+
+::: notes
+Preparação: página acessível, aplicação em execução e navegador disponível; nenhum painel salvo é necessário. Ação: abrir a página. Resultado: lista visível na página identificada. Referência: RF001 e o contrato didático. A URL e o seletor serão convenções de implementação, não a fonte da obrigação.
 :::
 
 ## Antes do seletor, a expectativa {.activity}
 
-**Ao abrir a página, a pessoa encontra uma lista de Cooperado visível.**
-
-Identifique:
-
-1. preparação;
-2. ação;
-3. resultado esperado;
-4. referência que justifica esse resultado.
-
-::: {.notes}
-Preparação: página acessível, aplicação em execução e navegador disponível; nenhum painel salvo é necessário. Ação: abrir a página. Resultado: lista visível na página identificada. Referência: RF001 e o contrato didático. A URL e o seletor serão convenções de implementação, não a fonte da obrigação.
-:::
+```{=html}
+<img
+  src="../../assets/images/06-introducao-tdd/fluxo-selenium.png"
+  alt="Fluxograma do fluxo Selenium."
+  style="height: 480px; width: auto; max-width: 100%; object-fit: contain;"
+/>
+```
 
 ## Oráculo e asserção não são a mesma coisa {.concept .definition}
 
-<span class="custom-tooltip">**Oráculo**<span class="tooltip-box">Referência ou mecanismo usado para julgar o resultado observado. Neste exemplo, <strong>RF001 e o contrato didático</strong> justificam a expectativa; não adotamos como correto apenas o que a implementação produziu.</span></span>: o que permite julgar o resultado.
+**Oráculo: o que permite julgar o resultado.**
 
-<span class="custom-tooltip">**Asserção**<span class="tooltip-box">Verificação concreta no teste que compara o observado com o esperado. Uma asserção observa <strong>parte do contrato</strong>; sua aprovação não demonstra automaticamente atendimento ao requisito inteiro.</span></span>: a verificação concreta no teste.
+- Referência ou mecanismo usado para julgar o resultado observado. Neste exemplo, **RF001 e o contrato** justificam a expectativa; não adotamos como correto apenas o que a implementação produziu.
 
-**O seletor localiza o controle; o requisito justifica sua presença.**
+**Asserção: a verificação concreta no teste**
 
-[@percival2024early, caps. 1–2; @engsoftmoderna, seção 8.2]
+- Verificação concreta no teste que compara o observado com o esperado. Uma asserção observa **parte do contrato**; sua aprovação não demonstra automaticamente atendimento ao requisito inteiro.
 
-::: {.notes}
+::: notes
 Pedir que a turma distinga a referência da expectativa do código que a verifica. Uma asserção incorreta pode aprovar uma implementação inadequada. O fato de o teste executar sem erro não valida sua expectativa.
 :::
 
 ## Onde fica cada responsabilidade? {.example}
 
 | Arquivo da aplicação proposta | Responsabilidade |
-|---|---|
+|----|----|
 | `functional_tests/test_rf001_inclusao_painel.py` | Testes pelo navegador |
 | `paineis/tests.py` | Teste interno da resposta |
 | `paineis/views.py` | Produção da resposta |
@@ -192,17 +258,19 @@ Pedir que a turma distinga a referência da expectativa do código que a verific
 
 **Repositório novo e separado dos materiais e do backend existente.**
 
-::: {.notes}
+::: notes
 A árvore completa está no texto canônico. A organização adapta Percival; RF001 no nome é uma convenção local de rastreabilidade. Configuração, rota, dependências e acesso sem autenticação serão preparados depois. A tabela não afirma que essa aplicação já existe.
 :::
 
 ## O teste externo observa o navegador {.example}
 
-**Trecho de `PaginaInclusaoPainelTest`:**
+**Trecho de `PaginaInclusaoPainelTest` em `test_rf001_inclusao_painel.py`**
 
-```{.python}
+``` python
 # Arquivo: bvapp-didatico/functional_tests/test_rf001_inclusao_painel.py
+
 # Trecho do método test_pagina_apresenta_lista_de_cooperados.
+
 self.browser.get(f"{self.live_server_url}/paineis/novo/")
 titulo = self.browser.find_element(By.TAG_NAME, "h1")
 self.assertEqual(titulo.text, "Inclusão de painel solar")
@@ -213,62 +281,45 @@ controles = self.browser.find_elements(
 
 **Primeiro: confirmar a página. Depois: procurar o controle.**
 
+Olhem o código completo de `functional_tests/test_rf001_inclusao_painel.py`.
+
 <a href="#codigo-1" class="slide-link" data-code-example="codigo-1" aria-haspopup="dialog">Ver teste externo completo</a>
 
-::: {.notes}
+::: notes
 Não executar este fragmento isoladamente. A classe completa e seus imports estão no texto canônico. StaticLiveServerTestCase oferece o servidor temporário; setUp abre o navegador e addCleanup registra seu encerramento. Selenium observa a página. Os nomes da URL e do controle são convenções da demonstração.
-:::
-
-## A expectativa precisa de asserções {.example}
-
-```{.python}
-# Arquivo: bvapp-didatico/functional_tests/test_rf001_inclusao_painel.py
-# Continuação do mesmo método; mensagens completas no texto canônico.
-self.assertEqual(len(controles), 1)
-self.assertTrue(controles[0].is_displayed())
-```
-
-- Lista ausente: a primeira asserção falha.
-- Lista oculta: a verificação de visibilidade falha.
-- Título errado: ainda não confirmamos a página esperada.
-
-<a href="#codigo-1" class="slide-link" data-code-example="codigo-1" aria-haspopup="dialog">Ver classe, imports e mensagens das asserções</a>
-
-::: {.notes}
-Na aplicação preparada, mostrar primeiro a falha causada pela lista ausente. O método para na asserção de quantidade, sem acessar o primeiro item de uma lista vazia. As mensagens explicativas do exemplo completo devem permanecer no teste real; este slide reduz apenas o trecho projetado.
 :::
 
 ## Vermelho por qual motivo? {.question}
 
 | Observação | Como interpretar |
-|---|---|
+|----|----|
 | Página correta, controle ausente | Comportamento ainda não implementado |
 | Navegador indisponível | Falha de infraestrutura |
 | Página inesperada | Investigar o acesso antes de julgar Cooperado |
 
 **Registre o motivo observado, não apenas “falhou”.**
 
-::: {.notes}
+::: notes
 Perguntar qual resultado orienta a inclusão do controle. Uma falha de infraestrutura não é evidência da ausência de comportamento. O laboratório prevê interrupção do ciclo para resolver essa condição, sem fabricar um Vermelho ou enfraquecer o teste.
 :::
 
 ## Vermelho, verde e refatorar {.concept}
 
-<img src="../../assets/images/06-introducao-tdd/infografico-ciclo-tdd.png" alt="Infográfico do ciclo vermelho-verde-refatorar." style="height: 450px; width: auto; max-width: 100%; object-fit: contain;">
+<img src="../../assets/images/06-introducao-tdd/infografico-ciclo-tdd-2.png" alt="Infográfico do ciclo vermelho-verde-refatorar." style="height: 450px; width: auto; max-width: 100%; object-fit: contain;"/>
 
-[@engsoftmoderna, seção 8.7; @percival2024early, caps. 1–4]
+<center>[@engsoftmoderna, seção 8.7; @percival2024early, caps. 1–4]</center>
 
-::: {.notes}
+::: notes
 Retomar a sequência do texto canônico: escrever o teste, explicar a falha, implementar o necessário e, com os testes aprovados, avaliar a organização do código sem mudar o comportamento.
 :::
 
 ## Um ciclo dentro do outro {.concept}
 
-<img src="../../assets/images/06-introducao-tdd/tdd-dois-ciclos.png" alt="Diagrama dos ciclos externo e interno: expectativa no navegador, falha esperada, pequeno passo interno e retorno ao navegador. A aprovação encerra somente o recorte observado." style="height: 480px; width: auto; max-width: 100%; object-fit: contain;">
+<img src="../../assets/images/06-introducao-tdd/tdd-dois-ciclos.png" alt="Diagrama dos ciclos externo e interno: expectativa no navegador, falha esperada, pequeno passo interno e retorno ao navegador. A aprovação encerra somente o recorte observado." style="height: 480px; width: auto; max-width: 100%; object-fit: contain;"/>
 
-[@percival2024early, cap. 4, seção "Double-loop TDD"]
+<center>[@percival2024early, cap. 4, seção "Double-loop TDD"]</center>
 
-::: {.notes}
+::: notes
 Este é o mesmo diagrama do texto canônico, uma síntese didática baseada em Percival. Clique na imagem para ampliá-la durante a leitura das setas. Verde interno autoriza conferir a expectativa externa; não permite presumir sua aprovação. Se o teste interno continuar falhando, investigar e corrigir esse passo antes de voltar ao externo. Não confundir CenariosRF001Test, externo e abrangente, com o teste interno.
 :::
 
@@ -284,13 +335,13 @@ Isso responde a uma pergunta menor:
 
 Não responde ainda: **a pessoa vê o controle?**
 
-::: {.notes}
+::: notes
 Introduzir RespostaInclusaoPainelTest, em paineis/tests.py. O cliente percorre a solicitação no Django. Não chamar automaticamente esse teste de unidade isolada: rota, view e, depois, template participam do atendimento.
 :::
 
 ## A resposta já existe? {.example}
 
-```{.python}
+``` python
 # Arquivo: bvapp-didatico/paineis/tests.py
 # Método de RespostaInclusaoPainelTest(SimpleTestCase).
 def test_pagina_responde_com_sucesso(self):
@@ -304,13 +355,13 @@ Na situação inicial escolhida, esse teste **já deve passar**.
 
 <a href="#codigo-7" class="slide-link" data-code-example="codigo-7" aria-haspopup="dialog">Ver classe completa do teste interno</a>
 
-::: {.notes}
+::: notes
 A página com o título deve estar disponível no estado inicial da prática. Se não responder, resolver essa condição primeiro. Não apresentar um teste que já passa como o novo Vermelho da inclusão de Cooperado.
 :::
 
 ## O novo teste interno deve falhar {.example}
 
-```{.python}
+``` python
 # Arquivo: bvapp-didatico/paineis/tests.py
 # Trecho de test_resposta_contem_lista_de_cooperados.
 resposta = self.client.get("/paineis/novo/")
@@ -326,7 +377,7 @@ self.assertContains(resposta, controle_esperado, count=1, html=True)
 
 <a href="#codigo-7" class="slide-link" data-code-example="codigo-7" aria-haspopup="dialog">Ver teste interno completo</a>
 
-::: {.notes}
+::: notes
 O fragmento e a opção inicial retomam o exemplo canônico. count=1 exige uma ocorrência; html=True compara a estrutura HTML. Não verifica a renderização nem a visibilidade. Na prática, introduzir o método antes da mudança na view e registrar a falha real pelo motivo esperado. Classe completa no texto canônico [@djangoTestingTools52, seções "The test client" e "Assertions"].
 :::
 
@@ -334,7 +385,7 @@ O fragmento e a opção inicial retomam o exemplo canônico. count=1 exige uma o
 
 **Trecho do HTML devolvido pela view:**
 
-```{.html}
+``` html
 <!-- Arquivo: bvapp-didatico/paineis/views.py (trecho da string HTML) -->
 <h1>Inclusão de painel solar</h1>
 <label for="cooperado">Cooperado</label>
@@ -347,13 +398,13 @@ O fragmento e a opção inicial retomam o exemplo canônico. count=1 exige uma o
 
 <a href="#codigo-2" class="slide-link" data-code-example="codigo-2" aria-haspopup="dialog">Ver view completa com HttpResponse</a> · <a href="#codigo-8" class="slide-link" data-code-example="codigo-8" aria-haspopup="dialog">Ver fragmento HTML</a>
 
-::: {.notes}
+::: notes
 A implementação completa usa HttpResponse e está no texto canônico. Preservar o título e os comportamentos já existentes. Não acrescentar cadastros auxiliares, registros inventados ou persistência. A lista vazia com orientação inicial não atende aos demais campos ou à indicação de obrigatoriedade. Não declarar um resultado executado enquanto a aplicação não tiver sido preparada.
 :::
 
 ## Refatorar sem mudar a expectativa {.example}
 
-```{.python}
+``` python
 # Arquivo: bvapp-didatico/paineis/views.py
 from django.shortcuts import render
 
@@ -368,13 +419,13 @@ Mover o mesmo HTML para `paineis/templates/paineis/inclusao.html`.
 
 <a href="#codigo-3" class="slide-link" data-code-example="codigo-3" aria-haspopup="dialog">Ver view refatorada</a> · <a href="#codigo-4" class="slide-link" data-code-example="codigo-4" aria-haspopup="dialog">Ver template completo</a>
 
-::: {.notes}
+::: notes
 A extração separa apresentação e produção da resposta. Não exige React ou outra biblioteca de frontend. O comportamento do passo permanece: título e lista visível. Não alterar asserções para acomodar uma perda de comportamento. Antes da execução, o projeto deverá estar configurado para localizar o template. A refatoração é justificada pelo problema de organização, não obrigatória em todo ciclo [@engsoftmoderna, seção 8.7].
 :::
 
 ## Verde interno garante Verde externo? {.question}
 
-```{.html}
+``` html
 <!-- Arquivo: bvapp-didatico/paineis/templates/paineis/inclusao.html -->
 <!-- Contraexemplo: ocultação do mesmo controle. -->
 <div hidden>
@@ -389,21 +440,21 @@ A extração separa apresentação e produção da resposta. Não exige React ou
 
 <a href="#codigo-9" class="slide-link" data-code-example="codigo-9" aria-haspopup="dialog">Ver contraexemplo de ocultação</a>
 
-::: {.notes}
+::: notes
 O título deve permanecer fora do elemento oculto. Este é um experimento didático temporário, não uma refatoração que preserva comportamento. A comparação interna do select pode passar; a asserção externa is_displayed deve falhar. Depois, retirar a ocultação e executar ambos novamente. Sem ambiente, registrar somente a previsão e a justificativa.
 :::
 
 ## O retorno ao navegador muda a conclusão {.takeaway}
 
-| Lista | Teste interno do HTML | Teste externo da visibilidade |
-|---|---|---|
-| Ausente | Falha | Falha |
-| Presente e oculta | Passa | Falha |
-| Presente e visível | Passa | Passa |
+| Lista              | Teste interno do HTML | Teste externo da visibilidade |
+|--------------------|-----------------------|-------------------------------|
+| Ausente            | Falha                 | Falha                         |
+| Presente e oculta  | Passa                 | Falha                         |
+| Presente e visível | Passa                 | Passa                         |
 
 **A aprovação cobre a observação de cada teste.**
 
-::: {.notes}
+::: notes
 Tabela de resultados esperados sob as condições do exemplo, não um relatório de execução da futura aplicação. Pedir que a turma explique a segunda linha. A correção deve remover a causa da ocultação e preservar asserções; observar novamente antes de encerrar o passo.
 :::
 
@@ -419,7 +470,7 @@ O primeiro pode passar enquanto o segundo ainda falha.
 
 <a href="#codigo-5" class="slide-link" data-code-example="codigo-5" aria-haspopup="dialog">Ver cenário somente comentado</a> · <a href="#codigo-6" class="slide-link" data-code-example="codigo-6" aria-haspopup="dialog">Ver cenário completo com código</a>
 
-::: {.notes}
+::: notes
 Não projetar a classe longa inteira no slide. Abrir a janela de código para localizar uma sequência de comentário, ação e asserção; usar a rolagem e ampliar a janela conforme necessário. Os testes de data localizada, herança e auditoria estão explicitamente ignorados por contratos pendentes. Um skip não é aprovação. Desenvolver novas expectativas em pequenos passos, sem exigir a suíte inteira da Feature antes da implementação.
 :::
 
@@ -433,7 +484,7 @@ Não projetar a classe longa inteira no slide. Abrir a janela de código para lo
 
 `@skip` registra o motivo da pendência; não verifica o comportamento.
 
-::: {.notes}
+::: notes
 Não remover marcadores apenas para aumentar a quantidade de testes executados. As ações e os oráculos ainda precisam ser definidos. A auditoria não vira um campo para a pessoa preencher. Nenhum limite, dado ou meio de consulta deve ser inventado para completar o exemplo.
 :::
 
@@ -446,11 +497,9 @@ Para cada teste, explique separadamente:
 - **execução:** como a observação foi automatizada;
 - **papel:** qual passo do desenvolvimento ele orienta.
 
-**Django não significa unidade isolada; Selenium não significa aceitação completa.**
-
 [@engsoftmoderna, seções 8.2 e 8.7–8.10]
 
-::: {.notes}
+::: notes
 Aplicar ao mesmo exemplo, sem acrescentar técnicas. O cliente Django percorre rota/view/template; o navegador acrescenta a observação da interface. Ler o código não torna automaticamente um caso de caixa-branca. TDD é uma prática de desenvolvimento, não um nível de teste.
 :::
 
@@ -462,20 +511,20 @@ Após a mudança, executar novamente os testes já aprovados.
 
 **Regressão detectada exige investigação, não redução da expectativa.**
 
-::: {.notes}
+::: notes
 Relacionar a futura evolução do formulário à lista de Cooperado e à sua indicação de obrigatoriedade quando ela tiver teste. Esses testes não passam a cobrir automaticamente gravação ou auditoria. Conformidade com expectativas codificadas também não substitui a análise de sua adequação às necessidades da pessoa usuária.
 :::
 
 ## Agora, o comportamento da sua Epic {.activity}
 
-1. Localize um requisito e uma expectativa pequena.
-2. Descreva preparação, ação, resultado e oráculo.
-3. Explique a falha esperada antes da mudança.
-4. Identifique os testes interno e externo e as pendências.
+1.  Localize um requisito e uma expectativa pequena.
+2.  Descreva preparação, ação, resultado e oráculo.
+3.  Explique a falha esperada antes da mudança.
+4.  Identifique os testes interno e externo e as pendências.
 
 [Roteiro: da análise ao ciclo observado](laboratorio.qmd){.slide-link}
 
-::: {.notes}
+::: notes
 Os grupos transferem o método, não o cadastro de painéis, para sua própria Epic. A aplicação será nova e isolada. A análise pode começar com requisitos e registros da mini-RTF; a execução exige a etapa posterior de preparação. Não aplicar à Aula 06 as regras de subentrega da Aula 05.
 :::
 
@@ -491,7 +540,7 @@ Registrar também:
 
 **Encerrar o passo observado, não declarar a Feature concluída.**
 
-::: {.notes}
+::: notes
 Pedir uma conclusão que diga qual teste passou e o que ele observa. Se só houve leitura ou previsão, o registro deve dizê-lo. Uma execução aprovada não corrige uma interpretação errada do requisito. Não estabelecer formato obrigatório de entrega, prazo ou critério de nota.
 :::
 
@@ -503,7 +552,7 @@ Pedir uma conclusão que diga qual teste passou e o que ele observa. Se só houv
 
 [Texto canônico — fonte QMD](_content.qmd){.slide-link} · [Roteiro](laboratorio.qmd){.slide-link}
 
-::: {.notes}
+::: notes
 A leitura usa a terceira edição Early Release fornecida, revisão de 16 de maio de 2024. As referências da organização de arquivos e dos recursos de teste estão localizadas no texto canônico. Não antecipar persistência: ela será o eixo do encontro seguinte.
 :::
 

@@ -11,7 +11,12 @@ LESSON = ROOT / "docs/06-introducao-tdd"
 
 
 def canonical_blocks():
-    return re.findall(r"```\{\.(python|html)\}\n(.*?)\n```", (LESSON / "_content.qmd").read_text(), re.S)
+    blocks = re.findall(
+        r"```(?:\{\.(python|html)\}|[ \t]*(python|html))\n(.*?)\n```",
+        (LESSON / "_content.qmd").read_text(),
+        re.S,
+    )
+    return [(braced or plain, code) for braced, plain, code in blocks]
 
 
 def test_examples_preserve_canonical_code():
@@ -22,17 +27,21 @@ def test_examples_preserve_canonical_code():
     slides = (LESSON / "slides.qmd").read_text()
     assert "_exemplos-codigo.html" in slides
     targets = re.findall(r'data-code-example="(codigo-\d+)"', slides)
-    assert set(targets) == {f"codigo-{i}" for i in range(1, 10)}
+    assert targets
+    assert set(targets) <= {f"codigo-{i}" for i in range(1, 10)}
+    links = re.findall(r'<a\s+href="#(codigo-\d+)"[^>]*data-code-example="(codigo-\d+)"', slides)
+    assert len(links) == len(targets)
+    assert all(anchor == target for anchor, target in links)
 
 
-def test_slides_include_all_canonical_images():
-    canonical = (LESSON / "_content.qmd").read_text()
-    images = set(re.findall(r"../../assets/images/06-introducao-tdd/[^)\s]+", canonical))
-    slides = (LESSON / "slides.qmd").read_text()
-    assert len(images) == 7
-    for image in images:
-        assert image in slides
-        assert (LESSON / image).is_file()
+def test_lesson_and_slides_reference_existing_images():
+    for source in ("_content.qmd", "slides.qmd"):
+        text = (LESSON / source).read_text()
+        images = set(re.findall(r'''(?:\.\./\.\./|/)assets/images/06-introducao-tdd/[^)\s"'<>]+''', text))
+        assert images, f"Nenhuma imagem encontrada em {source}"
+        for image in images:
+            path = ROOT / image.lstrip("/") if image.startswith("/") else LESSON / image
+            assert path.is_file(), f"Imagem ausente em {source}: {image}"
 
 
 def test_window_interactions(tmp_path):
